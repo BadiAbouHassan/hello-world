@@ -10,7 +10,7 @@ namespace MVCDemo.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Hunting License";
+            ViewBag.Message = "Welcome to ASP.NET MVC!";
 
             return View();
         }
