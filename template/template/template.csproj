@@ -57,8 +57,11 @@
     <Content Include="bootstrap-3.3.2-dist-sandstone\js\bootstrap.js" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\js\bootstrap.min.js" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\js\jquery-1.11.2.min.js" />
+    <Content Include="bootstrap-3.3.2-dist-sandstone\js\jquery.bootstrap.wizard.js" />
+    <Content Include="bootstrap-3.3.2-dist-sandstone\js\jquery.bootstrap.wizard.min.js" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\js\jquery.min.js" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\js\npm.js" />
+    <Content Include="bootstrap-3.3.2-dist-sandstone\js\prettify.js" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -66,6 +69,7 @@
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\footer.aspx" />
     <Content Include="Views\header.aspx" />
+    <Content Include="Views\questionsWizard.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +119,13 @@
     </Compile>
     <Compile Include="Views\header.aspx.designer.cs">
       <DependentUpon>header.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\questionsWizard.aspx.cs">
+      <DependentUpon>questionsWizard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\questionsWizard.aspx.designer.cs">
+      <DependentUpon>questionsWizard.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

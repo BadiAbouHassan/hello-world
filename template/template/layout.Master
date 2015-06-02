@@ -19,6 +19,7 @@
         <!-- JS includes--->
     <script src="bootstrap-3.3.2-dist-sandstone/js/jquery.min.js"></script>
     <script src="bootstrap-3.3.2-dist-sandstone/js/bootstrap.min.js"></script>
+   
     <title>Testing MVC</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
