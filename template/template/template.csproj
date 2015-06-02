@@ -90,6 +90,17 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Exam.cs" />
+    <Compile Include="Models\ExamQuestions.cs" />
+    <Compile Include="Models\GrantedPermission.cs" />
+    <Compile Include="Models\HuntingClub.cs" />
+    <Compile Include="Models\Permission.cs" />
+    <Compile Include="Models\QuestionsBank.cs" />
+    <Compile Include="Models\RegistrationRequests.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\footer.aspx.cs">
       <DependentUpon>footer.aspx</DependentUpon>
@@ -109,7 +120,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controlers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="layout.Master" />
