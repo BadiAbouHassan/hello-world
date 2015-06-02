@@ -13,7 +13,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li></li>
+        <li><a href="../Views/aboutUs.aspx">About Us</a></li>
         <li><a href="../Views/questionsWizard.aspx">Exam</a></li>
         <li><a href="../Login.aspx">Log In</a></li>
       </ul>
