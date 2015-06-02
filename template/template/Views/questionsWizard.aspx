@@ -7,7 +7,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-   <div id="rootwizard">
+  <div id="rootwizard">
 	<div class="navbar">
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -23,27 +23,168 @@
 	 </div>
 	  </div>
 	</div>
+	
 	<div class="tab-content">
 	    <div class="tab-pane" id="tab1">
-	      1
-	    </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Question one </div>
+                <div class="panel-body">
+                    <div class="row"> 
+                        <div class="col-md-12 col-xs-12" >
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 2</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 3</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	        </div>
+        </div>
 	    <div class="tab-pane" id="tab2">
-	      2
+	      <div class="panel panel-primary">
+                <div class="panel-heading">Question Two </div>
+                <div class="panel-body">
+                    <div class="row"> 
+                        <div class="col-md-12 col-xs-12" >
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 2</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 3</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	        </div>
 	    </div>
 		<div class="tab-pane" id="tab3">
-			3
+			<div class="panel panel-primary">
+                <div class="panel-heading">Question three </div>
+                <div class="panel-body">
+                    <div class="row"> 
+                        <div class="col-md-12 col-xs-12" >
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 2</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 3</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	        </div>
 	    </div>
 		<div class="tab-pane" id="tab4">
-			4
+			<div class="panel panel-primary">
+                <div class="panel-heading">Question four </div>
+                <div class="panel-body">
+                    <div class="row"> 
+                        <div class="col-md-12 col-xs-12" >
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 2</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 3</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	        </div>
 	    </div>
 		<div class="tab-pane" id="tab5">
-			5
+			<div class="panel panel-primary">
+                <div class="panel-heading">Question five </div>
+                <div class="panel-body">
+                    <div class="row"> 
+                        <div class="col-md-12 col-xs-12" >
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 2</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 3</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	        </div>
 	    </div>
 		<div class="tab-pane" id="tab6">
-			6
+			<div class="panel panel-primary">
+                <div class="panel-heading">Question six </div>
+                <div class="panel-body">
+                    <div class="row"> 
+                        <div class="col-md-12 col-xs-12" >
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 2</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 3</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	        </div>
 	    </div>
 		<div class="tab-pane" id="tab7">
-			7
+			<div class="panel panel-primary">
+                <div class="panel-heading">Question seven </div>
+                <div class="panel-body">
+                    <div class="row"> 
+                        <div class="col-md-12 col-xs-12" >
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 1</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Option 2</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 3</label>
+                            </div>
+                            <div class="radio disabled">
+                                <label><input type="radio" name="optradio" >Option 4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	        </div>
 	    </div>
 		<ul class="pager wizard">
 			<li class="previous first" style="display:none;"><a href="#">First</a></li>
@@ -61,6 +202,7 @@
                     return false;
                 }
             });
+           
         });
     </script>
 </asp:Content>
