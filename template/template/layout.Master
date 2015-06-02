@@ -27,7 +27,7 @@
 <body>
     <form id="form1" runat="server">
         <!--#include file="Views/header.aspx"-->
-        <div>
+        <div >
             <asp:ContentPlaceHolder ID="body" runat="server"/>
         </div>
         <!--#include file="Views/footer.aspx"-->
