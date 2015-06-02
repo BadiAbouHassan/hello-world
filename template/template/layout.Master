@@ -16,23 +16,21 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+        <!-- JS includes--->
+    <script src="bootstrap-3.3.2-dist-sandstone/js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.2-dist-sandstone/js/bootstrap.min.js"></script>
     <title>Testing MVC</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <!--#include file="Views/header.aspx"-->
     <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
+        <!--#include file="Views/header.aspx"-->
+        <div>
+            <asp:ContentPlaceHolder ID="body" runat="server"/>
+        </div>
+        <!--#include file="Views/footer.aspx"-->
     </form>
-     <!--#include file="Views/footer.aspx"-->
-        <!-- JS includes--->
-    <script src="bootstrap-3.3.2-dist-sandstone/js/jquery.min.js"></script>
-    <script src="bootstrap-3.3.2-dist-sandstone/js/bootstrap.min.js"></script>
+    
 </body>
 </html>
