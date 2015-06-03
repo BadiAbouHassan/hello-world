@@ -252,30 +252,35 @@
   <ItemGroup>
     <Compile Include="admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
     <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
     <Compile Include="Admin\footer.aspx.cs">
       <DependentUpon>footer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\footer.aspx.designer.cs">
       <DependentUpon>footer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\header.aspx.cs">
       <DependentUpon>header.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\header.aspx.designer.cs">
       <DependentUpon>header.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -283,6 +288,17 @@
     <Compile Include="Controlers\MD5Hash.cs" />
     <Compile Include="Controlers\SQLClass.cs" />
     <Compile Include="Controlers\UserController.cs" />
+    <Compile Include="DBModel\Answer.cs" />
+    <Compile Include="DBModel\Course.cs" />
+    <Compile Include="DBModel\Exam.cs" />
+    <Compile Include="DBModel\ExamQuestions.cs" />
+    <Compile Include="DBModel\GrantedPermission.cs" />
+    <Compile Include="DBModel\HuntingClub.cs" />
+    <Compile Include="DBModel\Permission.cs" />
+    <Compile Include="DBModel\QuestionsBank.cs" />
+    <Compile Include="DBModel\RegistrationRequests.cs" />
+    <Compile Include="DBModel\Role.cs" />
+    <Compile Include="DBModel\User.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -304,17 +320,6 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Answer.cs" />
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Exam.cs" />
-    <Compile Include="Models\ExamQuestions.cs" />
-    <Compile Include="Models\GrantedPermission.cs" />
-    <Compile Include="Models\HuntingClub.cs" />
-    <Compile Include="Models\Permission.cs" />
-    <Compile Include="Models\QuestionsBank.cs" />
-    <Compile Include="Models\RegistrationRequests.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\footer.aspx.cs">
       <DependentUpon>footer.aspx</DependentUpon>
@@ -340,6 +345,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DBService\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="layout.Master" />
