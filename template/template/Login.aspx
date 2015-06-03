@@ -8,9 +8,7 @@
                 <%--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="index.php?action=forgetPassword" class="btn btn-default">Forgot password?</a></div>--%>
             </div>     
             <div style="padding-top:30px" class="panel-body" >
-                <p><asp:Label id="lbl1" runat="server" Text="messsaggaa" /></p>
-                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>            
-             
+                <p><asp:Label id="lbl1" runat="server" Text="" /></p>
                 <form id="loginform" class="form-horizontal" role="form"  method="post" >
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

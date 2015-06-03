@@ -13,7 +13,7 @@ namespace template
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            lbl1.Text = "tst tst";
+            lbl1.Text = "";
 
         }
 
