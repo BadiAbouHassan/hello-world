@@ -74,6 +74,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlers\MD5Hash.cs" />
+    <Compile Include="Controlers\SQLClass.cs" />
+    <Compile Include="Controlers\UserController.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -131,7 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controlers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="layout.Master" />
