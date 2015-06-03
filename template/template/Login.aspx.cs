@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using template.Controlers;
-using template.Models;
+using template.DBModel;
 
 namespace template
 {

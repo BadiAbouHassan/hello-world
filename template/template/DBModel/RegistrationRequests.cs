@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace template.Models
+namespace template.DBModel
 {
     public class RegistrationRequests
     {
