@@ -241,7 +241,7 @@
     <Content Include="Content\themes\sb-admin\raphael\dev\require.js" />
     <Content Include="Content\themes\sb-admin\raphael\raphael-min.js" />
     <Content Include="Content\themes\sb-admin\raphael\raphael.js" />
-    <Content Include="Controlers\registrationController.aspx" />
+    <Content Include="Controllers\registrationController.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -296,18 +296,6 @@
     <Compile Include="Admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Controlers\MD5Hash.cs" />
-    <Compile Include="Controlers\registrationController.aspx.cs">
-      <DependentUpon>registrationController.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controlers\registrationController.aspx.designer.cs">
-      <DependentUpon>registrationController.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Controlers\SQLClass.cs" />
-    <Compile Include="Controlers\UserController.cs" />
-=======
     <Compile Include="Admin\viewCourses.aspx.cs">
       <DependentUpon>viewCourses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -318,9 +306,15 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\MD5Hash.cs" />
     <Compile Include="Controllers\QuestionsBankController.cs" />
+    <Compile Include="Controllers\registrationController.aspx.cs">
+      <DependentUpon>registrationController.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controllers\registrationController.aspx.designer.cs">
+      <DependentUpon>registrationController.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\SQLClass.cs" />
     <Compile Include="Controllers\UserController.cs" />
->>>>>>> origin/master
     <Compile Include="DBModel\Answer.cs" />
     <Compile Include="DBModel\Course.cs" />
     <Compile Include="DBModel\Exam.cs" />

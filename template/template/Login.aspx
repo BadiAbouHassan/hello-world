@@ -54,7 +54,7 @@
                         <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" style="color:white" onclick="$('#signupbox').slideToggle(); $('#loginbox').slideToggle()">Sign In</a></div>
                     </div>  
                     <div class="panel-body" >
-                        <form id="signupform" class="form-horizontal" role="form" method="post" action="Controlers/registrationController.aspx">
+                        <form id="signupform" class="form-horizontal" role="form" method="post" action="Controllers/registrationController.aspx">
                              <p><asp:Label id="label1" runat="server" Text="sasdas" /></p>
 
                             <div id="signupalert" style="display:none" class="alert alert-danger">
