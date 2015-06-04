@@ -27,6 +27,7 @@ namespace template
             club.DataTextField = "clubname";
             club.DataValueField = "ID";
             club.DataBind();
+            club.Name = "club";
             
         }
 
