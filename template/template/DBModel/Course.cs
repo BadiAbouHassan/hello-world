@@ -8,6 +8,7 @@ namespace template.DBModel
     {
         public int courseID { get; set; }
         public String courseName { get; set; }
+        public String courseDesc { get; set; }
 
         public Course()
         {

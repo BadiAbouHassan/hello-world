@@ -4,7 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Grid</h1>
+            <h1 class="page-header">
+                Grid</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,6 +14,8 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <asp:Table ID="Table1" runat="server">
+                    </asp:Table>
                     <h3>Grid options</h3>
                     <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
                     <div class="table-responsive">

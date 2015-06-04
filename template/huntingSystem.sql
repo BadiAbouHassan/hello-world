@@ -1,9 +1,3 @@
-/*
-* create the database
-*/
-Create database HuntingSystem ; 
-
-/*****************************************************/
 
 /*
 * create tables
@@ -12,6 +6,7 @@ use [HuntingSystem]
 create table Course(
 ID int IDENTITY(1,1) NOT NULL,
 courseName varchar(255),
+courseDesc text,
 Primary Key (ID) 
 )
 

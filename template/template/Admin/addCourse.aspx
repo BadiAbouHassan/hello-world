@@ -18,16 +18,22 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <form role="form">
+                                <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
+                                    <p><asp:Label id="successMsg" runat="server" Text="" /></p>
+                                </div>
+                                <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
+                                    <p><asp:Label id="errMsg" runat="server" Text="" /></p>
+                                </div>
                                 <div class="form-group">
                                     <label>Course Name</label>
-                                    <input placeholder="Course Name" class="form-control">
+                                    <input placeholder="Course Name" class="form-control" id="courseName" name="courseName" runat="server" required />
                                     <p class="help-block"></p>
                                 </div>
                                 <div class="form-group">
                                     <label>Course Description</label>
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" rows="3" runat="server" required id="courseDesc" name="courseDesc"></textarea>
                                 </div>
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <asp:Button id="btnSave" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save" OnClick="btnSave_Click" />
                                 <button class="btn btn-default" type="reset">Reset</button>
                             </form>
                         </div>
