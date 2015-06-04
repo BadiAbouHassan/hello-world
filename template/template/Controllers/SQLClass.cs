@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Web;
 
-namespace template.Controlers
+namespace template.Controllers
 {
     //this class is the main class for databSE CONNECTION
     public class SQLClass : IDisposable

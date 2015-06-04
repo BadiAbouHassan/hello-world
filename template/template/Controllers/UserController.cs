@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Web;
 using template.DBModel;
 
-namespace template.Controlers
+namespace template.Controllers
 {
     public class UserController
     {
@@ -43,6 +43,8 @@ namespace template.Controlers
         /// </summary>
         public Boolean addUser(User user)
         {
+            bool result = false;
+
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
@@ -50,9 +52,11 @@ namespace template.Controlers
                                 +user.username+"', '"+user.password+"', '"+user.firstname+"','" +user.lastname+"', '"
                                 +user.email+"', '" +user.userAddress+"', '"+user.mobileNb+"', '"+user.phoneNb +"','"
                                 +user.nationalID+"','" +user.nationality+"', '"+user.roleID+"');";
+
+                result = dbObj.executeQuery(query);
             }
             dbObj.CloseConnection();
-            return true;
+            return result;
         }
 
 
