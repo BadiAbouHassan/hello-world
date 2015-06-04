@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Web;
 using template.DBModel;
 
-namespace template.Controlers
+namespace template.Controllers
 {
     public class UserController
     {
@@ -43,18 +43,29 @@ namespace template.Controlers
         /// </summary>
         public Boolean addUser(User user)
         {
+            bool result = false;
+
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
+<<<<<<< HEAD:template/template/Controlers/UserController.cs
                 //String query = "insert into UserTable(username, pass,firstname, lastname,email,userAddress,mobileNb,phoneNb,nationalID,nationality,roleID) values('"
                 //                +user.username+"', '"+user.password+"', '"+user.firstname+"','" +user.lastname+"', '"
                 //                +user.email+"', '" +user.userAddress+"', '"+user.mobileNb+"', '"+user.phoneNb +"','"
                 //                +user.nationalID+"','" +user.nationality+"', '"+user.roleID+"');";
 
                // dbObj.executeQuery(query);
+=======
+                String query = "insert into UserTable(username, pass,firstname, lastname,email,userAddress,mobileNb,phoneNb,nationalID,nationality,roleID) values('"
+                                +user.username+"', '"+user.password+"', '"+user.firstname+"','" +user.lastname+"', '"
+                                +user.email+"', '" +user.userAddress+"', '"+user.mobileNb+"', '"+user.phoneNb +"','"
+                                +user.nationalID+"','" +user.nationality+"', '"+user.roleID+"');";
+
+                result = dbObj.executeQuery(query);
+>>>>>>> origin/master:template/template/Controllers/UserController.cs
             }
             dbObj.CloseConnection();
-            return true;
+            return result;
         }
 
 

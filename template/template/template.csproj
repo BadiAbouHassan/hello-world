@@ -49,9 +49,11 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\addCourse.aspx" />
     <Content Include="Admin\footer.aspx" />
     <Content Include="Admin\header.aspx" />
     <Content Include="Admin\index.aspx" />
+    <Content Include="Admin\viewCourses.aspx" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\css\bootstrap-theme.css" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\css\bootstrap-theme.min.css" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\css\bootstrap.css" />
@@ -259,6 +261,13 @@
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\addCourse.aspx.cs">
+      <DependentUpon>addCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\addCourse.aspx.designer.cs">
+      <DependentUpon>addCourse.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,6 +296,7 @@
     <Compile Include="Admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Controlers\MD5Hash.cs" />
     <Compile Include="Controlers\registrationController.aspx.cs">
       <DependentUpon>registrationController.aspx</DependentUpon>
@@ -297,6 +307,20 @@
     </Compile>
     <Compile Include="Controlers\SQLClass.cs" />
     <Compile Include="Controlers\UserController.cs" />
+=======
+    <Compile Include="Admin\viewCourses.aspx.cs">
+      <DependentUpon>viewCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\viewCourses.aspx.designer.cs">
+      <DependentUpon>viewCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\MD5Hash.cs" />
+    <Compile Include="Controllers\QuestionsBankController.cs" />
+    <Compile Include="Controllers\SQLClass.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+>>>>>>> origin/master
     <Compile Include="DBModel\Answer.cs" />
     <Compile Include="DBModel\Course.cs" />
     <Compile Include="DBModel\Exam.cs" />
@@ -308,6 +332,11 @@
     <Compile Include="DBModel\RegistrationRequests.cs" />
     <Compile Include="DBModel\Role.cs" />
     <Compile Include="DBModel\User.cs" />
+    <Compile Include="DBService\AnswerService.cs" />
+    <Compile Include="DBService\CourseService.cs" />
+    <Compile Include="DBService\ExamQuestionsService.cs" />
+    <Compile Include="DBService\ExamService.cs" />
+    <Compile Include="DBService\QuestionsBankService.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -361,7 +390,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DBService\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="layout.Master" />
