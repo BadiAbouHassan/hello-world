@@ -127,3 +127,19 @@ FOREIGN KEY (roleID) REFERENCES RoleTable(ID)
 )
 
 /**********************************************************************/
+/****************INSERT STATIC QUERIES
+/***********************************************************************/
+
+use [HuntingSystem]
+
+
+insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub1','Beirut','70888999','club1@hunting.com');
+insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub2','Saida','70555444','club2@hunting.com');
+insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub3','Tripoli','70666333','club3@hunting.com');
+insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub4','Nabatieh','70111222','club4@hunting.com');
+
+
+insert into RoleTable(roleName, predefined) values('superadmin','1');
+insert into RoleTable(roleName, predefined) values('HuntingClub2','1');
+insert into RoleTable(roleName, predefined) values('HuntingClub3','1');
+insert into RoleTable(roleName, predefined) values('HuntingClub4','1');
