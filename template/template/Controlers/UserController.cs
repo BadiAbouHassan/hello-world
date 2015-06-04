@@ -46,10 +46,12 @@ namespace template.Controlers
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into UserTable(username, pass,firstname, lastname,email,userAddress,mobileNb,phoneNb,nationalID,nationality,roleID) values('"
-                                +user.username+"', '"+user.password+"', '"+user.firstname+"','" +user.lastname+"', '"
-                                +user.email+"', '" +user.userAddress+"', '"+user.mobileNb+"', '"+user.phoneNb +"','"
-                                +user.nationalID+"','" +user.nationality+"', '"+user.roleID+"');";
+                //String query = "insert into UserTable(username, pass,firstname, lastname,email,userAddress,mobileNb,phoneNb,nationalID,nationality,roleID) values('"
+                //                +user.username+"', '"+user.password+"', '"+user.firstname+"','" +user.lastname+"', '"
+                //                +user.email+"', '" +user.userAddress+"', '"+user.mobileNb+"', '"+user.phoneNb +"','"
+                //                +user.nationalID+"','" +user.nationality+"', '"+user.roleID+"');";
+
+               // dbObj.executeQuery(query);
             }
             dbObj.CloseConnection();
             return true;
@@ -64,12 +66,12 @@ namespace template.Controlers
             User user = new User();
             user.userID = Int32.Parse(reader["userID"].ToString());
             user.username = reader["username"].ToString();
-            user.nationalID = reader["nationalID"].ToString();
+           // user.nationalID = reader["nationalID"].ToString();
             user.nationality = reader["nationality"].ToString();
             user.firstname = reader["firstname"].ToString();
             user.lastname = reader["lastname"].ToString();
-            user.mobileNb = reader["mobileNb"].ToString();
-            user.phoneNb = reader["phoneNb"].ToString();
+           // user.mobileNb = reader["mobileNb"].ToString();
+           // user.phoneNb = reader["phoneNb"].ToString();
             user.userAddress = reader["userAddress"].ToString();
             user.email = reader["email"].ToString();
             user.password = reader["pass"].ToString();
