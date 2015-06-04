@@ -43,7 +43,7 @@ namespace template.DBService
             using (SqlConnection cn = dbObj.openConnection())
             {
                 String query = "insert into ClientTable(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
-                            + "nationality,bloodType,Profession,email,mailAddress,fax,city,ClientAddress,cellular,phone,clubID) values('"
+                            + "nationality,bloodType,Profession,email,mailAddress,fax,city,userAddress,cellular,phone,clubID) values('"
                                 + Client.username + "', '" + Client.password + "', '" + Client.firstname + "','" + Client.middlename + "', '"
                                 + Client.lastname + "', '" + Client.gender + "', '" + Client.dateOfBirth + "', '" + Client.placeOfBirth + "','"
                                 + Client.registrationNb + "','" + Client.nationality + "', '" + Client.bloodType + "','" + Client.profession + "','"
