@@ -47,7 +47,7 @@
     </div>
 
 
-    <div id="signupbox" style="display:none; margin-top:50px" class=" col-sm-8 col-sm-offset-2">
+    <div id="signupbox" style="display:none; margin-top:50px" class="">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="panel-title">Sign Up</div>
@@ -66,12 +66,59 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="firstname" class="col-md-3 control-label">Midle Name</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="midlename" required="required" class="form-control" placeholder="Midle Name" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="lastname" class="col-md-3 control-label">Last Name</label>
                                             <div class="col-md-9">
                                                 <input type="text" required="required" class="form-control" name="lastname" placeholder="Last Name"/>
                                             </div>
                                         </div>
-                                        <!-- added marwa -->
+                                        <div class="form-group">
+                                            <label for="email" class="col-md-3 control-label" >Date Of Birth</label>
+                                            <div class="col-md-9">
+                                                <input type="text" required="required" class="form-control"  name="date_of_birth" placeholder="Date Of Birth"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="NationalID" class="col-md-3 control-label" >Registration ID</label>
+                                            <div class="col-md-9">
+                                                <input type="text" required="required" class="form-control" name="registratoin_id" placeholder="Registration ID"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Nationaity" class="col-md-3 control-label" >Nationality</label>
+                                            <div class="col-md-9">
+                                                <input type="text" required="required" class="form-control" name="nationality" placeholder="Nationality"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mobile" class="col-md-3 control-label" >Phone </label>
+                                            <div class="col-md-9">
+                                                <input type="text" required="required" class="form-control" name="Phone" placeholder="Phone Number"/>
+                                         </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone" class="col-md-3 control-label" >Cellular</label>
+                                            <div class="col-md-9">
+                                               <input type="text"  required="required" class="form-control"  name="cellular" placeholder="Cellular number"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="col-md-3 control-label" >Fax</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"  name="Fax Number" placeholder="Fax"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="col-md-3 control-label" >Mail</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"  name="Fax Number" placeholder="Mail Address"/>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="email" class="col-md-3 control-label" >Email</label>
                                             <div class="col-md-9">
@@ -85,30 +132,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="mobile" class="col-md-3 control-label" >Mobile</label>
+                                            <label for="address" class="col-md-3 control-label" >Club</label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="mobile" placeholder="Mobile number"/>
-                                         </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone" class="col-md-3 control-label" >Phone</label>
-                                            <div class="col-md-9">
-                                               <input type="text"  required="required" class="form-control"  name="phone" placeholder="Phone number"/>
+                                                <select runat="server" class="form-control" id="club" name="club"></select>
                                             </div>
                                         </div>
-                                         <div class="form-group">
-                                            <label for="Nationaity" class="col-md-3 control-label" >Nationality</label>
-                                            <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="nationality" placeholder="Nationality"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="NationalID" class="col-md-3 control-label" >National ID</label>
-                                            <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="nationalID" placeholder="National ID"/>
-                                            </div>
-                                        </div>
-                                        
                                     </div>
                                 </div>
                                 <!--this is the right division-->
@@ -126,25 +154,64 @@
                                                <input type="password"  required="required" class="form-control" name="password"  placeholder="Password"/>
                                             </div>
                                         </div>
-
                                         <div class="form-group">
                                             <label for="icode" class="col-md-3 control-label">Confirm Password</label>
                                             <div class="col-md-9">
                                                 <input type="password"  required="required" class="form-control" name="confpasswd"   placeholder="Password"/>
                                             </div>
                                         </div>
-                                        s
                                         <div class="form-group">
-                                            <!-- Button -->                                        
-                                            <div class="col-md-offset-3 col-md-9">
-                                                <input type="submit" id="btnSignup_reg"  class="btn btn-info" value="Sign Up" />
-                                                <!-- <asp:Button id="btn_signup_reg" runat="server"  Text="Sign Up"   class="btn btn-info" value="Sign Up" UseSubmitBehavior="False" OnClick="btn_signup_reg_Click"   />-->
-                                                <input type="reset" class="btn btn-warning" />
+                                            <label for="icode" class="col-md-3 control-label">Gender</label>
+                                            <div class="col-md-9">
+                                                <select name="gender" class="form-control">
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icode" class="col-md-3 control-label">Date Of Birth</label>
+                                            <div class="col-md-9">
+                                                <input type="password"  required="required" class="form-control" name="date_of_birth"   placeholder="Date Of Birth"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icode" class="col-md-3 control-label">Blood Type</label>
+                                            <div class="col-md-9">
+                                                <input type="text"  required="required" class="form-control" name="blood_type"   placeholder="Blood Type"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icode" class="col-md-3 control-label">Profession</label>
+                                            <div class="col-md-9">
+                                                <input type="text"  required="required" class="form-control" name="profession"   placeholder="Profession"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icode" class="col-md-3 control-label">email</label>
+                                            <div class="col-md-9">
+                                                <input type="text"  required="required" class="form-control" name="email"   placeholder="email"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="icode" class="col-md-3 control-label">City</label>
+                                            <div class="col-md-9">
+                                                <input type="text"  required="required" class="form-control" name="city"   placeholder="City"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div> 
+                            <div class="row">
+                                <div class="form-horizontal">
+                                    <div class="form-group">                                  
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <input type="submit" id="btnSignup_reg"  class="btn btn-info" value="Sign Up" />
+                                            <input type="reset" class="btn btn-warning" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                      </div>
                 </div>
