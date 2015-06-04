@@ -80,7 +80,7 @@
                                         <div class="form-group">
                                             <label for="email" class="col-md-3 control-label" >Date Of Birth</label>
                                             <div class="col-md-9">
-                                                <input type="text"  required="required" data-provide="datepicker" class="form-control datepicker" id="datepicker"  name="date_of_birth" placeholder="Date Of Birth"/>
+                                                <input type="text" required="required" class="form-control"  name="date_of_birth" placeholder="Date Of Birth"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -211,14 +211,5 @@
                 </div>
      </div> 
     </div>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker({
-                dateFormat: "yy-mm-dd",
-            });
-        });
-    </script>
+
 </asp:Content>
