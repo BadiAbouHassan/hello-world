@@ -16,15 +16,15 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection connection = dbObj.openConnection())
             {
-                String query = "INSERT INTO Course(courseName)" +
-                               "Values('" + course.courseName + "')";
+                String query = "INSERT INTO Course(courseName, courseDesc)" +
+                               "Values('" + course.courseName + "', '" + course.courseDesc + "')";
                 result = dbObj.executeQuery(query);
             }
             dbObj.CloseConnection();
             return result;
         }
 
-        public DBModel.Course[] getCourses(DBModel.Course course = null)
+        public DBModel.Course[] getCourses(int courseID = 0)
         {
             DBModel.Course[] result = null;
 
@@ -32,9 +32,9 @@ namespace template.DBService
             using (SqlConnection connection = dbObj.openConnection())
             {
                 String whereCondition = "";
-                if (course != null)
+                if (courseID != 0)
                 {
-                    whereCondition = " WHERE courseID = " + course.courseID;
+                    whereCondition = " WHERE courseID = " + courseID;
                 }
                 String query = "SELECT * FROM Course " + whereCondition;
 

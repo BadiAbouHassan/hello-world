@@ -84,10 +84,10 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Users <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/newUser.aspx">New User</a>
+                                    <a href="/Admin/newUser.aspx">New User</a>
                                 </li>
                                 <li>
-                                    <a href="/viewUsers.aspx">View Users</a>
+                                    <a href="/Admin/viewUsers.aspx">View Users</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -96,7 +96,7 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Applicants <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/viewApplicants.aspx">View Applicants</a>
+                                    <a href="/Admin/viewApplicants.aspx">View Applicants</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -105,10 +105,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Hunting Clubs <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/addClub.aspx">Add New Club</a>
+                                    <a href="/Admin/addClub.aspx">Add New Club</a>
                                 </li>
                                 <li>
-                                    <a href="/viewClubs.aspx">View Clubs</a>
+                                    <a href="/Admin/viewClubs.aspx">View Clubs</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -117,10 +117,10 @@
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Courses <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/addCourse.aspx">Add New Course</a>
+                                    <a href="/Admin/addCourse.aspx">Add New Course</a>
                                 </li>
                                 <li>
-                                    <a href="/viewCourses.aspx">View Courses</a>
+                                    <a href="/Admin/viewCourses.aspx">View Courses</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -129,10 +129,10 @@
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Questions<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/addQuestion.aspx">Add New Question</a>
+                                    <a href="/Admin/addQuestion.aspx">Add New Question</a>
                                 </li>
                                 <li>
-                                    <a href="/viewQuestions.aspx">View Question</a>
+                                    <a href="/Admin/viewQuestions.aspx">View Question</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -141,10 +141,10 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Exams<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/addExam.aspx">Add New Exam</a>
+                                    <a href="/Admin/addExam.aspx">Add New Exam</a>
                                 </li>
                                 <li>
-                                    <a href="/viewExams.aspx">View Exams</a>
+                                    <a href="/Admin/viewExams.aspx">View Exams</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -153,13 +153,13 @@
                             <a href="#"><i class="fa fa-cog fa-fw"></i> Settings<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/uploadLogo.aspx">Upload logo</a>
+                                    <a href="/Admin/uploadLogo.aspx">Upload logo</a>
                                 </li>
                                 <li>
-                                    <a href="/certificate.aspx">Certificate template</a>
+                                    <a href="/Admin/certificate.aspx">Certificate template</a>
                                 </li>
                                 <li>
-                                    <a href="/referenceNoFormat.aspx">Reference Number Format</a>
+                                    <a href="/Admin/referenceNoFormat.aspx">Reference Number Format</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -168,10 +168,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/report1.aspx">Report 1</a>
+                                    <a href="/Admin/report1.aspx">Report 1</a>
                                 </li>
                                 <li>
-                                    <a href="/report2.aspx">Report 2</a>
+                                    <a href="/Admin/report2.aspx">Report 2</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
