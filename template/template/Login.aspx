@@ -84,9 +84,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="NationalID" class="col-md-3 control-label" >Registration ID</label>
+                                            <label for="NationalID" class="col-md-3 control-label" >Registration Number</label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="registratoin_id" placeholder="Registration ID"/>
+                                                <input type="text" required="required" class="form-control" name="registratoin_nb" placeholder="Registration ID"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -98,7 +98,7 @@
                                         <div class="form-group">
                                             <label for="mobile" class="col-md-3 control-label" >Phone </label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="Phone" placeholder="Phone Number"/>
+                                                <input type="text" required="required" class="form-control" name="phone" placeholder="Phone Number"/>
                                          </div>
                                         </div>
                                         <div class="form-group">
@@ -110,19 +110,13 @@
                                         <div class="form-group">
                                             <label for="email" class="col-md-3 control-label" >Fax</label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control"  name="Fax Number" placeholder="Fax"/>
+                                                <input type="text" class="form-control"  name="fax_number" placeholder="Fax"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="email" class="col-md-3 control-label" >Mail</label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control"  name="Fax Number" placeholder="Mail Address"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email" class="col-md-3 control-label" >Email</label>
-                                            <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control"  name="email" placeholder="Email Address"/>
+                                                <input type="text" class="form-control"  name="mail" placeholder="Mail Address"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -145,7 +139,7 @@
                                         <div class="form-group">
                                             <label for="userbame" class="col-md-3 control-label" >Username</label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control"  name="username_txt" placeholder="UserName"/>
+                                                <input type="text" required="required" class="form-control"  name="username" placeholder="UserName"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -170,9 +164,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">Date Of Birth</label>
+                                            <label for="icode" class="col-md-3 control-label">Place Of Birth</label>
                                             <div class="col-md-9">
-                                                <input type="password"  required="required" class="form-control" name="date_of_birth"   placeholder="Date Of Birth"/>
+                                                <input type="password"  required="required" class="form-control" name="place_of_birth"   placeholder="Date Of Birth"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
