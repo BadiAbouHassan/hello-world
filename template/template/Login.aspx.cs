@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,7 +20,13 @@ namespace template
 
         public void fillClubSelect()
         {
-
+            DBService.HuntingClubService huntingClubService = new DBService.HuntingClubService();
+            DataSet ds= huntingClubService.getClubsDataSet();
+            club.DataSource = ds;
+            club.DataTextField = "clubname";
+            club.DataValueField = "ID";
+            club.DataBind();
+            
         }
 
         public void btn_signup_reg_Click(object sender, EventArgs e)

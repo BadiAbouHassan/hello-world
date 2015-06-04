@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Web;
 using template.Controllers;
@@ -63,6 +64,19 @@ namespace template.DBService
             return clubList;
         }
 
+        public DataSet getClubsDataSet()
+        {
+            SQLClass dbObj = new SQLClass();
+            DataSet ds = new DataSet();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "select * from HuntingClub";
+                SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
+                myCommand.Fill(ds, "HuntingClub");
+            }
+            dbObj.CloseConnection();
+            return ds;
+        }
         /// <summary>
         /// fill club object fromsqldatareader
         /// </summary>
