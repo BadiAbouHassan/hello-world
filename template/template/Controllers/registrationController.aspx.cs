@@ -35,7 +35,7 @@ namespace template.Controlers
                     user.lastname = Request.Form["lastname"];
                     user.firstname = Request.Form["firstname"];
                     user.middlename = Request.Form["middlename"];
-                    user.dateOfBirth = Request.Form["date_of_birth"];
+                    user.dateOfBirth = Convert.ToDateTime(Request.Form["date_of_birth"]);
                     user.nationality = Request.Form["nationality"];
                     user.userAddress = Request.Form["address"];
                     user.username = Request.Form["username"];
