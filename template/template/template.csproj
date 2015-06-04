@@ -330,7 +330,9 @@
     <Compile Include="DBService\CourseService.cs" />
     <Compile Include="DBService\ExamQuestionsService.cs" />
     <Compile Include="DBService\ExamService.cs" />
+    <Compile Include="DBService\HuntingClubService.cs" />
     <Compile Include="DBService\QuestionsBankService.cs" />
+    <Compile Include="DBService\RoleService.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>

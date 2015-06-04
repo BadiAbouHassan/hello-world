@@ -48,12 +48,15 @@ namespace template.Controllers
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                //String query = "insert into UserTable(username, pass,firstname, lastname,email,userAddress,mobileNb,phoneNb,nationalID,nationality,roleID) values('"
-                //                +user.username+"', '"+user.password+"', '"+user.firstname+"','" +user.lastname+"', '"
-                //                +user.email+"', '" +user.userAddress+"', '"+user.mobileNb+"', '"+user.phoneNb +"','"
-                //                +user.nationalID+"','" +user.nationality+"', '"+user.roleID+"');";
+                String query = "insert into UserTable(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
+                            + "nationality,bloodType,Profession,email,mailAddress,fax,city,userAddress,cellular,phone,roleID,clubID) values('"
+                                + user.username + "', '" + user.password + "', '" + user.firstname + "','" + user.middlename + "', '"
+                                + user.lastname + "', '" + user.gender + "', '" + user.dateOfBirth + "', '" + user.placeOfBirth + "','"
+                                + user.registrationNb + "','" + user.nationality + "', '" + user.bloodType + "','" + user.profession + "','"
+                                + user.email + "','" + user.mailAddress + "','" + user.fax + "','" + user.city + "','" + user.userAddress + "','"
+                                + user.cellular + "','" + user.phone + "','" + user.roleID + "','" + user.clubID + "');";
 
-                //result = dbObj.executeQuery(query);
+                result = dbObj.executeQuery(query);
 
             }
             dbObj.CloseConnection();
