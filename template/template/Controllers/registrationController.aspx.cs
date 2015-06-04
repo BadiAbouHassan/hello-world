@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using template.Controllers;
 using template.DBModel;
+using template.DBService;
 
 namespace template.Controlers
 {
@@ -15,7 +16,7 @@ namespace template.Controlers
             
              try
             {
-                User user = new User();
+                Client user = new Client();
 
                 String password = Request.Form["password"];
                 String confPass = Request.Form["confpasswd"];
@@ -33,19 +34,28 @@ namespace template.Controlers
                     user.email = Request.Form["email"];
                     user.lastname = Request.Form["lastname"];
                     user.firstname = Request.Form["firstname"];
-                   // user.mobileNb = Request.Form["mobile"];
-                   // user.phoneNb = Request.Form["phone"];
-                   // user.nationalID = Request.Form["nationalID"];
+                    user.middlename = Request.Form["middlename"];
+                    user.dateOfBirth = Request.Form["date_of_birth"];
                     user.nationality = Request.Form["nationality"];
                     user.userAddress = Request.Form["address"];
-                    user.username = Request.Form["username_txt"]; 
+                    user.username = Request.Form["username"];
+                    user.registrationNb = Request.Form["registration_nb"];
+                    user.phone = Request.Form["phone"];
+                    user.cellular = Request.Form["cellular"];
+                    user.fax = Request.Form["fax_nb"];
+                    user.mailAddress = Request.Form["mail"];
+                    user.gender = Request.Form["gender"];
+                    user.placeOfBirth = Request.Form["place_of_birth"];
+                    user.bloodType = Request.Form["blood_type"];
+                    user.profession = Request.Form["profession"];
+                    user.city = Request.Form["city"];
                     user.password = password;
-                    user.roleID = 0;
-                    
+                    user.clubID = Int32.Parse(Request.Form["club"]);
 
 
-                    UserController user_controller = new UserController();
-                    Boolean addedsuccessfully = user_controller.addUser(user);
+
+                    ClientService client_controller = new ClientService();
+                    Boolean addedsuccessfully = client_controller.addClient(user);
                     if (addedsuccessfully)
                     {
                        // label1.Text = "Succcessfully added";

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using template.Controllers;
 using template.DBModel;
+using template.DBService;
 
 namespace template
 {
@@ -45,9 +46,9 @@ namespace template
 
                 String loginHashed = MD5Hash.GetHash(pass);
 
-                UserController user_controller = new UserController();
-                User loggedUser = user_controller.checkUserAuthentication(username_login, loginHashed);
-                if (loggedUser == null)
+                ClientService client_service = new ClientService();
+                Client loggedClient = client_service.checkClientAuthentication(username_login, loginHashed);
+                if (loggedClient == null)
                 {
                     lbl1.Text = "Wrong username or password";
                 }

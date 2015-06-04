@@ -74,18 +74,44 @@ FOREIGN KEY (roleID) REFERENCES RoleTable(ID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
 
 )
+create table ClientTable(
+ID int IDENTITY(1,1) NOT NULL,
+username varchar(255),
+pass varchar(500),
+firstname varchar(255),
+middlename varchar(255),
+lastname varchar(255),
+gender varchar(50),
+dateOfBirth DATE,
+placeOfBirth varchar(255),
+registrationNb varchar(500),
+nationality varchar(255),
+bloodType varchar(128),
+Profession varchar(500),
+email varchar(255),
+mailAddress varchar(255),
+fax varchar(255),
+city varchar(255),
+userAddress varchar(255),
+cellular varchar(255),
+phone varchar(255),
+clubID int  NOT NULL,
+Primary Key (ID),
+FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
+
+)
 
 
 
 create table RegistrationRequests(
 ID int IDENTITY(1,1) NOT NULL,
-userID int NOT NULL,
+clientID int NOT NULL,
 clubID int NOT NULL,
 registrationRequestsDate DATE,
 verifiedByAdmin int,
 verifiationDate DATE, 
 Primary Key (ID), 
-FOREIGN KEY (userID) REFERENCES UserTable(ID),
+FOREIGN KEY (clientID) REFERENCES ClientTable(ID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
 )
 
