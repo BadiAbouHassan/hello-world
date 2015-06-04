@@ -14,6 +14,11 @@ namespace template
         {
           
             lbl1.Text = "";
+            fillClubSelect();
+        }
+
+        public void fillClubSelect()
+        {
 
         }
 
