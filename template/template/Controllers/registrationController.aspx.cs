@@ -35,7 +35,7 @@ namespace template.Controlers
                     user.lastname = Request.Form["lastname"];
                     user.firstname = Request.Form["firstname"];
                     user.middlename = Request.Form["middlename"];
-                    user.dateOfBirth = Convert.ToDateTime(Request.Form["date_of_birth"]);
+                    user.dateOfBirth = Request.Form["date_of_birth"];
                     user.nationality = Request.Form["nationality"];
                     user.userAddress = Request.Form["address"];
                     user.username = Request.Form["username"];
@@ -49,9 +49,9 @@ namespace template.Controlers
                     user.bloodType = Request.Form["blood_type"];
                     user.profession = Request.Form["profession"];
                     user.city = Request.Form["city"];
-                    user.password = password;
+                    user.password = Hashed_pass;
                     user.clubID = Int32.Parse(Request.Form["club"]);
-
+                    
 
 
                     ClientService client_controller = new ClientService();

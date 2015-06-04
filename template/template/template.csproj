@@ -251,7 +251,9 @@
     <Content Include="Views\footer.aspx" />
     <Content Include="Views\header.aspx" />
     <Content Include="Views\questionsWizard.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin.Master.cs">

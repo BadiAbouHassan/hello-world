@@ -66,7 +66,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="firstname" class="col-md-3 control-label">Midle Name</label>
+                                            <label for="firstname" class="col-md-3 control-label">Middle Name</label>
                                             <div class="col-md-9">
                                                 <input type="text" name="midlename" required="required" class="form-control" placeholder="Midle Name" />
                                             </div>
@@ -80,7 +80,7 @@
                                         <div class="form-group">
                                             <label for="email" class="col-md-3 control-label" >Date Of Birth</label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control"  name="date_of_birth" placeholder="Date Of Birth"/>
+                                                <input type="text" required="required" class="form-control"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
