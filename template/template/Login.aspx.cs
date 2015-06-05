@@ -15,9 +15,15 @@ namespace template
         public List<HuntingClub> clubs = new List<HuntingClub>(); 
         protected void Page_Load(object sender, EventArgs e)
         {
-          
-            lbl1.Text = "";
-            fillClubSelect();
+            try
+            {
+                lbl1.Text = "";
+                fillClubSelect();
+            }
+            catch(Exception exc)
+            {
+                Response.Redirect("Views/errorHandler.aspx");
+            }
         }
 
         public void fillClubSelect()

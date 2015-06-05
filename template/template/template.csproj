@@ -248,6 +248,7 @@
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\aboutUs.aspx" />
+    <Content Include="Views\errorHandler.aspx" />
     <Content Include="Views\footer.aspx" />
     <Content Include="Views\header.aspx" />
     <Content Include="Views\questionsWizard.aspx" />
@@ -365,6 +366,13 @@
     </Compile>
     <Compile Include="Views\aboutUs.aspx.designer.cs">
       <DependentUpon>aboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\errorHandler.aspx.cs">
+      <DependentUpon>errorHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\errorHandler.aspx.designer.cs">
+      <DependentUpon>errorHandler.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\footer.aspx.cs">
       <DependentUpon>footer.aspx</DependentUpon>
