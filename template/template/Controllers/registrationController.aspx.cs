@@ -15,11 +15,12 @@ namespace template.Controlers
         {
             try
             {
+             
                 addClient();    
             }
             catch (Exception exp)
             {
-                Response.Redirect("Views/errorHandler");
+                Response.Redirect("../Views/errorHandler.aspx");
                 // must redirect to erro page and display the Exception in the erro page ... 
                // label1.Text = exp.Message;
             }
@@ -63,12 +64,12 @@ namespace template.Controlers
                 Boolean addedsuccessfully = client_controller.addClient(user);
                 if (addedsuccessfully)
                 {
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect("../Login.aspx", false);
                     // label1.Text = "Succcessfully added";
                 }
                 else
                 {
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect("../Login.aspx", false);
                     // label1.Text = "Error";
 
                 }
