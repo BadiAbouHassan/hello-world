@@ -12,6 +12,7 @@ namespace template
 {
     public partial class Login : System.Web.UI.Page
     {
+        public List<HuntingClub> clubs = new List<HuntingClub>(); 
         protected void Page_Load(object sender, EventArgs e)
         {
           
@@ -22,11 +23,12 @@ namespace template
         public void fillClubSelect()
         {
             DBService.HuntingClubService huntingClubService = new DBService.HuntingClubService();
-            DataSet ds= huntingClubService.getClubsDataSet();
-            club.DataSource = ds;
-            club.DataTextField = "clubname";
-            club.DataValueField = "ID";
-            club.DataBind();
+            clubs = huntingClubService.getClubs();
+            //DataSet ds= huntingClubService.getClubsDataSet();
+            //club.DataSource = ds;
+            //club.DataTextField = "clubname";
+            //club.DataValueField = "ID";
+            //club.DataBind();
             
         }
 

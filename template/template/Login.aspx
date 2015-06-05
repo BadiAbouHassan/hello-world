@@ -128,7 +128,13 @@
                                         <div class="form-group">
                                             <label for="address" class="col-md-3 control-label" >Club</label>
                                             <div class="col-md-9">
-                                                <select runat="server" class="form-control" id="club" name="club"></select>
+                                                <select class="form-control" id="club" name="club">
+                                                    <%
+                                                    foreach( template.DBModel.HuntingClub club in clubs )
+                                                        { %>
+                                                        <option value="<%= club.clubID %>"><%= club.clubName %></option>
+                                                    <%  }; %>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
