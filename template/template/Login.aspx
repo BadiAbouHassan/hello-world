@@ -224,7 +224,16 @@
   <script>
       $(function () {
           $("#datepicker").datepicker({
-              dateFormat: "yy-mm-dd"
+              buttonText: "Select date",
+              showButtonPanel: true,
+              yearRange: "1930:2012",
+              changeMonth: true,
+              changeYear: true,
+              dateFormat: "dd-mm-yy",
+              numberOfMonths: 1,
+              onSelect: function () {
+                  this.focus();
+              }
           });
       });
   </script>

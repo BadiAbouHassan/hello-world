@@ -63,6 +63,7 @@ namespace template.Controlers
                 Boolean addedsuccessfully = client_controller.addClient(user);
                 if (addedsuccessfully)
                 {
+                    Response.Redirect("Login.aspx");
                     // label1.Text = "Succcessfully added";
                 }
                 else
