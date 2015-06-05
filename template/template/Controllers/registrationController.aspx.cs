@@ -33,7 +33,7 @@ namespace template.Controlers
             if (!password.Equals(confPass))
             {
                 // label1.Text = "Passwords don't match !!";
-                return;
+                Response.Redirect("../Views/errorHandler.aspx", false);
             }
             else
             {
