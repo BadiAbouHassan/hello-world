@@ -49,9 +49,9 @@ namespace template.Controlers
                     user.bloodType = Request.Form["blood_type"];
                     user.profession = Request.Form["profession"];
                     user.city = Request.Form["city"];
-                    user.password = password;
+                    user.password = Hashed_pass;
                     user.clubID = Int32.Parse(Request.Form["club"]);
-
+                    
 
 
                     ClientService client_controller = new ClientService();
