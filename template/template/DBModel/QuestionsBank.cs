@@ -9,7 +9,6 @@ namespace template.DBModel
         public int questionsID { get; set; }
         public String title { get; set; }
         public String description { get; set; }
-        public double mark { get; set; }
         public int courseID { get; set; }
 
         public QuestionsBank()

@@ -11,7 +11,7 @@ namespace template.DBModel
         public String clubAddress { get; set; }
         public String phoneNb { get; set; }
         public String email { get; set; }
-        public int userID { get; set; }
+        public int adminUserID { get; set; }
 
         public HuntingClub()
         {

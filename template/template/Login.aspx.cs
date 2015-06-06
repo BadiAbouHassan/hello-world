@@ -56,8 +56,8 @@ namespace template
 
                 String loginHashed = MD5Hash.GetHash(pass);
 
-                ClientService client_service = new ClientService();
-                Client loggedClient = client_service.checkClientAuthentication(username_login, loginHashed);
+                ApplicantService client_service = new ApplicantService();
+                Applicant loggedClient = client_service.checkApplicantAuthentication(username_login, loginHashed);
                 if (loggedClient == null)
                 {
                     lbl1.Text = "Wrong username or password";

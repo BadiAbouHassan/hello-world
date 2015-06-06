@@ -4,23 +4,24 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web;
+using template.Controllers;
 using template.DBModel;
 
-namespace template.Controllers
+namespace template.DBService
 {
-    public class UserController
+    public class UserService
     {
 
-        public UserController()
+        public UserService()
         {
         }
 
         /// <summary>
         ///  this function select user of given paswod and username --> for login aurhentication
         /// </summary>
-        public Applicant checkUserAuthentication(String username, String password)
+        public User checkUserAuthentication(String username, String password)
         {
-            Applicant user = null;
+            User user = null;
             SQLClass dbObj = new SQLClass();
             using(SqlConnection cn = dbObj.openConnection())
             {
@@ -40,20 +41,17 @@ namespace template.Controllers
         /// <summary>
         ///  this function select user of given paswod and username --> for login aurhentication
         /// </summary>
-        public Boolean addUser(Applicant user)
+        public Boolean addUser(User user)
         {
             bool result = false;
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into UserTable(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
-                            + "nationality,bloodType,Profession,email,mailAddress,fax,city,userAddress,cellular,phone,roleID,clubID) values('"
+                String query = "insert into UserTable(username, pass,firstname,middlename ,lastname,email,cellular,phone,roleID) values('"
                                 + user.username + "', '" + user.password + "', '" + user.firstname + "','" + user.middlename + "', '"
-                                + user.lastname + "', '" + user.gender + "', '" + user.dateOfBirth + "', '" + user.placeOfBirth + "','"
-                                + user.registrationNb + "','" + user.nationality + "', '" + user.bloodType + "','" + user.profession + "','"
-                                + user.email + "','" + user.mailAddress + "','" + user.fax + "','" + user.city + "','" + user.userAddress + "','"
-                                + user.cellular + "','" + user.phone+ "');";
+                                + user.lastname + "', '"  +user.email +"','"
+                                + user.cellular + "','" + user.phone+ "','"+user.roleID +"');";
 
                 result = dbObj.executeQuery(query);
 
@@ -66,27 +64,16 @@ namespace template.Controllers
         /// <summary>
         ///  this function fill user object
         /// </summary>
-        public Applicant fillUser(SqlDataReader reader)
+        public User fillUser(SqlDataReader reader)
         {
-            Applicant user = new Applicant();
-            user.applicantID = Int32.Parse(reader["ID"].ToString());
+            User user = new User();
+            user.userID = Int32.Parse(reader["ID"].ToString());
             user.username = reader["username"].ToString();
-            user.registrationNb = reader["registrationNb"].ToString();
-            user.nationality = reader["nationality"].ToString();
             user.firstname = reader["firstname"].ToString();
             user.middlename = reader["middlename"].ToString();
-            user.bloodType = reader["bloodType"].ToString();
-            user.profession = reader["Profession"].ToString();
-            user.gender = reader["gender"].ToString();
-            user.mailAddress = reader["mailAddress"].ToString();
-            user.fax = reader["fax"].ToString();
-            user.dateOfBirth = reader["dateOfBirth"].ToString();
-            user.placeOfBirth = reader["placeOfBirth"].ToString();
-            user.city = reader["city"].ToString();
             user.lastname = reader["lastname"].ToString();
             user.cellular = reader["cellular"].ToString();
             user.phone = reader["phone"].ToString();
-            user.userAddress = reader["userAddress"].ToString();
             user.email = reader["email"].ToString();
             user.password = reader["pass"].ToString();
 

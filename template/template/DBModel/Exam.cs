@@ -8,11 +8,12 @@ namespace template.DBModel
     {
         public int examID { get; set; }
         public String examName { get; set; }
-        public DateTime examDate { get; set; }
+        public String examDescription { get; set; }
         public double examDuration { get; set; }
-        public DateTime elapsedTime { get; set; } 
-        public double result { get; set; }
-        public int referenceID { get; set; }
+        public double passingMark { get; set; }
+        public int numberOfQuestions { get; set; }
+        public double questionMark { get; set; }
+
 
         public Exam()
         {

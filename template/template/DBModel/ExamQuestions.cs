@@ -7,7 +7,7 @@ namespace template.DBModel
     public class ExamQuestions
     {
         public int examQuestionID { get; set; }
-        public int examID { get; set; }
+        public int examInstanceID { get; set; }
         public int questionID { get; set; }
 
         public ExamQuestions()

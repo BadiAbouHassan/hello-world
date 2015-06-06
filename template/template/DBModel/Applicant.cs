@@ -22,7 +22,7 @@ namespace template.DBModel
         public String fax { get; set; }
         public String city { get; set; }
         public String registrationNb { get; set; }
-        public String userAddress { get; set; }
+        public String applicantAddress { get; set; }
         public String cellular { get; set; }
         public String phone { get; set; }
         public String nationality { get; set; }
