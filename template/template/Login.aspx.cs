@@ -19,7 +19,6 @@ namespace template
             {
                 //throw new Exception("testing error message and exception how will be ");
                 lbl1.Text = "";
-                fillClubSelect();
             }
             catch(Exception exc)
             {
@@ -28,17 +27,6 @@ namespace template
             }
         }
 
-        public void fillClubSelect()
-        {
-            DBService.HuntingClubService huntingClubService = new DBService.HuntingClubService();
-            clubs = huntingClubService.getClubs();
-            //DataSet ds= huntingClubService.getClubsDataSet();
-            //club.DataSource = ds;
-            //club.DataTextField = "clubname";
-            //club.DataValueField = "ID";
-            //club.DataBind();
-            
-        }
 
         public void btn_signup_reg_Click(object sender, EventArgs e)
         {
@@ -48,7 +36,6 @@ namespace template
         //sign in click
         public void signIn(object sender, EventArgs e)
         {
-            lbl1.Text = "textss";
             try
             {
                 String username_login = login_username.Value.ToString();

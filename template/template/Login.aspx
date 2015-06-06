@@ -68,7 +68,7 @@
                                         <div class="form-group">
                                             <label for="firstname" class="col-md-3 control-label">Middle Name</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="midlename" required="required" class="form-control" placeholder="Midle Name" />
+                                                <input type="text" name="middlename" required="required" class="form-control" placeholder="Midle Name" />
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -230,7 +230,7 @@
                   yearRange: "1930:2012",
                   changeMonth: true,
                   changeYear: true,
-                  dateFormat: "dd-mm-yy",
+                  dateFormat: "yy-mm-dd",
                   numberOfMonths: 1,
                   onSelect: function () {
                       this.focus();

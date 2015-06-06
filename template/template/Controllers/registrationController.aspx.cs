@@ -16,7 +16,7 @@ namespace template.Controlers
             try
             {
 
-                checkApplicant();    
+                addApplicant();    
             }
             catch (Exception exp)
             {
@@ -25,7 +25,7 @@ namespace template.Controlers
                // label1.Text = exp.Message;
             }
         }
-        public void checkApplicant()
+        public void addApplicant()
         {
             Applicant user = new Applicant();
             String password = Request.Form["password"];
@@ -47,7 +47,7 @@ namespace template.Controlers
                 user.nationality = Request.Form["nationality"];
                 user.applicantAddress = Request.Form["address"];
                 user.username = Request.Form["username"];
-                user.registrationNb = Request.Form["registration_nb"];
+                user.registrationNb = Request.Form["registratoin_nb"];
                 user.phone = Request.Form["phone"];
                 user.cellular = Request.Form["cellular"];
                 user.fax = Request.Form["fax_nb"];
@@ -67,8 +67,7 @@ namespace template.Controlers
                 }
                 else
                 {
-                    Response.Redirect("../Login.aspx", false);
-                    // label1.Text = "Error";
+                    Response.Redirect("../Views/errorHandler.aspx", false);
 
                 }
             }

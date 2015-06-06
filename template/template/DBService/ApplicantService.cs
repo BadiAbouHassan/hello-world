@@ -65,7 +65,7 @@ namespace template.DBService
         public Applicant fillApplicant(SqlDataReader reader)
         {
             Applicant Applicant = new Applicant();
-            Applicant.applicantID = Int32.Parse(reader["ID"].ToString());
+            Applicant.applicantID = Int32.Parse(reader["applicantID"].ToString());
             Applicant.username = reader["username"].ToString();
             Applicant.registrationNb = reader["registrationNb"].ToString();
             Applicant.nationality = reader["nationality"].ToString();
