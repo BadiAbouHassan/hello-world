@@ -334,10 +334,9 @@
       <DependentUpon>registrationController.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\SQLClass.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DBService\UserService.cs" />
     <Compile Include="DBModel\Answer.cs" />
     <Compile Include="DBModel\Applicant.cs" />
-    <Compile Include="DBModel\Client.cs" />
     <Compile Include="DBModel\Course.cs" />
     <Compile Include="DBModel\Exam.cs" />
     <Compile Include="DBModel\ExamInstance.cs" />
@@ -350,7 +349,7 @@
     <Compile Include="DBModel\Role.cs" />
     <Compile Include="DBModel\User.cs" />
     <Compile Include="DBService\AnswerService.cs" />
-    <Compile Include="DBService\ClientService.cs" />
+    <Compile Include="DBService\ApplicantService.cs" />
     <Compile Include="DBService\CourseService.cs" />
     <Compile Include="DBService\ExamQuestionsService.cs" />
     <Compile Include="DBService\ExamService.cs" />

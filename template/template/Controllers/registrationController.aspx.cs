@@ -15,8 +15,8 @@ namespace template.Controlers
         {
             try
             {
-             
-                addClient();    
+
+                checkApplicant();    
             }
             catch (Exception exp)
             {
@@ -25,9 +25,9 @@ namespace template.Controlers
                // label1.Text = exp.Message;
             }
         }
-        public void addClient()
+        public void checkApplicant()
         {
-            Client user = new Client();
+            Applicant user = new Applicant();
             String password = Request.Form["password"];
             String confPass = Request.Form["confpasswd"];
             if (!password.Equals(confPass))
@@ -45,7 +45,7 @@ namespace template.Controlers
                 user.middlename = Request.Form["middlename"];
                 user.dateOfBirth = Request.Form["date_of_birth"];
                 user.nationality = Request.Form["nationality"];
-                user.userAddress = Request.Form["address"];
+                user.applicantAddress = Request.Form["address"];
                 user.username = Request.Form["username"];
                 user.registrationNb = Request.Form["registration_nb"];
                 user.phone = Request.Form["phone"];
@@ -58,10 +58,8 @@ namespace template.Controlers
                 user.profession = Request.Form["profession"];
                 user.city = Request.Form["city"];
                 user.password = Hashed_pass;
-                user.clubID = Int32.Parse(Request.Form["club"]);
-
-                ClientService client_controller = new ClientService();
-                Boolean addedsuccessfully = client_controller.addClient(user);
+                ApplicantService client_controller = new ApplicantService();
+                Boolean addedsuccessfully = client_controller.addApplicant(user);
                 if (addedsuccessfully)
                 {
                     Response.Redirect("../Login.aspx", false);

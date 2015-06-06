@@ -1,4 +1,5 @@
 
+
 /*
 * create tables
 */
@@ -11,12 +12,11 @@ Primary Key (courseID)
 )
 
 create table QuestionsBank(
-questionsBankID int IDENTITY(1,1) NOT NULL,
+questionID int IDENTITY(1,1) NOT NULL,
 title varchar(255),
 questionDesc varchar(255),
-mark decimal,
 courseID int NOT NULL,
-Primary Key (questionsBankID), 
+Primary Key (questionID), 
 FOREIGN KEY (courseID) REFERENCES Course(courseID)
 )
 
@@ -25,8 +25,8 @@ answerID int IDENTITY(1,1) NOT NULL,
 title varchar(255),
 correct int,
 questionID int NOT NULL,
-Primary Key (ID), 
-FOREIGN KEY (questionID) REFERENCES QuestionsBank(questionsBankID)
+Primary Key (answerID), 
+FOREIGN KEY (questionID) REFERENCES QuestionsBank(questionID)
 )
 
 create table Role(
@@ -36,21 +36,8 @@ predefined int NOT NULL,
 Primary Key (roleID)
 )
 
-create table HuntingClub(
-clubID int IDENTITY(1,1) NOT NULL,
-clubName varchar(255),
-clubAddress varchar(255),
-phoneNb varchar(255),
-email varchar(255),
-userID int NOT NULL,
-Primary Key (ID),
-FOREIGN KEY (userID) REFERENCES User(questionsBankID)
-
-)
-
-
 create table Applicant(
-ID int IDENTITY(1,1) NOT NULL,
+applicantID int IDENTITY(1,1) NOT NULL,
 username varchar(255),
 pass varchar(500),
 firstname varchar(255),
@@ -67,19 +54,14 @@ email varchar(255),
 mailAddress varchar(255),
 fax varchar(255),
 city varchar(255),
-userAddress varchar(255),
+applicantAddress varchar(255),
 cellular varchar(255),
 phone varchar(255),
-roleID int  NOT NULL,
-clubID int  NOT NULL,
-Primary Key (ID),
-FOREIGN KEY (roleID) REFERENCES RoleTable(ID),
-FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
-
+Primary Key (applicantID)
 )
 
 create table UserTable(
-ID int IDENTITY(1,1) NOT NULL,
+userID int IDENTITY(1,1) NOT NULL,
 username varchar(255),
 pass varchar(500),
 firstname varchar(255),
@@ -88,77 +70,97 @@ lastname varchar(255),
 email varchar(255),
 cellular varchar(255),
 phone varchar(255),
-clubID int  NOT NULL,
-roleID int NOT NULL.
-Primary Key (ID),
-FOREIGN KEY (roleID) REFERENCES RoleTable(ID),
-FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
+roleID int NOT NULL,
+Primary Key (userID),
+FOREIGN KEY (roleID) REFERENCES Role(roleID)
 )
 
+create table HuntingClub(
+clubID int IDENTITY(1,1) NOT NULL,
+clubName varchar(255),
+clubAddress varchar(255),
+phoneNb varchar(255),
+email varchar(255),
+adminUserID int NOT NULL,
+Primary Key (clubID),
+FOREIGN KEY (adminUserID) REFERENCES UserTable(userID)
+)
 
 create table RegistrationRequests(
-ID int IDENTITY(1,1) NOT NULL,
+refrenceID int IDENTITY(1,1) NOT NULL,
 applicantID int NOT NULL,
 clubID int NOT NULL,
 registrationRequestsDate DATE,
 verifiedByAdmin int,
 verifiationDate DATE, 
-Primary Key (ID), 
-FOREIGN KEY (applicantID) REFERENCES Applicant(ID),
-FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
+Primary Key (refrenceID), 
+FOREIGN KEY (applicantID) REFERENCES Applicant(applicantID),
+FOREIGN KEY (clubID) REFERENCES HuntingClub(clubID)
 )
 
 create table Exam(
-ID int IDENTITY(1,1) NOT NULL,
+examID int IDENTITY(1,1) NOT NULL,
 examName varchar(255),
+examDescription varchar(500),
+examDuration decimal NOT NULL,
+passingMark decimal NOT NULL,
+numberOfQuestions int NOT NULL,
+questionMark decimal NOT NULL,
+Primary Key (examID)
+)
+
+create table QuestionsPerCourse(
+questionsPerCourseNb int IDENTITY(1,1) NOT NULL,
+examID int NOT NULL,
+courseID int NOT NULL,
+PRIMARY KEY  (questionsPerCourseNb),
+FOREIGN KEY (examID) REFERENCES Exam(examID),
+FOREIGN KEY (courseID) REFERENCES Course(courseID)
+)
+
+create table ExamInstance(
+instanceID int IDENTITY(1,1) NOT NULL,
+examID int NOT NULL,
 examDate DATE NOT NULL,
 examDuration decimal NOT NULL,
 elapsedTime TIME NOT NULL,
 result decimal NOT NULL,
-referenceID int NOT NULL, 
-Primary Key (ID), 
-FOREIGN KEY (referenceID) REFERENCES RegistrationRequests(ID)
+refrenceID int NOT NULL, 
+Primary Key (instanceID), 
+FOREIGN KEY (refrenceID) REFERENCES RegistrationRequests(refrenceID),
+FOREIGN KEY (examID) REFERENCES Exam(examID)
+
 )
 
 create table ExamQuestions(
-ID int IDENTITY(1,1) NOT NULL,
+examQuestionID int IDENTITY(1,1) NOT NULL,
 questionID int NOT NULL,
-examID int NOT NULL,
-Primary Key (ID), 
-FOREIGN KEY (questionID) REFERENCES QuestionsBank(ID),
-FOREIGN KEY (examID) REFERENCES Exam(ID)
+examInstanceID int NOT NULL,
+Primary Key (examQuestionID), 
+FOREIGN KEY (questionID) REFERENCES QuestionsBank(questionID),
+FOREIGN KEY (examInstanceID) REFERENCES ExamInstance(instanceID)
 )
 
+
+
 create table Permission(
-ID int IDENTITY(1,1) NOT NULL,
+permissionID int IDENTITY(1,1) NOT NULL,
 name varchar(255),
 code varchar(255),
-Primary Key (ID)
+Primary Key (permissionID)
 )
 
 create table grantedPermission(
-ID int IDENTITY(1,1) NOT NULL,
+grantedPermissionID int IDENTITY(1,1) NOT NULL,
 permissionID int NOT NULL,
 roleID int NOT NULL,
-Primary Key (ID),
-FOREIGN KEY (permissionID) REFERENCES Permission(ID),
-FOREIGN KEY (roleID) REFERENCES RoleTable(ID)
+Primary Key (grantedPermissionID),
+FOREIGN KEY (permissionID) REFERENCES Permission(permissionID),
+FOREIGN KEY (roleID) REFERENCES Role(roleID)
 )
 
-/**********************************************************************/
-/****************INSERT STATIC QUERIES
-/***********************************************************************/
 
-use [HuntingSystem]
-
-
-insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub1','Beirut','70888999','club1@hunting.com');
-insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub2','Saida','70555444','club2@hunting.com');
-insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub3','Tripoli','70666333','club3@hunting.com');
-insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('HuntingClub4','Nabatieh','70111222','club4@hunting.com');
-
-
-insert into RoleTable(roleName, predefined) values('superadmin','1');
-insert into RoleTable(roleName, predefined) values('HuntingClub2','1');
-insert into RoleTable(roleName, predefined) values('HuntingClub3','1');
-insert into RoleTable(roleName, predefined) values('HuntingClub4','1');
+insert into Role(roleName, predefined) values('superadmin','1');
+insert into Role(roleName, predefined) values('HuntingClub2','1');
+insert into Role(roleName, predefined) values('HuntingClub3','1');
+insert into Role(roleName, predefined) values('HuntingClub4','1');
