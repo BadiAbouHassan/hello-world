@@ -125,6 +125,7 @@
                                                 <input type="text" required="required"  class="form-control"  name="address" placeholder="User Address"/>
                                             </div>
                                         </div>
+                                        <!--
                                         <div class="form-group">
                                             <label for="address" class="col-md-3 control-label" >Club</label>
                                             <div class="col-md-9">
@@ -136,7 +137,7 @@
                                                     <%  }; %>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <!--this is the right division-->
