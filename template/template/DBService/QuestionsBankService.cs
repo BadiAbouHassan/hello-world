@@ -62,5 +62,26 @@ namespace template.DBService
 
             return question;
         }
+
+        public List<QuestionsBank> getRandomQuestions(int number)
+        {
+            List<QuestionsBank> questionsList = new List<QuestionsBank>();
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+
+                String query = "SELECT TOP "+ number +" * FROM QuestionsBank ORDER BY NEWID()";
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+
+                while (reader.Read())
+                {
+                    questionsList.Add(fillCourse(reader));
+                }
+            }
+            dbObj.CloseConnection();
+            return questionsList;
+        }
     }
 }
