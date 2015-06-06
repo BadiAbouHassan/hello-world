@@ -18,9 +18,9 @@ namespace template.Controllers
         /// <summary>
         ///  this function select user of given paswod and username --> for login aurhentication
         /// </summary>
-        public User checkUserAuthentication(String username, String password)
+        public Applicant checkUserAuthentication(String username, String password)
         {
-            User user = null;
+            Applicant user = null;
             SQLClass dbObj = new SQLClass();
             using(SqlConnection cn = dbObj.openConnection())
             {
@@ -29,7 +29,6 @@ namespace template.Controllers
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
                 {
-
                     user = fillUser(reader);
                 }
             }
@@ -41,7 +40,7 @@ namespace template.Controllers
         /// <summary>
         ///  this function select user of given paswod and username --> for login aurhentication
         /// </summary>
-        public Boolean addUser(User user)
+        public Boolean addUser(Applicant user)
         {
             bool result = false;
 
@@ -67,10 +66,10 @@ namespace template.Controllers
         /// <summary>
         ///  this function fill user object
         /// </summary>
-        public User fillUser(SqlDataReader reader)
+        public Applicant fillUser(SqlDataReader reader)
         {
-            User user = new User();
-            user.userID = Int32.Parse(reader["ID"].ToString());
+            Applicant user = new Applicant();
+            user.applicantID = Int32.Parse(reader["ID"].ToString());
             user.username = reader["username"].ToString();
             user.registrationNb = reader["registrationNb"].ToString();
             user.nationality = reader["nationality"].ToString();
@@ -90,7 +89,7 @@ namespace template.Controllers
             user.userAddress = reader["userAddress"].ToString();
             user.email = reader["email"].ToString();
             user.password = reader["pass"].ToString();
-            user.roleID = Int32.Parse(reader["roleID"].ToString());
+
             return user;
 
         }
