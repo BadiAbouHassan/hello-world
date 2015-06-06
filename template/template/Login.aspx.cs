@@ -17,7 +17,7 @@ namespace template
         {
             try
             {
-                throw new Exception("testing error message and exception how will be ");
+                //throw new Exception("testing error message and exception how will be ");
                 lbl1.Text = "";
                 fillClubSelect();
             }
