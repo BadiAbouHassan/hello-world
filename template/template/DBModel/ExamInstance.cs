@@ -4,7 +4,7 @@ using System.Web;
 
 namespace template.DBModel
 {
-    public class Exam
+    public class ExamInstance
     {
         public int examID { get; set; }
         public String examName { get; set; }
@@ -14,7 +14,7 @@ namespace template.DBModel
         public double result { get; set; }
         public int referenceID { get; set; }
 
-        public Exam()
+        public ExamInstance()
         {
         }
     }

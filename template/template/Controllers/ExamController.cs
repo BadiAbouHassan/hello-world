@@ -24,9 +24,9 @@ namespace template.Controllers
             return result;
         }
 
-        public List<Course> getCourses(int examID = 0)
-        {
-            return this.examService.getExams(examID);
-        }
+        //public List<Course> getCourses(int examID = 0)
+        //{
+        //   // return this.examService.getExams(examID);
+        //}
     }
 }

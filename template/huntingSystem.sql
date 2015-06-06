@@ -4,49 +4,52 @@
 */
 use [HuntingSystem]
 create table Course(
-ID int IDENTITY(1,1) NOT NULL,
+courseID int IDENTITY(1,1) NOT NULL,
 courseName varchar(255),
 courseDesc text,
-Primary Key (ID) 
+Primary Key (courseID) 
 )
 
 create table QuestionsBank(
-ID int IDENTITY(1,1) NOT NULL,
+questionsBankID int IDENTITY(1,1) NOT NULL,
 title varchar(255),
 questionDesc varchar(255),
 mark decimal,
 courseID int NOT NULL,
-Primary Key (ID), 
-FOREIGN KEY (courseID) REFERENCES Course(ID)
+Primary Key (questionsBankID), 
+FOREIGN KEY (courseID) REFERENCES Course(courseID)
 )
 
 create table Answer(
-ID int IDENTITY(1,1) NOT NULL,
+answerID int IDENTITY(1,1) NOT NULL,
 title varchar(255),
 correct int,
 questionID int NOT NULL,
 Primary Key (ID), 
-FOREIGN KEY (questionID) REFERENCES QuestionsBank(ID)
+FOREIGN KEY (questionID) REFERENCES QuestionsBank(questionsBankID)
 )
 
-create table RoleTable(
-ID int IDENTITY(1,1) NOT NULL,
+create table Role(
+roleID int IDENTITY(1,1) NOT NULL,
 roleName varchar(255),
 predefined int NOT NULL,
-Primary Key (ID)
+Primary Key (roleID)
 )
 
 create table HuntingClub(
-ID int IDENTITY(1,1) NOT NULL,
-clubname varchar(255),
+clubID int IDENTITY(1,1) NOT NULL,
+clubName varchar(255),
 clubAddress varchar(255),
 phoneNb varchar(255),
 email varchar(255),
+userID int NOT NULL,
 Primary Key (ID),
+FOREIGN KEY (userID) REFERENCES User(questionsBankID)
+
 )
 
 
-create table UserTable(
+create table Applicant(
 ID int IDENTITY(1,1) NOT NULL,
 username varchar(255),
 pass varchar(500),
@@ -74,44 +77,34 @@ FOREIGN KEY (roleID) REFERENCES RoleTable(ID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
 
 )
-create table ClientTable(
+
+create table UserTable(
 ID int IDENTITY(1,1) NOT NULL,
 username varchar(255),
 pass varchar(500),
 firstname varchar(255),
 middlename varchar(255),
 lastname varchar(255),
-gender varchar(50),
-dateOfBirth DATE,
-placeOfBirth varchar(255),
-registrationNb varchar(500),
-nationality varchar(255),
-bloodType varchar(128),
-Profession varchar(500),
 email varchar(255),
-mailAddress varchar(255),
-fax varchar(255),
-city varchar(255),
-userAddress varchar(255),
 cellular varchar(255),
 phone varchar(255),
 clubID int  NOT NULL,
+roleID int NOT NULL.
 Primary Key (ID),
+FOREIGN KEY (roleID) REFERENCES RoleTable(ID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
-
 )
-
 
 
 create table RegistrationRequests(
 ID int IDENTITY(1,1) NOT NULL,
-clientID int NOT NULL,
+applicantID int NOT NULL,
 clubID int NOT NULL,
 registrationRequestsDate DATE,
 verifiedByAdmin int,
 verifiationDate DATE, 
 Primary Key (ID), 
-FOREIGN KEY (clientID) REFERENCES ClientTable(ID),
+FOREIGN KEY (applicantID) REFERENCES Applicant(ID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(ID)
 )
 

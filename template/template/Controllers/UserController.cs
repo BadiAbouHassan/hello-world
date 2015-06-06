@@ -53,7 +53,7 @@ namespace template.Controllers
                                 + user.lastname + "', '" + user.gender + "', '" + user.dateOfBirth + "', '" + user.placeOfBirth + "','"
                                 + user.registrationNb + "','" + user.nationality + "', '" + user.bloodType + "','" + user.profession + "','"
                                 + user.email + "','" + user.mailAddress + "','" + user.fax + "','" + user.city + "','" + user.userAddress + "','"
-                                + user.cellular + "','" + user.phone + "','" + user.roleID + "','" + user.clubID + "');";
+                                + user.cellular + "','" + user.phone+ "');";
 
                 result = dbObj.executeQuery(query);
 
