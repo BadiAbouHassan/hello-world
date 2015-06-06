@@ -87,13 +87,13 @@ FOREIGN KEY (adminUserID) REFERENCES UserTable(userID)
 )
 
 create table RegistrationRequests(
-refrenceID int IDENTITY(1,1) NOT NULL,
+referenceID int IDENTITY(1,1) NOT NULL,
 applicantID int NOT NULL,
 clubID int NOT NULL,
 registrationRequestsDate DATE,
 verifiedByAdmin int,
 verifiationDate DATE, 
-Primary Key (refrenceID), 
+Primary Key (referenceID), 
 FOREIGN KEY (applicantID) REFERENCES Applicant(applicantID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(clubID)
 )
@@ -125,9 +125,9 @@ examDate DATE NOT NULL,
 examDuration decimal NOT NULL,
 elapsedTime TIME NOT NULL,
 result decimal NOT NULL,
-refrenceID int NOT NULL, 
+referenceID int NOT NULL, 
 Primary Key (instanceID), 
-FOREIGN KEY (refrenceID) REFERENCES RegistrationRequests(refrenceID),
+FOREIGN KEY (referenceID) REFERENCES RegistrationRequests(referenceID),
 FOREIGN KEY (examID) REFERENCES Exam(examID)
 
 )

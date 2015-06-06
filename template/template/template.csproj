@@ -334,6 +334,8 @@
       <DependentUpon>registrationController.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\SQLClass.cs" />
+    <Compile Include="DBService\ExamInstanceService.cs" />
+    <Compile Include="DBService\RegistrationRequestService.cs" />
     <Compile Include="DBService\UserService.cs" />
     <Compile Include="DBModel\Answer.cs" />
     <Compile Include="DBModel\Applicant.cs" />

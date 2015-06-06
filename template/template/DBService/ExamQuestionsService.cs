@@ -6,5 +6,6 @@ namespace template.DBService
 {
     public class ExamQuestionsService
     {
+
     }
 }
