@@ -13,7 +13,7 @@ Primary Key (ID)
 create table QuestionsBank(
 ID int IDENTITY(1,1) NOT NULL,
 title varchar(255),
-descripton varchar(255),
+questionDesc varchar(255),
 mark decimal,
 courseID int NOT NULL,
 Primary Key (ID), 

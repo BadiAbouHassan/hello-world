@@ -15,13 +15,16 @@ namespace template.Admin
         {
             try
             {
+                errMsgDiv.Style.Add("display", "none");
+                successMsgDiv.Style.Add("display", "none");
+
                 CourseController controller = new CourseController();
 
-                Course[] courses = controller.getCourses();
+                List<Course> courses = controller.getCourses();
 
                 if (courses != null)
                 {
-                    for (int i = 0; i < courses.Length; i++)
+                    for (int i = 0; i < courses.Count; i++)
                     {
                         TableRow tRow = new TableRow();
                         Table1.Rows.Add(tRow);
@@ -40,14 +43,15 @@ namespace template.Admin
                         tRow.Cells.Add(editCell);
 
                         TableCell deleteCell = new TableCell();
-                        deleteCell.Text = "<a href='/Admin/deleteCourse.aspx?courseID=" + courses[i].courseID + "'>Edit</a>";
+                        deleteCell.Text = "<a href='/Admin/deleteCourse.aspx?courseID=" + courses[i].courseID + "'>Delete</a>";
                         tRow.Cells.Add(deleteCell);
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Do something with the exception
+                errMsgDiv.Style.Remove("display");
+                errMsg.Text = ex.Message;
             }
         }
     }

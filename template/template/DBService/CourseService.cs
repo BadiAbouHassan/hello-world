@@ -4,6 +4,7 @@ using System.Web;
 using template.Controllers;
 using template.DBModel;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace template.DBService
 {
@@ -24,9 +25,9 @@ namespace template.DBService
             return result;
         }
 
-        public DBModel.Course[] getCourses(int courseID = 0)
+        public List<Course> getCourses(int courseID = 0)
         {
-            DBModel.Course[] result = null;
+            List<Course> result = null;
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection connection = dbObj.openConnection())
@@ -34,16 +35,16 @@ namespace template.DBService
                 String whereCondition = "";
                 if (courseID != 0)
                 {
-                    whereCondition = " WHERE courseID = " + courseID;
+                    whereCondition = " WHERE ID = " + courseID;
                 }
                 String query = "SELECT * FROM Course " + whereCondition;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
-                int incr = 0;
+                
+                result = new List<Course>();
                 while (reader.Read())
                 {
-                    result[incr] = fillCourse(reader);
-                    incr++;
+                    result.Add(fillCourse(reader));
                 }
             }
             dbObj.CloseConnection();
@@ -51,11 +52,27 @@ namespace template.DBService
             return result;
         }
 
+        public DataSet getCourseDataSet()
+        {
+            SQLClass dbObj = new SQLClass();
+            DataSet ds = new DataSet();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "select * from Course";
+                SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
+                myCommand.Fill(ds, "Course");
+            }
+            dbObj.CloseConnection();
+            return ds;
+        }
+
         public DBModel.Course fillCourse(SqlDataReader reader)
         {
-            DBModel.Course course = null;
+            DBModel.Course course = new Course();
 
+            course.courseID   = int.Parse(reader["ID"].ToString()); 
             course.courseName = reader["courseName"].ToString();
+            course.courseDesc = reader["courseDesc"].ToString();
 
             return course;
         }

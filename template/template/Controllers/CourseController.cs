@@ -24,13 +24,9 @@ namespace template.Controllers
             return result;
         }
 
-        public Course[] getCourses(int courseID = 0)
+        public List<Course> getCourses(int courseID = 0)
         {
-            Course[] courses = null;
-
-            courses = this.courseService.getCourses(courseID);
-
-            return courses;
+            return this.courseService.getCourses(courseID);
         }
     }
 }

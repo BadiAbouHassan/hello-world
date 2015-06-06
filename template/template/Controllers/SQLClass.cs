@@ -44,6 +44,13 @@ namespace template.Controllers
             return true;
         }
 
+        public Int32 executeQueryAndReturnLastID(String sql)
+        {
+            SqlCommand cmd = new SqlCommand(sql, this.connection);
+            Int32 newId = (Int32)cmd.ExecuteScalar();
+
+            return newId;
+        }
         /// <summary>
         /// this function return an array that containe all the result of the query 
         /// select ... 

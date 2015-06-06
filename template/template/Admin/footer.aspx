@@ -1,6 +1,4 @@
-﻿<!-- jQuery -->
-<script src="/Content/themes/sb-admin/jquery/dist/jquery.min.js"></script>
-
+﻿
 <!-- Bootstrap Core JavaScript -->
 <script src="/Content/themes/sb-admin/bootstrap/dist/js/bootstrap.min.js"></script>
 

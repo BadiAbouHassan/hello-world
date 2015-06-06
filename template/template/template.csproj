@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\addCourse.aspx" />
+    <Content Include="Admin\addQuestion.aspx" />
+    <Content Include="Admin\deleteCourse.aspx" />
     <Content Include="Admin\footer.aspx" />
     <Content Include="Admin\header.aspx" />
     <Content Include="Admin\index.aspx" />
@@ -271,12 +273,26 @@
     <Compile Include="Admin\addCourse.aspx.designer.cs">
       <DependentUpon>addCourse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\addQuestion.aspx.cs">
+      <DependentUpon>addQuestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\addQuestion.aspx.designer.cs">
+      <DependentUpon>addQuestion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\deleteCourse.aspx.cs">
+      <DependentUpon>deleteCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\deleteCourse.aspx.designer.cs">
+      <DependentUpon>deleteCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\footer.aspx.cs">
       <DependentUpon>footer.aspx</DependentUpon>
