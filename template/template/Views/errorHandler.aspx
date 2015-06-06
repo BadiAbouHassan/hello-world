@@ -8,8 +8,9 @@
                 <div class="panel-heading">Error Message </div>
                 <div class="panel-body">
                     <h2>Sorry Some Thing Wrong has been happened press
-                        <a href="#"> here </a>
-                        to redirect you to home page</h2>
+                        <a href="#" id="redirect_location" runat="server"> here </a>
+                        to redirect you</h2>
+                    <label name="lblValues" id="lblValues" runat="server" ></label>
                 </div>
             </div>
         </div>

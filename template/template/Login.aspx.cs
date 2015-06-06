@@ -17,12 +17,14 @@ namespace template
         {
             try
             {
+                throw new Exception("testing error message and exception how will be ");
                 lbl1.Text = "";
                 fillClubSelect();
             }
             catch(Exception exc)
             {
-                Response.Redirect("Views/errorHandler.aspx");
+                String redirect_Location = "../Login.aspx";
+                Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
             }
         }
 
