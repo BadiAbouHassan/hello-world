@@ -253,6 +253,7 @@
     <Content Include="Views\errorHandler.aspx" />
     <Content Include="Views\footer.aspx" />
     <Content Include="Views\header.ascx" />
+    <Content Include="Views\logoutClient.aspx" />
     <Content Include="Views\questionsWizard.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -407,6 +408,13 @@
     </Compile>
     <Compile Include="Views\header.ascx.designer.cs">
       <DependentUpon>header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\logoutClient.aspx.cs">
+      <DependentUpon>logoutClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\logoutClient.aspx.designer.cs">
+      <DependentUpon>logoutClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\questionsWizard.aspx.cs">
       <DependentUpon>questionsWizard.aspx</DependentUpon>
