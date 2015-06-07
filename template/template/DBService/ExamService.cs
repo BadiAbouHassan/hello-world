@@ -58,6 +58,12 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
+                String whereCondition = "";
+                if (examID != 0)
+                {
+                    whereCondition = " WHERE examID = " + examID;
+                }
+
                 String query = "Select * from Exam";
 
                 SqlDataReader reader = dbObj.selectQuery(query);

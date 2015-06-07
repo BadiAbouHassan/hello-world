@@ -35,7 +35,7 @@ namespace template.DBService
                 String whereCondition = "";
                 if (courseID != 0)
                 {
-                    whereCondition = " WHERE ID = " + courseID;
+                    whereCondition = " WHERE courseID = " + courseID;
                 }
                 String query = "SELECT * FROM Course " + whereCondition;
 
@@ -70,7 +70,7 @@ namespace template.DBService
         {
             DBModel.Course course = new Course();
 
-            course.courseID   = int.Parse(reader["ID"].ToString()); 
+            course.courseID   = int.Parse(reader["courseID"].ToString()); 
             course.courseName = reader["courseName"].ToString();
             course.courseDesc = reader["courseDesc"].ToString();
 
