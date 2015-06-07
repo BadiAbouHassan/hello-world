@@ -110,10 +110,11 @@ Primary Key (examID)
 )
 
 create table QuestionsPerCourse(
-questionsPerCourseNb int IDENTITY(1,1) NOT NULL,
+questionsPerCourseID int IDENTITY(1,1) NOT NULL,
+questionsPerCourseNb int NOT NULL,
 examID int NOT NULL,
 courseID int NOT NULL,
-PRIMARY KEY  (questionsPerCourseNb),
+PRIMARY KEY  (questionsPerCourseID),
 FOREIGN KEY (examID) REFERENCES Exam(examID),
 FOREIGN KEY (courseID) REFERENCES Course(courseID)
 )

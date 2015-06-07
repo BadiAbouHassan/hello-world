@@ -69,22 +69,43 @@ namespace template.Admin
                 exam.passingMark = double.Parse(passingMark.Value.ToString());
                 exam.questionMark = double.Parse(questionMark.Value.ToString());
 
-                CourseController coursesController = new CourseController();
-                List<Course> courses = coursesController.getCourses();
-
-                string[] keys = Request.Form.AllKeys;
-                var value = "";
-                for (int i = 0; i < keys.Length; i++)
+                int examID = controller.addExam(exam);
+                if (examID != 0)
                 {
-                    // here you get the name eg test[0].quantity
-                    // keys[i];
-                    // to get the value you use
-                    value = Request.Form[keys[i]];
-                }
-                
 
-                if (!controller.addExam(exam))
-                {
+                    CourseController coursesController = new CourseController();
+                    List<Course> courses = coursesController.getCourses();
+
+                    List<QuestionsPerCourse> questionsPerCourseList = new List<QuestionsPerCourse>();
+                    string[] keys = Request.Form.AllKeys;
+                    for (int i = 0; i < keys.Length; i++)
+                    {
+                        if (keys[i].Contains("numberOfQuestions"))
+                        {
+                            //ctl00_ContentPlaceHolder1_numberOfQuestions-1
+                            string[] keyParts = keys[i].Split('_');
+                            if (keyParts.Length > 0)
+                            {
+                                QuestionsPerCourse questionNo = new QuestionsPerCourse();
+                                questionNo.questionsPerCourseNo = int.Parse(Request.Form[keys[i]]);
+                                string[] courseID = keyParts[2].Split('-');
+                                questionNo.courseID = int.Parse(courseID[1]);
+                                questionNo.examID = examID;
+
+                                questionsPerCourseList.Add(questionNo);
+                            }
+                        }
+                    }
+
+                    if (questionsPerCourseList.Count > 0)
+                    {
+                        for (int i = 0; i < questionsPerCourseList.Count; i++)
+                        {
+                            QuestionsPerCourseController questionsController = new QuestionsPerCourseController();
+                            questionsController.addQuestion(questionsPerCourseList[i]);
+                        }
+                    }
+
                     errMsgDiv.Style.Remove("display");
                     errMsg.Text = "Error Saving Exam data!";
                 }

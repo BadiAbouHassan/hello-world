@@ -13,17 +13,17 @@ namespace template.DBService
         {
         }
 
-        public bool addExam(Exam exam)
+        public int addExam(Exam exam)
         {
-            bool result;
+            int result = 0;
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into Exam(examName, examDescription,examDuration,passingMark,numberOfQuestions,questionMark) values('"
+                String query = "insert into Exam(examName, examDescription,examDuration,passingMark,numberOfQuestions,questionMark) OUTPUT INSERTED.examID values('"
                                 + exam.examName + "', '" + exam.examDescription + "', '" + exam.examDuration + "','" + exam.passingMark + "', '"
                                 + exam.numberOfQuestions + "','" + exam.questionMark + "');";
 
-                result= dbObj.executeQuery(query);
+                result= dbObj.executeQueryAndReturnLastID(query);
                
             }
             dbObj.CloseConnection();

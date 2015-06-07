@@ -15,13 +15,9 @@ namespace template.Controllers
             this.examService = new ExamService();
         }
 
-        public bool addExam(Exam exam)
+        public int addExam(Exam exam)
         {
-            bool result = false;
-
-            result = this.examService.addExam(exam);
-
-            return result;
+            return this.examService.addExam(exam);
         }
 
         public List<Exam> getExams(int examID = 0)
