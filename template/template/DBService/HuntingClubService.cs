@@ -87,7 +87,7 @@ namespace template.DBService
             HuntingClub club = new HuntingClub();
             club.clubName = reader["clubname"].ToString();
             club.clubAddress = reader["clubAddress"].ToString();
-            club.clubID = Int32.Parse(reader["ID"].ToString());
+            club.clubID = Int32.Parse(reader["clubID"].ToString());
             club.email = reader["email"].ToString();
             return club;
         }

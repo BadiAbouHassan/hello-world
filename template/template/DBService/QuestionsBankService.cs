@@ -16,7 +16,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection connection = dbObj.openConnection())
             {
-                String query = "INSERT INTO QuestionsBank(courseID, title, questionDesc) OUTPUT INSERTED.ID " +
+                String query = "INSERT INTO QuestionsBank(courseID, title, questionDesc) OUTPUT INSERTED.questionID " +
                                "Values(" + question.courseID + ", '" + question.title + "', '" + question.description + "')";
                 result = dbObj.executeQueryAndReturnLastID(query);
             }

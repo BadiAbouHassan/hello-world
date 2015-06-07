@@ -203,10 +203,7 @@
                                             <label for="email" class="col-md-3 control-label" >العنوان البريدي</label>
                                            
                                         </div>
-                                  
-                                        <!--
                                         <div class="form-group">
-                                            <label for="address" class="col-md-3 control-label" >Club</label>
                                             <div class="col-md-9">
                                                 <select class="form-control" id="club" name="club">
                                                     <%
@@ -216,7 +213,9 @@
                                                     <%  }; %>
                                                 </select>
                                             </div>
-                                        </div> -->
+                                            <label for="address" class="col-md-3 control-label" >النادي</label>
+                             
+                                        </div> 
                                     </div>
                                 </div>
                             </div> 

@@ -59,11 +59,28 @@ namespace template.Controlers
                 user.city = Request.Form["city"];
                 user.password = Hashed_pass;
                 ApplicantService client_controller = new ApplicantService();
-                Boolean addedsuccessfully = client_controller.addApplicant(user);
-                if (addedsuccessfully)
+                Applicant addedApplicant = client_controller.addApplicant(user);
+                if (addedApplicant !=null)
                 {
-                    Response.Redirect("../Login.aspx", false);
-                    // label1.Text = "Succcessfully added";
+
+                    RegistrationRequestService reqService = new RegistrationRequestService();
+                    RegistrationRequests req = new RegistrationRequests();
+                    req.clubID = Int32.Parse(Request.Form["club"].ToString());
+                    req.applicantID = addedApplicant.applicantID;
+                    req.verifiedByAdmin = 0;
+                    req.verificationDate = "";
+                    req.registrationRequestsDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
+                    if (reqService.addRequest(req) != null)
+                    {
+                        Response.Redirect("../Login.aspx", false);
+                        // label1.Text = "Succcessfully added";
+                    }
+                    else
+                    {
+                        Response.Redirect("../Views/errorHandler.aspx", false);
+
+
+                    }
                 }
                 else
                 {
