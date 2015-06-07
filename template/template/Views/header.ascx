@@ -15,22 +15,24 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="../Views/aboutUs.aspx">About Us</a></li>
-        <li><a href="../Views/questionsWizard.aspx">Exam</a></li>
-           <% if(Session["logged_user"] == null){ %>
-        <li><a href="../Login.aspx">Log In</a></li>
-          <%} %>
+        <% if(Session["logged_client"] != null){ %>
+           <li><a href="../Views/questionsWizard.aspx">Exam</a></li>
+        <%} %>
+        <% if(Session["logged_client"] == null){ %>
+            <li><a href="../Login.aspx">Log In</a></li>
+        <%} %>
       </ul>
-     
       <ul class="nav navbar-nav navbar-right">
-          <% if(Session["logged_user"] != null){ %>
+          <% if(Session["logged_client"] != null){ %>
+          <% template.DBModel.Applicant client = (template.DBModel.Applicant)Session["logged_client"]; %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logged User <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= client.firstname +" "+client.lastname  %> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="../Views/LogoutClient.aspx">Log Out</a></li>
           </ul>
         </li>
           <% } %>
