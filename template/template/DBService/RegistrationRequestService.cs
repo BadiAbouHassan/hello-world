@@ -26,7 +26,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate) OUTPUT inserted.refrenceID values('"
+                String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate) OUTPUT inserted.referenceID values('"
                                 + request.applicantID + "', '" + request.clubID + "', '" + request.registrationRequestsDate + "','" + request.verifiedByAdmin + "', '"
                                 + request.verificationDate + "');";
 
