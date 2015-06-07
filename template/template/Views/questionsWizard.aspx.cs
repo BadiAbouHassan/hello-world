@@ -10,7 +10,9 @@ namespace template.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // get the logged applicant 
+            DBModel.Applicant loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
+            // first must get registration request for this applicant ... 
         }
     }
 }

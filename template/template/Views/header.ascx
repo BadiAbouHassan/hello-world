@@ -15,16 +15,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="../Views/aboutUs.aspx">About Us</a></li>
-        <% if(Session["logged_client"] != null){ %>
+        <% if(Session["logged_applicat"] != null){ %>
            <li><a href="../Views/questionsWizard.aspx">Exam</a></li>
         <%} %>
-        <% if(Session["logged_client"] == null){ %>
+        <% if(Session["logged_applicat"] == null){ %>
             <li><a href="../Login.aspx">Log In</a></li>
         <%} %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <% if(Session["logged_client"] != null){ %>
-          <% template.DBModel.Applicant client = (template.DBModel.Applicant)Session["logged_client"]; %>
+          <% if(Session["logged_applicat"] != null){ %>
+          <% template.DBModel.Applicant client = (template.DBModel.Applicant)Session["logged_applicat"]; %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= client.firstname +" "+client.lastname  %> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
