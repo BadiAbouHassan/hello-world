@@ -26,7 +26,7 @@
                 for(int i=0 ; i<questionsToView.Count ; i++) { %>
 	    <div class="tab-pane" id="tab<%= i+1 %>">
             <div class="panel panel-primary">
-                <div class="panel-heading"><%= questionsToView[i].description %></div>
+                <div class="panel-heading"><%= questionsToView[i].title %></div>
                 <div class="panel-body">
                     <div class="row"> 
                         <div class="col-md-12 col-xs-12" >

@@ -25,7 +25,7 @@ namespace template.Admin
             DataSet ds = courseSerivce.getCourseDataSet();
             courses.DataSource = ds;
             courses.DataTextField = "courseName";
-            courses.DataValueField = "ID";
+            courses.DataValueField = "courseID";
             courses.DataBind();
 
         }

@@ -43,7 +43,7 @@ namespace template.DBService
                 result = new List<QuestionsBank>();
                 while (reader.Read())
                 {
-                    result.Add(fillCourse(reader));
+                    result.Add(fillQuestionsBank(reader));
                 }
             }
             dbObj.CloseConnection();
@@ -61,19 +61,19 @@ namespace template.DBService
                 result = new List<QuestionsBank>();
                 while (reader.Read())
                 {
-                    result.Add(fillCourse(reader));
+                    result.Add(fillQuestionsBank(reader));
                 }
             }
             dbObj.CloseConnection();
             return result;
         }
 
-        public DBModel.QuestionsBank fillCourse(SqlDataReader reader)
+        public DBModel.QuestionsBank fillQuestionsBank(SqlDataReader reader)
         {
             DBModel.QuestionsBank question = new QuestionsBank();
 
             question.courseID = int.Parse(reader["courseID"].ToString());
-            question.questionsID = int.Parse(reader["ID"].ToString());
+            question.questionsID = int.Parse(reader["questionID"].ToString());
             question.title = reader["title"].ToString();
             question.description = reader["questionDesc"].ToString();
 
@@ -94,7 +94,7 @@ namespace template.DBService
 
                 while (reader.Read())
                 {
-                    questionsList.Add(fillCourse(reader));
+                    questionsList.Add(fillQuestionsBank(reader));
                 }
             }
             dbObj.CloseConnection();
