@@ -13,8 +13,8 @@
 	    <div class="container">
 	        <ul>
                 <% 
-                for(int i=0 ; i<questionsToView.Count ; i++) { %>
-                    <li><a href="#tab1" data-toggle="tab"><%= i+1 %></a></li>
+                for(int j=0 ; j<questionsToView.Count ; j++) { %>
+                    <li><a href="#tab<%= j+1 %>" data-toggle="tab"><%= j+1 %></a></li>
                 <% } %>
 	        </ul>
 	    </div>
@@ -62,11 +62,11 @@
                 onNext: function (tab, navigation, index) {
                     if (index == 1) {
                         // Make sure we entered the name
-                        if (!$("input[name='optradio1']:checked").val()) {
-                            alert('Must Select answer');
-                            //$('#name').focus();
-                            return false;
-                        }
+                        //if (!$("input[name='optradio1']:checked").val()) {
+                        //    alert('Must Select answer');
+                        //    //$('#name').focus();
+                        //    return false;
+                        //}
                     }
 
                     //// Set the name for the next tab
