@@ -61,6 +61,7 @@ namespace template
                 else
                 {
                     lbl1.Text = " نجاح الدخول ";
+                    Session["logged_user"] = loggedClient;
                    // Response.Redirect("~/Views/RegistrationRequest.aspx", false);
 
                     // label1.Text = "Succcessfully added";

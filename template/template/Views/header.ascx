@@ -16,7 +16,9 @@
       <ul class="nav navbar-nav">
         <li><a href="../Views/aboutUs.aspx">About Us</a></li>
         <li><a href="../Views/questionsWizard.aspx">Exam</a></li>
+           <% if(Session["logged_user"] == null){ %>
         <li><a href="../Login.aspx">Log In</a></li>
+          <%} %>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">

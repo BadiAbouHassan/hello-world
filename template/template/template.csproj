@@ -253,7 +253,6 @@
     <Content Include="Views\errorHandler.aspx" />
     <Content Include="Views\footer.aspx" />
     <Content Include="Views\header.ascx" />
-    <Content Include="Views\headeruserControl.ascx" />
     <Content Include="Views\questionsWizard.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -408,13 +407,6 @@
     </Compile>
     <Compile Include="Views\header.ascx.designer.cs">
       <DependentUpon>header.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\headeruserControl.ascx.cs">
-      <DependentUpon>headeruserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\headeruserControl.ascx.designer.cs">
-      <DependentUpon>headeruserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\questionsWizard.aspx.cs">
       <DependentUpon>questionsWizard.aspx</DependentUpon>
