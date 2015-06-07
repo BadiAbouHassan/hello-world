@@ -71,7 +71,7 @@ namespace template.DBService
             using (SqlConnection connection = dbObj.openConnection())
             {
 
-                String query = "SELECT TOP "+ number +" * FROM QuestionsBank ORDER BY NEWID()";
+                String query = "SELECT TOP " + number + " PERCENT * FROM QuestionsBank ORDER BY NEWID()";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
 

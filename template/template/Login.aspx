@@ -4,39 +4,39 @@
     <div id="loginbox" style="margin-top:50px;" class=" col-sm-8 col-sm-offset-2">                    
         <div class="panel panel-info" >
             <div class="panel-heading">
-                <div class="panel-title">Sign In</div>
+                <div class="panel-title" align="right">تسجيل الدخول</div>
                 <%--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="index.php?action=forgetPassword" class="btn btn-default">Forgot password?</a></div>--%>
             </div>     
-            <div style="padding-top:30px" class="panel-body" >
-                <p><asp:Label id="lbl1" runat="server" Text="" /></p>
-                <form id="loginform" class="form-horizontal" role="form"  method="post" >
-                        <div style="margin-bottom: 25px" class="input-group">
+            <div style="padding-top:30px" class="panel-body"  align="right">
+                <p><asp:Label id="lbl1" runat="server" Text="" align="right" /></p>
+                <form id="loginform" class="form-horizontal" role="form"  method="post"  >
+                        <div style="margin-bottom: 25px" class="input-group" align="right"  >
+                             <input required="required" id="login_username" text-align="right" dir="rtl"  type="text" class="form-control" name="username" value="" runat="server" placeholder="اسم المستخدم أو البريد الإلكتروني"/>                                        
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input required id="login_username" type="text" class="form-control" name="username" value="" runat="server" placeholder="username or email">                                        
                         </div>
-                        <div style="margin-bottom: 25px" class="input-group">
+                        <div style="margin-bottom: 25px" class="input-group" >
+                             <input required="required" id="login_password" text-align="right" dir="rtl"  type="password" class="form-control" name="password" runat="server" placeholder="كلمة السر"/>
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input required id="login_password" type="password" class="form-control" name="password" runat="server" placeholder="password">
                         </div>
-                        <div class="input-group">
-                            <div class="checkbox">
+                        <div class="input-group" >
+                            <div class="checkbox" >
                                 <label>
-                                    <input id="login-remember" type="checkbox" name="remember" value="1"/> Remember me
+                                    <input id="login-remember" dir="rtl"   type="checkbox" name="remember" value="1"/>تحفيظ الدخول
                                 </label>
                             </div>
                         </div>
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
-                                <asp:Button id="btnLogin" runat="server" Text="Log in" class="btn btn-success" value="Login" OnClick="signIn" />
+                                <asp:Button id="btnLogin" runat="server" Text="تسجيل الدخول" class="btn btn-success" value="Log in " OnClick="signIn" />
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12 control">
                                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                    Don't have an account! 
+                                  ليس لديك حساب!
                                     <a href="#" onclick="$('#loginbox').slideToggle(); $('#signupbox').slideToggle()">
-                                    Sign Up Here
+                                    اشترك هنا
                                 </a>
                                 </div>
                             </div>
@@ -47,84 +47,163 @@
     </div>
 
 
-    <div id="signupbox" style="display:none; margin-top:50px" class="">
+    <div id="signupbox" style="display:none; margin-top:50px" class="" align="right">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <div class="panel-title">Sign Up</div>
-                        <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" style="color:white" onclick="$('#signupbox').slideToggle(); $('#loginbox').slideToggle()">Sign In</a></div>
+                        <div class="panel-title" align="right" >تسجيل الاشتراك</div>
+                        <div style="float:left; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" style="color:white" onclick="$('#signupbox').slideToggle(); $('#loginbox').slideToggle()">تسجيل الدخول</a></div>
                     </div>  
                     <div class="panel-body" >
-                        <form id="signupform"  role="form" method="post" action="Controllers/registrationController.aspx">
+                        <form id="signupform"  role="form" method="post" action="Controllers/registrationController.aspx" align="right">
                             <div class="row col-xs-12 col-md-12 col-sm-12" >
-                                <!--this is the left division -->
+                              
+                                <!--this is the left division-->
                                 <div class="col-md-6 col-xs-12" >
                                     <div class="form-horizontal">
                                         <div class="form-group">
-                                            <label for="firstname" class="col-md-3 control-label">First Name</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="firstname" required="required" class="form-control" placeholder="First Name" />
+                                                <input type="text"  value dir="rtl" required="required" class="form-control"   name="username" placeholder="اسم المستخدم"/>
                                             </div>
+                                            <label for="userbame" align="right" class="col-md-3 control-label" >اسم المستخدم</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="firstname" class="col-md-3 control-label">Middle Name</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="middlename" required="required" class="form-control" placeholder="Midle Name" />
+                                               <input type="password"   dir="rtl"   required="required" class="form-control" name="password"  placeholder="كلمة السر"/>
                                             </div>
+                                            <label for="password" align="right"  class="col-md-3 control-label">كلمة السر</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="lastname" class="col-md-3 control-label">Last Name</label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="lastname" placeholder="Last Name"/>
+                                                <input type="password"  dir="rtl" required="required" class="form-control" name="confpasswd"   placeholder=" كلمة السر"/>
                                             </div>
+                                            <label for="icode" class="col-md-3 control-label">تأكيد كلمة السر</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email" class="col-md-3 control-label" >Date Of Birth</label>
-                                            <div class="col-md-9">
-                                                <input type="text" required="required" id="datepicker" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
+                                            <div class="col-md-9" >
+                                                <select name="gender" class="form-control">
+                                                    <option dir="rtl" text-align="right" value="male">ذكر</option>
+                                                    <option dir="rtl" text-align="right" value="female">انثى</option>
+                                                </select>
                                             </div>
+                                            <label for="icode" class="col-md-3 control-label">الجنس</label>
+                                            
                                         </div>
                                         <div class="form-group">
-                                            <label for="NationalID" class="col-md-3 control-label" >Registration Number</label>
-                                            <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="registratoin_nb" placeholder="Registration ID"/>
+                                             <div class="col-md-9">
+                                                <input type="text" dir="rtl"  required="required" class="form-control" name="place_of_birth"   placeholder="مكان الميلاد"/>
                                             </div>
+                                            <label for="icode" class="col-md-3 control-label">مكان الميلاد</label>
+   
+                                        </div>
+                                       <div class="form-group">
+                                            <div class="col-md-9">
+                                                <input type="text" dir="rtl" required="required" class="form-control" name="city"   placeholder="المدينة"/>
+                                            </div>
+                                            <label for="icode" class="col-md-3 control-label">المدينة</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="Nationaity" class="col-md-3 control-label" >Nationality</label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="nationality" placeholder="Nationality"/>
+                                                <input type="text"  dir="rtl" required="required"  class="form-control"  name="address" placeholder="العنوان"/>
                                             </div>
+                                            <label for="address" class="col-md-3 control-label" >العنوان</label>
+                                        </div>
+                                    </div>
+                                        <div class="form-group">
+                                             <div class="col-md-9">
+                                                <input type="text" dir="rtl"  required="required" class="form-control" name="blood_type"   placeholder="فئة الدم"/>
+                                            </div>
+                                            <label for="icode" class="col-md-3 control-label">فئة الدم</label>
+
                                         </div>
                                         <div class="form-group">
-                                            <label for="mobile" class="col-md-3 control-label" >Phone </label>
-                                            <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control" name="phone" placeholder="Phone Number"/>
-                                         </div>
+                                           <div class="col-md-9">
+                                                <input type="text" dir="rtl" required="required" class="form-control" name="profession"   placeholder="نوع العمل"/>
+                                            </div>
+                                            <label for="icode" class="col-md-3 control-label">نوع العمل</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="phone" class="col-md-3 control-label" >Cellular</label>
                                             <div class="col-md-9">
-                                               <input type="text"  required="required" class="form-control"  name="cellular" placeholder="Cellular number"/>
+                                                <input type="text" dir="rtl"  required="required" class="form-control" name="email"   placeholder="البريد الاكتروني"/>
                                             </div>
+                                            <label for="icode" class="col-md-3 control-label">البريد الاكتروني</label>
+
+                                        </div>
+                    
+                                </div>
+                                  <!--this is the left division -->
+                                <div class="col-md-6 col-xs-12" >
+                                    <div class="form-horizontal">
+                                        <div class="form-group" >
+                                            <div class="col-md-9">
+                                                <input type="text" dir="rtl" name="firstname" required="required" class="form-control" placeholder="الاسم " />
+                                            </div>
+                                            <label for="firstname" class="col-md-3 control-label">الاسم </label>
+                                            
                                         </div>
                                         <div class="form-group">
-                                            <label for="email" class="col-md-3 control-label" >Fax</label>
+                                           
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control"  name="fax_number" placeholder="Fax"/>
+                                                <input type="text" dir="rtl"  name="middlename" required="required" class="form-control" placeholder="اسم الاب" />
                                             </div>
+                                             <label for="firstname" class="col-md-3 control-label">اسم الاب</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email" class="col-md-3 control-label" >Mail</label>
+                                            
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control"  name="mail" placeholder="Mail Address"/>
+                                                <input type="text" dir="rtl" required="required" class="form-control" name="lastname" placeholder="اسم العائلة"/>
                                             </div>
+                                            <label for="lastname" class="col-md-3 control-label">اسم العائلة</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="address" class="col-md-3 control-label" >Address</label>
                                             <div class="col-md-9">
-                                                <input type="text" required="required"  class="form-control"  name="address" placeholder="User Address"/>
+                                                <input type="text" dir="rtl" required="required" id="datepicker" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
                                             </div>
+                                            <label for="email" class="col-md-3 control-label" >تاريخ الميلاد</label>
+
                                         </div>
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                                <input type="text" dir="rtl" required="required" class="form-control" name="registratoin_nb" placeholder="رقم السجل"/>
+                                            </div>
+                                            <label for="NationalID" class="col-md-3 control-label" >رقم السجل</label>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                                <input type="text" dir="rtl" required="required" class="form-control" name="nationality" placeholder="الجنسية"/>
+                                            </div>
+                                            <label for="Nationaity" class="col-md-3 control-label" >الجنسية</label>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                                <input type="text" dir="rtl" required="required" class="form-control" name="phone" placeholder="الهاتف"/>
+                                            </div>
+                                            <label for="mobile" class="col-md-3 control-label" >الهاتف </label>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                               <input type="text"  dir="rtl" required="required" class="form-control"  name="cellular" placeholder="الخلوي"/>
+                                            </div>
+                                            <label for="phone" class="col-md-3 control-label" >الخلوي</label>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                                <input type="text"  dir="rtl" class="form-control"  name="fax_number" placeholder="الفاكس"/>
+                                            </div>
+                                            <label for="email" class="col-md-3 control-label" >الفاكس</label>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                             <div class="col-md-9">
+                                                <input type="text"  dir="rtl" class="form-control"  name="mail" placeholder="العنوان البريدي"/>
+                                            </div>
+                                            <label for="email" class="col-md-3 control-label" >العنوان البريدي</label>
+                                           
+                                        </div>
+                                  
                                         <!--
                                         <div class="form-group">
                                             <label for="address" class="col-md-3 control-label" >Club</label>
@@ -140,75 +219,14 @@
                                         </div> -->
                                     </div>
                                 </div>
-                                <!--this is the right division-->
-                                <div class="col-md-6 col-xs-12" >
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label for="userbame" class="col-md-3 control-label" >Username</label>
-                                            <div class="col-md-9">
-                                                <input type="text" required="required" class="form-control"  name="username" placeholder="UserName"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password" class="col-md-3 control-label">Password</label>
-                                            <div class="col-md-9">
-                                               <input type="password"  required="required" class="form-control" name="password"  placeholder="Password"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">Confirm Password</label>
-                                            <div class="col-md-9">
-                                                <input type="password"  required="required" class="form-control" name="confpasswd"   placeholder="Password"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">Gender</label>
-                                            <div class="col-md-9">
-                                                <select name="gender" class="form-control">
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">Place Of Birth</label>
-                                            <div class="col-md-9">
-                                                <input type="text"  required="required" class="form-control" name="place_of_birth"   placeholder="Date Of Birth"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">Blood Type</label>
-                                            <div class="col-md-9">
-                                                <input type="text"  required="required" class="form-control" name="blood_type"   placeholder="Blood Type"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">Profession</label>
-                                            <div class="col-md-9">
-                                                <input type="text"  required="required" class="form-control" name="profession"   placeholder="Profession"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">email</label>
-                                            <div class="col-md-9">
-                                                <input type="text"  required="required" class="form-control" name="email"   placeholder="email"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="icode" class="col-md-3 control-label">City</label>
-                                            <div class="col-md-9">
-                                                <input type="text"  required="required" class="form-control" name="city"   placeholder="City"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div> 
-                            <div class="row">
+                            <div class="row" align="left">
                                 <div class="form-horizontal">
                                     <div class="form-group">                                  
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <input type="submit" id="btnSignup_reg"  class="btn btn-info" value="Sign Up" />
-                                            <input type="reset" class="btn btn-warning" />
+                                        <div class="col-md-offset-3 col-md-9" align="left">
+                                            <input type="reset" class="btn btn-warning" value="مسح المجالات" />
+                                            <input type="submit" id="btnSignup_reg"  class="btn btn-info" value="الاشتراك" />
+                                            
                                         </div>
                                     </div>
                                 </div>

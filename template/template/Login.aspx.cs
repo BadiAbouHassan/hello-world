@@ -47,11 +47,11 @@ namespace template
                 Applicant loggedClient = client_service.checkApplicantAuthentication(username_login, loginHashed);
                 if (loggedClient == null)
                 {
-                    lbl1.Text = "Wrong username or password";
+                    lbl1.Text = "اسم المستخدم أو كلمة المرور خاطئة";
                 }
                 else
                 {
-                    lbl1.Text = "loggedUser in successfully";
+                    lbl1.Text = " نجاح الدخول ";
                 }
 
             }
