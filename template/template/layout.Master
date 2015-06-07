@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="layout.master.cs" Inherits="template.layout" %>
+<%@ Register Src="~/Views/header.ascx" TagName="Nav" TagPrefix="header" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -21,9 +22,11 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
     <form id="form1" runat="server">
-        <!--#include file="Views/header.aspx"-->
+         <header:Nav ID="Nav1" runat="server" />
+        
         <div >
             <asp:ContentPlaceHolder ID="body" runat="server"/>
         </div>
