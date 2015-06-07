@@ -40,7 +40,7 @@ namespace template.Admin
                         TableCell editCell = new TableCell();
 
                         TextBox input = new TextBox();
-                        input.ID = "numberOfQuestions-" + courses[i].courseID;
+                        input.ID = "courseQuestionsNo-" + courses[i].courseID;
 
                         TableCell inputCell = new TableCell();
                         inputCell.Controls.Add(input);
@@ -80,10 +80,10 @@ namespace template.Admin
                     string[] keys = Request.Form.AllKeys;
                     for (int i = 0; i < keys.Length; i++)
                     {
-                        if (keys[i].Contains("numberOfQuestions"))
+                        if (keys[i].Contains("courseQuestionsNo"))
                         {
-                            //ctl00_ContentPlaceHolder1_numberOfQuestions-1
-                            string[] keyParts = keys[i].Split('_');
+                            //"ctl00$ContentPlaceHolder1$numberOfQuestions-1
+                            string[] keyParts = keys[i].Split('$');
                             if (keyParts.Length > 0)
                             {
                                 QuestionsPerCourse questionNo = new QuestionsPerCourse();
@@ -106,13 +106,13 @@ namespace template.Admin
                         }
                     }
 
-                    errMsgDiv.Style.Remove("display");
-                    errMsg.Text = "Error Saving Exam data!";
+                    successMsgDiv.Style.Remove("display");
+                    successMsg.Text = "Exam data Saved successfuly!";
                 }
                 else
                 {
-                    successMsgDiv.Style.Remove("display");
-                    successMsg.Text = "Exam data Saved successfuly!";
+                    errMsgDiv.Style.Remove("display");
+                    errMsg.Text = "Error Saving Exam data!";
                 }
             }
             catch (Exception ex)
