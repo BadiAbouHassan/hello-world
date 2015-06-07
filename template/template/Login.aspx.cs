@@ -17,6 +17,7 @@ namespace template
         {
             try
             {
+                fillClubSelect();
                 //throw new Exception("testing error message and exception how will be ");
                 lbl1.Text = "";
             }
@@ -25,6 +26,14 @@ namespace template
                 String redirect_Location = "../Login.aspx";
                 Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
             }
+        }
+
+        public void fillClubSelect()
+        {
+            DBService.HuntingClubService huntingClubService = new DBService.HuntingClubService();
+            DataSet ds = huntingClubService.getClubsDataSet();
+            clubs = huntingClubService.getClubs();
+
         }
 
 
@@ -52,6 +61,10 @@ namespace template
                 else
                 {
                     lbl1.Text = " نجاح الدخول ";
+                    Session["logged_client"] = loggedClient;
+                   // Response.Redirect("~/Views/RegistrationRequest.aspx", false);
+
+                    // label1.Text = "Succcessfully added";
                 }
 
             }

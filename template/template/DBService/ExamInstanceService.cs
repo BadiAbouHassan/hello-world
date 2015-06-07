@@ -19,9 +19,9 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into ExamInstance(examID, examDate,examDuration,elapsedTime,result,referenceID) values('"
+                String query = "insert into ExamInstance(examID, examDate,examDuration,elapsedTime,result,referenceID) OUTPUT inserted.instanceID values('"
                                 + examInstance.examID + "', '" + examInstance.examDate + "', '" + examInstance.examDuration + "','" + examInstance.elapsedTime + "', '"
-                                + examInstance.result + "','"+examInstance.referenceID+"'); SELECT SCOPE_IDENTITY();";
+                                + examInstance.result + "','"+examInstance.referenceID+"');";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())

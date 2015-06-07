@@ -26,9 +26,9 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate) values('"
+                String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate) OUTPUT inserted.referenceID values('"
                                 + request.applicantID + "', '" + request.clubID + "', '" + request.registrationRequestsDate + "','" + request.verifiedByAdmin + "', '"
-                                + request.verificationDate + "'); SELECT SCOPE_IDENTITY();";
+                                + request.verificationDate + "');";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
@@ -45,6 +45,24 @@ namespace template.DBService
 
             return request;
         }
+
+
+        public Boolean updateRequestByRequest(RegistrationRequests request)
+        {
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "update table RegistrationRequests set verifiedByAdmin ='"+ request.verifiedByAdmin +"','" +"verificationDate ='"+  request.verificationDate +
+                                 "' where referenceID ="+request.referenceID+";";
+
+                dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
+
+            return true;
+        }
+
 
 
         public RegistrationRequests getRequestByID(int referenceID)

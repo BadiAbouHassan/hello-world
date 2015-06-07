@@ -92,7 +92,7 @@ applicantID int NOT NULL,
 clubID int NOT NULL,
 registrationRequestsDate DATE,
 verifiedByAdmin int,
-verifiationDate DATE, 
+verificationDate DATE, 
 Primary Key (referenceID), 
 FOREIGN KEY (applicantID) REFERENCES Applicant(applicantID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(clubID)
@@ -158,6 +158,12 @@ Primary Key (grantedPermissionID),
 FOREIGN KEY (permissionID) REFERENCES Permission(permissionID),
 FOREIGN KEY (roleID) REFERENCES Role(roleID)
 )
+
+insert into UserTable(username, pass,firstname,roleID) values('admin1','1234','admin1','1');
+insert into UserTable(username, pass,firstname,roleID) values('admin2','1234','admin2','2');
+
+insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
+insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
 
 insert into Role(roleName, predefined) values('superadmin','1');

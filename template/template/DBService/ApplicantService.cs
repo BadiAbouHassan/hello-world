@@ -36,26 +36,34 @@ namespace template.DBService
         /// <summary>
         ///  this function select Applicant of given paswod and Applicantname --> for login aurhentication
         /// </summary>
-        public Boolean addApplicant(Applicant Applicant)
+        public Applicant addApplicant(Applicant Applicant)
         {
-            bool result = false;
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
                 String query = "insert into Applicant(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
-                            + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone) values('"
+                            + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone) OUTPUT inserted.applicantID values('"
                                 + Applicant.username + "', '" + Applicant.password + "', '" + Applicant.firstname + "','" + Applicant.middlename + "', '"
                                 + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', '" + Applicant.placeOfBirth + "','"
                                 + Applicant.registrationNb + "','" + Applicant.nationality + "', '" + Applicant.bloodType + "','" + Applicant.profession + "','"
                                 + Applicant.email + "','" + Applicant.mailAddress + "','" + Applicant.fax + "','" + Applicant.city + "','" + Applicant.applicantAddress + "','"
-                                + Applicant.cellular + "','" + Applicant.phone + "');";
+                                + Applicant.cellular + "','" + Applicant.phone + "'); ";
 
-                result = dbObj.executeQuery(query);
+                SqlDataReader reader = dbObj.selectQuery(query);
+                if (reader.Read())
+                {
+                    Applicant.applicantID = Int32.Parse(reader["applicantID"].ToString());
+                }
+                else
+                {
+                    Applicant = null;
+                }
+
 
             }
             dbObj.CloseConnection();
-            return result;
+            return Applicant;
         }
 
 
