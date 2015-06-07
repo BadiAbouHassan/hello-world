@@ -1,3 +1,4 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="header.ascx.cs" Inherits="template.Views.header1" %>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,6 +20,7 @@
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
+          <% if(Session["logged_user"] != null){ %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logged User <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -29,6 +31,7 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </li>
+          <% } %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
