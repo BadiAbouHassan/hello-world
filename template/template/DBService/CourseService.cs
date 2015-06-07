@@ -48,7 +48,24 @@ namespace template.DBService
                 }
             }
             dbObj.CloseConnection();
+            return result;
+        }
+        public Course getCourseById(int courseID = 0)
+        {
+            Course result = null;
 
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+                String query = "SELECT * FROM Course WHERE courseID = " +courseID;
+                SqlDataReader reader = dbObj.selectQuery(query);
+                result = new Course();
+                if (reader.Read())
+                {
+                    result = fillCourse(reader);
+                }
+            }
+            dbObj.CloseConnection();
             return result;
         }
 

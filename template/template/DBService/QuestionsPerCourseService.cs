@@ -43,7 +43,29 @@ namespace template.DBService
                 result = new List<QuestionsPerCourse>();
                 while (reader.Read())
                 {
-                    result.Add(fillCourse(reader));
+                    result.Add(fillQuestionsPerCourse(reader));
+                }
+            }
+            dbObj.CloseConnection();
+
+            return result;
+        }
+        public List<QuestionsPerCourse> getQuestionsByExam(DBModel.Exam exam)
+        {
+            List<QuestionsPerCourse> result = null;
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+                
+                String query = "SELECT * FROM QuestionsPerCourse WHERE examID = " +exam.examID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+
+                result = new List<QuestionsPerCourse>();
+                while (reader.Read())
+                {
+                    result.Add(fillQuestionsPerCourse(reader));
                 }
             }
             dbObj.CloseConnection();
@@ -51,7 +73,7 @@ namespace template.DBService
             return result;
         }
 
-        public DBModel.QuestionsPerCourse fillCourse(SqlDataReader reader)
+        public DBModel.QuestionsPerCourse fillQuestionsPerCourse(SqlDataReader reader)
         {
             DBModel.QuestionsPerCourse question = new QuestionsPerCourse();
 

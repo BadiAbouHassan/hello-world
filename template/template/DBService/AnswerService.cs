@@ -24,9 +24,9 @@ namespace template.DBService
             return result;
         }
 
-        public List<QuestionsBank> getQuestions(int questionID = 0)
+        public List<Answer> getAnswers(int questionID = 0)
         {
-            List<QuestionsBank> result = null;
+            List<Answer> result = null;
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection connection = dbObj.openConnection())
@@ -34,16 +34,16 @@ namespace template.DBService
                 String whereCondition = "";
                 if (questionID != 0)
                 {
-                    whereCondition = " WHERE ID = " + questionID;
+                    whereCondition = " WHERE questionID = " + questionID;
                 }
-                String query = "SELECT * FROM QuestionsBank " + whereCondition;
+                String query = "SELECT * FROM Answer " + whereCondition;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
 
-                result = new List<QuestionsBank>();
+                result = new List<Answer>();
                 while (reader.Read())
                 {
-                    result.Add(fillCourse(reader));
+                    result.Add(fillAnswer(reader));
                 }
             }
             dbObj.CloseConnection();
@@ -51,16 +51,15 @@ namespace template.DBService
             return result;
         }
 
-        public DBModel.QuestionsBank fillCourse(SqlDataReader reader)
+        public DBModel.Answer fillAnswer(SqlDataReader reader)
         {
-            DBModel.QuestionsBank question = new QuestionsBank();
+            DBModel.Answer answer= new Answer();
 
-            question.courseID = int.Parse(reader["courseID"].ToString());
-            question.questionsID = int.Parse(reader["ID"].ToString());
-            question.title = reader["title"].ToString();
-            question.description = reader["description"].ToString();
-
-            return question;
+            answer.answerID = int.Parse(reader["answerID"].ToString());
+            answer.title = reader["title"].ToString();
+            answer.correct = int.Parse(reader["correct"].ToString());
+            answer.questionID = int.Parse(reader["questionID"].ToString());
+            return answer;
         }
     }
 }

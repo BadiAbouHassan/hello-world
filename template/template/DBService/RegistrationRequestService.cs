@@ -84,6 +84,25 @@ namespace template.DBService
 
             return req;
         }
+        public RegistrationRequests getRequestByApplicant(DBModel.Applicant applicant)
+        {
+            RegistrationRequests req = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Select * from RegistrationRequests where applicantID =" + applicant.applicantID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    req = fillRegistrationRequest(reader);
+                }
+
+            }
+            dbObj.CloseConnection();
+
+            return req;
+        }
 
 
         public List<RegistrationRequests> getAll()

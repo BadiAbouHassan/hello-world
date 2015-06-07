@@ -12,180 +12,36 @@
 	  <div class="navbar-inner">
 	    <div class="container">
 	        <ul>
-	  	        <li><a href="#tab1" data-toggle="tab">First</a></li>
-		        <li><a href="#tab2" data-toggle="tab">Second</a></li>
-		        <li><a href="#tab3" data-toggle="tab">Third</a></li>
-		        <li><a href="#tab4" data-toggle="tab">Forth</a></li>
-		        <li><a href="#tab5" data-toggle="tab">Fifth</a></li>
-		        <li><a href="#tab6" data-toggle="tab">Sixth</a></li>
-		        <li><a href="#tab7" data-toggle="tab">Seventh</a></li>
+                <% 
+                for(int i=0 ; i<questionsToView.Count ; i++) { %>
+                    <li><a href="#tab1" data-toggle="tab"><%= i+1 %></a></li>
+                <% } %>
 	        </ul>
 	    </div>
 	  </div>
 	</div>
 	
 	<div class="tab-content">
-	    <div class="tab-pane" id="tab1">
+         <% 
+                for(int i=0 ; i<questionsToView.Count ; i++) { %>
+	    <div class="tab-pane" id="tab<%= i+1 %>">
             <div class="panel panel-primary">
-                <div class="panel-heading">Question one </div>
+                <div class="panel-heading"><%= questionsToView[i].description %></div>
                 <div class="panel-body">
                     <div class="row"> 
                         <div class="col-md-12 col-xs-12" >
+                            <% System.Collections.Generic.List<template.DBModel.Answer> answers = questionsToView[i].answers; %>
+                            <% foreach (template.DBModel.Answer answer in answers){ %>
                             <div class="radio">
-                                <label><input type="radio" name="optradio1">Option 1</label>
+                                <label><input type="radio" name="optradio<%= i+1 %>"><%= answer.title %></label>
                             </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio1">Option 2</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio1" >Option 3</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio1" >Option 4</label>
-                            </div>
+                            <%} %>
                         </div>
                     </div>
                 </div>
 	        </div>
         </div>
-	    <div class="tab-pane" id="tab2">
-	      <div class="panel panel-primary">
-                <div class="panel-heading">Question Two </div>
-                <div class="panel-body">
-                    <div class="row"> 
-                        <div class="col-md-12 col-xs-12" >
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 1</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 2</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 3</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 4</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	        </div>
-	    </div>
-	<div class="tab-pane" id="tab3">
-			<div class="panel panel-primary">
-                <div class="panel-heading">Question three </div>
-                <div class="panel-body">
-                    <div class="row"> 
-                        <div class="col-md-12 col-xs-12" >
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 1</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 2</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 3</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 4</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	        </div>
-	    </div>
-		<div class="tab-pane" id="tab4">
-			<div class="panel panel-primary">
-                <div class="panel-heading">Question four </div>
-                <div class="panel-body">
-                    <div class="row"> 
-                        <div class="col-md-12 col-xs-12" >
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 1</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 2</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 3</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 4</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	        </div>
-	    </div>
-		<div class="tab-pane" id="tab5">
-			<div class="panel panel-primary">
-                <div class="panel-heading">Question five </div>
-                <div class="panel-body">
-                    <div class="row"> 
-                        <div class="col-md-12 col-xs-12" >
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 1</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 2</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 3</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 4</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	        </div>
-	    </div>
-		<div class="tab-pane" id="tab6">
-			<div class="panel panel-primary">
-                <div class="panel-heading">Question six </div>
-                <div class="panel-body">
-                    <div class="row"> 
-                        <div class="col-md-12 col-xs-12" >
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 1</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 2</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 3</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 4</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	        </div>
-	    </div>
-		<div class="tab-pane" id="tab7">
-			<div class="panel panel-primary">
-                <div class="panel-heading">Question seven </div>
-                <div class="panel-body">
-                    <div class="row"> 
-                        <div class="col-md-12 col-xs-12" >
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 1</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Option 2</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 3</label>
-                            </div>
-                            <div class="radio disabled">
-                                <label><input type="radio" name="optradio" >Option 4</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-	        </div>
-	    </div>
+        <%} %>
 		<ul class="pager wizard">
 			<li class="previous first" style="display:none;"><a href="#">First</a></li>
 			<li class="previous"><a href="#">Previous</a></li>

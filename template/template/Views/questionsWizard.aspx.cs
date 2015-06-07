@@ -8,11 +8,106 @@ namespace template.Views
 {
     public partial class questionsWizard : System.Web.UI.Page
     {
+        public DBModel.Applicant loggedApplicant = new DBModel.Applicant() ;
+        public List<DBModel.ExamQuestions> examQuestionsList = new List<DBModel.ExamQuestions>();
+        public List<Model.Question> questionsToView = new List<Model.Question>() ; 
         protected void Page_Load(object sender, EventArgs e)
         {
             // get the logged applicant 
-            DBModel.Applicant loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
-            // first must get registration request for this applicant ... 
+            loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
+            // examQuestionList is being filled in the below fuction ... but only the questions to view is returned ...
+            questionsToView = getExamQuestions();  
+        }
+        /// <summary>
+        /// function to check if the exam has been approved by admin and if yes return the exam question list... 
+        /// </summary>
+        /// <returns></returns>
+        public List<Model.Question> getExamQuestions()
+        {
+            // get the registration request and check if it has been approbed by admin or not ... 
+            DBService.RegistrationRequestService registrationService = new DBService.RegistrationRequestService();
+            DBModel.RegistrationRequests registrationRequest = registrationService.getRequestByApplicant(loggedApplicant);
+            if (registrationRequest.verifiedByAdmin == 0)
+            {
+                // still not verified 
+                Response.Redirect("../Login.aspx");
+            }
+            // if request have been varified by Admin ...
+            // first must get the exam .. active exam ... 
+            DBService.ExamService examService = new DBService.ExamService();
+            DBModel.Exam exam = examService.getExamByID(1);
+            // must first create an exam instance 
+            DBModel.ExamInstance examInstance = new DBModel.ExamInstance();
+            examInstance.elapsedTime = DateTime.Now;
+            examInstance.examDate = DateTime.Now;
+            examInstance.examDuration = exam.examDuration;
+            examInstance.examID = exam.examID;
+            examInstance.referenceID = registrationRequest.referenceID;
+            // add exam instance to the db in order to create instance id ... used later ... 
+            DBService.ExamInstanceService examInstanceService = new DBService.ExamInstanceService();
+            examInstance = examInstanceService.addExamInstance(examInstance);
+
+            //intialize the list of Exam Question 
+            List<DBModel.ExamQuestions> examQuestionsList = new List<DBModel.ExamQuestions>();
+            List<Model.Question> questionsList = new List<Model.Question>();
+            // must get the question by Course of this exam ... 
+            DBService.QuestionsPerCourseService questionPerCourseService = new DBService.QuestionsPerCourseService();
+            List<DBModel.QuestionsPerCourse> questionsPerCourseList = questionPerCourseService.getQuestionsByExam(exam);
+            foreach (DBModel.QuestionsPerCourse questionPerCourse in questionsPerCourseList)
+            {
+                // get course of exam question per course obj 
+                DBService.CourseService courseService = new DBService.CourseService();
+                DBModel.Course course = courseService.getCourseById(questionPerCourse.courseID);
+
+                // go to the question bank and return questoins randomly ... 
+                DBService.QuestionsBankService questionBankService = new DBService.QuestionsBankService();
+                List<DBModel.QuestionsBank> questionBankList = questionBankService.getQuestionsByCourseID(questionPerCourse.courseID);
+                List<DBModel.QuestionsBank> shuffledQuestions = this.ShuffleList(questionBankList);
+                // looping on the number of question percourse in order to take questions from the shuffled question
+                // add it to the examquestionlist ... 
+                for (int i = 0; i < questionPerCourse.questionsPerCourseNo; i++)
+                {
+                    // filling into the exam quesiton List 
+                    DBModel.ExamQuestions examQuestion = new DBModel.ExamQuestions();
+                    examQuestion.examInstanceID = examInstance.instanceID;
+                    examQuestion.questionID = shuffledQuestions[i].questionsID;
+                    examQuestionsList.Add(examQuestion);
+                    // filling qustion to view 
+                    Model.Question question = new Model.Question();
+                    question.description = shuffledQuestions[i].description;
+                    question.questionsID = shuffledQuestions[i].questionsID;
+                    question.title = shuffledQuestions[i].title;
+                    DBService.AnswerService answerService = new DBService.AnswerService();
+                    List<DBModel.Answer> answerList = answerService.getAnswers(question.questionsID);
+                    question.answers = answerList;
+                    questionsList.Add(question);
+                }
+            }
+            this.examQuestionsList = examQuestionsList;
+            return questionsList;
+            
+        }
+   
+        /// <summary>
+        /// function to shuffle the list order ... 
+        /// </summary>
+        /// <typeparam name="E"></typeparam>
+        /// <param name="inputList"></param>
+        /// <returns></returns>
+        private List<E> ShuffleList<E>(List<E> inputList)
+        {
+            List<E> randomList = new List<E>();
+
+            Random r = new Random();
+            int randomIndex = 0;
+            while (inputList.Count > 0)
+            {
+                randomIndex = r.Next(0, inputList.Count); //Choose a random object in the list
+                randomList.Add(inputList[randomIndex]); //add it to the new, random list
+                inputList.RemoveAt(randomIndex); //remove to avoid duplicates
+            }
+
+            return randomList; //return the new random list
         }
     }
 }

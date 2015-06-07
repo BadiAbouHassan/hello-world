@@ -50,6 +50,23 @@ namespace template.DBService
 
             return result;
         }
+        public List<QuestionsBank> getQuestionsByCourseID(int courseID)
+        {
+            List<QuestionsBank> result = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+                String query = "SELECT * FROM QuestionsBank WHERE courseID = " + courseID;
+                SqlDataReader reader = dbObj.selectQuery(query);
+                result = new List<QuestionsBank>();
+                while (reader.Read())
+                {
+                    result.Add(fillCourse(reader));
+                }
+            }
+            dbObj.CloseConnection();
+            return result;
+        }
 
         public DBModel.QuestionsBank fillCourse(SqlDataReader reader)
         {
