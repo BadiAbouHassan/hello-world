@@ -10,7 +10,7 @@ namespace template.DBModel
         public int examID { get; set; }
         public DateTime examDate { get; set; }
         public double examDuration { get; set; }
-        public DateTime elapsedTime { get; set; } 
+        public double elapsedTime { get; set; } 
         public double result { get; set; }
         public int referenceID { get; set; }
 

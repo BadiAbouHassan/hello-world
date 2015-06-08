@@ -46,7 +46,7 @@ namespace template.Views
             DBModel.Exam exam = examService.getExams()[0];
             // must first create an exam instance 
             DBModel.ExamInstance examInstance = new DBModel.ExamInstance();
-            examInstance.elapsedTime = DateTime.Now;
+            examInstance.elapsedTime = 0;
             examInstance.examDate = DateTime.Now;
             examInstance.examDuration = exam.examDuration;
             examInstance.examID = exam.examID;

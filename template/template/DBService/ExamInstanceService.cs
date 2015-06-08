@@ -20,7 +20,7 @@ namespace template.DBService
             using (SqlConnection cn = dbObj.openConnection())
             {
                 String query = "insert into ExamInstance(examID, examDate,examDuration,elapsedTime,result,referenceID) OUTPUT inserted.instanceID values('"
-                                + examInstance.examID + "', '" + examInstance.examDate + "', '" + examInstance.examDuration + "','" + examInstance.elapsedTime + "', '"
+                                + examInstance.examID + "', '" + examInstance.examDate + "', '" + examInstance.examDuration + "'," + examInstance.elapsedTime + ", '"
                                 + examInstance.result + "','"+examInstance.referenceID+"');";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
@@ -67,7 +67,7 @@ namespace template.DBService
             req.referenceID = Int32.Parse(reader["referenceID"].ToString());
             req.examID = Int32.Parse(reader["examID"].ToString());
             req.examDate = Convert.ToDateTime(reader["examDate"].ToString());
-            req.elapsedTime = Convert.ToDateTime(reader["elapsedTime"].ToString());
+            req.elapsedTime = double.Parse(reader["elapsedTime"].ToString());
             req.examDuration = Double.Parse(reader["examDuration"].ToString());
             req.result = Double.Parse(reader["result"].ToString());
 
