@@ -84,10 +84,16 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Users <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/Admin/newUser.aspx">New User</a>
+                                    <a href="../Admin/addUser.aspx">New User</a>
                                 </li>
                                 <li>
-                                    <a href="/Admin/viewUsers.aspx">View Users</a>
+                                    <a href="../Admin/viewUsers.aspx">View Users</a>
+                                </li>
+                                <li>
+                                    <a href="../Admin/viewUsers.aspx">Role</a>
+                                </li>
+                                <li>
+                                    <a href="../Admin/viewUsers.aspx">Permession</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

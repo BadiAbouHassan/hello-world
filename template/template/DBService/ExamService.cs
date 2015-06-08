@@ -52,7 +52,7 @@ namespace template.DBService
 
             return req;
         }
-        public List<Exam> getExams(int examID)
+        public List<Exam> getExams(int examID = 0 )
         {
             List<Exam> req = new List<Exam>();
             SQLClass dbObj = new SQLClass();

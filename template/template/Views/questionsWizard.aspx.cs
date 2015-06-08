@@ -22,8 +22,8 @@ namespace template.Views
             }
             catch (Exception exc)
             {
-                String redirect_Location = "../Views/homePage.aspx";
-                Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
+                String redirect_Location = "Views/homePage.aspx";
+                Response.Redirect("../Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
             }
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace template.Views
             // if request have been varified by Admin ...
             // first must get the exam .. active exam ... 
             DBService.ExamService examService = new DBService.ExamService();
-            DBModel.Exam exam = examService.getExamByID(1);
+            DBModel.Exam exam = examService.getExams()[0];
             // must first create an exam instance 
             DBModel.ExamInstance examInstance = new DBModel.ExamInstance();
             examInstance.elapsedTime = DateTime.Now;
