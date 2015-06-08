@@ -7,7 +7,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-  <div class="container" style="max-width:600px;" id="rootwizard" >
+  <div class="container" style="max-width:600px;margin-top: 10px;" id="rootwizard">
 	<div class="navbar hidden" >
 	  <div class="navbar-inner">
 	    <div class="container">
