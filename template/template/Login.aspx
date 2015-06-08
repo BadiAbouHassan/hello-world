@@ -35,7 +35,7 @@
                             <div class="col-md-12 control">
                                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                   ليس لديك حساب!
-                                    <a href="#" onclick="$('#loginbox').slideToggle(); $('#signupbox').slideToggle()">
+                                    <a href="#" onclick="$('#loginbox').fadeToggle(); $('#signupbox').fadeToggle()">
                                     اشترك هنا
                                 </a>
                                 </div>
@@ -51,7 +51,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="panel-title" align="right" >تسجيل الاشتراك</div>
-                        <div style="float:left; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" style="color:white" onclick="$('#signupbox').slideToggle(); $('#loginbox').slideToggle()">تسجيل الدخول</a></div>
+                        <div style="float:left; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" style="color:white" onclick="$('#signupbox').fadeToggle(); $('#loginbox').fadeToggle()">تسجيل الدخول</a></div>
                     </div>  
                     <div class="panel-body" >
                         <form id="signupform"  role="form" method="post" action="Controllers/registrationController.aspx" align="right">

@@ -13,10 +13,18 @@ namespace template.Views
         public List<Model.Question> questionsToView = new List<Model.Question>() ; 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // get the logged applicant 
-            loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
-            // examQuestionList is being filled in the below fuction ... but only the questions to view is returned ...
-            questionsToView = getExamQuestions();  
+            try
+            {
+                // get the logged applicant 
+                loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
+                // examQuestionList is being filled in the below fuction ... but only the questions to view is returned ...
+                questionsToView = getExamQuestions();
+            }
+            catch (Exception exc)
+            {
+                String redirect_Location = "../Views/homePage.aspx";
+                Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
+            }
         }
         /// <summary>
         /// function to check if the exam has been approved by admin and if yes return the exam question list... 

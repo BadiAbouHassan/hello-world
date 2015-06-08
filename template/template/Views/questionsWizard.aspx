@@ -7,7 +7,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-  <div class="container" style="max-width:600px;" id="rootwizard" >
+  <div class="container" style="max-width:600px;margin-top: 10px;" id="rootwizard">
 	<div class="navbar hidden" >
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -44,7 +44,7 @@
         <%} %>
 		<ul class="pager wizard">
 			<li class="previous first" style="display:none;"><a href="#">First</a></li>
-			<li class="previous"><a href="#">Previous</a></li>
+			<%--<li class="previous"><a href="#">Previous</a></li>--%>
 			<%--<li class="next last" style="display:none;"><a href="#">Last</a></li>--%>
 		  	<li class="next"><a href="#">Next</a></li>
             <li class="next finish" style="display:none;"><a href="javascript:;">Finish</a></li>
@@ -60,15 +60,19 @@
                     return false;
                 },
                 onNext: function (tab, navigation, index) {
-                    if (index == 1) {
-                        // Make sure we entered the name
-                        //if (!$("input[name='optradio1']:checked").val()) {
-                        //    alert('Must Select answer');
-                        //    //$('#name').focus();
-                        //    return false;
-                        //}
+                    <% 
+                for(int j=0 ; j<questionsToView.Count ; j++) { %>
+                    // Make sure we entered the name
+                    incrementer = <%= j+1%> ;
+                    if(index == incrementer ){
+                        if (!$("input[name='optradio<%= j+1 %>']:checked").val()) {
+                        alert('Must Select answer');
+                        //$('#name').focus();
+                        return false;
+                        
                     }
-
+                }
+            <% } %>
                     //// Set the name for the next tab
                     //$('#tab3').html('Hello, ' + $('#name').val());
 
