@@ -60,15 +60,19 @@
                     return false;
                 },
                 onNext: function (tab, navigation, index) {
-                    if (index == 1) {
-                        // Make sure we entered the name
-                        //if (!$("input[name='optradio1']:checked").val()) {
-                        //    alert('Must Select answer');
-                        //    //$('#name').focus();
-                        //    return false;
-                        //}
+                    <% 
+                for(int j=0 ; j<questionsToView.Count ; j++) { %>
+                    // Make sure we entered the name
+                    incrementer = <%= j+1%> ;
+                    if(index == incrementer ){
+                        if (!$("input[name='optradio<%= j+1 %>']:checked").val()) {
+                        alert('Must Select answer');
+                        //$('#name').focus();
+                        return false;
+                        
                     }
-
+                }
+            <% } %>
                     //// Set the name for the next tab
                     //$('#tab3').html('Hello, ' + $('#name').val());
 
