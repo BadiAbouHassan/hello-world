@@ -87,13 +87,19 @@
                                     <a href="../Admin/addUser.aspx">New User</a>
                                 </li>
                                 <li>
-                                    <a href="../Admin/viewUsers.aspx">View Users</a>
+                                    <a href="../Admin/viewUser.aspx">View Users</a>
                                 </li>
                                 <li>
-                                    <a href="../Admin/viewUsers.aspx">Role</a>
+                                    <a href="../Admin/addRole.aspx">New Role</a>
                                 </li>
                                 <li>
-                                    <a href="../Admin/viewUsers.aspx">Permession</a>
+                                    <a href="../Admin/viewRole.aspx">View Role</a>
+                                </li>
+                                <li>
+                                    <a href="../Admin/addPermission.aspx">New Permission</a>
+                                </li>
+                                <li>
+                                    <a href="../Admin/viewPermission.aspx">View Permission</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
