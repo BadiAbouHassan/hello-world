@@ -26,7 +26,15 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into RoleTable(roleName, predefined) values('"
+                // check if the role name has been already inserted before ... 
+                String checkQuery = "SELECT * FROM Role WHERE LOWER(roleName) = '" + role.roleName + "'";
+                SqlDataReader reader =  dbObj.selectQuery(checkQuery);
+                if (reader.Read())
+                {
+                    dbObj.CloseConnection();
+                    throw new Exception("role name already exist !!");
+                }
+                String query = "insert into Role(roleName, predefined) values('"
                                 + role.roleName + "','" + role.predefined + "');";
 
                 result = dbObj.executeQuery(query);
