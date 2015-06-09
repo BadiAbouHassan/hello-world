@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Web;
 using template.Controllers;
@@ -44,7 +45,19 @@ namespace template.DBService
             return result;
         }
 
-
+        public DataSet getRoleDataSet()
+        {
+            SQLClass dbObj = new SQLClass();
+            DataSet ds = new DataSet();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "select * from Role";
+                SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
+                myCommand.Fill(ds, "Role");
+            }
+            dbObj.CloseConnection();
+            return ds;
+        }
         public List<Role> getRoles(int roleID = 0)
         {
             List<Role> req = new List<Role>();
