@@ -12,7 +12,7 @@ namespace template.DBModel
         public String phoneNb { get; set; }
         public String email { get; set; }
         public int adminUserID { get; set; }
-
+        public User user { get; set; }
         public HuntingClub()
         {
         }
