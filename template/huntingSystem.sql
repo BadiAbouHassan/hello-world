@@ -64,12 +64,6 @@ create table UserTable(
 userID int IDENTITY(1,1) NOT NULL,
 username varchar(255),
 pass varchar(500),
-firstname varchar(255),
-middlename varchar(255),
-lastname varchar(255),
-email varchar(255),
-cellular varchar(255),
-phone varchar(255),
 roleID int NOT NULL,
 Primary Key (userID),
 FOREIGN KEY (roleID) REFERENCES Role(roleID)

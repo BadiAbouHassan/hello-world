@@ -70,11 +70,8 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into UserTable(username, pass,firstname,middlename ,lastname,email,cellular,phone,roleID) values('"
-                                + user.username + "', '" + user.password + "', '" + user.firstname + "','" + user.middlename + "', '"
-                                + user.lastname + "', '"  +user.email +"','"
-                                + user.cellular + "','" + user.phone+ "','"+user.roleID +"');";
-
+                String query = "insert into UserTable(username, pass,roleID) values('"
+                                + user.username + "', '" + user.password + "','"+user.roleID +"');";
                 result = dbObj.executeQuery(query);
 
             }
@@ -91,12 +88,6 @@ namespace template.DBService
             User user = new User();
             user.userID = Int32.Parse(reader["userID"].ToString());
             user.username = reader["username"].ToString();
-            user.firstname = reader["firstname"].ToString();
-            user.middlename = reader["middlename"].ToString();
-            user.lastname = reader["lastname"].ToString();
-            user.cellular = reader["cellular"].ToString();
-            user.phone = reader["phone"].ToString();
-            user.email = reader["email"].ToString();
             user.password = reader["pass"].ToString();
             user.roleID = int.Parse(reader["roleID"].ToString());
             Role role = new Role();
