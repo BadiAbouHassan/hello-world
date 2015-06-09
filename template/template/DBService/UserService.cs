@@ -25,7 +25,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using(SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Select * from UserTable where username= '" + username + "' AND pass ='" + password + "' ";
+                String query = "Select * from UserTable inner join Role on UserTable.roleID = Role.roleID where username= '" + username + "' AND pass ='" + password + "' ";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
@@ -37,7 +37,29 @@ namespace template.DBService
             return user;
         }
 
+        public List<User> getUsers(int userId = 0)
+        {
+            List<User> result = new List<User>();
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                string whereCondition = "";  
+                if (userId != 0)
+                {
+                    whereCondition = "WHERE userID = "+userId;
+                }
+                String query = "Select * from UserTable inner join Role on userTable.roleID = Role.roleID "+whereCondition;
 
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    User user = fillUser(reader);
+                    result.Add(user);
+                }
+            }
+            dbObj.CloseConnection();
+            return result;
+        }
         /// <summary>
         ///  this function select user of given paswod and username --> for login aurhentication
         /// </summary>
@@ -67,7 +89,7 @@ namespace template.DBService
         public User fillUser(SqlDataReader reader)
         {
             User user = new User();
-            user.userID = Int32.Parse(reader["ID"].ToString());
+            user.userID = Int32.Parse(reader["userID"].ToString());
             user.username = reader["username"].ToString();
             user.firstname = reader["firstname"].ToString();
             user.middlename = reader["middlename"].ToString();
@@ -76,7 +98,12 @@ namespace template.DBService
             user.phone = reader["phone"].ToString();
             user.email = reader["email"].ToString();
             user.password = reader["pass"].ToString();
-
+            user.roleID = int.Parse(reader["roleID"].ToString());
+            Role role = new Role();
+            role.roleID = int.Parse(reader["roleID"].ToString());
+            role.roleName = reader["roleName"].ToString();
+            role.predefined =int.Parse( reader["predefined"].ToString());
+            user.role = role;
             return user;
 
         }

@@ -17,6 +17,7 @@ namespace template.DBModel
         public String phone { get; set; }
         public int roleID { get; set; }
         public int clubID { get; set; }
+        public Role role { get; set; } 
 
 
         public User()
