@@ -41,14 +41,19 @@ namespace template.DBService
         /// </summary>
         /// <returns></returns>
 
-        public List<HuntingClub> getClubs()
+        public List<HuntingClub> getClubs (int clubID=0)
         {
             List<HuntingClub> clubList = new List<HuntingClub>();
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "select * from HuntingClub";
+                String whereCondition = "";
+                if (clubID != 0)
+                { 
+                    whereCondition = "WHERE clubID = "+clubID;
+                }
+                String query = "select * from HuntingClub inner join UserTable on HuntingClub.adminUserID = UserTable.userID " + whereCondition;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())
@@ -70,7 +75,7 @@ namespace template.DBService
             DataSet ds = new DataSet();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "select * from HuntingClub";
+                String query = "select * from HuntingClub inner join UserTable on HuntingClub.adminUserID =  UserTable.userID";
                 SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
                 myCommand.Fill(ds, "HuntingClub");
             }
@@ -89,6 +94,11 @@ namespace template.DBService
             club.clubAddress = reader["clubAddress"].ToString();
             club.clubID = Int32.Parse(reader["clubID"].ToString());
             club.email = reader["email"].ToString();
+            User user = new User();
+            user.username = reader["username"].ToString();
+            user.userID = int.Parse(reader["userID"].ToString());
+            user.password = reader["password"].ToString();
+            club.user = user;
             return club;
         }
 
