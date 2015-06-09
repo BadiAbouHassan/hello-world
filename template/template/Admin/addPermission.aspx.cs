@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using template.Controllers;
 using template.DBModel;
 
 namespace template.Admin.User
@@ -22,13 +23,13 @@ namespace template.Admin.User
                     errMsgDiv.Style.Remove("display");
                     errMsg.Text = "Permission Name and Code can not be empty !!!";
                 }
-                DBService.PermissionService controller = new DBService.PermissionService();
+                PermissionController controller = new PermissionController();
 
                 Permission permission = new Permission();
                 permission.name = permissionName.Value.ToString();
                 permission.code = permissionCode.Value.ToString();
 
-                if (!controller.add(permission))
+                if (!controller.addPermission(permission))
                 {
                     errMsgDiv.Style.Remove("display");
                     errMsg.Text = "Error Saving Permission data!";
