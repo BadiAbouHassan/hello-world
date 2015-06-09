@@ -35,7 +35,36 @@ namespace template.DBService
             dbObj.CloseConnection();
             return result;
         }
-
+        public List<Permission> getPermissions(int permissionID = 0)
+        {
+            List<Permission> req = new List<Permission>();
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String whereCondition = "";
+                if (permissionID != 0)
+                {
+                    whereCondition = " WHERE permissionID = " + permissionID;
+                }
+                String query = "Select * from Permission";
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    Permission request = fillPermission(reader);
+                    req.Add(request);
+                }
+            }
+            dbObj.CloseConnection();
+            return req;
+        }
+        private Permission fillPermission(SqlDataReader reader)
+        {
+            Permission permission = new Permission();
+            permission.permissionID = Int32.Parse(reader["permissionID"].ToString());
+            permission.name = reader["name"].ToString();
+            permission.code = reader["code"].ToString();
+            return permission;
+        }
     }
 
 

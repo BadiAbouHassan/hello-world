@@ -19,9 +19,9 @@ namespace template.Controllers
             return this.permissionService.add(permission);
         }
 
-        //public List<Role> getPermissions(int permissionID= 0)
-        //{
-        //    //return this.permissionService.getPermissions(permissionID);
-        //}
+        public List<Permission> getPermissions(int permissionID = 0)
+        {
+            return this.permissionService.getPermissions(permissionID);
+        }
     }
 }
