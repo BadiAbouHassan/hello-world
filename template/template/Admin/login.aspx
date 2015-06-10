@@ -43,15 +43,19 @@
 
 <body>
 
-    <div class="container" style="max-width:600px;">
-        <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
-            <p><asp:Label id="successMsg" runat="server" Text="" /></p>
-        </div>
-        <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
-            <p><asp:Label id="errMsg" runat="server" Text="" /></p>
-        </div>
-        <form class="form-signin" runat="server" >
+    <div class="container" style="max-width: 600px;">
+
+        <form class="form-signin" runat="server">
+
             <h2 class="form-signin-heading">Please sign in</h2>
+            <div class="alert alert-success" style="display: none;" id="successMsgDiv" runat="server">
+                <p>
+                    <asp:Label ID="successMsg" runat="server" Text="" /></p>
+            </div>
+            <div class="alert alert-danger" style="display: none;" id="errMsgDiv" runat="server">
+                <p>
+                    <asp:Label ID="errMsg" runat="server" Text="" /></p>
+            </div>
             <label for="inputEmail" class="sr-only">User Name</label>
             <input type="text" id="user_name" name="user_name" runat="server" class="form-control" placeholder="username" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
@@ -62,8 +66,8 @@
                     Remember me
                 </label>
             </div>--%>
-            <asp:Button id="btnSave" class="btn btn-lg btn-primary btn-block" runat="server" type="submit" OnClick="btnSave_Click" Text="Save" value="Sign In"  />
-            
+            <asp:Button ID="btnSave" class="btn btn-lg btn-primary btn-block" runat="server" type="submit" OnClick="btnSave_Click" Text="Save" value="Sign In" />
+
         </form>
 
     </div>
