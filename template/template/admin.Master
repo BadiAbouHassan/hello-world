@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="template.admin" %>
-
+<%@ Register Src="~/Admin/header.ascx" TagName="Nav" TagPrefix="header" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -43,7 +43,7 @@
 
 </head>
 <body>
-    <!--#include file="~/Admin/header.aspx"-->
+     <header:Nav ID="Nav" runat="server" />
     <form id="form1" runat="server">
     <div>
         <div id="wrapper">

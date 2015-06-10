@@ -23,5 +23,10 @@ namespace template.Controllers
         {
             return this.userService.getUsers(userID);
         }
+
+        public User checkUserAuthentication(String username , String password)
+        {
+            return this.userService.checkUserAuthentication(username, password);
+        }
     }
 }
