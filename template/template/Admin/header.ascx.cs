@@ -17,5 +17,11 @@ namespace template.Admin
             }
 
         }
+
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session["logged_user"] = null;
+            Response.Redirect("index.aspx");
+        }
     }
 }

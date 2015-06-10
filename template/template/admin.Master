@@ -43,8 +43,9 @@
 
 </head>
 <body>
-     <header:Nav ID="Nav" runat="server" />
+    
     <form id="form1" runat="server">
+     <header:Nav ID="Nav" runat="server" />
     <div>
         <div id="wrapper">
             <div id="page-wrapper">
