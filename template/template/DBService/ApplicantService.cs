@@ -97,5 +97,42 @@ namespace template.DBService
 
         }
 
+
+        public List<Applicant> getAllApplicants()
+        {
+            List<Applicant> applicantsList = new List<Applicant>();
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+                
+                String query = "SELECT * FROM Applicant " ;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+
+          
+                while (reader.Read())
+                {
+                    applicantsList.Add(fillApplicant(reader));
+                }
+            }
+            dbObj.CloseConnection();
+            return applicantsList;
+        }
+
+        public Boolean deleteApplicant(int ID)
+        {
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+
+                String query = "Delete  FROM Applicant where applicantID="+ID;
+
+                 dbObj.executeQuery(query);
+              
+            }
+            dbObj.CloseConnection();
+            return true;
+        }
     }
 }
