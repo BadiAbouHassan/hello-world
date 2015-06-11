@@ -105,7 +105,7 @@ namespace template.Admin
                         tRow.Cells.Add(phoneCell);
 
                         TableCell editCell = new TableCell();
-                        editCell.Text = "<a href='/Admin/addCourse.aspx?courseID=" + applicants[i].applicantID + "'>Edit</a>";
+                        editCell.Text = "<a href='/Admin/editApplicant.aspx?applicantID=" + applicants[i].applicantID + "'>Edit</a>";
                         tRow.Cells.Add(editCell);
 
                         TableCell deleteCell = new TableCell();

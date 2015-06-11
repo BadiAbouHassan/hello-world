@@ -39,7 +39,7 @@
                                 <asp:TableCell ID="TableCell16" runat="server"><b>Address</b></asp:TableCell>
                                 <asp:TableCell ID="TableCell17" runat="server"><b>Cellular</b></asp:TableCell>
                                 <asp:TableCell ID="TableCell18" runat="server"><b>Phone</b></asp:TableCell>
-                                <asp:TableCell ID="TableCell3" runat="server" ColumnSpan="2">Delete</asp:TableCell>
+                                <asp:TableCell ID="TableCell3" runat="server" ColumnSpan="2"></asp:TableCell>
                             </asp:TableHeaderRow>
                         </asp:Table>
                     </div>

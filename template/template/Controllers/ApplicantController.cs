@@ -12,6 +12,14 @@ namespace template.Controllers
         {
         }
 
+        public Boolean updateApplicant(Applicant applicant)
+        {
+            Boolean flag = false;
+            
+           flag = (new ApplicantService()).updateApplicant(applicant);
+            
+            return flag;
+        }
 
         public Boolean deleteApplicant(int ID)
         {

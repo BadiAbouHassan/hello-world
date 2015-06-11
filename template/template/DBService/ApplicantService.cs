@@ -33,6 +33,26 @@ namespace template.DBService
         }
 
 
+        public Applicant getApplicantOfID(int ID)
+        {
+            Applicant Applicant = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Select * from Applicant where applicantID= " +ID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                if (reader.Read())
+                {
+
+                    Applicant = fillApplicant(reader);
+                }
+            }
+           
+            dbObj.CloseConnection();
+            return Applicant;
+        }
+
         /// <summary>
         ///  this function select Applicant of given paswod and Applicantname --> for login aurhentication
         /// </summary>
@@ -176,6 +196,43 @@ namespace template.DBService
                  dbObj.executeQuery(query);
               
             }
+            dbObj.CloseConnection();
+            return true;
+        }
+
+        public bool updateApplicant(Applicant applicant)
+        {
+            SQLClass dbObj = new SQLClass();
+
+            SqlConnection conn = dbObj.openConnection();
+            // add the insert between transaction and commit in order no to lose data integratiy ... 
+            using (conn)
+            {
+
+                String query = "update  Applicant set username ='"+ applicant.username + "', "
+                                +"firstname = '" +  applicant.firstname + "'," 
+                                +"middlename ='" + applicant.middlename + "', " 
+                                +"lastname  = '"+ applicant.lastname + "', " 
+                                +"gender ='" + applicant.gender + "', " 
+                                +"dateOfBirth ='"+ applicant.dateOfBirth + "', " 
+                                +"placeOfBirth ='"+ applicant.placeOfBirth + "',"
+                                +"registrationNb ='"+ applicant.registrationNb + "'," 
+                                + "nationality ='"+ applicant.nationality + "', " 
+                                +"bloodType ='"+ applicant.bloodType + "',"
+                                +"Profession ='" + applicant.profession + "',"
+                                +"email ='"+ applicant.email + "'," 
+                                +"mailAddress ='"+ applicant.mailAddress + "',"
+                                + "fax ='" + applicant.fax + "',"
+                                + "city ='" + applicant.city + "',"
+                                + "applicantAddress ='" + applicant.applicantAddress + "',"
+                                +"cellular ='"+applicant.cellular + "',"
+                                + "phone ='" +applicant.phone + "' where applicantID ="+applicant.applicantID;
+                                
+
+             dbObj.executeQuery(query);
+               
+            }
+
             dbObj.CloseConnection();
             return true;
         }
