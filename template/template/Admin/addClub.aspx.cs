@@ -20,8 +20,11 @@ namespace template.Admin
 
             DBService.UserService userService = new DBService.UserService();
             DataSet ds = userService.getUsersDataSet();
+            // must combine first name and last name in the ds . 
+            // so we  will generate a new column to the data set .. 
+            ds.Tables[0].Columns.Add("firstAndLast", typeof(string), "firstName +' '+ lastName");
             Users.DataSource = ds;
-            Users.DataTextField = "firstName" ;
+            Users.DataTextField = "firstAndLast" ;
             Users.DataValueField = "userID";
             Users.DataBind();
 
