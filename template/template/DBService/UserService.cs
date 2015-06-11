@@ -88,6 +88,9 @@ namespace template.DBService
         {
             User user = new User();
             user.userID = Int32.Parse(reader["userID"].ToString());
+            user.firstName = reader["firstName"].ToString();
+            user.lastName = reader["lastName"].ToString();
+            user.email = reader["email"].ToString();
             user.username = reader["username"].ToString();
             user.password = reader["pass"].ToString();
             user.roleID = int.Parse(reader["roleID"].ToString());

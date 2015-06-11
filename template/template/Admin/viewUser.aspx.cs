@@ -40,6 +40,18 @@ namespace template.Admin.User
                         password.Text = users[i].password;
                         tRow.Cells.Add(password);
 
+                        TableCell firstname = new TableCell();
+                        firstname.Text = users[i].firstName;
+                        tRow.Cells.Add(firstname);
+
+                        TableCell lastname = new TableCell();
+                        lastname.Text = users[i].lastName;
+                        tRow.Cells.Add(lastname);
+
+                        TableCell email= new TableCell();
+                        email.Text = users[i].email;
+                        tRow.Cells.Add(email);
+
                         TableCell role = new TableCell();
                         role.Text = users[i].role.roleName;
                         tRow.Cells.Add(role);

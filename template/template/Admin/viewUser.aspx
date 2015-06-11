@@ -25,6 +25,9 @@
                                 <asp:TableCell ID="TableCell1" runat="server"><b>User ID</b></asp:TableCell>
                                 <asp:TableCell ID="TableCell2" runat="server"><b>UserName</b></asp:TableCell>
                                 <asp:TableCell ID="TableCell3" runat="server"><b>Password</b></asp:TableCell>
+                                <asp:TableCell ID="TableCell4" runat="server"><b>First Name</b></asp:TableCell>
+                                <asp:TableCell ID="TableCell5" runat="server"><b>Last Name</b></asp:TableCell>
+                                <asp:TableCell ID="TableCell6" runat="server"><b>Email</b></asp:TableCell>
                                 <asp:TableCell ID="TableCell10" runat="server"><b>Role</b></asp:TableCell>
                             </asp:TableHeaderRow>
                         </asp:Table>
