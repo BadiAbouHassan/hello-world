@@ -123,7 +123,7 @@ namespace template.DBService
             using (SqlConnection connection = dbObj.openConnection())
             {
 
-                String query = "select * from HuntingClub inner join UserTable  on HuntingClub.adminUserID = UserTable.userID "
+                String query = "select  Applicant.username as applicantUSername,Applicant.email as applicantEmail, * from HuntingClub inner join UserTable  on HuntingClub.adminUserID = UserTable.userID "
                             + " inner join RegistrationRequests on HuntingClub.clubID = RegistrationRequests.clubID "
                             + "inner join Applicant on RegistrationRequests.applicantID = Applicant.applicantID "
                             + "where UserTable.userID ="+adminUser.userID;
@@ -133,7 +133,10 @@ namespace template.DBService
 
                 while (reader.Read())
                 {
-                    applicantsList.Add(fillApplicant(reader));
+                    Applicant app = fillApplicant(reader);
+                    app.username = reader["applicantUSername"].ToString();
+                    app.email = reader["applicantEmail"].ToString();
+                    applicantsList.Add(app);
                 }
             }
             dbObj.CloseConnection();
