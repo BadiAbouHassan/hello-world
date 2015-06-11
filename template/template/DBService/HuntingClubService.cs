@@ -94,8 +94,12 @@ namespace template.DBService
             club.clubAddress = reader["clubAddress"].ToString();
             club.clubID = Int32.Parse(reader["clubID"].ToString());
             club.email = reader["email"].ToString();
+            club.phoneNb = reader["phoneNb"].ToString();
             User user = new User();
             user.username = reader["username"].ToString();
+            user.firstName =  reader["firstName"].ToString();
+            user.lastName = reader["lastName"].ToString();
+            user.email = reader["email"].ToString();
             user.userID = int.Parse(reader["userID"].ToString());
             user.password = reader["pass"].ToString();
             user.roleID = int.Parse(reader["roleID"].ToString());

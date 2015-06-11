@@ -50,7 +50,7 @@ namespace template.Admin
                         tRow.Cells.Add(email);
 
                         TableCell adminID = new TableCell();
-                        adminID.Text = clubs[i].user.userID.ToString();
+                        adminID.Text = clubs[i].user.firstName.ToString() + " " + clubs[i].user.lastName.ToString();
                         tRow.Cells.Add(adminID);
                     }
                 }
