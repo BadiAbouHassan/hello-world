@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Courses</h1>
+            <h1 class="page-header">Applicants</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>

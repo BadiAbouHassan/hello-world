@@ -104,9 +104,9 @@ namespace template.Admin
                         phoneCell.Text = applicants[i].phone;
                         tRow.Cells.Add(phoneCell);
 
-                        //TableCell editCell = new TableCell();
-                        //editCell.Text = "<a href='/Admin/addCourse.aspx?courseID=" + applicants[i].applicantID + "'>Edit</a>";
-                        //tRow.Cells.Add(editCell);
+                        TableCell editCell = new TableCell();
+                        editCell.Text = "<a href='/Admin/addCourse.aspx?courseID=" + applicants[i].applicantID + "'>Edit</a>";
+                        tRow.Cells.Add(editCell);
 
                         TableCell deleteCell = new TableCell();
                         Button btn = new Button();
@@ -115,6 +115,8 @@ namespace template.Admin
                         deleteCell.Controls.Add(btn);
                        // deleteCell.Text = "<a href='/Admin/deleteCourse.aspx?courseID=" + applicants[i].applicantID + "'>Delete</a>";
                         tRow.Cells.Add(deleteCell);
+
+                       
                     }
                 }
             }
