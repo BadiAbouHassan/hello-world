@@ -22,18 +22,21 @@ namespace template.Controlers
             {
                 Response.Redirect("../Views/errorHandler.aspx");
                 // must redirect to erro page and display the Exception in the erro page ... 
-               // label1.Text = exp.Message;
+               
             }
         }
         public void addApplicant()
         {
+            try{
+
             Applicant user = new Applicant();
             String password = Request.Form["password"];
             String confPass = Request.Form["confpasswd"];
             if (!password.Equals(confPass))
             {
-                // label1.Text = "Passwords don't match !!";
-                Response.Redirect("../Views/errorHandler.aspx", false);
+                String redirect_Location = "../Login.aspx";
+                Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + "Password doesn't match !" +"&redirect_locaiton=" + redirect_Location);
+
             }
             else
             {
@@ -50,7 +53,7 @@ namespace template.Controlers
                 user.registrationNb = Request.Form["registratoin_nb"];
                 user.phone = Request.Form["phone"];
                 user.cellular = Request.Form["cellular"];
-                user.fax = Request.Form["fax_nb"];
+                user.fax = Request.Form["fax_number"];
                 user.mailAddress = Request.Form["mail"];
                 user.gender = Request.Form["gender"];
                 user.placeOfBirth = Request.Form["place_of_birth"];
@@ -58,36 +61,34 @@ namespace template.Controlers
                 user.profession = Request.Form["profession"];
                 user.city = Request.Form["city"];
                 user.password = Hashed_pass;
+
+                //create RegistrationRequest object
+                RegistrationRequests req = new RegistrationRequests();
+                req.clubID = Int32.Parse(Request.Form["club"].ToString());
+                req.verifiedByAdmin = 0;
+                req.verificationDate = "";
+                req.registrationRequestsDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
+
                 ApplicantService client_controller = new ApplicantService();
-                Applicant addedApplicant = client_controller.addApplicant(user);
-                if (addedApplicant !=null)
+                Applicant addedApplicant = client_controller.addApplicant(user, req);
+                if (addedApplicant != null)
                 {
+                     Response.Redirect("../Login.aspx",false);
 
-                    RegistrationRequestService reqService = new RegistrationRequestService();
-                    RegistrationRequests req = new RegistrationRequests();
-                    req.clubID = Int32.Parse(Request.Form["club"].ToString());
-                    req.applicantID = addedApplicant.applicantID;
-                    req.verifiedByAdmin = 0;
-                    req.verificationDate = "";
-                    req.registrationRequestsDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
-                    if (reqService.addRequest(req) != null)
-                    {
-                        Response.Redirect("../Login.aspx", false);
-                        // label1.Text = "Succcessfully added";
-                    }
-                    else
-                    {
-                        Response.Redirect("../Views/errorHandler.aspx", false);
-
-
-                    }
+                    // label1.Text = "Succcessfully added";
                 }
-                else
-                {
-                    Response.Redirect("../Views/errorHandler.aspx", false);
-
-                }
+        
             }
+            }catch(Exception exc)
+            {
+                String  redirect_Location ="../Login.aspx";
+                Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
+
+                
+
+            }
+            
+
         }
     }
 }

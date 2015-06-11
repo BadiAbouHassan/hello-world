@@ -97,7 +97,8 @@ namespace template.DBService
             User user = new User();
             user.username = reader["username"].ToString();
             user.userID = int.Parse(reader["userID"].ToString());
-            user.password = reader["password"].ToString();
+            user.password = reader["pass"].ToString();
+            user.roleID = int.Parse(reader["roleID"].ToString());
             club.user = user;
             return club;
         }

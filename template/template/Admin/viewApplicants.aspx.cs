@@ -23,7 +23,10 @@ namespace template.Admin
                 errMsgDiv.Style.Add("display", "none");
                 successMsgDiv.Style.Add("display", "none");
 
-                 applicants = appService.getAllApplicants();
+                //get the logged user
+                DBModel.User loggedAdmin = (DBModel.User)Session["logged_user"];
+
+                applicants = appService.getAllApplicantsOfAdminClub(loggedAdmin); //only view the applicants of the hunting club of the admin
 
                 if (applicants.Count != 0)
                 {

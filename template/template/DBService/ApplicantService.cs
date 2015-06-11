@@ -20,7 +20,7 @@ namespace template.DBService
             using (SqlConnection cn = dbObj.openConnection())
             {
                 String query = "Select * from Applicant where username= '" + username + "' AND pass ='" + password + "' ";
-
+                
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
                 {
@@ -36,32 +36,49 @@ namespace template.DBService
         /// <summary>
         ///  this function select Applicant of given paswod and Applicantname --> for login aurhentication
         /// </summary>
-        public Applicant addApplicant(Applicant Applicant)
+        public Applicant addApplicant(Applicant Applicant,RegistrationRequests req)
         {
 
             SQLClass dbObj = new SQLClass();
-            using (SqlConnection cn = dbObj.openConnection())
+           
+            SqlConnection conn = dbObj.openConnection();
+            // add the insert between transaction and commit in order no to lose data integratiy ... 
+            using (conn)
             {
-                String query = "insert into Applicant(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
-                            + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone) OUTPUT inserted.applicantID values('"
-                                + Applicant.username + "', '" + Applicant.password + "', '" + Applicant.firstname + "','" + Applicant.middlename + "', '"
-                                + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', '" + Applicant.placeOfBirth + "','"
-                                + Applicant.registrationNb + "','" + Applicant.nationality + "', '" + Applicant.bloodType + "','" + Applicant.profession + "','"
-                                + Applicant.email + "','" + Applicant.mailAddress + "','" + Applicant.fax + "','" + Applicant.city + "','" + Applicant.applicantAddress + "','"
-                                + Applicant.cellular + "','" + Applicant.phone + "'); ";
+               
+                        //SqlTransaction transaction;
 
-                SqlDataReader reader = dbObj.selectQuery(query);
-                if (reader.Read())
-                {
-                    Applicant.applicantID = Int32.Parse(reader["applicantID"].ToString());
-                }
-                else
-                {
-                    Applicant = null;
-                }
+                        //// Start a local transaction.
+                        //transaction = conn.BeginTransaction("SampleTransaction");
 
+                        //// Must assign both transaction object and connection 
+                        //// to Command object for a pending local transaction
+                        //command.Connection = conn;
+                        //command.Transaction = transaction;
 
-            }
+                        String query = "insert into Applicant(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
+                                    + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone) OUTPUT inserted.applicantID values('"
+                                        + Applicant.username + "', '" + Applicant.password + "', '" + Applicant.firstname + "','" + Applicant.middlename + "', '"
+                                        + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', '" + Applicant.placeOfBirth + "','"
+                                        + Applicant.registrationNb + "','" + Applicant.nationality + "', '" + Applicant.bloodType + "','" + Applicant.profession + "','"
+                                        + Applicant.email + "','" + Applicant.mailAddress + "','" + Applicant.fax + "','" + Applicant.city + "','" + Applicant.applicantAddress + "','"
+                                        + Applicant.cellular + "','" + Applicant.phone + "'); ";
+
+                       // command.CommandText = query;
+                        SqlDataReader reader = dbObj.selectQuery(query);
+                        if (reader.Read())
+                        {
+                            Applicant.applicantID = Int32.Parse(reader["applicantID"].ToString());
+                            RegistrationRequestService reqService = new RegistrationRequestService();
+                            req.applicantID = Applicant.applicantID;
+                            req = reqService.addRequestByCnx(req, dbObj);
+                        }
+                        else
+                        {
+                            Applicant = null;
+                        }
+                    }
+
             dbObj.CloseConnection();
             return Applicant;
         }
@@ -97,6 +114,31 @@ namespace template.DBService
 
         }
 
+
+        public List<Applicant> getAllApplicantsOfAdminClub(User adminUser)
+        {
+            List<Applicant> applicantsList = new List<Applicant>();
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+
+                String query = "select * from HuntingClub inner join UserTable  on HuntingClub.adminUserID = UserTable.userID "
+                            + " inner join RegistrationRequests on HuntingClub.clubID = RegistrationRequests.clubID "
+                            + "inner join Applicant on RegistrationRequests.applicantID = Applicant.applicantID "
+                            + "where UserTable.userID ="+adminUser.userID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+
+
+                while (reader.Read())
+                {
+                    applicantsList.Add(fillApplicant(reader));
+                }
+            }
+            dbObj.CloseConnection();
+            return applicantsList;
+        }
 
         public List<Applicant> getAllApplicants()
         {

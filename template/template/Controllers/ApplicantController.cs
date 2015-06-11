@@ -15,12 +15,22 @@ namespace template.Controllers
 
         public Boolean deleteApplicant(int ID)
         {
-             return (new ApplicantService()).deleteApplicant(ID);
+            Boolean flag = false;
+            if ((new RegistrationRequestService()).deleteRequestByApplicantID(ID))
+            {
+                flag = (new ApplicantService()).deleteApplicant(ID);
+            }
+             return flag;
         }
 
         public List<Applicant> getAllApplicants()
         {
             return (new ApplicantService()).getAllApplicants();
+        }
+
+        public List<Applicant> getAllApplicantsOfAdminClub(User user)
+        {
+            return (new ApplicantService()).getAllApplicantsOfAdminClub(user);
         }
     }
 }

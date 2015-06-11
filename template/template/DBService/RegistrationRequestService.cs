@@ -20,13 +20,10 @@ namespace template.DBService
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public RegistrationRequests addRequest(RegistrationRequests request)
+        public RegistrationRequests addRequestByCnx(RegistrationRequests request,SQLClass dbObj)
         {
             
-            SQLClass dbObj = new SQLClass();
-            using (SqlConnection cn = dbObj.openConnection())
-            {
-                String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate) OUTPUT inserted.referenceID values('"
+            String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate) OUTPUT inserted.referenceID values('"
                                 + request.applicantID + "', '" + request.clubID + "', '" + request.registrationRequestsDate + "','" + request.verifiedByAdmin + "', '"
                                 + request.verificationDate + "');";
 
@@ -40,12 +37,28 @@ namespace template.DBService
                     request = null;
                 }
 
-            }
-            dbObj.CloseConnection();
-
             return request;
         }
 
+
+        public Boolean deleteRequestByApplicantID(int ID)
+        {
+            
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+
+
+                String query = "DELETE RegistrationRequests "
+                              + "FROM RegistrationRequests "
+                              + "INNER JOIN Applicant ON RegistrationRequests.applicantID=Applicant.applicantID  "
+                              + "Where Applicant.applicantID =" + ID;
+                dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
+
+            return true;
+        }
 
         public Boolean updateRequestByRequest(RegistrationRequests request)
         {
