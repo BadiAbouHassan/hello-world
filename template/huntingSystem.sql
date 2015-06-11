@@ -62,6 +62,9 @@ Primary Key (applicantID)
 
 create table UserTable(
 userID int IDENTITY(1,1) NOT NULL,
+firstName varchar(255),
+lastName varchar(255),
+email varchar(255),
 username varchar(255),
 pass varchar(500),
 roleID int NOT NULL,
