@@ -80,6 +80,19 @@ namespace template.DBService
             return result;
         }
 
+        public DataSet getUsersDataSet()
+        {
+            SQLClass dbObj = new SQLClass();
+            DataSet ds = new DataSet();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "select * from UserTable";
+                SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
+                myCommand.Fill(ds, "UserTable");
+            }
+            dbObj.CloseConnection();
+            return ds;
+        }
 
         /// <summary>
         ///  this function fill user object

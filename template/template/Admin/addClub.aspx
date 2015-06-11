@@ -42,7 +42,12 @@
                                 <input placeholder="Club Name" class="form-control" id="email" name="email" runat="server" required="required" />
                                 <p class="help-block"></p>
                             </div>
-                            <asp:Button id="btnSave" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save"  />
+                            <div class="form-group">
+                                <label>User</label>
+                                <select runat="server" name="Users" id="Users" class="form-control" ></select>
+                                <p class="help-block"></p>
+                            </div>
+                            <asp:Button id="btnSave" OnClick="btnSave_Click" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save"  />
                             <button class="btn btn-default" type="reset">Reset</button>
                         </div>
                     </div>

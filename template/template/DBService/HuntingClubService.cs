@@ -26,8 +26,8 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into HuntingClub(clubname, clubAddress,phoneNb,email) values('"
-                                + club.clubName + "','" + club.clubAddress + "','" + club.phoneNb + "','" + club.email + "');";
+                String query = "insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('"
+                                + club.clubName + "','" + club.clubAddress + "','" + club.phoneNb + "','" + club.email + "','"+club.adminUserID+"');";
 
                result= dbObj.executeQuery(query);
 
