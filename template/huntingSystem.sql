@@ -62,6 +62,9 @@ Primary Key (applicantID)
 
 create table UserTable(
 userID int IDENTITY(1,1) NOT NULL,
+firstName varchar(255),
+lastName varchar(255),
+email varchar(255),
 username varchar(255),
 pass varchar(500),
 roleID int NOT NULL,
@@ -154,14 +157,17 @@ FOREIGN KEY (permissionID) REFERENCES Permission(permissionID),
 FOREIGN KEY (roleID) REFERENCES Role(roleID)
 )
 
+insert into Role(roleName, predefined) values('superadmin','1';
+insert into Role(roleName, predefined) values('HuntingClub2','1');
+insert into Role(roleName, predefined) values('HuntingClub3','1');
+insert into Role(roleName, predefined) values('HuntingClub4','1');
+
+insert into UserTable (firstName,lastName,email,username,pass,roleID) values ('firstname','lastname','email','admin','111111',1);
+/*
 insert into UserTable(username, pass,firstname,roleID) values('admin1','1234','admin1','1');
 insert into UserTable(username, pass,firstname,roleID) values('admin2','1234','admin2','2');
 
 insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
 insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
-
-insert into Role(roleName, predefined) values('superadmin','1');
-insert into Role(roleName, predefined) values('HuntingClub2','1');
-insert into Role(roleName, predefined) values('HuntingClub3','1');
-insert into Role(roleName, predefined) values('HuntingClub4','1');
+*/

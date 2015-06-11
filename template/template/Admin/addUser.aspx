@@ -24,6 +24,21 @@
                                 <p><asp:Label id="errMsg" runat="server" Text="" /></p>
                             </div>
                             <div class="form-group">
+                                <label>first Name</label>
+                                <input placeholder="first Name" class="form-control" id="firstName" name="firstName" runat="server" required="required" />
+                                <p class="help-block"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input placeholder="Last Name" class="form-control" id="lastName" name="lastName" runat="server" required="required" />
+                                <p class="help-block"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Name</label>
+                                <input placeholder="Email"  class="form-control" id="email" name="email" runat="server" required="required" />
+                                <p class="help-block"></p>
+                            </div>
+                            <div class="form-group">
                                 <label>User Name</label>
                                 <input placeholder="User Name" class="form-control" id="userName" name="userName" runat="server" required="required" />
                                 <p class="help-block"></p>
