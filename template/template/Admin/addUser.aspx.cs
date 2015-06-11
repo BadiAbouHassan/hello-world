@@ -39,6 +39,9 @@ namespace template.Admin
                     return;
                 }
                 DBModel.User user = new DBModel.User();
+                user.firstName = firstName.Value.ToString();
+                user.lastName = lastName.Value.ToString();
+                user.email = email.Value.ToString(); 
                 user.username = userName.Value.ToString();
                 user.password = pass.Value.ToString();
                 Role role = new Role();
