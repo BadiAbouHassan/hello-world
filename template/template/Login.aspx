@@ -130,6 +130,7 @@
                                         </div>
                     
                                 </div>
+                                </div>
                                   <!--this is the left division -->
                                 <div class="col-md-6 col-xs-12" >
                                     <div class="form-horizontal">
@@ -218,7 +219,7 @@
                                         </div> 
                                     </div>
                                 </div>
-                            </div> 
+                             
                             <div class="row" align="left">
                                 <div class="form-horizontal">
                                     <div class="form-group">                                  
@@ -230,10 +231,11 @@
                                     </div>
                                 </div>
                             </div>
+                             </div>
                         </form>
                      </div>
                 </div>
-     </div> 
+    </div> 
     </div>
     <!--date picker components-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
