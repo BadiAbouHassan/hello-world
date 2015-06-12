@@ -50,7 +50,7 @@
                                         <div class="form-group">
                                              <label for="email" class="col-md-3 control-label" >Date of birth</label>
                                             <div class="col-md-9">
-                                                <input type="text"  runat="server"  required="required" id="datepicker" class="form-control datepicker"  name="date_of_birth" />
+                                                <input type="text"  required="required" id="datepicker" class="form-control datepicker" value="<%=DOB %>"  name="date_of_birth" />
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -168,7 +168,7 @@
                                 <div class="form-horizontal">
                                     <div class="form-group">                                  
                                         <div class="col-md-offset-3 col-md-9">
-                                            <asp:Button runat="server" id="btnSignup_reg"  class="btn btn-info" value="Edit" Conent="Edit" OnClick="edit_click"/>
+                                            <asp:Button runat="server" class="btn btn-info" Text="Edit" OnClick="edit_click"/>
                                             <input type="reset" class="btn btn-warning" value="Clear" />
                                             
                                         </div>

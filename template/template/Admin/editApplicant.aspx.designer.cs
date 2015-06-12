@@ -76,15 +76,6 @@ namespace template.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlInputText lastname;
         
         /// <summary>
-        /// datepicker control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText datepicker;
-        
-        /// <summary>
         /// registratoin_nb control.
         /// </summary>
         /// <remarks>
@@ -209,14 +200,5 @@ namespace template.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText email;
-        
-        /// <summary>
-        /// btnSignup_reg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSignup_reg;
     }
 }

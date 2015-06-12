@@ -14,6 +14,7 @@ namespace template.Admin
     {
         public List<HuntingClub> clubs = new List<HuntingClub>();
          string ID  ;
+         public String DOB; 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -46,7 +47,7 @@ namespace template.Admin
                lastname.Value = applicant.lastname;
                middlename.Value = applicant.middlename;
                mail.Value = applicant.mailAddress;
-               datepicker.Value = applicant.dateOfBirth;
+               DOB = applicant.dateOfBirth;
                email.Value = applicant.email;
                place_ofBirth.Text = applicant.placeOfBirth;
                nationality.Value = applicant.nationality;
@@ -101,7 +102,7 @@ namespace template.Admin
                 applicant.lastname =lastname.Value ;
                 applicant.middlename = middlename.Value ;
                 applicant.mailAddress =mail.Value ;
-                applicant.dateOfBirth =datepicker.Value ;
+                applicant.dateOfBirth = Request.Form["datepicker"];
                 applicant.email = email.Value;
                 applicant.placeOfBirth = place_ofBirth.Text.ToString();
                 applicant.nationality = nationality.Value ;
@@ -115,7 +116,7 @@ namespace template.Admin
                 applicant.fax =fax_number.Value ;
                 applicant.registrationNb =registratoin_nb.Value ;
                 applicant.applicantID = Int32.Parse(Request.QueryString["applicantID"]);
-                applicant.gender = Request.Form["gender"];
+                applicant.gender = gender.Value;
                 
                 
 
