@@ -13,16 +13,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                    Edit Applicant
-                </div>
-        
-                    <div class="panel-body" >
+                </div>  
+                  <div class="panel-body" >
                         <div class="row">
-                         <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
-                        <p><asp:Label id="successMsg" runat="server" Text="" /></p>
-                    </div>
-                    <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
-                        <p><asp:Label id="errMsg" runat="server" Text="" /></p>
-                    </div>
+                            <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
+                                 <p><asp:Label id="successMsg" runat="server" Text="" /></p>
+                            </div>
+                            <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
+                                <p><asp:Label id="errMsg" runat="server" Text="" /></p>
+                            </div>
                  
                             <div class="row col-xs-12 col-md-12 col-sm-12" > 
                                   <!--this is the left division -->
@@ -93,9 +92,9 @@
                                         <div class="form-group">
                                             <label for="club" class="col-md-3 control-label" >Hunting Club</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="club" name="club">
+                                                <select class="form-control"  id="club" name="club" disabled="disabled">
                                                     <%
-                                                    foreach( template.DBModel.HuntingClub club in clubs )
+                                                    foreach(template.DBModel.HuntingClub club in clubs )
                                                         { %>
                                                         <option value="<%= club.clubID %>"><%= club.clubName %></option>
                                                     <%  }; %>
@@ -110,20 +109,18 @@
                                         <div class="form-group">
                                              <label for="userbame"  class="col-md-3 control-label" >Username</label>
                                             <div class="col-md-9">
-                                                <input type="text"    runat="server" required="required" class="form-control" id="username"   name="username" />
+                                                <input type="text" disabled="disabled" runat="server" required="required" class="form-control" id="username"   name="username" />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="icode" class="col-md-3 control-label">Gender</label>
                                             <div class="col-md-9" >
-                                                <select name="gender" class="form-control">
-                                                    <option id="male" runat="server" text-align="right" value="male">Male</option>
-                                                    <option id="female" runat="server" text-align="right" value="female">Female</option>
+                                                <select name="gender" id="gender" runat="server" class="form-control">
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
                                                 </select>
-                                            </div>
-                                            
-                                            
+                                            </div>  
                                         </div>
                                         <div class="form-group">
                                             <label for="icode" class="col-md-3 control-label"> Place Of Birth</label>
@@ -131,7 +128,7 @@
                                                 <asp:TextBox  runat="server" id="place_ofBirth" class="form-control" Text="place_ofBirth"  />
                                             </div>
                                         </div>
-                                       <div class="form-group">
+                                        <div class="form-group">
                                            <label for="icode" class="col-md-3 control-label">City</label>
                                             <div class="col-md-9">
                                                 <input type="text"  runat="server" id="city" required="required" class="form-control" name="city"  />
@@ -151,15 +148,12 @@
                                              <div class="col-md-9">
                                                 <input type="text"  runat="server" id="bloodType"  required="required" class="form-control" name="blood_type"   />
                                             </div>
-                                            
-
                                         </div>
                                         <div class="form-group">
                                             <label for="icode" class="col-md-3 control-label">Profession</label>
                                            <div class="col-md-9">
                                                 <input type="text"  runat="server" id="profession" required="required" class="form-control" name="profession"  />
-                                            </div>
-                                            
+                                            </div> 
                                         </div>
                                         <div class="form-group">
                                             <label for="icode" class="col-md-3 control-label">Email Address</label>
@@ -168,8 +162,8 @@
                                             </div>
                                         </div>
                     
-                                </div>
-                            </div> 
+                                    </div>
+                                </div> 
                             <div class="row">
                                 <div class="form-horizontal">
                                     <div class="form-group">                                  
@@ -181,12 +175,12 @@
                                     </div>
                                 </div>
                             </div>
-                     </div>
-                </div>
+                            </div>
+                        </div>
+                  </div>
             </div>
-            </div>
-        
-     </div> 
+        </div> 
+    </div>
     <!--date picker components-->
     <link rel="stylesheet" href="http://localhost:50867/code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>

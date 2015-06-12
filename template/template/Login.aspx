@@ -107,7 +107,7 @@
                                             </div>
                                             <label for="address" class="col-md-3 control-label" >العنوان</label>
                                         </div>
-                                    </div>
+                                    
                                         <div class="form-group">
                                              <div class="col-md-9">
                                                 <input type="text" dir="rtl"  required="required" class="form-control" name="blood_type"   placeholder="فئة الدم"/>

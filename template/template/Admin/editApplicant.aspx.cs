@@ -16,18 +16,22 @@ namespace template.Admin
          string ID  ;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                fillClubSelect();
-                 ID = Request.QueryString["applicantID"];
-                fillApplicantToView(ID);
-                errMsgDiv.Style.Add("display", "none");
-                successMsgDiv.Style.Add("display", "none");
-            }
-            catch (Exception exc)
-            {
-                errMsgDiv.Style.Remove("display");
-                errMsg.Text = exc.Message;
+               
+                try
+                {
+                    fillClubSelect();
+                    ID = Request.QueryString["applicantID"];
+                    fillApplicantToView(ID);
+                    errMsgDiv.Style.Add("display", "none");
+                    successMsgDiv.Style.Add("display", "none");
+                }
+                catch (Exception exc)
+                {
+                    errMsgDiv.Style.Remove("display");
+                    errMsg.Text = exc.Message;
+                }
             }
         }
 
@@ -55,8 +59,20 @@ namespace template.Admin
                username.Value = applicant.username;
                fax_number.Value = applicant.fax;
                registratoin_nb.Value = applicant.registrationNb;
-               
-               
+               if (applicant.gender == "male")
+               {
+                   gender.SelectedIndex = 0;
+               }
+               else
+               {
+                   gender.SelectedIndex = 1;
+               }
+
+               //get hunting club 
+               HuntingClub ApplicantClub = (new HuntingClubService()).getHuntingClubByApplicant(applicant);
+               clubs.Clear();
+               clubs.Add(ApplicantClub);
+
 
            }else{
                 errMsgDiv.Style.Remove("display");
@@ -98,8 +114,9 @@ namespace template.Admin
                 applicant.username = username.Value ;
                 applicant.fax =fax_number.Value ;
                 applicant.registrationNb =registratoin_nb.Value ;
-                applicant.applicantID = Int32.Parse(ID);
+                applicant.applicantID = Int32.Parse(Request.QueryString["applicantID"]);
                 applicant.gender = Request.Form["gender"];
+                
                 
 
                 if (!controller.updateApplicant(applicant))

@@ -82,6 +82,56 @@ namespace template.DBService
             dbObj.CloseConnection();
             return ds;
         }
+
+
+
+        public HuntingClub getHuntingClubByApplicant(DBModel.Applicant applicant)
+        {
+            HuntingClub club = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Select * from RegistrationRequests inner join HuntingClub "
+                             + "on RegistrationRequests.clubID = HuntingClub.clubID "
+                             + "inner join Usertable on HuntingClub.adminUserID= UserTable.userID "
+                             + "where RegistrationRequests.applicantID =" + applicant.applicantID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    club = fillHuntingClub(reader);
+                }
+
+            }
+            dbObj.CloseConnection();
+
+            return club;
+        }
+
+
+        public HuntingClub getClubofID(int ID)
+        {
+            HuntingClub club = null;
+
+            String query = "Select * from HuntingClub where clubID=" + ID;
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    club = fillHuntingClub(reader);
+                    
+
+                }
+            }
+            dbObj.CloseConnection();
+
+            return club;
+
+        }
+
         /// <summary>
         /// fill club object fromsqldatareader
         /// </summary>
