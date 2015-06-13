@@ -93,5 +93,27 @@ namespace template.DBService
 
             return course;
         }
+
+        internal bool updateCourse(Course course)
+        {
+            SQLClass dbObj = new SQLClass();
+
+            SqlConnection conn = dbObj.openConnection();
+            // add the insert between transaction and commit in order no to lose data integratiy ... 
+            using (conn)
+            {
+
+                String query = "update  Course set courseName ='" + course.courseName + "', "
+                                + "courseDesc = '" + course.courseDesc + "' "
+                                + "where courseID =" + course.courseID;
+
+
+                dbObj.executeQuery(query);
+
+            }
+
+            dbObj.CloseConnection();
+            return true;
+        }
     }
 }

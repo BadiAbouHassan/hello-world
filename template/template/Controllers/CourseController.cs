@@ -28,5 +28,10 @@ namespace template.Controllers
         {
             return this.courseService.getCourses(courseID);
         }
+
+        internal bool updateCourse(Course course)
+        {
+            return this.courseService.updateCourse(course);
+        }
     }
 }
