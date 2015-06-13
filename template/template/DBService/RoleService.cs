@@ -45,7 +45,8 @@ namespace template.DBService
             return result;
         }
 
-        public DataSet getRoleDataSet()
+
+          public DataSet getRoleDataSet()
         {
             SQLClass dbObj = new SQLClass();
             DataSet ds = new DataSet();

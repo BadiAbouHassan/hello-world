@@ -28,5 +28,12 @@ namespace template.Controllers
         {
             return this.userService.checkUserAuthentication(username, password);
         }
+
+        public User getUserByID(int ID)
+        {
+            return this.userService.getUserByID(ID);
+        }
+
+
     }
 }

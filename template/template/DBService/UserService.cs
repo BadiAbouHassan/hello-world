@@ -116,5 +116,25 @@ namespace template.DBService
 
         }
 
+
+        public User getUserByID(int p)
+        {
+            User user = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                
+                String query = "Select * from UserTable inner join Role on userTable.roleID = Role.roleID WHERE userID = " + p;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                     user = fillUser(reader);
+                }
+            }
+            dbObj.CloseConnection();
+
+            return user;
+        }
     }
 }

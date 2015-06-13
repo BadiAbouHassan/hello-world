@@ -26,8 +26,17 @@ namespace template.Admin
                 //get the logged user
                 DBModel.User loggedAdmin = (DBModel.User)Session["logged_user"];
 
-                applicants = appService.getAllApplicantsOfAdminClub(loggedAdmin); //only view the applicants of the hunting club of the admin
+                //chck the role of the user
+                Role UserRole = loggedAdmin.role;
+                if (UserRole.roleName == "superadmin")
+                {
+                    applicants = appService.getAllApplicants();
 
+                }
+                else if (UserRole.roleName == "admin")
+                {
+                    applicants = appService.getAllApplicantsOfAdminClub(loggedAdmin); //only view the applicants of the hunting club of the admin
+                }
                 if (applicants.Count != 0)
                 {
                     for (int i = 0; i < applicants.Count; i++)
