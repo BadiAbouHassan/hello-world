@@ -26,5 +26,15 @@ namespace template.Controllers
         {
             return this.huntingClubService.getClubs(clubID);
         }
+
+        public HuntingClub getHuntingClubByID(int p)
+        {
+            return this.huntingClubService.getClubofID(p);
+        }
+
+        internal bool updateHuntingClub(HuntingClub huntingClub)
+        {
+            return this.huntingClubService.updateHuntingClub(huntingClub);
+        }
     }
 }

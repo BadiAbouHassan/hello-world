@@ -113,7 +113,7 @@ namespace template.DBService
         {
             HuntingClub club = null;
 
-            String query = "Select * from HuntingClub where clubID=" + ID;
+            String query = "Select * from HuntingClub inner join UserTable on HuntingClub.adminUserID =  UserTable.userID where HuntingClub.clubID=" + ID;
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
@@ -140,11 +140,12 @@ namespace template.DBService
         private HuntingClub fillHuntingClub(SqlDataReader reader)
         {
             HuntingClub club = new HuntingClub();
-            club.clubName = reader["clubname"].ToString();
+            club.clubName = reader["clubName"].ToString();
             club.clubAddress = reader["clubAddress"].ToString();
             club.clubID = Int32.Parse(reader["clubID"].ToString());
             club.email = reader["email"].ToString();
             club.phoneNb = reader["phoneNb"].ToString();
+            club.adminUserID = Int32.Parse(reader["adminUserID"].ToString());
             User user = new User();
             user.username = reader["username"].ToString();
             user.firstName =  reader["firstName"].ToString();
@@ -158,5 +159,30 @@ namespace template.DBService
         }
 
 
+
+        public bool updateHuntingClub(HuntingClub huntingClub)
+        {
+            SQLClass dbObj = new SQLClass();
+
+            SqlConnection conn = dbObj.openConnection();
+            // add the insert between transaction and commit in order no to lose data integratiy ... 
+            using (conn)
+            {
+
+                String query = "update  HuntingClub set clubName ='" + huntingClub.clubName + "', "
+                                + "clubAddress = '" + huntingClub.clubAddress + "',"
+                                + "phoneNb ='" + huntingClub.phoneNb+ "', "
+                                + "email  = '" + huntingClub.email + "',  "
+                                + "adminUserID  = '" + huntingClub.adminUserID + "'  "
+                                + "where clubID =" + huntingClub.clubID;
+
+
+                dbObj.executeQuery(query);
+
+            }
+
+            dbObj.CloseConnection();
+            return true;
+        }
     }
 }

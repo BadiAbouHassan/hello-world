@@ -52,6 +52,10 @@ namespace template.Admin
                         TableCell adminID = new TableCell();
                         adminID.Text = clubs[i].user.firstName.ToString() + " " + clubs[i].user.lastName.ToString();
                         tRow.Cells.Add(adminID);
+
+                        TableCell editCell = new TableCell();
+                        editCell.Text = "<a href='/Admin/addClub.aspx?clubID=" + clubs[i].clubID + "'>Edit</a>";
+                        tRow.Cells.Add(editCell);
                     }
                 }
             }
