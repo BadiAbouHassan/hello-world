@@ -43,37 +43,45 @@
 
 <body>
 
-    <div class="container" style="max-width: 600px;">
-
-        <form class="form-signin" runat="server">
-
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <div class="alert alert-success" style="display: none;" id="successMsgDiv" runat="server">
-                <p>
-                    <asp:Label ID="successMsg" runat="server" Text="" /></p>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form id="Form1" class="form-signin" runat="server">
+                            <div class="alert alert-success" style="display: none;" id="successMsgDiv" runat="server">
+                                <p>
+                                    <asp:Label ID="successMsg" runat="server" Text="" /></p>
+                            </div>
+                            <div class="alert alert-danger" style="display: none;" id="errMsgDiv" runat="server">
+                                <p>
+                                    <asp:Label ID="errMsg" runat="server" Text="" /></p>
+                            </div>
+                        
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Username" id="user_name" name="user_name" runat="server" autofocus />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="password" id="password" type="password" runat="server" value=""/>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me" runat="server"/>Remember Me
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <asp:Button ID="btnSave" class="btn btn-lg btn-success btn-block" runat="server" type="submit" OnClick="btnSave_Click" Text="Login" value="Sign In" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="alert alert-danger" style="display: none;" id="errMsgDiv" runat="server">
-                <p>
-                    <asp:Label ID="errMsg" runat="server" Text="" /></p>
-            </div>
-            <label for="inputEmail" class="sr-only">User Name</label>
-            <input type="text" id="user_name" name="user_name" runat="server" class="form-control" placeholder="username" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="password" runat="server" class="form-control" placeholder="Password" required>
-            <%--<div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me">
-                    Remember me
-                </label>
-            </div>--%>
-            <asp:Button ID="btnSave" class="btn btn-lg btn-primary btn-block" runat="server" type="submit" OnClick="btnSave_Click" Text="Save" value="Sign In" />
-
-        </form>
-
+        </div>
     </div>
-    <!-- /container -->
-
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
