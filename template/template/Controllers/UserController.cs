@@ -34,6 +34,9 @@ namespace template.Controllers
             return this.userService.getUserByID(ID);
         }
 
-
+        public bool updateUser(User user)
+        {
+            return this.userService.updateUser(user);
+        }
     }
 }

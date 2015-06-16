@@ -13,8 +13,40 @@ namespace template.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.fillRoleSelect();
+            if (!IsPostBack)
+            {
+                this.fillRoleSelect();
+                if (Request.QueryString["UserId"] != null)
+                {
+                    int UserId = int.Parse(Request.QueryString["UserId"]);
+                    fillUser(UserId);
+                }
+            }
+            
         }
+        private void fillUser(int userId)
+        {
+            try
+            {
+                UserController usercontroller = new UserController();
+                DBModel.User user = usercontroller.getUserByID(userId);
+                firstName.Value = user.firstName;
+                lastName.Value = user.lastName;
+                userName.Value = user.username;
+                pass.Value = user.password;
+                confirmPass.Value = user.password;
+                email.Value = user.email;
+                ListItem li = roles.Items.FindByValue( user.roleID.ToString());
+                li.Selected = true;
+            }
+            catch (Exception exc)
+            {
+                errMsgDiv.Style.Remove("display");
+                errMsg.Text = exc.Message;
+            }
+
+        }
+
         public void fillRoleSelect()
         {
 
@@ -49,7 +81,19 @@ namespace template.Admin
                 user.role = role;
                 user.roleID = role.roleID;
 
-                if (!controller.addUser(user))
+                if (Request.QueryString["UserId"] != null)
+                {
+                    user.userID = Int32.Parse(Request.QueryString["UserId"]);
+                    if (!controller.updateUser(user))
+                    {
+                        errMsgDiv.Style.Remove("display");
+                        errMsg.Text = "Error Saving User data!";
+                    }
+
+                    successMsgDiv.Style.Remove("display");
+                    successMsg.Text = "User data updated successfuly!";
+                }
+                else if (!controller.addUser(user))
                 {
                     errMsgDiv.Style.Remove("display");
                     errMsg.Text = "Error Saving user data!";

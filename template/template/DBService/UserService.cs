@@ -115,7 +115,25 @@ namespace template.DBService
             return user;
 
         }
-
+        public bool updateUser(User user)
+        {
+            SQLClass dbObj = new SQLClass();
+            SqlConnection conn = dbObj.openConnection();
+            // add the insert between transaction and commit in order no to lose data integratiy ... 
+            using (conn)
+            {
+                String query = "update  UserTable set firstName ='" + user.firstName+ "', "
+                                + "lastName= '" + user.lastName+ "',"
+                                + "email ='" + user.email+ "', "
+                                + "username  = '" + user.username+ "',  "
+                                + "pass  = '" + user.password+ "' , "
+                                + "roleID = '"+user.roleID+"' "
+                                + "where userID =" + user.userID;
+                dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
+            return true;
+        }
 
         public User getUserByID(int p)
         {
