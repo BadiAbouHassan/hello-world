@@ -55,6 +55,10 @@ namespace template.Admin.User
                         TableCell role = new TableCell();
                         role.Text = users[i].role.roleName;
                         tRow.Cells.Add(role);
+
+                        TableCell editCell = new TableCell();
+                        editCell.Text = "<a href='/Admin/addUser.aspx?UserId=" + users[i].userID+ "'>Edit</a>";
+                        tRow.Cells.Add(editCell);
                     }
                 }
             }

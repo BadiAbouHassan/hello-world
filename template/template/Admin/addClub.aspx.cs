@@ -22,8 +22,6 @@ namespace template.Admin
                     clubID = Request.QueryString["clubID"];
                     fillClub(clubID);
                 }
-
-               
             }
         }
 
