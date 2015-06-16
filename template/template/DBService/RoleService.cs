@@ -45,6 +45,20 @@ namespace template.DBService
             return result;
         }
 
+        public Boolean updateRole(Role role)
+        {
+            Boolean result;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Update Role Set roleName = '"+role.roleName+"' , predefined = '"+role.predefined+"' where roleID = '"+role.roleID+"'";
+                dbObj.selectQuery(query);
+
+            }
+            dbObj.CloseConnection();
+            return true;
+        }
+
 
           public DataSet getRoleDataSet()
         {
@@ -71,7 +85,7 @@ namespace template.DBService
                     whereCondition = " WHERE roleID = " + roleID;
                 }
 
-                String query = "Select * from Role";
+                String query = "Select * from Role " + whereCondition;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())

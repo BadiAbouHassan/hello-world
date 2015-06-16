@@ -40,6 +40,10 @@ namespace template.Admin.User
                         TableCell durationCell = new TableCell();
                         durationCell.Text = roles[i].predefined == 0 ? "False": "True";
                         tRow.Cells.Add(durationCell);
+
+                        TableCell editCell = new TableCell();
+                        editCell.Text = "<a href='/Admin/addRole.aspx?roleID=" + roles[i].roleID+ "'>Edit</a>";
+                        tRow.Cells.Add(editCell);
                     }
                 }
             }
