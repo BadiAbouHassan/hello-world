@@ -40,6 +40,10 @@ namespace template.Admin.User
                         TableCell durationCell = new TableCell();
                         durationCell.Text = permissions[i].code;
                         tRow.Cells.Add(durationCell);
+
+                        TableCell editCell = new TableCell();
+                        editCell.Text = "<a href='/Admin/addPermission.aspx?permissionID=" + permissions[i].permissionID+ "'>Edit</a>";
+                        tRow.Cells.Add(editCell);
                     }
                 }
             }

@@ -23,5 +23,9 @@ namespace template.Controllers
         {
             return this.permissionService.getPermissions(permissionID);
         }
+        public Boolean updatePermission(Permission permission)
+        {
+            return this.permissionService.updatePermission(permission);
+        }
     }
 }

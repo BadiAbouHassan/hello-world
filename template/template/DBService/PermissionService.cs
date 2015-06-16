@@ -35,6 +35,19 @@ namespace template.DBService
             dbObj.CloseConnection();
             return result;
         }
+
+        public Boolean updatePermission(Permission permission)
+        {
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Update Permission Set name = '"+permission.name+"', code = '"+permission.code+"' where permissionID = '"+permission.permissionID+"'";
+                dbObj.selectQuery(query);
+            }
+            dbObj.CloseConnection();
+            return true;
+        }
+
         public List<Permission> getPermissions(int permissionID = 0)
         {
             List<Permission> req = new List<Permission>();
@@ -46,7 +59,7 @@ namespace template.DBService
                 {
                     whereCondition = " WHERE permissionID = " + permissionID;
                 }
-                String query = "Select * from Permission";
+                String query = "Select * from Permission " + whereCondition;
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())
                 {
