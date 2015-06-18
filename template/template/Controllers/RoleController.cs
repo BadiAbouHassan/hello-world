@@ -23,5 +23,9 @@ namespace template.Controllers
         {
             return this.roleService.getRoles(roleID);
         }
+        public Boolean updateRole(Role role)
+        {
+            return this.roleService.updateRole(role); 
+        }
     }
 }
