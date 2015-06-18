@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Web;
 using template.Controllers;
 using template.DBModel;
+using System.Data;
 
 namespace template.DBService
 {
@@ -52,6 +53,21 @@ namespace template.DBService
 
             return req;
         }
+
+        public DataSet getExamDataSet()
+        {
+            SQLClass dbObj = new SQLClass();
+            DataSet ds = new DataSet();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "select * from Exam";
+                SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
+                myCommand.Fill(ds, "Exam");
+            }
+            dbObj.CloseConnection();
+            return ds;
+        }
+
         public List<Exam> getExams(int examID = 0 )
         {
             List<Exam> req = new List<Exam>();

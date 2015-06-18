@@ -8,17 +8,29 @@ namespace template.Views
 {
     public partial class questionsWizard : System.Web.UI.Page
     {
-        public DBModel.Applicant loggedApplicant = new DBModel.Applicant() ;
-        public List<DBModel.ExamQuestions> examQuestionsList = new List<DBModel.ExamQuestions>();
-        public List<Model.Question> questionsToView = new List<Model.Question>() ; 
+        public DBModel.Applicant loggedApplicant;
+        public List<DBModel.ExamQuestions> examQuestionsList;
+        public List<Model.Question> questionsToView; 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                loggedApplicant = new DBModel.Applicant();
+                examQuestionsList = new List<DBModel.ExamQuestions>();
+                questionsToView = new List<Model.Question>() ; 
                 // get the logged applicant 
+                 
                 loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
-                // examQuestionList is being filled in the below fuction ... but only the questions to view is returned ...
-                questionsToView = getExamQuestions();
+                if (loggedApplicant != null)
+                {
+                    // examQuestionList is being filled in the below fuction ... but only the questions to view is returned ...
+                    questionsToView = getExamQuestions();
+                }
+                else
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
+                 
             }
             catch (Exception exc)
             {
@@ -38,7 +50,7 @@ namespace template.Views
             if (registrationRequest.verifiedByAdmin == 0)
             {
                 // still not verified 
-                Response.Redirect("../Login.aspx");
+                Response.Redirect("~/Login.aspx");
             }
             // if request have been varified by Admin ...
             // first must get the exam .. active exam ... 

@@ -129,7 +129,6 @@ namespace template.DBService
             dbObj.CloseConnection();
 
             return club;
-
         }
 
         /// <summary>

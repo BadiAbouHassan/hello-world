@@ -91,6 +91,7 @@ namespace template.DBService
                             Applicant.applicantID = Int32.Parse(reader["applicantID"].ToString());
                             RegistrationRequestService reqService = new RegistrationRequestService();
                             req.applicantID = Applicant.applicantID;
+                            reader.Close();
                             req = reqService.addRequestByCnx(req, dbObj);
                         }
                         else
