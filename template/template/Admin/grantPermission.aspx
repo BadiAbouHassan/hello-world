@@ -29,8 +29,10 @@
                                 <p class="help-block"></p>
                             </div>
                             <div class="form-group">
-                                <label>Permission Code</label>
-                                <input placeholder="Permission Code" class="form-control" id="permissionCode" name="permissionCode" runat="server" required="required" />
+                                <label>Permissions</label>
+                                <% foreach (template.DBModel.Permission permission in permissions) { %>
+                                    <label class="checkbox-inline"><input type="checkbox" value=""> <%= permission.name %></label>
+                                <% } %>
                                 <p class="help-block"></p>
                             </div>
                             <asp:Button id="btnSave" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save" OnClick="btnSave_Click" />
