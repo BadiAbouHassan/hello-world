@@ -102,6 +102,9 @@
                                 <li>
                                     <a href="../Admin/viewPermission.aspx">View Permission</a>
                                 </li>
+                                <li>
+                                    <a href="../Admin/grantPermission.aspx">Grant Permission</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
