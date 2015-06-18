@@ -106,6 +106,30 @@ questionMark decimal NOT NULL,
 Primary Key (examID)
 )
 
+create table ExamSchedule(
+examScheduleID int IDENTITY(1,1) NOT NULL,
+examID int NOT NULL,
+clubID int NOT NULL,
+scheduledateTime DATE,
+numberOfSeats int,
+ Primary Key (examScheduleID), 
+FOREIGN KEY (examID) REFERENCES Exam(examID),
+FOREIGN KEY (clubID) REFERENCES HuntingClub(clubID)
+)
+
+create table ExamReservation(
+reservationID int IDENTITY(1,1) NOT NULL,
+examScheduleID int NOT NULL,
+applicantID int NOT NULL,
+referenceID int NOT NULL, 
+Primary Key (reservationID), 
+FOREIGN KEY (examScheduleID) REFERENCES ExamSchedule(examScheduleID),
+FOREIGN KEY (applicantID) REFERENCES Applicant(applicantID),
+FOREIGN KEY (referenceID) REFERENCES RegistrationRequests(referenceID)
+)
+
+
+
 create table QuestionsPerCourse(
 questionsPerCourseID int IDENTITY(1,1) NOT NULL,
 questionsPerCourseNb int NOT NULL,
@@ -119,13 +143,15 @@ FOREIGN KEY (courseID) REFERENCES Course(courseID)
 create table ExamInstance(
 instanceID int IDENTITY(1,1) NOT NULL,
 examID int NOT NULL,
-examDate DATE NOT NULL,
+staringTime DATE NOT NULL,
 examDuration decimal NOT NULL,
 elapsedTime TIME NOT NULL,
 result decimal NOT NULL,
-referenceID int NOT NULL, 
+active int,
+activationTime DATE ,
+reservationID int NOT NULL, 
 Primary Key (instanceID), 
-FOREIGN KEY (referenceID) REFERENCES RegistrationRequests(referenceID),
+FOREIGN KEY (reservationID) REFERENCES ExamReservation(reservationID),
 FOREIGN KEY (examID) REFERENCES Exam(examID)
 
 )
@@ -157,7 +183,7 @@ FOREIGN KEY (permissionID) REFERENCES Permission(permissionID),
 FOREIGN KEY (roleID) REFERENCES Role(roleID)
 )
 
-insert into Role(roleName, predefined) values('superadmin','1';
+insert into Role(roleName, predefined) values('superadmin','1');
 insert into Role(roleName, predefined) values('HuntingClub2','1');
 insert into Role(roleName, predefined) values('HuntingClub3','1');
 insert into Role(roleName, predefined) values('HuntingClub4','1');
@@ -171,3 +197,4 @@ insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values(
 insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
 */
+
