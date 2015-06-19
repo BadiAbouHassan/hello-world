@@ -10,6 +10,9 @@ namespace template.DBModel
         public int permissionID { get; set; }
         public int roleID { get; set; }
 
+        public Role role { get; set; }  
+        public Permission permission {get;set;} 
+
         public GrantedPermission()
         {
         }
