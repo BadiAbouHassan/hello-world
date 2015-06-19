@@ -11,6 +11,7 @@ namespace template.Admin
     public partial class grantPermission : System.Web.UI.Page
     {
         public List<DBModel.Permission> permissions = new List<DBModel.Permission>();
+        public List<DBModel.Permission> userPermissions = new List<DBModel.Permission>(); 
         protected void Page_Load(object sender, EventArgs e)
         {
             this.getPermissions();

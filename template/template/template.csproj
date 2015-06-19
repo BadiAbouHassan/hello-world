@@ -59,6 +59,7 @@
     <Content Include="Admin\deleteCourse.aspx" />
     <Content Include="Admin\editApplicant.aspx" />
     <Content Include="Admin\footer.aspx" />
+    <Content Include="Admin\grantPermission.aspx" />
     <Content Include="Admin\header.ascx" />
     <Content Include="Admin\index.aspx" />
     <Content Include="Admin\login.aspx" />
@@ -356,6 +357,13 @@
     </Compile>
     <Compile Include="Admin\footer.aspx.designer.cs">
       <DependentUpon>footer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\grantPermission.aspx.cs">
+      <DependentUpon>grantPermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\grantPermission.aspx.designer.cs">
+      <DependentUpon>grantPermission.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\header.ascx.cs">
       <DependentUpon>header.ascx</DependentUpon>
