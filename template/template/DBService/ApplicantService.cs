@@ -19,7 +19,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Select * from Applicant where username= '" + username + "' AND pass ='" + password + "' ";
+                String query = "Select * from Applicant where username= '" + username + "' AND pass ='" + password + "'";
                 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
@@ -30,6 +30,19 @@ namespace template.DBService
             }
             dbObj.CloseConnection();
             return Applicant;
+        }
+
+        public void activateApplicantByID(int ID)
+        {
+            Applicant Applicant = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "update  Applicant set accountActivated = 1 where applicantID="+ID;
+
+                dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
         }
 
 
@@ -77,12 +90,12 @@ namespace template.DBService
                         //command.Transaction = transaction;
 
                         String query = "insert into Applicant(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
-                                    + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone) OUTPUT inserted.applicantID values('"
+                                    + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone,accountActivated) OUTPUT inserted.applicantID values('"
                                         + Applicant.username + "', '" + Applicant.password + "', '" + Applicant.firstname + "','" + Applicant.middlename + "', '"
                                         + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', '" + Applicant.placeOfBirth + "','"
                                         + Applicant.registrationNb + "','" + Applicant.nationality + "', '" + Applicant.bloodType + "','" + Applicant.profession + "','"
                                         + Applicant.email + "','" + Applicant.mailAddress + "','" + Applicant.fax + "','" + Applicant.city + "','" + Applicant.applicantAddress + "','"
-                                        + Applicant.cellular + "','" + Applicant.phone + "'); ";
+                                        + Applicant.cellular + "','" + Applicant.phone + "','" +Applicant.accountActivated+"'); ";
 
                        // command.CommandText = query;
                         SqlDataReader reader = dbObj.selectQuery(query);
@@ -131,6 +144,7 @@ namespace template.DBService
             Applicant.applicantAddress = reader["applicantAddress"].ToString();
             Applicant.email = reader["email"].ToString();
             Applicant.password = reader["pass"].ToString();
+            Applicant.accountActivated = Int32.Parse(reader["accountActivated"].ToString());
             return Applicant;
 
         }

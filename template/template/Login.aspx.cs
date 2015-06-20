@@ -18,8 +18,14 @@ namespace template
             try
             {
                 fillClubSelect();
-                //throw new Exception("testing error message and exception how will be ");
-                lbl1.Text = "";
+                if (Request.QueryString["ActivationCode"] != null)
+                {
+                    ApplicantService client_controller = new ApplicantService();
+                    Applicant app = client_controller.getApplicantOfID(Int32.Parse(Request.QueryString["ActivationCode"]));
+                    client_controller.activateApplicantByID(app.applicantID);
+                    successMsgDiv.Style.Remove("display");
+                    successMsg.Text = "تم تفعيل حسابك بنجاح";
+                }
             }
             catch(Exception exc)
             {
@@ -56,21 +62,32 @@ namespace template
                 Applicant loggedClient = client_service.checkApplicantAuthentication(username_login, loginHashed);
                 if (loggedClient == null)
                 {
-                    lbl1.Text = "اسم المستخدم أو كلمة المرور خاطئة";
+                    errMsgDiv.Style.Remove("display");
+                    errMsg.Text = "اسم المستخدم أو كلمة المرور خاطئة";
                 }
                 else
                 {
-                    lbl1.Text = " نجاح الدخول ";
-                    Session["logged_applicant"] = loggedClient;
-                    Response.Redirect("~/Views/homePage.aspx", false);
+                    if (loggedClient.accountActivated == 1)
+                    {
+                        successMsg.Style.Remove("display");
+                        successMsg.Text = " نجاح الدخول ";
+                        Session["logged_applicant"] = loggedClient;
+                        Response.Redirect("~/Views/homePage.aspx", false);
+                    }
+                    else
+                    {
+                        errMsgDiv.Style.Remove("display");
+                        errMsg.Text = " لم يتم تنشيط الحساب الخاص بك حتى الآن، يرجى التحقق من عنوان البريد الإلكتروني الخاص بك للنقر على الرابط لتفعيل حسابك";
+                    }
 
-                    // label1.Text = "Succcessfully added";
                 }
 
             }
             catch (Exception exc)
             {
-                lbl1.Text = exc.Message;
+                String redirect_Location = "../Login.aspx";
+                Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
+
             }
 
         }

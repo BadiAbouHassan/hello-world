@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -16,13 +18,12 @@ namespace template.Controlers
             try
             {
 
-                addApplicant();    
+                addApplicant();
             }
             catch (Exception exp)
             {
-                Response.Redirect("../Views/errorHandler.aspx");
-                // must redirect to erro page and display the Exception in the erro page ... 
-               
+                String redirect_Location = "../Login.aspx";
+                Response.Redirect("/Views/errorHandler.aspx?exceptoin_msg=" + exp.Message + "&redirect_locaiton=" + redirect_Location);
             }
         }
         public void addApplicant()
@@ -61,6 +62,7 @@ namespace template.Controlers
                 user.profession = Request.Form["profession"];
                 user.city = Request.Form["city"];
                 user.password = Hashed_pass;
+                user.accountActivated = 0;
 
                 //create RegistrationRequest object
                 RegistrationRequests req = new RegistrationRequests();
@@ -69,6 +71,7 @@ namespace template.Controlers
                 req.verificationDate = "";
                 req.registrationRequestsDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
 
+                
                 ApplicantService client_controller = new ApplicantService();
                 Applicant addedApplicant = client_controller.addApplicant(user, req);
                 if (addedApplicant != null)
@@ -76,19 +79,52 @@ namespace template.Controlers
                      Response.Redirect("../Login.aspx",false);
 
                     // label1.Text = "Succcessfully added";
+                     sendEmailConfirmation(addedApplicant);
+                     string script = "window.onload = function(){ alert('";
+                     script += "الرجاء اضغط على الرابط في  البريد الاكتروني لتفعيل الحساب";
+                     script += "');";
+                     script += "window.location = '";
+                     script += "'; }";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "تم تسجيل الاشتراك بنجاح" , script , true);
+
                 }
         
             }
             }catch(Exception exc)
             {
-                String  redirect_Location ="../Login.aspx";
+                String redirect_Location = "../Login.aspx";
                 Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
-
                 
 
             }
             
-
         }
+
+        private void sendEmailConfirmation(Applicant addedApplicant)
+        {
+            string activationCode = Guid.NewGuid().ToString();
+            using (MailMessage mm = new MailMessage("loopsolutions2015@gmail.com",
+                addedApplicant.email))
+            {
+
+                mm.Subject = "Account Activation";
+                string body = "Hello " + addedApplicant.firstname + ",";
+                body += "<br /><br />Please click the following link to activate your account";
+                body += "<br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.applicantID +"'>Click here to activate your account.</a>";
+                body += "<br /><br />Thanks";
+
+                mm.Body = body;
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                NetworkCredential NetworkCred = new NetworkCredential("loopsolutions2015@gmail.com", "loops@2015");
+               // smtp.UseDefaultCredentials = false;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;
+                smtp.Send(mm);
+            }
+        }
+
     }
 }

@@ -1,53 +1,59 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/layout.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="template.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="body" runat="server">
     <div class="container">    
-    <div id="loginbox" style="margin-top:50px;" class=" col-sm-8 col-sm-offset-2">                    
-        <div class="panel panel-info" >
-            <div class="panel-heading">
-                <div class="panel-title" align="right">تسجيل الدخول</div>
-                <%--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="index.php?action=forgetPassword" class="btn btn-default">Forgot password?</a></div>--%>
-            </div>     
-            <div style="padding-top:30px" class="panel-body"  align="right">
-                <p><asp:Label id="lbl1" runat="server" Text="" align="right" /></p>
-                <form id="loginform" class="form-horizontal" role="form"  method="post"  >
-                        <div style="margin-bottom: 25px" class="input-group" align="right"  >
-                             <input required="required" id="login_username" text-align="right" dir="rtl"  type="text" class="form-control" name="username" value="" runat="server" placeholder="اسم المستخدم أو البريد الإلكتروني"/>                                        
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        </div>
-                        <div style="margin-bottom: 25px" class="input-group" >
-                             <input required="required" id="login_password" text-align="right" dir="rtl"  type="password" class="form-control" name="password" runat="server" placeholder="كلمة السر"/>
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        </div>
-                        <div class="input-group" >
-                            <div class="checkbox" >
-                                <label>
-                                    <input id="login-remember" dir="rtl"   type="checkbox" name="remember" value="1"/>تحفيظ الدخول
-                                </label>
+        <div id="loginbox" style="margin-top:50px;" class=" col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                <div class="panel-heading">
+                    <div class="panel-title" align="right">تسجيل الدخول</div>
+                    <%--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="index.php?action=forgetPassword" class="btn btn-default">Forgot password?</a></div>--%>
+                </div>     
+                <div style="padding-top:30px" class="panel-body"  align="right">
+               
+                    <form id="loginform" class="form-horizontal" role="form"  method="post"  >
+                         <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
+                            <p><asp:Label id="successMsg" runat="server" Text="" /></p>
+                    </div>
+                    <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
+                                    <p><asp:Label id="errMsg" runat="server" Text="" /></p>
+                     </div>
+                            <div style="margin-bottom: 25px" class="input-group" align="right"  >
+                                 <input required="required" id="login_username" text-align="right" dir="rtl"  type="text" class="form-control" name="username" value="" runat="server" placeholder="اسم المستخدم أو البريد الإلكتروني"/>                                        
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             </div>
-                        </div>
-                        <div style="margin-top:10px" class="form-group">
-                            <!-- Button -->
-                            <div class="col-sm-12 controls">
-                                <asp:Button id="btnLogin" runat="server" Text="تسجيل الدخول" class="btn btn-success" value="Log in " OnClick="signIn" />
+                            <div style="margin-bottom: 25px" class="input-group" >
+                                 <input required="required" id="login_password" text-align="right" dir="rtl"  type="password" class="form-control" name="password" runat="server" placeholder="كلمة السر"/>
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12 control">
-                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                  ليس لديك حساب!
-                                    <a href="#" onclick="$('#loginbox').fadeToggle(); $('#signupbox').fadeToggle()">
-                                    اشترك هنا
-                                </a>
+                            <div class="input-group" >
+                                <div class="checkbox" >
+                                    <label>
+                                        <input id="login-remember" dir="rtl"   type="checkbox" name="remember" value="1"/>تحفيظ الدخول
+                                    </label>
                                 </div>
                             </div>
-                        </div>    
-                    </form>    
-                </div>                     
-            </div>  
-    </div>
+                            <div style="margin-top:10px" class="form-group">
+                                <!-- Button -->
+                                <div class="col-sm-12 controls">
+                                    <asp:Button id="btnLogin" runat="server" Text="تسجيل الدخول" class="btn btn-success" value="Log in " OnClick="signIn" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                      ليس لديك حساب!
+                                        <a href="#" onclick="$('#loginbox').fadeToggle(); $('#signupbox').fadeToggle()">
+                                        اشترك هنا
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>    
+                        </form>    
+                    </div>                     
+                </div>  
+        </div>
 
 
-    <div id="signupbox" style="display:none; margin-top:50px" class="" align="right">
+        <div id="signupbox" style="display:none; margin-top:50px" class="" align="right">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="panel-title" align="right" >تسجيل الاشتراك</div>
@@ -95,7 +101,7 @@
                                             <label for="icode" class="col-md-3 control-label">مكان الميلاد</label>
    
                                         </div>
-                                       <div class="form-group">
+                                        <div class="form-group">
                                             <div class="col-md-9">
                                                 <input type="text" dir="rtl" required="required" class="form-control" name="city"   placeholder="المدينة"/>
                                             </div>
@@ -129,7 +135,7 @@
 
                                         </div>
                     
-                                </div>
+                                    </div>
                                 </div>
                                   <!--this is the left division -->
                                 <div class="col-md-6 col-xs-12" >
@@ -220,7 +226,7 @@
                                     </div>
                                 </div>
                              
-                            <div class="row" align="left">
+                                <div class="row" align="left">
                                 <div class="form-horizontal">
                                     <div class="form-group">                                  
                                         <div class="col-md-offset-3 col-md-9" align="left">
@@ -235,10 +241,10 @@
                         </form>
                      </div>
                 </div>
-    </div> 
+        </div> 
     </div>
     <!--date picker components-->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://localhost:50867/code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script>
