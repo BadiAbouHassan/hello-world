@@ -15,8 +15,11 @@ namespace template.Admin
        
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                this.fillUsersSelect();
+            }
             this.getPermissions();
-            this.fillUsersSelect();
         }
         public void getPermissions()
         {
@@ -45,18 +48,16 @@ namespace template.Admin
 
         protected void GetPermissions_Click(object sender, EventArgs e)
         {
+            PermissionsList.Items.Clear();
             // get the role of the selected User in order to get the granted permissions  
             UserController userController = new UserController();
             DBModel.User selectedUser = userController.getUserByID(int.Parse(Users.Value.ToString()));
             GrantedPermissionController grantedPermissionController = new GrantedPermissionController() ;
-            List<DBModel.GrantedPermission> selectedUserGrantedPermission = grantedPermissionController.getGrantedPermission(selectedUser.role); 
+            List<DBModel.GrantedPermission> selectedUserGrantedPermission = grantedPermissionController.getGrantedPermission(selectedUser.role);
 
-            foreach (Permission permission in permissions)
+            for (int j = 0; j < permissions.Count; j++ )
             {
-                Label label = new Label();
-                label.CssClass = "checkbox-inline";
-                CheckBox checkBox = new CheckBox();
-                checkBox.Text = permission.name;
+                Permission permission = permissions[j];
                 // Must check if the permission is granted to this role ... 
                 Boolean checkPermission = false;
                 for (int i = 0; i < selectedUserGrantedPermission.Count; i++)
@@ -64,19 +65,15 @@ namespace template.Admin
                     GrantedPermission grantedPermission = selectedUserGrantedPermission[i];
                     if (grantedPermission.permissionID == permission.permissionID)
                     {
-                        checkPermission = true; 
+                        checkPermission = true;
                     }
                 }
+                PermissionsList.Items.Add(permission.name.ToString());
                 if (checkPermission)
                 {
-                    checkBox.Checked = true;
+                    PermissionsList.Items[j].Selected = true;
                 }
-                label.Controls.Add(checkBox);
-
-                permissionsDiv.Controls.Add(label);
             }
-
-            //permissionsDiv.InnerHtml = "<h1>Testing hoob</h1>";
         }
     }
 }

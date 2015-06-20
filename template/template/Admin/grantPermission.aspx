@@ -31,7 +31,7 @@
                             <asp:Button id="GetPermissions" class="btn btn-primary" runat="server" type="submit" Text="Get Permissions" value="Get Permissions" OnClick="GetPermissions_Click" />
                             <div class="form-group" id="permissionsDiv" runat="server">
                                 <label>Permissions</label>
-                             
+                                <asp:CheckBoxList id="PermissionsList" runat="server" />
                                 <p class="help-block"></p>
                             </div>
                             <asp:Button id="btnSave" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save" OnClick="btnSave_Click" />

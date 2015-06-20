@@ -76,6 +76,15 @@ namespace template.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl permissionsDiv;
         
         /// <summary>
+        /// PermissionsList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList PermissionsList;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
