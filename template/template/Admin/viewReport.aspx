@@ -16,58 +16,67 @@
                 </div>
                 <div class="panel-body">
                     <div class="row col-xs-12 col-md-12">      
-                    <div class="col-md-6 col-xs-12" >
-                         <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
-                                <p><asp:Label id="successMsg" runat="server" Text="" /></p>
-                            </div>
-                            <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
-                                <p><asp:Label id="errMsg" runat="server" Text="" /></p>
-                            </div>
-                        <div class="form-horizontal">
-                            <div class="col-md-9">
-                                  <input type="text" dir="rtl" required="required" id="toDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
-                            </div>
-                            <label for="toDate" class="col-md-3 control-label" > الى تاريخ</label>
-                        </div>
-                        <div class="form-horizontal">
-                            <div class="form-group">   
-                            <div class="col-md-9">
-                                <select name="result" class="form-control">
-                                    <option dir="rtl"  value="all">الجميع</option>
-                                    <option dir="rtl"  value="passed">ناجح</option>
-                                    <option dir="rtl"  value="failed">راسب</option>
-                                </select>
-                            </div>
-                            <label for="result" class="col-md-3 control-label" >النتيجة</label>
-                        </div>
-                         </div>
-                      <div class="form-horizontal">
-                            <div class="form-group">   
-                            <div class="col-md-9">  
-                             <input type="submit" id="btnSort"  class="btn btn-info" value="sort" onclick="sort" runat="server" />
-                            </div>
-                           </div>
-                         </div>
-                     </div>
-                    <div class="col-md-6 col-xs-12" >    
-                           <div class="form-group">
-                                <div class="col-md-9">
-                                  <input type="text" dir="rtl" required="required" id="fromDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
-                               </div>
-                               <label  class="col-md-3 control-label" > من تاريخ</label>
-                           </div>
-                           <div class="form-group">
-                                <div class="col-md-9 ">
-                                    <select class="form-control" id="club" name="club">
-                                        <%
-                                        foreach( template.DBModel.HuntingClub club in clubs )
-                                            { %>
-                                            <option value="<%= club.clubID %>"><%= club.clubName %></option>
-                                        <%  }; %>
-                                    </select>
+                        <div class="col-md-6 col-xs-12" >
+                             <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
+                                    <p><asp:Label id="successMsg" runat="server" Text="" /></p>
                                 </div>
-                                <label for="address" class="col-md-3 control-label" >النادي</label>
-                            </div> 
+                             <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
+                                    <p><asp:Label id="errMsg" runat="server" Text="" /></p>
+                                </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">                                  
+                                  <div class="col-md-9">
+                                      <input type="text" dir="rtl" required="required" id="toDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
+                                   </div>
+                                      <label for="toDate" class="col-md-3 control-label" > الى تاريخ</label>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">   
+                                    <div class="col-md-9">
+                                        <select name="result" class="form-control">
+                                            <option dir="rtl"  value="all">الجميع</option>
+                                            <option dir="rtl"  value="passed">ناجح</option>
+                                            <option dir="rtl"  value="failed">راسب</option>
+                                        </select>
+                                    </div>
+                                    <label for="result" class="col-md-3 control-label" >النتيجة</label>
+                                </div>
+                             </div>
+                            <div class="form-horizontal">
+                                <div class="form-group">   
+                                <div class="col-md-9">  
+                                 <input type="submit" id="btnSort"  class="btn btn-info" value="sort" onclick="sort" runat="server" />
+                                </div>
+                               </div>
+                             </div>
+                         </div>
+                   
+                        <div class="col-md-6 col-xs-12" >    
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                        <div class="col-md-9">
+                                          <input type="text" dir="rtl" required="required" id="fromDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
+                                       </div>
+                                       <label  class="col-md-3 control-label" > من تاريخ</label>
+                                   </div>
+                                </div>
+                         
+                        <div class="form-horizontal">
+                               <div class="form-group">
+                                    <div class="col-md-9 ">
+                                        <select class="form-control" id="club" name="club">
+                                            <%
+                                            foreach( template.DBModel.HuntingClub club in clubs )
+                                                { %>
+                                                <option value="<%= club.clubID %>"><%= club.clubName %></option>
+                                            <%  }; %>
+                                        </select>
+                                    </div>
+                                    <label for="address" class="col-md-3 control-label" >النادي</label>
+                                </div>
+                            </div>
+                        <div class="form-horizontal"> 
                            <div class="form-group">
                                 <div class="col-md-9">
                                         <select name="nationality" class="form-control">
@@ -79,8 +88,9 @@
                              </div>
                         </div>
                     </div>
-                 </div>
-                  <div class="table-responsive">
+                    </div>
+                 </div>   
+                  <div class="table-responsive" dir='rtl'>
                      <asp:Table ID="Table1" runat="server" BorderColor="#DADDE1" CellPadding="5" CellSpacing="5" CssClass="table table-bordered table-striped" >
                         <asp:TableRow>
                             <asp:TableCell ColumnSpan="9" BackColor="White" style="border-top:none; border-left:none" ></asp:TableCell>
@@ -88,7 +98,7 @@
                             <asp:TableCell ColumnSpan="1"  BackColor="White" style="border-top:none; border-right:none"></asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
-                         <asp:TableHeaderCell ID="TableHeaderRow1" runat="server" >
+                         <asp:TableHeaderCell ID="TableHeaderRow1" runat="server"  >
                             <asp:TableCell ID="TableCell1" runat="server"><b>الرقم</b></asp:TableCell>
                             <asp:TableCell ID="TableCell2" runat="server"><b>الاسم</b></asp:TableCell>
                             <asp:TableCell ID="TableCell4" runat="server"><b>الجنس</b></asp:TableCell>
@@ -106,20 +116,21 @@
                              <asp:TableRow>
                                 <asp:TableCell ColumnSpan="8" BackColor="White"></asp:TableCell>
                                 <asp:TableCell ><b>المعدل</b></asp:TableCell>
-                                <asp:TableCell ID="average_theory">sdas</asp:TableCell> 
-                                <asp:TableCell ID="average_experimental">sdas</asp:TableCell> 
-                                <asp:TableCell ID="average_total" >sdas</asp:TableCell>  
+                                <asp:TableCell ID="average_theory" runat="server">0.0</asp:TableCell> 
+                                <asp:TableCell ID="average_experimental" runat="server">0.0</asp:TableCell> 
+                                <asp:TableCell ID="average_total" runat="server" >0.0</asp:TableCell>  
                             </asp:TableRow>
                             <asp:TableRow>
                                 <asp:TableCell ColumnSpan="8" BackColor="White"></asp:TableCell>
                                 <asp:TableCell ><b>العدد</b></asp:TableCell>
-                                <asp:TableCell ID="numberCell">sdas</asp:TableCell>  
+                                <asp:TableCell ID="numberCell" runat="server">0</asp:TableCell>  
                             </asp:TableRow>
                      </asp:Table>
                  </div>
-                <div class="report-responsive">
+               
+                 <div class="report-responsive" >
                      <div class="form-horizontal">
-                            <div class="form-group">                                  
+                            <div class="form-group">                                 
                               <div class="col-md-offset-3 col-md-9">
                                  <label for="toDate" class="col-md-3 control-label" id="passed_percentage" runat="server">0.0%</label>
                                   <label for="toDate" class="col-md-3 control-label" >:(%) الناجحون </label>
@@ -152,11 +163,10 @@
                       </div>
                 </div>
             </div>
-
-      </div>
+        </div>
     </div>
     <!--date picker components-->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script>
