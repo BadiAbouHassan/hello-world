@@ -14,5 +14,15 @@ namespace template.Controllers
         {
             return this.grantedPermissionService.getGrantedPermissionByRole(role); 
         }
+        public Boolean addGrantedPermission(GrantedPermission grantedPermission)
+        {
+            return this.grantedPermissionService.addGrantedPermission(grantedPermission);
+        }
+
+        public Boolean deleteGrantedPermission(GrantedPermission grantedPermission)
+        {
+            return this.grantedPermissionService.deleteGrantedPermission(grantedPermission);
+        }
+        
     }
 }

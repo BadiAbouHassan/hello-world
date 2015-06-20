@@ -9,6 +9,34 @@ namespace template.DBService
 {
     public class GrantedPermissionService
     {
+        public Boolean addGrantedPermission(GrantedPermission grantedPermission)
+        {
+            Boolean result;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "insert into grantedPermission(permissionID, roleID) values('"
+                                + grantedPermission.permissionID+ "','" + grantedPermission.roleID+ "');";
+                result = dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
+            return result;
+        }
+
+        public Boolean deleteGrantedPermission(GrantedPermission grantedPermission)
+        {
+            Boolean result;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "DELETE FROM grantedPermission where grantedPermissionID = '"+grantedPermission.grantedPermissionID+"'";
+                result = dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
+            return result;
+        }
+
+        
         public List<GrantedPermission> getGrantedPermissionByRole(Role role)
         {
             List<GrantedPermission> grantedPermissions = new List<GrantedPermission>();
