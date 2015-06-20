@@ -57,6 +57,7 @@ city varchar(255),
 applicantAddress varchar(255),
 cellular varchar(255),
 phone varchar(255),
+accountActivated int,
 Primary Key (applicantID)
 )
 
