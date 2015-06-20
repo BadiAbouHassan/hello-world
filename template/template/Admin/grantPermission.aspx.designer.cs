@@ -58,6 +58,24 @@ namespace template.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlSelect Users;
         
         /// <summary>
+        /// GetPermissions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button GetPermissions;
+        
+        /// <summary>
+        /// permissionsDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl permissionsDiv;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

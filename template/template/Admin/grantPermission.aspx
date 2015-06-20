@@ -28,11 +28,10 @@
                                 <select class="form-control" name="Users" id="Users" runat="server"></select>
                                 <p class="help-block"></p>
                             </div>
-                            <div class="form-group">
+                            <asp:Button id="GetPermissions" class="btn btn-primary" runat="server" type="submit" Text="Get Permissions" value="Get Permissions" OnClick="GetPermissions_Click" />
+                            <div class="form-group" id="permissionsDiv" runat="server">
                                 <label>Permissions</label>
-                                <% foreach (template.DBModel.Permission permission in permissions) { %>
-                                    <label class="checkbox-inline"><input type="checkbox" value=""> <%= permission.name %></label>
-                                <% } %>
+                             
                                 <p class="help-block"></p>
                             </div>
                             <asp:Button id="btnSave" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save" OnClick="btnSave_Click" />

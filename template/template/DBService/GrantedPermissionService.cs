@@ -15,7 +15,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Select * Role inner join grantedPermission on Role.roleID = grantedPermission.roleID inner join Prmission on Permission.permissionID = grantedPermission.permissionID where grantedPermission.roleID = '"+role.roleID+"' ";
+                String query = "Select * From Role inner join grantedPermission on Role.roleID = grantedPermission.roleID inner join Permission on Permission.permissionID = grantedPermission.permissionID where grantedPermission.roleID = '"+role.roleID+"' ";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())
