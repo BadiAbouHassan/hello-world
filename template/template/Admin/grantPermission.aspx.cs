@@ -106,6 +106,8 @@ namespace template.Admin
                     }
                 }
             }
+            successMsgDiv.Style.Remove("display");
+            successMsg.Text = "Permission data updated successfuly!";
         }
 
         protected void GetPermissions_Click(object sender, EventArgs e)
