@@ -113,6 +113,14 @@ namespace template.Admin
                         phoneCell.Text = applicants[i].phone;
                         tRow.Cells.Add(phoneCell);
 
+                        TableCell assignCell = new TableCell();
+                        assignCell.Text = "<a href='/Admin/assignExamSchedule.aspx?applicantID=" + applicants[i].applicantID + "'>Assign Exam Schedule</a>";
+                        tRow.Cells.Add(assignCell);
+
+                        TableCell activateExamCell = new TableCell();
+                        activateExamCell.Text = "<a href='/Admin/activateExam.aspx?applicantID=" + applicants[i].applicantID + "'>Activate Exam</a>";
+                        tRow.Cells.Add(activateExamCell);
+
                         TableCell editCell = new TableCell();
                         editCell.Text = "<a href='/Admin/editApplicant.aspx?applicantID=" + applicants[i].applicantID + "'>Edit</a>";
                         tRow.Cells.Add(editCell);
