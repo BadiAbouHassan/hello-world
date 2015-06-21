@@ -111,7 +111,7 @@ create table ExamSchedule(
 examScheduleID int IDENTITY(1,1) NOT NULL,
 examID int NOT NULL,
 clubID int NOT NULL,
-scheduledateTime DATE,
+scheduledateTime DATETime,
 numberOfSeats int,
  Primary Key (examScheduleID), 
 FOREIGN KEY (examID) REFERENCES Exam(examID),

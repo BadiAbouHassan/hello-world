@@ -13,6 +13,9 @@ namespace template.DBModel
         public DateTime scheduleDateTime { get; set; }
         public int numberOfSeats { get; set; }
 
+        public string examName { get; set; }
+        public string clubName { get; set; }
+
         public ExamSchedule()
         {
         }

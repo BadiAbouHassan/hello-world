@@ -162,6 +162,12 @@
                                 <li>
                                     <a href="/Admin/viewExams.aspx">View Exams</a>
                                 </li>
+                                <li>
+                                    <a href="/Admin/addExamSchedule.aspx">Add Exam Schedule</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/viewExamSchedules.aspx">View Exam Schedules</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
