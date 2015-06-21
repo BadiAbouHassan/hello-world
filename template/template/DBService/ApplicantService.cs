@@ -34,7 +34,6 @@ namespace template.DBService
 
         public void activateApplicantByID(int ID)
         {
-            Applicant Applicant = null;
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {

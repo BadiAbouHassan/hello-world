@@ -19,9 +19,9 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into ExamInstance(examID, examDate,examDuration,elapsedTime,result,referenceID) OUTPUT inserted.instanceID values('"
-                                + examInstance.examID + "', '" + examInstance.examDate + "', '" + examInstance.examDuration + "'," + examInstance.elapsedTime + ", '"
-                                + examInstance.result + "','"+examInstance.referenceID+"');";
+                String query = "insert into ExamInstance(examID,startingTime,examDuration,elapsedTime,result,active,activationTime,reservationID) OUTPUT inserted.instanceID values('"
+                                + examInstance.examID + "', '" + examInstance.staringTime  + "', '" + examInstance.examDuration + "'," + examInstance.elapsedTime + ", '"
+                                + examInstance.result + "','"+examInstance.active+"','"+examInstance.activationTime+"','"+examInstance.reservationID+"');";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
@@ -64,13 +64,14 @@ namespace template.DBService
             ExamInstance req = new ExamInstance();
 
             req.instanceID = Int32.Parse(reader["instanceID"].ToString());
-            req.referenceID = Int32.Parse(reader["referenceID"].ToString());
+            req.reservationID = Int32.Parse(reader["reservationID"].ToString());
             req.examID = Int32.Parse(reader["examID"].ToString());
-            req.examDate = Convert.ToDateTime(reader["examDate"].ToString());
+            req.staringTime = Convert.ToDateTime(reader["staringTime"].ToString());
             req.elapsedTime = double.Parse(reader["elapsedTime"].ToString());
             req.examDuration = Double.Parse(reader["examDuration"].ToString());
             req.result = Double.Parse(reader["result"].ToString());
-
+            req.activationTime = Convert.ToDateTime(reader["activationTime"].ToString());
+            req.active = Int32.Parse(reader["active"].ToString());
             return req;
         }
 
