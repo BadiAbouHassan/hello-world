@@ -49,13 +49,31 @@ namespace template.Admin {
         protected global::System.Web.UI.WebControls.Label errMsg;
         
         /// <summary>
-        /// btnSort control.
+        /// toDate_txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit btnSort;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText toDate_txt;
+        
+        /// <summary>
+        /// btnSortClick control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSortClick;
+        
+        /// <summary>
+        /// fromDate_txt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText fromDate_txt;
         
         /// <summary>
         /// Table1 control.
@@ -220,39 +238,39 @@ namespace template.Admin {
         protected global::System.Web.UI.WebControls.TableCell numberCell;
         
         /// <summary>
-        /// passed_percentage control.
+        /// passed_percentage_txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl passed_percentage;
+        protected global::System.Web.UI.WebControls.Label passed_percentage_txt;
         
         /// <summary>
-        /// failed_percentage control.
+        /// failed_percentage_txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl failed_percentage;
+        protected global::System.Web.UI.WebControls.Label failed_percentage_txt;
         
         /// <summary>
-        /// lebanese_percentage control.
+        /// lebanese_percentage_txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lebanese_percentage;
+        protected global::System.Web.UI.WebControls.Label lebanese_percentage_txt;
         
         /// <summary>
-        /// notLeb_percentage control.
+        /// notLeb_percentage_txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notLeb_percentage;
+        protected global::System.Web.UI.WebControls.Label notLeb_percentage_txt;
     }
 }

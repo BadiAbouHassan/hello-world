@@ -26,7 +26,7 @@
                             <div class="form-horizontal">
                                 <div class="form-group">                                  
                                   <div class="col-md-9">
-                                      <input type="text" dir="rtl" required="required" id="toDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
+                                      <input type="text" runat="server" dir="rtl" required="required" id="toDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
                                    </div>
                                       <label for="toDate" class="col-md-3 control-label" > الى تاريخ</label>
                                 </div>
@@ -34,7 +34,7 @@
                             <div class="form-horizontal">
                                 <div class="form-group">   
                                     <div class="col-md-9">
-                                        <select name="result" class="form-control">
+                                        <select name="result" runat="server" class="form-control">
                                             <option dir="rtl"  value="all">الجميع</option>
                                             <option dir="rtl"  value="passed">ناجح</option>
                                             <option dir="rtl"  value="failed">راسب</option>
@@ -46,7 +46,7 @@
                             <div class="form-horizontal">
                                 <div class="form-group">   
                                 <div class="col-md-9">  
-                                 <input type="submit" id="btnSort"  class="btn btn-info" value="sort" onclick="sort" runat="server" />
+                                 <asp:Button  id="btnSortClick"  class="btn btn-info" value="sort"  runat="server" onclick="btnSort_Click" />
                                 </div>
                                </div>
                              </div>
@@ -56,7 +56,7 @@
                             <div class="form-horizontal">   
                                 <div class="form-group">
                                         <div class="col-md-9">
-                                          <input type="text" dir="rtl" required="required" id="fromDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
+                                          <input type="text" dir="rtl" runat="server" required="required" id="fromDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
                                        </div>
                                        <label  class="col-md-3 control-label" > من تاريخ</label>
                                    </div>
@@ -132,7 +132,7 @@
                      <div class="form-horizontal">
                             <div class="form-group">                                 
                               <div class="col-md-offset-3 col-md-9">
-                                 <label for="toDate" class="col-md-3 control-label" id="passed_percentage" runat="server">0.0%</label>
+                                 <asp:Label for="toDate" class="col-md-3 control-label" id="passed_percentage_txt" runat="server">0.0%</asp:Label>
                                   <label for="toDate" class="col-md-3 control-label" >:(%) الناجحون </label>
                              </div>
                         </div>
@@ -140,7 +140,7 @@
                      <div class="form-horizontal">
                             <div class="form-group">                                  
                               <div class="col-md-offset-3 col-md-9">
-                                <label for="toDate" class="col-md-3 control-label" id="failed_percentage" runat="server">0.0%</label>  
+                                <asp:Label for="toDate" class="col-md-3 control-label" id="failed_percentage_txt" runat="server">0.0%</asp:Label>  
                                 <label for="toDate" class="col-md-3 control-label" >:(%) الراسبون </label>
                                </div>
                              </div>
@@ -148,7 +148,7 @@
                      <div class="form-horizontal">
                           <div class="form-group">                                  
                               <div class="col-md-offset-3 col-md-9">
-                                    <label for="toDate" class="col-md-3 control-label" id="lebanese_percentage" runat="server">0.0%</label>
+                                    <asp:Label for="toDate" class="col-md-3 control-label" id="lebanese_percentage_txt" runat="server">0.0%</asp:Label>
                                     <label for="toDate" class="col-md-3 control-label" >:(%) اللبنانيون  </label>
                                   </div>
                            </div>
@@ -156,7 +156,7 @@
                      <div class="form-horizontal">
                          <div class="form-group"> 
                             <div class="col-md-offset-3 col-md-9">
-                                <label for="toDate" class="col-md-3 control-label" id="notLeb_percentage" runat="server">0.0%</label>
+                                <asp:Label for="toDate" class="col-md-3 control-label" id="notLeb_percentage_txt" runat="server">0.0%</asp:Label>
                                 <label for="toDate" class="col-md-3 control-label" >:(%) الاجانب  </label>
                             </div>
                          </div>
