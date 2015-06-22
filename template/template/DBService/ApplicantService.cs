@@ -200,19 +200,23 @@ namespace template.DBService
             return applicantsList;
         }
 
-        public List<Applicant> getAllApplicants()
+        public List<Applicant> getApplicants(int applicantID = 0)
         {
             List<Applicant> applicantsList = new List<Applicant>();
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection connection = dbObj.openConnection())
             {
-                
-                String query = "SELECT * FROM Applicant " ;
+                String whereCond = "";
+                if (!applicantID.Equals(0))
+                {
+                    whereCond = " WHERE applicantID = " + applicantID;
+                }
+                String query = "SELECT * FROM Applicant " + whereCond;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
 
-          
+
                 while (reader.Read())
                 {
                     applicantsList.Add(fillApplicant(reader));

@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EO.Web, Version=15.1.70.4, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Essential Objects\EO.Total 2015\EO.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -49,13 +53,16 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\activateExam.aspx" />
     <Content Include="Admin\addClub.aspx" />
     <Content Include="Admin\addCourse.aspx" />
     <Content Include="Admin\addExam.aspx" />
+    <Content Include="Admin\addExamSchedule.aspx" />
     <Content Include="Admin\addPermission.aspx" />
     <Content Include="Admin\addQuestion.aspx" />
     <Content Include="Admin\addRole.aspx" />
     <Content Include="Admin\addUser.aspx" />
+    <Content Include="Admin\assignExamSchedule.aspx" />
     <Content Include="Admin\deleteCourse.aspx" />
     <Content Include="Admin\editApplicant.aspx" />
     <Content Include="Admin\footer.aspx" />
@@ -67,7 +74,9 @@
     <Content Include="Admin\viewClubs.aspx" />
     <Content Include="Admin\viewCourses.aspx" />
     <Content Include="Admin\viewExams.aspx" />
+    <Content Include="Admin\viewExamSchedules.aspx" />
     <Content Include="Admin\viewPermission.aspx" />
+    <Content Include="Admin\viewReport.aspx" />
     <Content Include="Admin\viewRole.aspx" />
     <Content Include="Admin\viewUser.aspx" />
     <Content Include="bootstrap-3.3.2-dist-sandstone\css\bootstrap-theme.css" />
@@ -281,6 +290,13 @@
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\activateExam.aspx.cs">
+      <DependentUpon>activateExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\activateExam.aspx.designer.cs">
+      <DependentUpon>activateExam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\addClub.aspx.cs">
       <DependentUpon>addClub.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -301,6 +317,13 @@
     </Compile>
     <Compile Include="Admin\addExam.aspx.designer.cs">
       <DependentUpon>addExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\addExamSchedule.aspx.cs">
+      <DependentUpon>addExamSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\addExamSchedule.aspx.designer.cs">
+      <DependentUpon>addExamSchedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\addPermission.aspx.cs">
       <DependentUpon>addPermission.aspx</DependentUpon>
@@ -336,6 +359,13 @@
     </Compile>
     <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\assignExamSchedule.aspx.cs">
+      <DependentUpon>assignExamSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\assignExamSchedule.aspx.designer.cs">
+      <DependentUpon>assignExamSchedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\deleteCourse.aspx.cs">
       <DependentUpon>deleteCourse.aspx</DependentUpon>
@@ -414,12 +444,26 @@
     <Compile Include="Admin\viewExams.aspx.designer.cs">
       <DependentUpon>viewExams.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\viewExamSchedules.aspx.cs">
+      <DependentUpon>viewExamSchedules.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\viewExamSchedules.aspx.designer.cs">
+      <DependentUpon>viewExamSchedules.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\viewPermission.aspx.cs">
       <DependentUpon>viewPermission.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\viewPermission.aspx.designer.cs">
       <DependentUpon>viewPermission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\viewReport.aspx.cs">
+      <DependentUpon>viewReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\viewReport.aspx.designer.cs">
+      <DependentUpon>viewReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\viewRole.aspx.cs">
       <DependentUpon>viewRole.aspx</DependentUpon>
@@ -438,6 +482,7 @@
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
+    <Compile Include="Controllers\ExamScheduleController.cs" />
     <Compile Include="Controllers\GrantedPermissionController.cs" />
     <Compile Include="Controllers\HuntingClubController.cs" />
     <Compile Include="Controllers\MD5Hash.cs" />
@@ -454,9 +499,11 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SQLClass.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DBModel\ExamSchedule.cs" />
     <Compile Include="DBModel\GrantPermission.cs" />
     <Compile Include="DBModel\QuestionsPerCourse.cs" />
     <Compile Include="DBService\ExamInstanceService.cs" />
+    <Compile Include="DBService\ExamScheduleService.cs" />
     <Compile Include="DBService\GrantedPermissionService.cs" />
     <Compile Include="DBService\PermissionService.cs" />
     <Compile Include="DBService\QuestionsPerCourseService.cs" />
