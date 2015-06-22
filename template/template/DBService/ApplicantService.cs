@@ -65,6 +65,27 @@ namespace template.DBService
             return Applicant;
         }
 
+
+        public Applicant getApplicantOfActivationCode(String activationCode)
+        {
+            Applicant Applicant = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Select * from Applicant where activationCodeToken= '" + activationCode + "'";
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                if (reader.Read())
+                {
+
+                    Applicant = fillApplicant(reader);
+                }
+            }
+
+            dbObj.CloseConnection();
+            return Applicant;
+        }
+
         /// <summary>
         ///  this function select Applicant of given paswod and Applicantname --> for login aurhentication
         /// </summary>
@@ -89,12 +110,12 @@ namespace template.DBService
                         //command.Transaction = transaction;
 
                         String query = "insert into Applicant(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
-                                    + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone,accountActivated) OUTPUT inserted.applicantID values('"
+                                    + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone,accountActivated,activationCodeToken,userActivation) OUTPUT inserted.applicantID values('"
                                         + Applicant.username + "', '" + Applicant.password + "', '" + Applicant.firstname + "','" + Applicant.middlename + "', '"
                                         + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', '" + Applicant.placeOfBirth + "','"
                                         + Applicant.registrationNb + "','" + Applicant.nationality + "', '" + Applicant.bloodType + "','" + Applicant.profession + "','"
                                         + Applicant.email + "','" + Applicant.mailAddress + "','" + Applicant.fax + "','" + Applicant.city + "','" + Applicant.applicantAddress + "','"
-                                        + Applicant.cellular + "','" + Applicant.phone + "','" +Applicant.accountActivated+"'); ";
+                                        + Applicant.cellular + "','" + Applicant.phone + "','" +Applicant.accountActivated+"','"+Applicant.activationCodeToken+"','"+Applicant.userActivation+"'); ";
 
                        // command.CommandText = query;
                         SqlDataReader reader = dbObj.selectQuery(query);
@@ -144,6 +165,8 @@ namespace template.DBService
             Applicant.email = reader["email"].ToString();
             Applicant.password = reader["pass"].ToString();
             Applicant.accountActivated = Int32.Parse(reader["accountActivated"].ToString());
+            Applicant.activationCodeToken = reader["activationCodeToken"].ToString();
+            Applicant.userActivation = Int32.Parse(reader["userActivation"].ToString());
             return Applicant;
 
         }

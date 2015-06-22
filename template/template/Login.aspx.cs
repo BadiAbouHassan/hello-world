@@ -18,10 +18,11 @@ namespace template
             try
             {
                 fillClubSelect();
+                
                 if (Request.QueryString["ActivationCode"] != null)
                 {
                     ApplicantService client_controller = new ApplicantService();
-                    Applicant app = client_controller.getApplicantOfID(Int32.Parse(Request.QueryString["ActivationCode"]));
+                    Applicant app = client_controller.getApplicantOfActivationCode(Request.QueryString["ActivationCode"]);
                     client_controller.activateApplicantByID(app.applicantID);
                     successMsgDiv.Style.Remove("display");
                     successMsg.Text = "تم تفعيل حسابك بنجاح";

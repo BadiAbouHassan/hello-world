@@ -27,6 +27,8 @@ namespace template.DBModel
         public String phone { get; set; }
         public String nationality { get; set; }
         public int accountActivated { get; set; }
+        public String activationCodeToken { get; set; }
+        public int userActivation { get; set; }
 
         public Applicant()
         {
