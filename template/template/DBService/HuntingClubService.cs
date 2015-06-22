@@ -26,8 +26,8 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('"
-                                + club.clubName + "','" + club.clubAddress + "','" + club.phoneNb + "','" + club.email + "','"+club.adminUserID+"');";
+                String query = "insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values(N'"
+                                + club.clubName + "',N'" + club.clubAddress + "',N'" + club.phoneNb + "','" + club.email + "','"+club.adminUserID+"');";
 
                result= dbObj.executeQuery(query);
 
@@ -168,9 +168,9 @@ namespace template.DBService
             using (conn)
             {
 
-                String query = "update  HuntingClub set clubName ='" + huntingClub.clubName + "', "
-                                + "clubAddress = '" + huntingClub.clubAddress + "',"
-                                + "phoneNb ='" + huntingClub.phoneNb+ "', "
+                String query = "update  HuntingClub set clubName = N'" + huntingClub.clubName + "', "
+                                + "clubAddress = N'" + huntingClub.clubAddress + "',"
+                                + "phoneNb = N'" + huntingClub.phoneNb+ "', "
                                 + "email  = '" + huntingClub.email + "',  "
                                 + "adminUserID  = '" + huntingClub.adminUserID + "'  "
                                 + "where clubID =" + huntingClub.clubID;
