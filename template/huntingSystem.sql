@@ -1,20 +1,30 @@
 
 
 /*
-* create tables
+* create DB 
+* run this three lines first then refresh the db in order to be shown then run the remaing code ... 
+*/
+
+USE master;
+CREATE DATABASE HuntingSystem
+COLLATE SQL_Latin1_General_CP1_CS_AS;
+
+
+/*
+* Remaing Code must be run after creating the db ...
 */
 use [HuntingSystem]
 create table Course(
 courseID int IDENTITY(1,1) NOT NULL,
-courseName varchar(255),
+courseName NVARCHAR(255),
 courseDesc text,
 Primary Key (courseID) 
 )
 
 create table QuestionsBank(
 questionID int IDENTITY(1,1) NOT NULL,
-title varchar(255),
-questionDesc varchar(255),
+title NVARCHAR(255),
+questionDesc NVARCHAR(255),
 courseID int NOT NULL,
 Primary Key (questionID), 
 FOREIGN KEY (courseID) REFERENCES Course(courseID)
@@ -22,7 +32,7 @@ FOREIGN KEY (courseID) REFERENCES Course(courseID)
 
 create table Answer(
 answerID int IDENTITY(1,1) NOT NULL,
-title varchar(255),
+title NVARCHAR(255),
 correct int,
 questionID int NOT NULL,
 Primary Key (answerID), 
@@ -31,43 +41,43 @@ FOREIGN KEY (questionID) REFERENCES QuestionsBank(questionID)
 
 create table Role(
 roleID int IDENTITY(1,1) NOT NULL,
-roleName varchar(255),
+roleName NVARCHAR(255),
 predefined int NOT NULL,
 Primary Key (roleID)
 )
 
 create table Applicant(
 applicantID int IDENTITY(1,1) NOT NULL,
-username varchar(255),
-pass varchar(500),
-firstname varchar(255),
-middlename varchar(255),
-lastname varchar(255),
-gender varchar(50),
+username NVARCHAR(255),
+pass NVARCHAR(500),
+firstname NVARCHAR(255),
+middlename NVARCHAR(255),
+lastname NVARCHAR(255),
+gender NVARCHAR(50),
 dateOfBirth DATE,
-placeOfBirth varchar(255),
-registrationNb varchar(500),
-nationality varchar(255),
-bloodType varchar(128),
-Profession varchar(500),
-email varchar(255),
-mailAddress varchar(255),
-fax varchar(255),
-city varchar(255),
-applicantAddress varchar(255),
-cellular varchar(255),
-phone varchar(255),
+placeOfBirth NVARCHAR(255),
+registrationNb NVARCHAR(500),
+nationality NVARCHAR(255),
+bloodType NVARCHAR(128),
+Profession NVARCHAR(500),
+email NVARCHAR(255),
+mailAddress NVARCHAR(255),
+fax NVARCHAR(255),
+city NVARCHAR(255),
+applicantAddress NVARCHAR(255),
+cellular NVARCHAR(255),
+phone NVARCHAR(255),
 accountActivated int,
 Primary Key (applicantID)
 )
 
 create table UserTable(
 userID int IDENTITY(1,1) NOT NULL,
-firstName varchar(255),
-lastName varchar(255),
-email varchar(255),
-username varchar(255),
-pass varchar(500),
+firstName NVARCHAR(255),
+lastName NVARCHAR(255),
+email NVARCHAR(255),
+username NVARCHAR(255),
+pass NVARCHAR(500),
 roleID int NOT NULL,
 Primary Key (userID),
 FOREIGN KEY (roleID) REFERENCES Role(roleID)
@@ -75,10 +85,10 @@ FOREIGN KEY (roleID) REFERENCES Role(roleID)
 
 create table HuntingClub(
 clubID int IDENTITY(1,1) NOT NULL,
-clubName varchar(255),
-clubAddress varchar(255),
-phoneNb varchar(255),
-email varchar(255),
+clubName NVARCHAR(255),
+clubAddress NVARCHAR(255),
+phoneNb NVARCHAR(255),
+email NVARCHAR(255),
 adminUserID int NOT NULL,
 Primary Key (clubID),
 FOREIGN KEY (adminUserID) REFERENCES UserTable(userID)
@@ -98,8 +108,8 @@ FOREIGN KEY (clubID) REFERENCES HuntingClub(clubID)
 
 create table Exam(
 examID int IDENTITY(1,1) NOT NULL,
-examName varchar(255),
-examDescription varchar(500),
+examName NVARCHAR(255),
+examDescription NVARCHAR(500),
 examDuration decimal NOT NULL,
 passingMark decimal NOT NULL,
 numberOfQuestions int NOT NULL,
@@ -170,8 +180,8 @@ FOREIGN KEY (examInstanceID) REFERENCES ExamInstance(instanceID)
 
 create table Permission(
 permissionID int IDENTITY(1,1) NOT NULL,
-name varchar(255),
-code varchar(255),
+name NVARCHAR(255),
+code NVARCHAR(255),
 Primary Key (permissionID)
 )
 
