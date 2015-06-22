@@ -26,8 +26,8 @@ namespace template.DBService
                 //    dbObj.CloseConnection();
                 //    throw new Exception("role name already exist !!");
                 //}
-                String query = "insert into Permission(name, code) values('"
-                                + permission.name+ "','" + permission.code+ "');";
+                String query = "insert into Permission(name, code) values(N'"
+                                + permission.name+ "',N'" + permission.code+ "');";
 
                 result = dbObj.executeQuery(query);
 
@@ -41,7 +41,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Update Permission Set name = '"+permission.name+"', code = '"+permission.code+"' where permissionID = '"+permission.permissionID+"'";
+                String query = "Update Permission Set name = N'"+permission.name+"', code = N'"+permission.code+"' where permissionID = '"+permission.permissionID+"'";
                 dbObj.selectQuery(query);
             }
             dbObj.CloseConnection();

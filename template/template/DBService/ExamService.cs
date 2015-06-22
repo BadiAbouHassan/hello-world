@@ -20,8 +20,8 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into Exam(examName, examDescription,examDuration,passingMark,numberOfQuestions,questionMark) OUTPUT INSERTED.examID values('"
-                                + exam.examName + "', '" + exam.examDescription + "', '" + exam.examDuration + "','" + exam.passingMark + "', '"
+                String query = "insert into Exam(examName, examDescription,examDuration,passingMark,numberOfQuestions,questionMark) OUTPUT INSERTED.examID values(N'"
+                                + exam.examName + "', N'" + exam.examDescription + "', '" + exam.examDuration + "','" + exam.passingMark + "', '"
                                 + exam.numberOfQuestions + "','" + exam.questionMark + "');";
 
                 result= dbObj.executeQueryAndReturnLastID(query);

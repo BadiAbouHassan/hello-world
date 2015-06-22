@@ -35,7 +35,7 @@ namespace template.DBService
                 //    dbObj.CloseConnection();
                 //    throw new Exception("role name already exist !!");
                 //}
-                String query = "insert into Role(roleName, predefined) values('"
+                String query = "insert into Role(roleName, predefined) values(N'"
                                 + role.roleName + "','" + role.predefined + "');";
 
                 result = dbObj.executeQuery(query);
@@ -51,7 +51,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Update Role Set roleName = '"+role.roleName+"' , predefined = '"+role.predefined+"' where roleID = '"+role.roleID+"'";
+                String query = "Update Role Set roleName = N'"+role.roleName+"' , predefined = '"+role.predefined+"' where roleID = '"+role.roleID+"'";
                 dbObj.selectQuery(query);
 
             }

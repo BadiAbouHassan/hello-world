@@ -18,7 +18,7 @@ namespace template.DBService
             using (SqlConnection connection = dbObj.openConnection())
             {
                 String query = "INSERT INTO Course(courseName, courseDesc)" +
-                               "Values('" + course.courseName + "', '" + course.courseDesc + "')";
+                               "Values(N'" + course.courseName + "', N'" + course.courseDesc + "')";
                 result = dbObj.executeQuery(query);
             }
             dbObj.CloseConnection();
@@ -103,8 +103,8 @@ namespace template.DBService
             using (conn)
             {
 
-                String query = "update  Course set courseName ='" + course.courseName + "', "
-                                + "courseDesc = '" + course.courseDesc + "' "
+                String query = "update  Course set courseName = N'" + course.courseName + "', "
+                                + "courseDesc = N'" + course.courseDesc + "' "
                                 + "where courseID =" + course.courseID;
 
 

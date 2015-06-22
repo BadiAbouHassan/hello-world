@@ -70,8 +70,8 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "insert into UserTable(firstName,lastName,email,username, pass,roleID) values('"
-                                + user.firstName + "', '" + user.lastName+ "','"+user.email+"','"
+                String query = "insert into UserTable(firstName,lastName,email,username, pass,roleID) values(N'"
+                                + user.firstName + "', N'" + user.lastName+ "','"+user.email+"','"
                                 + user.username + "', '" + user.password + "','"+user.roleID +"');";
                 result = dbObj.executeQuery(query);
 
@@ -122,8 +122,8 @@ namespace template.DBService
             // add the insert between transaction and commit in order no to lose data integratiy ... 
             using (conn)
             {
-                String query = "update  UserTable set firstName ='" + user.firstName+ "', "
-                                + "lastName= '" + user.lastName+ "',"
+                String query = "update  UserTable set firstName =N'" + user.firstName+ "', "
+                                + "lastName= N'" + user.lastName+ "',"
                                 + "email ='" + user.email+ "', "
                                 + "username  = '" + user.username+ "',  "
                                 + "pass  = '" + user.password+ "' , "
