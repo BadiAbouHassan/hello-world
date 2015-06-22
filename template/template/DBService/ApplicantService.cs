@@ -111,10 +111,10 @@ namespace template.DBService
 
                         String query = "insert into Applicant(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
                                     + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone,accountActivated,activationCodeToken,userActivation) OUTPUT inserted.applicantID values('"
-                                        + Applicant.username + "', '" + Applicant.password + "', '" + Applicant.firstname + "','" + Applicant.middlename + "', '"
-                                        + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', '" + Applicant.placeOfBirth + "','"
-                                        + Applicant.registrationNb + "','" + Applicant.nationality + "', '" + Applicant.bloodType + "','" + Applicant.profession + "','"
-                                        + Applicant.email + "','" + Applicant.mailAddress + "','" + Applicant.fax + "','" + Applicant.city + "','" + Applicant.applicantAddress + "','"
+                                        + Applicant.username + "', '" + Applicant.password + "', N'" + Applicant.firstname + "',N'" + Applicant.middlename + "', N'"
+                                        + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', N'" + Applicant.placeOfBirth + "','"
+                                        + Applicant.registrationNb + "',N'" + Applicant.nationality + "', '" + Applicant.bloodType + "',N'" + Applicant.profession + "','"
+                                        + Applicant.email + "',N'" + Applicant.mailAddress + "','" + Applicant.fax + "',N'" + Applicant.city + "',N'" + Applicant.applicantAddress + "','"
                                         + Applicant.cellular + "','" + Applicant.phone + "','" +Applicant.accountActivated+"','"+Applicant.activationCodeToken+"','"+Applicant.userActivation+"'); ";
 
                        // command.CommandText = query;
@@ -247,21 +247,21 @@ namespace template.DBService
             {
 
                 String query = "update  Applicant set username ='"+ applicant.username + "', "
-                                +"firstname = '" +  applicant.firstname + "'," 
-                                +"middlename ='" + applicant.middlename + "', " 
-                                +"lastname  = '"+ applicant.lastname + "', " 
+                                +"firstname = N'" +  applicant.firstname + "'," 
+                                +"middlename = N'" + applicant.middlename + "', " 
+                                +"lastname  = N'"+ applicant.lastname + "', " 
                                 +"gender ='" + applicant.gender + "', " 
                                 +"dateOfBirth ='"+ applicant.dateOfBirth + "', " 
-                                +"placeOfBirth ='"+ applicant.placeOfBirth + "',"
+                                +"placeOfBirth = N'"+ applicant.placeOfBirth + "',"
                                 +"registrationNb ='"+ applicant.registrationNb + "'," 
-                                + "nationality ='"+ applicant.nationality + "', " 
+                                + "nationality = N'"+ applicant.nationality + "', " 
                                 +"bloodType ='"+ applicant.bloodType + "',"
-                                +"Profession ='" + applicant.profession + "',"
+                                +"Profession = N'" + applicant.profession + "',"
                                 +"email ='"+ applicant.email + "'," 
-                                +"mailAddress ='"+ applicant.mailAddress + "',"
+                                +"mailAddress = N'"+ applicant.mailAddress + "',"
                                 + "fax ='" + applicant.fax + "',"
-                                + "city ='" + applicant.city + "',"
-                                + "applicantAddress ='" + applicant.applicantAddress + "',"
+                                + "city = N'" + applicant.city + "',"
+                                + "applicantAddress = N'" + applicant.applicantAddress + "',"
                                 +"cellular ='"+applicant.cellular + "',"
                                 + "phone ='" +applicant.phone + "' where applicantID ="+applicant.applicantID;
                                 

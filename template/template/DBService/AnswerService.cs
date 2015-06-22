@@ -17,7 +17,7 @@ namespace template.DBService
             using (SqlConnection connection = dbObj.openConnection())
             {
                 String query = "INSERT INTO Answer(questionID, title, correct)" +
-                               "Values(" + answer.questionID + ", '" + answer.title + "', " + answer.correct + ")";
+                               "Values(" + answer.questionID + ", N'" + answer.title + "', " + answer.correct + ")";
                 result = dbObj.executeQuery(query);
             }
             dbObj.CloseConnection();
