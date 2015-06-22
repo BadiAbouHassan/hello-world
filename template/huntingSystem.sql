@@ -68,6 +68,8 @@ applicantAddress NVARCHAR(255),
 cellular NVARCHAR(255),
 phone NVARCHAR(255),
 accountActivated int,
+activationCodeToken varchar(500),
+userActivation int,
 Primary Key (applicantID)
 )
 
@@ -200,12 +202,12 @@ insert into Role(roleName, predefined) values('HuntingClub3','1');
 insert into Role(roleName, predefined) values('HuntingClub4','1');
 
 insert into UserTable (firstName,lastName,email,username,pass,roleID) values ('firstname','lastname','email','admin','111111',1);
+insert into UserTable(firstName,lastName,email,username,pass,roleID) values('user','user','email','user2','1234',1);
 /*
-insert into UserTable(username, pass,firstname,roleID) values('admin1','1234','admin1','1');
 insert into UserTable(username, pass,firstname,roleID) values('admin2','1234','admin2','2');
-
+*/
 insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
 insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
-*/
+
 

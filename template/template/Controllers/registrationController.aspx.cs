@@ -63,6 +63,9 @@ namespace template.Controlers
                 user.city = Request.Form["city"];
                 user.password = Hashed_pass;
                 user.accountActivated = 0;
+                string activationCode = Guid.NewGuid().ToString();
+                user.activationCodeToken = activationCode;
+                user.userActivation = 0; //initial is zero
 
                 //create RegistrationRequest object
                 RegistrationRequests req = new RegistrationRequests();
@@ -102,7 +105,7 @@ namespace template.Controlers
 
         private void sendEmailConfirmation(Applicant addedApplicant)
         {
-            string activationCode = Guid.NewGuid().ToString();
+            
             using (MailMessage mm = new MailMessage("loopsolutions2015@gmail.com",
                 addedApplicant.email))
             {
@@ -110,7 +113,7 @@ namespace template.Controlers
                 mm.Subject = "Account Activation";
                 string body = "Hello " + addedApplicant.firstname + ",";
                 body += "<br /><br />Please click the following link to activate your account";
-                body += "<br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.applicantID +"'>Click here to activate your account.</a>";
+                body += "<br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.activationCodeToken + "'>Click here to activate your account.</a>";
                 body += "<br /><br />Thanks";
 
                 mm.Body = body;
