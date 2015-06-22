@@ -110,11 +110,13 @@ namespace template.Controlers
                 addedApplicant.email))
             {
 
-                mm.Subject = "Account Activation";
-                string body = "Hello " + addedApplicant.firstname + ",";
-                body += "<br /><br />Please click the following link to activate your account";
-                body += "<br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.activationCodeToken + "'>Click here to activate your account.</a>";
-                body += "<br /><br />Thanks";
+                mm.Subject = "تفعيل الحساب";
+                string body =","+ addedApplicant.firstname + " مرحبا  ";
+                body += "<br /><br />الرجاء الضغط على الرابط التالي لتفعيل حسابك";
+                body += "<br /><br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.activationCodeToken + "'>انقر هنا لتفعيل حسابك.</a>";
+                body += "<br /><br />شكرا";
+
+
 
                 mm.Body = body;
                 mm.IsBodyHtml = true;
