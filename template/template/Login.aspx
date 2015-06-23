@@ -177,7 +177,13 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-9">
-                                                <input type="text" dir="rtl" required="required" class="form-control" name="nationality" placeholder="الجنسية"/>
+                                                <select class="form-control" id="Select1" name="nationality" dir="rtl">
+                                                    <%
+                                                    foreach( template.DBModel.Country country in countries )
+                                                        { %>
+                                                        <option dir="rtl" value="<%= country.countryCode %>"><%= country.countryNameAr %></option>
+                                                    <%  }; %>
+                                                </select>
                                             </div>
                                             <label for="Nationaity" class="col-md-3 control-label" >الجنسية</label>
                                             

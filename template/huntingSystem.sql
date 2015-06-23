@@ -39,6 +39,15 @@ Primary Key (answerID),
 FOREIGN KEY (questionID) REFERENCES QuestionsBank(questionID)
 )
 
+create table Country
+(
+countryID int IDENTITY(1,1) NOT NULL,
+countryCode char(2) NOT NULL,
+countryName varchar(255) NOT NULL,
+countryNameAr NVARCHAR(255) NOT NULL,
+PRIMARY KEY (countryCode)
+)
+
 create table Role(
 roleID int IDENTITY(1,1) NOT NULL,
 roleName NVARCHAR(255),
@@ -57,7 +66,7 @@ gender NVARCHAR(50),
 dateOfBirth DATE,
 placeOfBirth NVARCHAR(255),
 registrationNb NVARCHAR(500),
-nationality NVARCHAR(255),
+nationality char(2),
 bloodType NVARCHAR(128),
 Profession NVARCHAR(500),
 email NVARCHAR(255),
@@ -70,7 +79,9 @@ phone NVARCHAR(255),
 accountActivated int,
 activationCodeToken varchar(500),
 userActivation int,
-Primary Key (applicantID)
+Primary Key (applicantID),
+FOREIGN KEY (nationality) REFERENCES Country(countryCode)
+
 )
 
 create table UserTable(
@@ -206,8 +217,31 @@ insert into UserTable(firstName,lastName,email,username,pass,roleID) values('use
 /*
 insert into UserTable(username, pass,firstname,roleID) values('admin2','1234','admin2','2');
 */
-insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
-insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
+insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
+insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
+/*************countries table ************/
+INSERT INTO countries (countryCode, countryName,countryNameAr) VALUES
+('AE', 'United Arab Emirates',N'الامارات العربية'),
+('BH', 'Bahrain',N'البحرين'),
+('DZ', 'Algeria',N'الجزائر'),
+('EG', 'Egypt',N'مصر'),
+('IQ', 'Iraq',N'العراق'),
+('JO', 'Jordan',N'الأردن'),
+('KW', 'Kuwait',N'الكويت'),
+('LB','Lebanon',N'لبنان'),
+('LY', 'Libya',N'ليبيا'),
+('MA', 'Morocco',N'المغرب'),
+('MR', 'Mauritania',N'موريتانيا'),
+('PA', 'Palestine',N'فلسطين'),
+('SA','Saudi Arabia',N'المملكة العربية السعودية'),
+('QA', 'Qatar',N'قطر'),
+('SD', 'Sudan',N'السودان'),
+('SY', 'Syria',N'سوريا'),
+('TN', 'Tunisia',N'تونس'),
+('YE', 'Yemen',N'اليمن'),
+('OM','Oman',N'عمان'),
+('OO', 'Others',N'غير موجود')
+;
 
 

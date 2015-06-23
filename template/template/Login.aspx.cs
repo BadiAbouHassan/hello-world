@@ -12,12 +12,14 @@ namespace template
 {
     public partial class Login : System.Web.UI.Page
     {
-        public List<HuntingClub> clubs = new List<HuntingClub>(); 
+        public List<HuntingClub> clubs = new List<HuntingClub>();
+        public List<Country> countries = new List<Country>();
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 fillClubSelect();
+                fillCountrySelect();
                 
                 if (Request.QueryString["ActivationCode"] != null)
                 {
@@ -33,6 +35,13 @@ namespace template
                 String redirect_Location = "../Login.aspx";
                 Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
             }
+        }
+
+        private void fillCountrySelect()
+        {
+            DBService.CountryService countryService = new DBService.CountryService();
+            DataSet ds = countryService.getCountriesDataSet();
+            countries = countryService.getCountries();
         }
 
         public void fillClubSelect()

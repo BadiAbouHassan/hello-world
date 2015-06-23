@@ -29,7 +29,7 @@ namespace template.DBModel
         public int accountActivated { get; set; }
         public String activationCodeToken { get; set; }
         public int userActivation { get; set; }
-
+        public Country cnationalityCountry { get; set; }
         public Applicant()
         {
 
