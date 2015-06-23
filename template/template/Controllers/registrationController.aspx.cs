@@ -111,7 +111,7 @@ namespace template.Controlers
             {
 
                 mm.Subject = "تفعيل الحساب";
-                string body =","+ addedApplicant.firstname + " مرحبا  ";
+                string body = "  مرحبا " + addedApplicant.firstname + " , ";
                 body += "<br /><br />الرجاء الضغط على الرابط التالي لتفعيل حسابك";
                 body += "<br /><br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.activationCodeToken + "'>انقر هنا لتفعيل حسابك.</a>";
                 body += "<br /><br />شكرا";
