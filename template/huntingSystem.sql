@@ -206,8 +206,8 @@ insert into UserTable(firstName,lastName,email,username,pass,roleID) values('use
 /*
 insert into UserTable(username, pass,firstname,roleID) values('admin2','1234','admin2','2');
 */
-insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
-insert into HuntingClub(clubname, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
+insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
+insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
 
 
