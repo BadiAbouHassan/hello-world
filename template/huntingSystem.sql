@@ -17,7 +17,7 @@ use [HuntingSystem]
 create table Course(
 courseID int IDENTITY(1,1) NOT NULL,
 courseName NVARCHAR(255),
-courseDesc text,
+courseDesc ntext,
 Primary Key (courseID) 
 )
 
