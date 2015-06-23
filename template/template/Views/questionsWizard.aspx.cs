@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,6 +17,10 @@ namespace template.Views
         {
             try
             {
+                // to make the default date display in the system in this format ....
+                CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+                ci.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+                Thread.CurrentThread.CurrentCulture = ci; 
                 loggedApplicant = new DBModel.Applicant();
                 examQuestionsList = new List<DBModel.ExamQuestions>();
                 questionsToView = new List<Model.Question>() ; 
@@ -62,7 +68,7 @@ namespace template.Views
             examInstance.staringTime = DateTime.Now;
             examInstance.examDuration = exam.examDuration;
             examInstance.examID = exam.examID;
-            examInstance.reservationID = registrationRequest.referenceID;
+            examInstance.reservationID = 1; 
             examInstance.activationTime = DateTime.Now;// must be changed later 
             // add exam instance to the db in order to create instance id ... used later ... 
             DBService.ExamInstanceService examInstanceService = new DBService.ExamInstanceService();
