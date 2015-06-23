@@ -63,6 +63,7 @@ namespace template.Views
             examInstance.examDuration = exam.examDuration;
             examInstance.examID = exam.examID;
             examInstance.reservationID = registrationRequest.referenceID;
+            examInstance.activationTime = DateTime.Now;// must be changed later 
             // add exam instance to the db in order to create instance id ... used later ... 
             DBService.ExamInstanceService examInstanceService = new DBService.ExamInstanceService();
             examInstance = examInstanceService.addExamInstance(examInstance);
