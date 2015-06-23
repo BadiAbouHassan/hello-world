@@ -156,7 +156,7 @@ FOREIGN KEY (courseID) REFERENCES Course(courseID)
 create table ExamInstance(
 instanceID int IDENTITY(1,1) NOT NULL,
 examID int NOT NULL,
-staringTime DATE NOT NULL,
+startingTime DATE NOT NULL,
 examDuration decimal NOT NULL,
 elapsedTime TIME NOT NULL,
 result decimal NOT NULL,
