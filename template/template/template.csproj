@@ -276,6 +276,7 @@
     <Content Include="Views\errorHandler.aspx" />
     <Content Include="Views\footer.aspx" />
     <Content Include="Views\header.ascx" />
+    <Content Include="Views\homePage.aspx" />
     <Content Include="Views\logoutClient.aspx" />
     <Content Include="Views\questionsWizard.aspx" />
     <Content Include="Web.config">
@@ -292,7 +293,10 @@
     </Compile>
     <Compile Include="Admin\activateExam.aspx.cs">
       <DependentUpon>activateExam.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
       <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\activateExam.aspx.designer.cs">
       <DependentUpon>activateExam.aspx</DependentUpon>
@@ -320,7 +324,10 @@
     </Compile>
     <Compile Include="Admin\addExamSchedule.aspx.cs">
       <DependentUpon>addExamSchedule.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
       <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\addExamSchedule.aspx.designer.cs">
       <DependentUpon>addExamSchedule.aspx</DependentUpon>
@@ -362,7 +369,10 @@
     </Compile>
     <Compile Include="Admin\assignExamSchedule.aspx.cs">
       <DependentUpon>assignExamSchedule.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
       <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\assignExamSchedule.aspx.designer.cs">
       <DependentUpon>assignExamSchedule.aspx</DependentUpon>
@@ -446,7 +456,10 @@
     </Compile>
     <Compile Include="Admin\viewExamSchedules.aspx.cs">
       <DependentUpon>viewExamSchedules.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
       <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\viewExamSchedules.aspx.designer.cs">
       <DependentUpon>viewExamSchedules.aspx</DependentUpon>
@@ -499,6 +512,11 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SQLClass.cs" />
     <Compile Include="Controllers\UserController.cs" />
+<<<<<<< HEAD
+    <Compile Include="DBModel\Client.cs" />
+    <Compile Include="DBModel\ExamReservation.cs" />
+=======
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     <Compile Include="DBModel\ExamSchedule.cs" />
     <Compile Include="DBModel\GrantPermission.cs" />
     <Compile Include="DBModel\QuestionsPerCourse.cs" />
@@ -580,6 +598,13 @@
     </Compile>
     <Compile Include="Views\header.ascx.designer.cs">
       <DependentUpon>header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\homePage.aspx.cs">
+      <DependentUpon>homePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\homePage.aspx.designer.cs">
+      <DependentUpon>homePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\logoutClient.aspx.cs">
       <DependentUpon>logoutClient.aspx</DependentUpon>

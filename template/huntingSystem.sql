@@ -17,7 +17,7 @@ use [HuntingSystem]
 create table Course(
 courseID int IDENTITY(1,1) NOT NULL,
 courseName NVARCHAR(255),
-courseDesc text,
+courseDesc ntext,
 Primary Key (courseID) 
 )
 
@@ -167,9 +167,9 @@ FOREIGN KEY (courseID) REFERENCES Course(courseID)
 create table ExamInstance(
 instanceID int IDENTITY(1,1) NOT NULL,
 examID int NOT NULL,
-staringTime DATE NOT NULL,
+startingTime DATE NOT NULL,
 examDuration decimal NOT NULL,
-elapsedTime TIME NOT NULL,
+elapsedTime int NOT NULL,
 result decimal NOT NULL,
 active int,
 activationTime DATE ,
@@ -220,6 +220,7 @@ insert into UserTable(username, pass,firstname,roleID) values('admin2','1234','a
 insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
 insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
+<<<<<<< HEAD
 /*************countries table ************/
 INSERT INTO countries (countryCode, countryName,countryNameAr) VALUES
 ('AE', 'United Arab Emirates',N'الامارات العربية'),
@@ -243,5 +244,7 @@ INSERT INTO countries (countryCode, countryName,countryNameAr) VALUES
 ('OM','Oman',N'عمان'),
 ('OO', 'Others',N'غير موجود')
 ;
+=======
+>>>>>>> origin/master
 
 

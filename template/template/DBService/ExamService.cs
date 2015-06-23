@@ -80,7 +80,7 @@ namespace template.DBService
                     whereCondition = " WHERE examID = " + examID;
                 }
 
-                String query = "Select * from Exam";
+                String query = "Select * from Exam " + whereCondition;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())
