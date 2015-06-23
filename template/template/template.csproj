@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EO.Web, Version=15.1.70.4, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Essential Objects\EO.Total 2015\EO.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -289,6 +293,10 @@
     </Compile>
     <Compile Include="Admin\activateExam.aspx.cs">
       <DependentUpon>activateExam.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
+      <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\activateExam.aspx.designer.cs">
       <DependentUpon>activateExam.aspx</DependentUpon>
@@ -316,6 +324,10 @@
     </Compile>
     <Compile Include="Admin\addExamSchedule.aspx.cs">
       <DependentUpon>addExamSchedule.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
+      <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\addExamSchedule.aspx.designer.cs">
       <DependentUpon>addExamSchedule.aspx</DependentUpon>
@@ -357,6 +369,10 @@
     </Compile>
     <Compile Include="Admin\assignExamSchedule.aspx.cs">
       <DependentUpon>assignExamSchedule.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
+      <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\assignExamSchedule.aspx.designer.cs">
       <DependentUpon>assignExamSchedule.aspx</DependentUpon>
@@ -440,6 +456,10 @@
     </Compile>
     <Compile Include="Admin\viewExamSchedules.aspx.cs">
       <DependentUpon>viewExamSchedules.aspx</DependentUpon>
+<<<<<<< HEAD
+=======
+      <SubType>ASPXCodeBehind</SubType>
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\viewExamSchedules.aspx.designer.cs">
       <DependentUpon>viewExamSchedules.aspx</DependentUpon>
@@ -492,8 +512,11 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SQLClass.cs" />
     <Compile Include="Controllers\UserController.cs" />
+<<<<<<< HEAD
     <Compile Include="DBModel\Client.cs" />
     <Compile Include="DBModel\ExamReservation.cs" />
+=======
+>>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     <Compile Include="DBModel\ExamSchedule.cs" />
     <Compile Include="DBModel\GrantPermission.cs" />
     <Compile Include="DBModel\QuestionsPerCourse.cs" />

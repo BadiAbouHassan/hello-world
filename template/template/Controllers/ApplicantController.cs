@@ -31,9 +31,9 @@ namespace template.Controllers
              return flag;
         }
 
-        public List<Applicant> getAllApplicants()
+        public List<Applicant> getApplicants(int applicantID = 0)
         {
-            return (new ApplicantService()).getAllApplicants();
+            return (new ApplicantService()).getApplicants(applicantID );
         }
 
         public List<Applicant> getAllApplicantsOfAdminClub(User user)

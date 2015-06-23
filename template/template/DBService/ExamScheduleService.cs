@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Web;
 using template.Controllers;
 using template.DBModel;
+using System.Data;
 
 namespace template.DBService
 {
@@ -30,6 +31,20 @@ namespace template.DBService
             return result;
 
         
+        }
+
+        public DataSet getSchedulesDataSet()
+        {
+            SQLClass dbObj = new SQLClass();
+            DataSet ds = new DataSet();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "select * from ExamSchedule";
+                SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
+                myCommand.Fill(ds, "ExamSchedule");
+            }
+            dbObj.CloseConnection();
+            return ds;
         }
 
         public List<ExamSchedule> getExamSchedules(int examID = 0, int scheduleID = 0 )

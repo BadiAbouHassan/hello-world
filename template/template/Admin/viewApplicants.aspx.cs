@@ -30,7 +30,7 @@ namespace template.Admin
                 Role UserRole = loggedAdmin.role;
                 if (UserRole.roleName == "superadmin")
                 {
-                    applicants = appService.getAllApplicants();
+                    applicants = appService.getApplicants();
 
                 }
                 else if (UserRole.roleName == "admin")

@@ -19,7 +19,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Select * from Applicant where username= '" + username + "' AND pass ='" + password + "'";
+                String query = "Select * from Applicant where username= N'" + username + "' AND pass =N'" + password + "'";
                 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
@@ -110,8 +110,8 @@ namespace template.DBService
                         //command.Transaction = transaction;
 
                         String query = "insert into Applicant(username, pass,firstname,middlename ,lastname,gender,dateOfBirth,placeOfBirth,registrationNb,"
-                                    + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone,accountActivated,activationCodeToken,userActivation) OUTPUT inserted.applicantID values('"
-                                        + Applicant.username + "', '" + Applicant.password + "', N'" + Applicant.firstname + "',N'" + Applicant.middlename + "', N'"
+                                    + "nationality,bloodType,Profession,email,mailAddress,fax,city,applicantAddress,cellular,phone,accountActivated,activationCodeToken,userActivation) OUTPUT inserted.applicantID values(N'"
+                                        + Applicant.username + "', N'" + Applicant.password + "', N'" + Applicant.firstname + "',N'" + Applicant.middlename + "', N'"
                                         + Applicant.lastname + "', '" + Applicant.gender + "', '" + Applicant.dateOfBirth + "', N'" + Applicant.placeOfBirth + "','"
                                         + Applicant.registrationNb + "',N'" + Applicant.nationality + "', '" + Applicant.bloodType + "',N'" + Applicant.profession + "','"
                                         + Applicant.email + "',N'" + Applicant.mailAddress + "','" + Applicant.fax + "',N'" + Applicant.city + "',N'" + Applicant.applicantAddress + "','"
@@ -200,19 +200,23 @@ namespace template.DBService
             return applicantsList;
         }
 
-        public List<Applicant> getAllApplicants()
+        public List<Applicant> getApplicants(int applicantID = 0)
         {
             List<Applicant> applicantsList = new List<Applicant>();
 
             SQLClass dbObj = new SQLClass();
             using (SqlConnection connection = dbObj.openConnection())
             {
-                
-                String query = "SELECT * FROM Applicant " ;
+                String whereCond = "";
+                if (!applicantID.Equals(0))
+                {
+                    whereCond = " WHERE applicantID = " + applicantID;
+                }
+                String query = "SELECT * FROM Applicant " + whereCond;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
 
-          
+
                 while (reader.Read())
                 {
                     applicantsList.Add(fillApplicant(reader));
