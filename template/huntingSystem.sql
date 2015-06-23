@@ -222,7 +222,7 @@ insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values(
 
 <<<<<<< HEAD
 /*************countries table ************/
-INSERT INTO countries (countryCode, countryName,countryNameAr) VALUES
+INSERT INTO Country (countryCode, countryName,countryNameAr) VALUES
 ('AE', 'United Arab Emirates',N'الامارات العربية'),
 ('BH', 'Bahrain',N'البحرين'),
 ('DZ', 'Algeria',N'الجزائر'),
