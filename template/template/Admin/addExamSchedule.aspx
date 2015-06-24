@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin.Master" AutoEventWireup="true" CodeBehind="addExamSchedule.aspx.cs" Inherits="template.Admin.addExamSchedule" %>
 
-<%@ Register Assembly="EO.Web" Namespace="EO.Web" TagPrefix="eo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>
