@@ -93,7 +93,7 @@ namespace template.DBService
             {
                 String query = "Select * from RegistrationRequests inner join HuntingClub "
                              + "on RegistrationRequests.clubID = HuntingClub.clubID "
-                             + "inner join Usertable on HuntingClub.adminUserID= UserTable.userID "
+                             + "inner join UserTable on HuntingClub.adminUserID= UserTable.userID "
                              + "where RegistrationRequests.applicantID =" + applicant.applicantID;
 
                 SqlDataReader reader = dbObj.selectQuery(query);

@@ -166,12 +166,19 @@ namespace template.DBService
             Applicant.password = reader["pass"].ToString();
             Applicant.accountActivated = Int32.Parse(reader["accountActivated"].ToString());
             Applicant.activationCodeToken = reader["activationCodeToken"].ToString();
-            //Applicant.userActivation = Int32.Parse(reader["userActivation"].ToString());
+            //
             
             //Check if the exam instance is activated
             DBService.ExamInstanceService service = new ExamInstanceService();
             ExamInstance instance = service.getExamInstanceByApplicantID(Applicant.applicantID);
-            Applicant.userActivation = instance.active;
+            if (instance != null)
+            {
+                Applicant.userActivation = instance.active;
+            }
+            else
+            {
+                Applicant.userActivation = Int32.Parse(reader["userActivation"].ToString());
+            }
             
             return Applicant;
 
@@ -282,6 +289,35 @@ namespace template.DBService
 
             dbObj.CloseConnection();
             return true;
+        }
+
+
+        public List<Applicant> getAllApplicantsOfClubNotActivated(User adminUser)
+        {
+            List<Applicant> applicantsList = new List<Applicant>();
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+
+                String query = "select  Applicant.username as applicantUSername,Applicant.email as applicantEmail, * from HuntingClub inner join UserTable  on HuntingClub.adminUserID = UserTable.userID "
+                            + " inner join RegistrationRequests on HuntingClub.clubID = RegistrationRequests.clubID "
+                            + "inner join Applicant on RegistrationRequests.applicantID = Applicant.applicantID "
+                            + "where UserTable.userID =" + adminUser.userID +"AND Applicant.userActivation=1";
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+
+
+                while (reader.Read())
+                {
+                    Applicant app = fillApplicant(reader);
+                    app.username = reader["applicantUSername"].ToString();
+                    app.email = reader["applicantEmail"].ToString();
+                    applicantsList.Add(app);
+                }
+            }
+            dbObj.CloseConnection();
+            return applicantsList;
         }
     }
 }

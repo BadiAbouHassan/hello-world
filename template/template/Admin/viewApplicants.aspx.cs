@@ -33,7 +33,7 @@ namespace template.Admin
                     applicants = appService.getApplicants();
 
                 }
-                else if (UserRole.roleName == "admin")
+                else
                 {
                     applicants = appService.getAllApplicantsOfAdminClub(loggedAdmin); //only view the applicants of the hunting club of the admin
                 }
