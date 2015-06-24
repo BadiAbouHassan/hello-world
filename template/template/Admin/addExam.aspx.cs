@@ -12,46 +12,50 @@ namespace template.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            errMsgDiv.Style.Add("display", "none");
-            successMsgDiv.Style.Add("display", "none");
 
-            try
+            if (!IsPostBack)
             {
-                CourseController controller = new CourseController();
+                errMsgDiv.Style.Add("display", "none");
+                successMsgDiv.Style.Add("display", "none");
 
-                List<Course> courses = controller.getCourses();
-
-                if (courses != null)
+                try
                 {
-                    for (int i = 0; i < courses.Count; i++)
+                    CourseController controller = new CourseController();
+
+                    List<Course> courses = controller.getCourses();
+
+                    if (courses != null)
                     {
-                        TableRow tRow = new TableRow();
-                        Table1.Rows.Add(tRow);
+                        for (int i = 0; i < courses.Count; i++)
+                        {
+                            TableRow tRow = new TableRow();
+                            Table1.Rows.Add(tRow);
 
-                        // Create a new cell and add it to the row.
-                        TableCell nameCell = new TableCell();
-                        nameCell.Text = courses[i].courseName;
-                        tRow.Cells.Add(nameCell);
+                            // Create a new cell and add it to the row.
+                            TableCell nameCell = new TableCell();
+                            nameCell.Text = courses[i].courseName;
+                            tRow.Cells.Add(nameCell);
 
-                        TableCell descCell = new TableCell();
-                        descCell.Text = courses[i].courseDesc;
-                        tRow.Cells.Add(descCell);
+                            TableCell descCell = new TableCell();
+                            descCell.Text = courses[i].courseDesc;
+                            tRow.Cells.Add(descCell);
 
-                        TableCell editCell = new TableCell();
+                            TableCell editCell = new TableCell();
 
-                        TextBox input = new TextBox();
-                        input.ID = "courseQuestionsNo-" + courses[i].courseID;
+                            TextBox input = new TextBox();
+                            input.ID = "courseQuestionsNo-" + courses[i].courseID;
 
-                        TableCell inputCell = new TableCell();
-                        inputCell.Controls.Add(input);
-                        tRow.Cells.Add(inputCell);
+                            TableCell inputCell = new TableCell();
+                            inputCell.Controls.Add(input);
+                            tRow.Cells.Add(inputCell);
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                errMsgDiv.Style.Remove("display");
-                errMsg.Text = ex.Message;
+                catch (Exception ex)
+                {
+                    errMsgDiv.Style.Remove("display");
+                    errMsg.Text = ex.Message;
+                }
             }
         }
 

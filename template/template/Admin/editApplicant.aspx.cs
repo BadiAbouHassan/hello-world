@@ -19,7 +19,6 @@ namespace template.Admin
         {
             if (!IsPostBack)
             {
-               
                 try
                 {
                     fillClubSelect();

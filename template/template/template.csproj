@@ -502,10 +502,12 @@
     <Compile Include="Controllers\SQLClass.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DBModel\Client.cs" />
+    <Compile Include="DBModel\Country.cs" />
     <Compile Include="DBModel\ExamReservation.cs" />
     <Compile Include="DBModel\ExamSchedule.cs" />
     <Compile Include="DBModel\GrantPermission.cs" />
     <Compile Include="DBModel\QuestionsPerCourse.cs" />
+    <Compile Include="DBService\CountryService.cs" />
     <Compile Include="DBService\ExamInstanceService.cs" />
     <Compile Include="DBService\ExamReservationService.cs" />
     <Compile Include="DBService\ExamScheduleService.cs" />

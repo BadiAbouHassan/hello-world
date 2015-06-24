@@ -13,37 +13,41 @@ namespace template.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+
+            if (!IsPostBack)
             {
-                errMsgDiv.Style.Add("display", "none");
-                successMsgDiv.Style.Add("display", "none");
-
-                int ID = int.Parse(Request.Params["applicantID"].ToString());
-
-                ApplicantController controller = new ApplicantController();
-
-                List<DBModel.Applicant> applicantList = controller.getApplicants(ID);
-                if (applicantList.Count > 0)
+                try
                 {
-                    DBModel.Applicant applicant = applicantList[0];
+                    errMsgDiv.Style.Add("display", "none");
+                    successMsgDiv.Style.Add("display", "none");
 
-                    applicantID.Value = ID.ToString();
-                    applicantName.Text = applicant.firstname + " " + applicant.middlename + " " + applicant.lastname;
+                    int ID = int.Parse(Request.Params["applicantID"].ToString());
 
-                    DBService.RegistrationRequestService registerationService = new DBService.RegistrationRequestService();
-                    RegistrationRequests registerationModel= registerationService.getRequestByApplicant(ID);
-                    if (registerationModel != null)
+                    ApplicantController controller = new ApplicantController();
+
+                    List<DBModel.Applicant> applicantList = controller.getApplicants(ID);
+                    if (applicantList.Count > 0)
                     {
-                        registerationID.Value = registerationModel.registerationID.ToString();
-                    }
-                }
+                        DBModel.Applicant applicant = applicantList[0];
 
-                this.fillExamSchedulesSelect();
-            }
-            catch (Exception ex)
-            {
-                errMsgDiv.Style.Remove("display");
-                errMsg.Text = ex.Message;
+                        applicantID.Value = ID.ToString();
+                        applicantName.Text = applicant.firstname + " " + applicant.middlename + " " + applicant.lastname;
+
+                        DBService.RegistrationRequestService registerationService = new DBService.RegistrationRequestService();
+                        RegistrationRequests registerationModel = registerationService.getRequestByApplicant(ID);
+                        if (registerationModel != null)
+                        {
+                            registerationID.Value = registerationModel.registerationID.ToString();
+                        }
+                    }
+
+                    this.fillExamSchedulesSelect();
+                }
+                catch (Exception ex)
+                {
+                    errMsgDiv.Style.Remove("display");
+                    errMsg.Text = ex.Message;
+                }
             }
         }
 

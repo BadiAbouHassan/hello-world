@@ -14,21 +14,24 @@ namespace template.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            errMsgDiv.Style.Add("display", "none");
-            successMsgDiv.Style.Add("display", "none");
+            if (!IsPostBack)
+            {
+                errMsgDiv.Style.Add("display", "none");
+                successMsgDiv.Style.Add("display", "none");
 
-            try
-            {
-                if (!IsPostBack)
+                try
                 {
-                    this.fillExamsSelect();
-                    this.fillClubsSelect();
+                    if (!IsPostBack)
+                    {
+                        this.fillExamsSelect();
+                        this.fillClubsSelect();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                errMsgDiv.Style.Remove("display");
-                errMsg.Text = ex.Message;
+                catch (Exception ex)
+                {
+                    errMsgDiv.Style.Remove("display");
+                    errMsg.Text = ex.Message;
+                }
             }
         }
 

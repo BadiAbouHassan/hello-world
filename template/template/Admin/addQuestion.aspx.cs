@@ -13,10 +13,13 @@ namespace template.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            errMsgDiv.Style.Add("display", "none");
-            successMsgDiv.Style.Add("display", "none");
+            if (!IsPostBack)
+            {
+                errMsgDiv.Style.Add("display", "none");
+                successMsgDiv.Style.Add("display", "none");
 
-            this.fillCourseSelect();
+                this.fillCourseSelect();
+            }
         }
 
         public void fillCourseSelect()
