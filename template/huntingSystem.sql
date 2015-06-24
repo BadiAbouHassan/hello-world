@@ -81,7 +81,6 @@ activationCodeToken varchar(500),
 userActivation int,
 Primary Key (applicantID),
 FOREIGN KEY (nationality) REFERENCES Country(countryCode)
-
 )
 
 create table UserTable(
@@ -108,13 +107,14 @@ FOREIGN KEY (adminUserID) REFERENCES UserTable(userID)
 )
 
 create table RegistrationRequests(
-referenceID int IDENTITY(1,1) NOT NULL,
+registerationID int IDENTITY(1,1) NOT NULL,
 applicantID int NOT NULL,
 clubID int NOT NULL,
 registrationRequestsDate DATE,
 verifiedByAdmin int,
-verificationDate DATE, 
-Primary Key (referenceID), 
+verificationDate DATE,
+referenceNo varchar(50),
+Primary Key (registerationID), 
 FOREIGN KEY (applicantID) REFERENCES Applicant(applicantID),
 FOREIGN KEY (clubID) REFERENCES HuntingClub(clubID)
 )
@@ -145,11 +145,11 @@ create table ExamReservation(
 reservationID int IDENTITY(1,1) NOT NULL,
 examScheduleID int NOT NULL,
 applicantID int NOT NULL,
-referenceID int NOT NULL, 
+registerationID int NOT NULL, 
 Primary Key (reservationID), 
 FOREIGN KEY (examScheduleID) REFERENCES ExamSchedule(examScheduleID),
 FOREIGN KEY (applicantID) REFERENCES Applicant(applicantID),
-FOREIGN KEY (referenceID) REFERENCES RegistrationRequests(referenceID)
+FOREIGN KEY (registerationID) REFERENCES RegistrationRequests(registerationID)
 )
 
 
@@ -173,11 +173,21 @@ elapsedTime int NOT NULL,
 result decimal NOT NULL,
 active int,
 activationTime DATE ,
-reservationID int NOT NULL, 
+reservationID int NOT NULL,
+finished tinyint, 
 Primary Key (instanceID), 
 FOREIGN KEY (reservationID) REFERENCES ExamReservation(reservationID),
 FOREIGN KEY (examID) REFERENCES Exam(examID)
 
+)
+
+create table FieldExam (
+fieldExamID int IDENTITY(1,1) NOT NULL,
+examInstanceID int NOT NULL,
+result decimal NOT NULL,
+notes text
+PRIMARY KEY (fieldExamID),
+FOREIGN KEY (examInstanceID) REFERENCES ExamInstance(instanceID)
 )
 
 create table ExamQuestions(
@@ -220,8 +230,7 @@ insert into UserTable(username, pass,firstname,roleID) values('admin2','1234','a
 insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub1','Beirut','70888999','club1@hunting.com','1');
 insert into HuntingClub(clubName, clubAddress,phoneNb,email,adminUserID) values('HuntingClub2','Saida','70555444','club2@hunting.com','2');
 
-<<<<<<< HEAD
-/*************countries table ************/
+
 INSERT INTO Country (countryCode, countryName,countryNameAr) VALUES
 ('AE', 'United Arab Emirates',N'الامارات العربية'),
 ('BH', 'Bahrain',N'البحرين'),
@@ -244,7 +253,4 @@ INSERT INTO Country (countryCode, countryName,countryNameAr) VALUES
 ('OM','Oman',N'عمان'),
 ('OO', 'Others',N'غير موجود')
 ;
-=======
->>>>>>> origin/master
-
 
