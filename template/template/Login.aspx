@@ -86,9 +86,9 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-9" >
-                                                <select name="gender" class="form-control">
-                                                    <option dir="rtl" text-align="right" value="male">ذكر</option>
-                                                    <option dir="rtl" text-align="right" value="female">انثى</option>
+                                                <select name="gender" class="form-control" dir="rtl">
+                                                    <option dir="rtl"  value="male">ذكر</option>
+                                                    <option dir="rtl"  value="female">انثى</option>
                                                 </select>
                                             </div>
                                             <label for="icode" class="col-md-3 control-label">الجنس</label>
@@ -218,11 +218,11 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-9">
-                                                <select class="form-control" id="club" name="club">
+                                                <select class="form-control" id="club" name="club" dir="rtl">
                                                     <%
                                                     foreach( template.DBModel.HuntingClub club in clubs )
                                                         { %>
-                                                        <option value="<%= club.clubID %>"><%= club.clubName %></option>
+                                                        <option dir="rtl" value="<%= club.clubID %>"><%= club.clubName %></option>
                                                     <%  }; %>
                                                 </select>
                                             </div>
