@@ -277,6 +277,7 @@
     <Content Include="Views\homePage.aspx" />
     <Content Include="Views\logoutClient.aspx" />
     <Content Include="Views\questionsWizard.aspx" />
+    <Content Include="Views\questionWizardResult.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -622,6 +623,13 @@
     </Compile>
     <Compile Include="Views\questionsWizard.aspx.designer.cs">
       <DependentUpon>questionsWizard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\questionWizardResult.aspx.cs">
+      <DependentUpon>questionWizardResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\questionWizardResult.aspx.designer.cs">
+      <DependentUpon>questionWizardResult.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

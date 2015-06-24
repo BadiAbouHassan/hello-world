@@ -6,8 +6,10 @@
     <script src="../bootstrap-3.3.2-dist-sandstone/js/jquery.bootstrap.wizard.js"></script>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-  <div class="container" style="max-width:600px;margin-top: 10px;" id="rootwizard">
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server"> 
+    <input type="hidden" name="no_questions" id="no_questions" value="<%= questionsToView.Count %>" 
+    
+  <div class="container" style="max-width:800px;margin-top: 50px;direction: rtl" id="rootwizard">
 	<div class="navbar hidden" >
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -22,6 +24,7 @@
 	</div>
 	
 	<div class="tab-content">
+        
          <% 
                 for(int i=0 ; i<questionsToView.Count ; i++) { %>
 	    <div class="tab-pane" id="tab<%= i+1 %>">
@@ -96,8 +99,12 @@
                 }
             });
             $('#rootwizard .finish').click(function () {
-                alert('Finished!, Starting over!');
-                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+                alert('Finished!');
+                //$( "#question_wizard_form" ).submit();
+                document.getElementById("aspnetForm").action="questionWizardResult.aspx"; 
+                document.getElementById("aspnetForm").submit();
+                //window.location.assign("questionWizardResult.aspx")
+                //$('#rootwizard').find("a[href*='tab1']").trigger('click');
             });
         });
     </script>
