@@ -327,6 +327,7 @@
     </Compile>
     <Compile Include="Admin\addFieldExamResult.aspx.cs">
       <DependentUpon>addFieldExamResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\addFieldExamResult.aspx.designer.cs">
       <DependentUpon>addFieldExamResult.aspx</DependentUpon>
