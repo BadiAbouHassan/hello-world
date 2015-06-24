@@ -7,15 +7,16 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Result Page
-                    <small>Your Result!</small>
+                    <small>Your Answers</small>
                 </h1>
-                <h1>
-                    testing: <%= Request.Form["no_questions"] %>
-                </h1>
-                <h2>
-                    testing2 : <%= Request.Form["optradio1"] %>
-                </h2>
-                <p>we will display the result of your exam here</p>
+                <div class="container">
+                    <% for(int i = 0 ; i< int.Parse( Request.Form["no_questions"].ToString());i++){ %>
+                        <div class="form-group col-xs-12 col-md-12" style="margin-bottom: 20px;" >
+                            <label class="col-md-8 col-xs-12"><%= Request.Form["question"+(i+1)].ToString() %></label>
+                            <label class="col-md-4 col-xs-12" ><%= Request.Form["optradio"+(i+1)].ToString()  %></label>
+                        </div>
+                    <% } %>
+                </div>
             </div>
         </div>
     </div>

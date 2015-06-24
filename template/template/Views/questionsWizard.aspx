@@ -16,6 +16,7 @@
 	        <ul>
                 <% 
                 for(int j=0 ; j<questionsToView.Count ; j++) { %>
+                    <input type="hidden" name="question<%= j+1 %>" value="<%= questionsToView[j].title %>" />
                     <li><a href="#tab<%= j+1 %>" data-toggle="tab"><%= j+1 %></a></li>
                 <% } %>
 	        </ul>
@@ -36,7 +37,9 @@
                             <% System.Collections.Generic.List<template.DBModel.Answer> answers = questionsToView[i].answers; %>
                             <% foreach (template.DBModel.Answer answer in answers){ %>
                             <div class="radio">
-                                <label><input type="radio" name="optradio<%= i+1 %>[]" /><%= answer.title %></label>
+                                <label>
+                                    <input type="radio" value="<%= answer.answerID %>" name="optradio<%= i+1 %>" /><%= answer.title %>
+                                </label>
                             </div>
                             <%} %>
                         </div>
@@ -68,11 +71,10 @@
                     // Make sure we entered the name
                     incrementer = <%= j+1%> ;
                     if(index == incrementer ){
-                        if (!$("input[name='optradio<%= j+1 %>[]']:checked").val()) {
+                        if (!$("input[name='optradio<%= j+1 %>']:checked").val()) {
                         alert('Must Select answer');
                         //$('#name').focus();
                         return false;
-                        
                     }
                 }
             <% } %>
