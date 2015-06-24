@@ -130,13 +130,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Courses <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Chapters <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/Admin/addCourse.aspx">Add New Course</a>
+                                    <a href="/Admin/addCourse.aspx">Add New Chapter</a>
                                 </li>
                                 <li>
-                                    <a href="/Admin/viewCourses.aspx">View Courses</a>
+                                    <a href="/Admin/viewCourses.aspx">View Chapters</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

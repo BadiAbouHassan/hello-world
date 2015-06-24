@@ -22,15 +22,15 @@ namespace template.DBService
         /// <returns></returns>
         public RegistrationRequests addRequestByCnx(RegistrationRequests request,SQLClass dbObj)
         {
-            
-            String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate) OUTPUT inserted.referenceID values('"
+
+            String query = "insert into RegistrationRequests(applicantID, clubID,registrationRequestsDate,verifiedByAdmin,verificationDate, referenceNo) OUTPUT inserted.registerationID values('"
                                 + request.applicantID + "', '" + request.clubID + "', '" + request.registrationRequestsDate + "','" + request.verifiedByAdmin + "', '"
-                                + request.verificationDate + "');";
+                                + request.verificationDate + "', '" + request.referenceNo + "');";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 if (reader.Read())
                 {
-                    request.referenceID = Int32.Parse(reader["referenceID"].ToString());
+                    request.registerationID = Int32.Parse(reader["registerationID"].ToString());
                 }
                 else
                 {
@@ -67,7 +67,7 @@ namespace template.DBService
             using (SqlConnection cn = dbObj.openConnection())
             {
                 String query = "update table RegistrationRequests set verifiedByAdmin ='"+ request.verifiedByAdmin +"','" +"verificationDate ='"+  request.verificationDate +
-                                 "' where referenceID ="+request.referenceID+";";
+                                 "' where registerationID =" + request.registerationID + ";";
 
                 dbObj.executeQuery(query);
             }
@@ -76,7 +76,23 @@ namespace template.DBService
             return true;
         }
 
+        public bool verifyRegisterationRequest(int registerationID)
+        {
+            bool result = false;
 
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String verificationDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
+
+                String query = "UPDATE RegistrationRequests SET verifiedByAdmin='1',verificationDate='" + verificationDate + "' where registerationID =" + registerationID + ";";
+
+                result = dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
+            return true;
+            
+        }
 
         public RegistrationRequests getRequestByID(int referenceID)
         {
@@ -97,13 +113,13 @@ namespace template.DBService
 
             return req;
         }
-        public RegistrationRequests getRequestByApplicant(DBModel.Applicant applicant)
+        public RegistrationRequests getRequestByApplicant(int applicantID)
         {
             RegistrationRequests req = null;
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Select * from RegistrationRequests where applicantID =" + applicant.applicantID;
+                String query = "Select * from RegistrationRequests where applicantID =" + applicantID;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())
@@ -143,11 +159,12 @@ namespace template.DBService
         {
             RegistrationRequests req = new RegistrationRequests();
 
-            req.referenceID = Int32.Parse(reader["referenceID"].ToString());
+            req.registerationID = Int32.Parse(reader["registerationID"].ToString());
             req.clubID = Int32.Parse(reader["clubID"].ToString());
             req.registrationRequestsDate = reader["registrationRequestsDate"].ToString();
             req.verificationDate = reader["verificationDate"].ToString();
             req.verifiedByAdmin = Int32.Parse(reader["verifiedByAdmin"].ToString());
+            req.referenceNo = reader["referenceNo"].ToString();
 
             return req;
 

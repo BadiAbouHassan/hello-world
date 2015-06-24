@@ -39,7 +39,7 @@ namespace template.DBService
             DataSet ds = new DataSet();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "select * from ExamSchedule";
+                String query = "select b.* from ExamSchedule as a INNER JOIN Exam as b ON a.examID = b.examID";
                 SqlDataAdapter myCommand = new SqlDataAdapter(query, cn);
                 myCommand.Fill(ds, "ExamSchedule");
             }

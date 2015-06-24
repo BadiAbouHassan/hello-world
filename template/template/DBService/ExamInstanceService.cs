@@ -14,8 +14,9 @@ namespace template.DBService
         {
         }
 
-        public ExamInstance addExamInstance(ExamInstance examInstance)
+        public int addExamInstance(ExamInstance examInstance)
         {
+            int result = 0;
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
@@ -23,20 +24,12 @@ namespace template.DBService
                                 + examInstance.examID + "', '" + examInstance.staringTime  + "', '" + examInstance.examDuration + "'," + examInstance.elapsedTime + ", '"
                                 + examInstance.result + "','"+examInstance.active+"','"+examInstance.activationTime+"','"+examInstance.reservationID+"');";
 
-                SqlDataReader reader = dbObj.selectQuery(query);
-                if (reader.Read())
-                {
-                    examInstance.instanceID = Int32.Parse(reader["instanceID"].ToString());
-                }
-                else
-                {
-                    examInstance = null;
-                }
+                result = dbObj.executeQueryAndReturnLastID(query);
 
             }
             dbObj.CloseConnection();
 
-            return examInstance;
+            return result;
         }
 
         public ExamInstance getExamInstanceByID(int instanceID)
@@ -59,6 +52,32 @@ namespace template.DBService
             return req;
         }
 
+        public ExamInstance getExamInstanceByApplicantID(int applicantID)
+        {
+            ExamInstance req = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Select i.* " + 
+                               "FROM Applicant as a " +
+                               "INNER JOIN RegistrationRequests as r ON a.applicantID = r.applicantID " +
+                               "INNER JOIN ExamReservation as e ON e.registerationID = r.registerationID " +
+                               "INNER JOIN ExamInstance as i ON i.reservationID = e.reservationID " +
+                               "WHERE r.applicantID =" + applicantID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    req = fillExamIntance(reader);
+                }
+
+            }
+            dbObj.CloseConnection();
+
+            return req;
+        }
+
+
         private ExamInstance fillExamIntance(SqlDataReader reader)
         {
             ExamInstance req = new ExamInstance();
@@ -66,7 +85,7 @@ namespace template.DBService
             req.instanceID = Int32.Parse(reader["instanceID"].ToString());
             req.reservationID = Int32.Parse(reader["reservationID"].ToString());
             req.examID = Int32.Parse(reader["examID"].ToString());
-            req.staringTime = Convert.ToDateTime(reader["staringTime"].ToString());
+            req.staringTime = Convert.ToDateTime(reader["startingTime"].ToString());
             req.elapsedTime = double.Parse(reader["elapsedTime"].ToString());
             req.examDuration = Double.Parse(reader["examDuration"].ToString());
             req.result = Double.Parse(reader["result"].ToString());

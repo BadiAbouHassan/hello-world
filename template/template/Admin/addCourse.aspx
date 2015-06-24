@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Courses</h1>
+            <h1 class="page-header">Chapters</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Add New Course
+                    Add New Chapter
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -24,12 +24,12 @@
                                 <p><asp:Label id="errMsg" runat="server" Text="" /></p>
                             </div>
                             <div class="form-group">
-                                <label>Course Name</label>
-                                <input placeholder="Course Name" class="form-control" id="courseName" name="courseName" runat="server" required="required" />
+                                <label>Chapter Name</label>
+                                <input placeholder="Chapter Name" class="form-control" id="courseName" name="courseName" runat="server" required="required" />
                                 <p class="help-block"></p>
                             </div>
                             <div class="form-group">
-                                <label>Course Description</label>
+                                <label>Chapter Description</label>
                                 <textarea class="form-control" rows="3" runat="server" required="required" id="courseDesc" name="courseDesc"></textarea>
                             </div>
                             <asp:Button id="btnSave" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save" OnClick="btnSave_Click" />

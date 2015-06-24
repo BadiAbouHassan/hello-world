@@ -49,15 +49,15 @@
                                 <input placeholder="Answer 3" class="form-control" id="answer3" name="answer3" runat="server" />
                             </div>
                             <div class="form-group">
-                                <label>Answer 2</label>
+                                <label>Answer 4</label>
                                 <input placeholder="Answer 4" class="form-control" id="answer4" name="answer4" runat="server" />
                             </div>
                             <div class="form-group">
-                                <label>Answer 2</label>
+                                <label>Answer 5</label>
                                 <input placeholder="Answer 5" class="form-control" id="answer5" name="answer5" runat="server" />
                             </div>
                             <div class="form-group">
-                                <label>Answer 2</label>
+                                <label>Answer 6</label>
                                 <input placeholder="Answer 6" class="form-control" id="answer6" name="answer6" runat="server" />
                             </div>
                             <div class="form-group">

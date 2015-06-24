@@ -166,7 +166,13 @@ namespace template.DBService
             Applicant.password = reader["pass"].ToString();
             Applicant.accountActivated = Int32.Parse(reader["accountActivated"].ToString());
             Applicant.activationCodeToken = reader["activationCodeToken"].ToString();
-            Applicant.userActivation = Int32.Parse(reader["userActivation"].ToString());
+            //Applicant.userActivation = Int32.Parse(reader["userActivation"].ToString());
+            
+            //Check if the exam instance is activated
+            DBService.ExamInstanceService service = new ExamInstanceService();
+            ExamInstance instance = service.getExamInstanceByApplicantID(Applicant.applicantID);
+            Applicant.userActivation = instance.active;
+            
             return Applicant;
 
         }

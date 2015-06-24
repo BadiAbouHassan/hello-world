@@ -24,7 +24,7 @@ namespace template.DBService
             return result;
         }
 
-        public List<QuestionsPerCourse> getQuestions(int questionID = 0)
+        public List<QuestionsPerCourse> getQuestions(int questionID = 0, int examID = 0)
         {
             List<QuestionsPerCourse> result = null;
 
@@ -50,7 +50,7 @@ namespace template.DBService
 
             return result;
         }
-        public List<QuestionsPerCourse> getQuestionsByExam(DBModel.Exam exam)
+        public List<QuestionsPerCourse> getQuestionsByExam(int examID)
         {
             List<QuestionsPerCourse> result = null;
 
@@ -58,7 +58,7 @@ namespace template.DBService
             using (SqlConnection connection = dbObj.openConnection())
             {
                 
-                String query = "SELECT * FROM QuestionsPerCourse WHERE examID = " +exam.examID;
+                String query = "SELECT * FROM QuestionsPerCourse WHERE examID = " + examID;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
 

@@ -41,7 +41,7 @@ namespace template.Views
             catch (Exception exc)
             {
                 String redirect_Location = "Views/homePage.aspx";
-                Response.Redirect("../Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
+                Response.Redirect("../Views/errorHandler.aspx?exceptoin_msg=Internal Error Occured&redirect_locaiton=" + redirect_Location);
             }
         }
         /// <summary>
@@ -51,35 +51,16 @@ namespace template.Views
         public List<Model.Question> getExamQuestions()
         {
             // get the registration request and check if it has been approbed by admin or not ... 
-            DBService.RegistrationRequestService registrationService = new DBService.RegistrationRequestService();
-            DBModel.RegistrationRequests registrationRequest = registrationService.getRequestByApplicant(loggedApplicant);
-            if (registrationRequest.verifiedByAdmin == 0)
-            {
-                // still not verified 
-                Response.Redirect("~/Login.aspx");
-            }
-            // if request have been varified by Admin ...
-            // first must get the exam .. active exam ... 
-            DBService.ExamService examService = new DBService.ExamService();
-            DBModel.Exam exam = examService.getExams()[0];
-            // must first create an exam instance 
-            DBModel.ExamInstance examInstance = new DBModel.ExamInstance();
-            examInstance.elapsedTime = 0;
-            examInstance.staringTime = DateTime.Now;
-            examInstance.examDuration = exam.examDuration;
-            examInstance.examID = exam.examID;
-            examInstance.reservationID = 2;// change according to the reservation id ... must be taken from db ..  
-            examInstance.activationTime = DateTime.Now;// must be changed later 
-            // add exam instance to the db in order to create instance id ... used later ... 
             DBService.ExamInstanceService examInstanceService = new DBService.ExamInstanceService();
-            examInstance = examInstanceService.addExamInstance(examInstance);
+
+            DBModel.ExamInstance examInstance = examInstanceService.getExamInstanceByApplicantID(loggedApplicant.applicantID);
 
             //intialize the list of Exam Question 
             List<DBModel.ExamQuestions> examQuestionsList = new List<DBModel.ExamQuestions>();
             List<Model.Question> questionsList = new List<Model.Question>();
             // must get the question by Course of this exam ... 
             DBService.QuestionsPerCourseService questionPerCourseService = new DBService.QuestionsPerCourseService();
-            List<DBModel.QuestionsPerCourse> questionsPerCourseList = questionPerCourseService.getQuestionsByExam(exam);
+            List<DBModel.QuestionsPerCourse> questionsPerCourseList = questionPerCourseService.getQuestionsByExam(examInstance.examID);
             foreach (DBModel.QuestionsPerCourse questionPerCourse in questionsPerCourseList)
             {
                 // get course of exam question per course obj 

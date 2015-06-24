@@ -293,10 +293,7 @@
     </Compile>
     <Compile Include="Admin\activateExam.aspx.cs">
       <DependentUpon>activateExam.aspx</DependentUpon>
-<<<<<<< HEAD
-=======
       <SubType>ASPXCodeBehind</SubType>
->>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\activateExam.aspx.designer.cs">
       <DependentUpon>activateExam.aspx</DependentUpon>
@@ -324,10 +321,7 @@
     </Compile>
     <Compile Include="Admin\addExamSchedule.aspx.cs">
       <DependentUpon>addExamSchedule.aspx</DependentUpon>
-<<<<<<< HEAD
-=======
       <SubType>ASPXCodeBehind</SubType>
->>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\addExamSchedule.aspx.designer.cs">
       <DependentUpon>addExamSchedule.aspx</DependentUpon>
@@ -369,10 +363,7 @@
     </Compile>
     <Compile Include="Admin\assignExamSchedule.aspx.cs">
       <DependentUpon>assignExamSchedule.aspx</DependentUpon>
-<<<<<<< HEAD
-=======
       <SubType>ASPXCodeBehind</SubType>
->>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\assignExamSchedule.aspx.designer.cs">
       <DependentUpon>assignExamSchedule.aspx</DependentUpon>
@@ -456,10 +447,7 @@
     </Compile>
     <Compile Include="Admin\viewExamSchedules.aspx.cs">
       <DependentUpon>viewExamSchedules.aspx</DependentUpon>
-<<<<<<< HEAD
-=======
       <SubType>ASPXCodeBehind</SubType>
->>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     </Compile>
     <Compile Include="Admin\viewExamSchedules.aspx.designer.cs">
       <DependentUpon>viewExamSchedules.aspx</DependentUpon>
@@ -495,6 +483,7 @@
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
+    <Compile Include="Controllers\ExamReservationController.cs" />
     <Compile Include="Controllers\ExamScheduleController.cs" />
     <Compile Include="Controllers\GrantedPermissionController.cs" />
     <Compile Include="Controllers\HuntingClubController.cs" />
@@ -512,15 +501,13 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SQLClass.cs" />
     <Compile Include="Controllers\UserController.cs" />
-<<<<<<< HEAD
     <Compile Include="DBModel\Client.cs" />
     <Compile Include="DBModel\ExamReservation.cs" />
-=======
->>>>>>> da155f50f3ec712a9dbcedf9531e45bbf4da672e
     <Compile Include="DBModel\ExamSchedule.cs" />
     <Compile Include="DBModel\GrantPermission.cs" />
     <Compile Include="DBModel\QuestionsPerCourse.cs" />
     <Compile Include="DBService\ExamInstanceService.cs" />
+    <Compile Include="DBService\ExamReservationService.cs" />
     <Compile Include="DBService\ExamScheduleService.cs" />
     <Compile Include="DBService\GrantedPermissionService.cs" />
     <Compile Include="DBService\PermissionService.cs" />

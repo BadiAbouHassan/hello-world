@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Courses</h1>
+            <h1 class="page-header">Chapters</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -22,8 +22,8 @@
                     <div class="table-responsive">
                         <asp:Table ID="Table1" runat="server" BorderColor="#DADDE1" CellPadding="5" CellSpacing="5" CssClass="table table-bordered table-striped">
                             <asp:TableHeaderRow runat="server">
-                                <asp:TableCell runat="server"><b>Course Title</b></asp:TableCell>
-                                <asp:TableCell runat="server"><b>Course Description</b></asp:TableCell>
+                                <asp:TableCell runat="server"><b>Chapter Title</b></asp:TableCell>
+                                <asp:TableCell runat="server"><b>Chapter Description</b></asp:TableCell>
                                 <asp:TableCell runat="server" ColumnSpan="2"></asp:TableCell>
                             </asp:TableHeaderRow>
                         </asp:Table>

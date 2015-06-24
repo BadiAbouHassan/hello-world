@@ -29,6 +29,13 @@ namespace template.Admin
 
                     applicantID.Value = ID.ToString();
                     applicantName.Text = applicant.firstname + " " + applicant.middlename + " " + applicant.lastname;
+
+                    DBService.RegistrationRequestService registerationService = new DBService.RegistrationRequestService();
+                    RegistrationRequests registerationModel= registerationService.getRequestByApplicant(ID);
+                    if (registerationModel != null)
+                    {
+                        registerationID.Value = registerationModel.registerationID.ToString();
+                    }
                 }
 
                 this.fillExamSchedulesSelect();
@@ -50,6 +57,43 @@ namespace template.Admin
                 scheduledExam.DataTextField = "examName";
                 scheduledExam.DataValueField = "examID";
                 scheduledExam.DataBind();
+            }
+            catch (Exception ex)
+            {
+                errMsgDiv.Style.Remove("display");
+                errMsg.Text = ex.Message;
+            }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DBModel.ExamReservation reservation = new ExamReservation();
+                reservation.applicantID = int.Parse(applicantID.Value);
+                reservation.examScheduleID = int.Parse(scheduledExam.SelectedValue.ToString());
+                reservation.registerationID = int.Parse(registerationID.Value.ToString());
+
+                ExamReservationController controller = new ExamReservationController();
+
+                int reservationID = controller.addExamReservation(reservation);
+                if (reservationID != 0)
+                {
+                    // Verify the registeration request at this step
+                    DBService.RegistrationRequestService regService = new DBService.RegistrationRequestService();
+
+                    if (regService.verifyRegisterationRequest(reservation.registerationID))
+                    {
+                        // Send email to the user to for exam date time confirmation
+                        successMsgDiv.Style.Remove("display");
+                        successMsg.Text = "Exam Schedule Saved successfuly!";
+                    }
+                }
+                else
+                {
+                    errMsgDiv.Style.Remove("display");
+                    errMsg.Text = "Error saving Exam Schedule!";
+                }
             }
             catch (Exception ex)
             {
