@@ -7,7 +7,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-  <div class="container" style="max-width:600px;margin-top: 10px;" id="rootwizard">
+  <div class="container" style="max-width:800px;margin-top: 50px;direction: rtl" id="rootwizard">
 	<div class="navbar hidden" >
 	  <div class="navbar-inner">
 	    <div class="container">
@@ -96,8 +96,9 @@
                 }
             });
             $('#rootwizard .finish').click(function () {
-                alert('Finished!, Starting over!');
-                $('#rootwizard').find("a[href*='tab1']").trigger('click');
+                alert('Finished!');
+                window.location.assign("questionWizardResult.aspx")
+                //$('#rootwizard').find("a[href*='tab1']").trigger('click');
             });
         });
     </script>
