@@ -12,12 +12,12 @@
                     <form id="loginform" class="form-horizontal" role="form"  method="post"  >
                          <div class="alert alert-success" style="display:none;" id="successMsgDiv" runat="server">
                             <p><asp:Label id="successMsg" runat="server" Text="" /></p>
-                    </div>
-                    <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
-                                    <p><asp:Label id="errMsg" runat="server" Text="" /></p>
-                     </div>
+                        </div>
+                        <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
+                            <p><asp:Label id="errMsg" runat="server" Text="" /></p>
+                        </div>
                             <div style="margin-bottom: 25px" class="input-group" align="right"  >
-                                 <input required="required" id="login_username" text-align="right" dir="rtl"  type="text" class="form-control" name="username" value="" runat="server" placeholder="اسم المستخدم أو البريد الإلكتروني"/>                                        
+                                <input required="required" id="login_username" text-align="right" dir="rtl"  type="text" class="form-control" name="username" value="" runat="server" placeholder="اسم المستخدم أو البريد الإلكتروني"/>                                        
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                             </div>
                             <div style="margin-bottom: 25px" class="input-group" >
