@@ -25,9 +25,17 @@ namespace template
                 {
                     ApplicantService client_controller = new ApplicantService();
                     Applicant app = client_controller.getApplicantOfActivationCode(Request.QueryString["ActivationCode"]);
-                    client_controller.activateApplicantByID(app.applicantID);
-                    successMsgDiv.Style.Remove("display");
-                    successMsg.Text = "تم تفعيل حسابك بنجاح";
+                    if (app != null)
+                    {
+                        client_controller.activateApplicantByID(app.applicantID);
+                        successMsgDiv.Style.Remove("display");
+                        successMsg.Text = "تم تفعيل حسابك بنجاح";
+                    }
+                    else
+                    {
+                        errMsgDiv.Style.Remove("display");
+                        errMsg.Text = " لم يتم تفعيل الحساب .. الرجاء اعادة المحاولة ";
+                    }
                 }
             }
             catch(Exception exc)

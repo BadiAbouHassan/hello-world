@@ -74,21 +74,30 @@ namespace template.Controlers
                 req.verificationDate = "";
                 req.registrationRequestsDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
 
-                
-                ApplicantService client_controller = new ApplicantService();
-                Applicant addedApplicant = client_controller.addApplicant(user, req);
-                if (addedApplicant != null)
+                if (checkIfUserNameExist(Request.Form["username"]))
                 {
-                     Response.Redirect("../Login.aspx",false);
+                    //not exists
+                    ApplicantService client_controller = new ApplicantService();
+                    Applicant addedApplicant = client_controller.addApplicant(user, req);
+                    if (addedApplicant != null)
+                    {
+                        Response.Redirect("../Login.aspx", false);
 
-                    // label1.Text = "Succcessfully added";
-                     sendEmailConfirmation(addedApplicant);
-                     string script = "window.onload = function(){ alert('";
-                     script += "الرجاء اضغط على الرابط في  البريد الاكتروني لتفعيل الحساب";
-                     script += "');";
-                     script += "window.location = '";
-                     script += "'; }";
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "تم تسجيل الاشتراك بنجاح" , script , true);
+                        // label1.Text = "Succcessfully added";
+                        sendEmailConfirmation(addedApplicant);
+                        string script = "window.onload = function(){ alert('";
+                        script += "الرجاء اضغط على الرابط في  البريد الاكتروني لتفعيل الحساب";
+                        script += "');";
+                        script += "window.location = '";
+                        script += "'; }";
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "تم تسجيل الاشتراك بنجاح", script, true);
+
+                    }
+                }
+                else
+                {
+                    string script = "javascript:alert('اسم المستخدم موجود')";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "خطأ", script, true);
 
                 }
         
@@ -101,6 +110,23 @@ namespace template.Controlers
 
             }
             
+        }
+
+        private bool checkIfUserNameExist(string p)
+        {
+            ApplicantService client_controller = new ApplicantService();
+            List<Applicant> allApplicants = client_controller.getApplicants();
+            if (allApplicants.Count > 0)
+            {
+                foreach (Applicant app in allApplicants)
+                {
+                    if (app.username.ToLower().Equals(p.ToLower()))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void sendEmailConfirmation(Applicant addedApplicant)

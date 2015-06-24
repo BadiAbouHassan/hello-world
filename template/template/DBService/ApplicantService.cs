@@ -196,7 +196,7 @@ namespace template.DBService
                 String query = "select  Applicant.username as applicantUSername,Applicant.email as applicantEmail, * from HuntingClub inner join UserTable  on HuntingClub.adminUserID = UserTable.userID "
                             + " inner join RegistrationRequests on HuntingClub.clubID = RegistrationRequests.clubID "
                             + "inner join Applicant on RegistrationRequests.applicantID = Applicant.applicantID "
-                            + "where UserTable.userID ="+adminUser.userID;
+                            + "where UserTable.userID ="+adminUser.userID +"";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
 
@@ -303,7 +303,7 @@ namespace template.DBService
                 String query = "select  Applicant.username as applicantUSername,Applicant.email as applicantEmail, * from HuntingClub inner join UserTable  on HuntingClub.adminUserID = UserTable.userID "
                             + " inner join RegistrationRequests on HuntingClub.clubID = RegistrationRequests.clubID "
                             + "inner join Applicant on RegistrationRequests.applicantID = Applicant.applicantID "
-                            + "where UserTable.userID =" + adminUser.userID +"AND Applicant.userActivation=1";
+                            + "where UserTable.userID =" + adminUser.userID +"AND Applicant.userActivation=0 AND accountActivated=1";
 
                 SqlDataReader reader = dbObj.selectQuery(query);
 
