@@ -19,7 +19,7 @@
                     <div class="alert alert-danger" style="display:none;" id="errMsgDiv" runat="server">
                         <p><asp:Label id="errMsg" runat="server" Text="" /></p>
                     </div>
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="min-height:400px;">
                         <asp:Table ID="Table1" runat="server" BorderColor="#DADDE1" CellPadding="5" CellSpacing="5" CssClass="table table-bordered table-striped">
                             <asp:TableHeaderRow ID="TableHeaderRow1" runat="server">
                                 <asp:TableCell ID="TableCell1" runat="server"><b>ID</b></asp:TableCell>

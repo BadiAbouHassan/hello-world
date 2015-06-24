@@ -33,8 +33,6 @@ namespace template.Admin
                     Session["logged_user"] = user;
                     Response.Redirect("index.aspx");
                 }
-
-                
             }
             catch (Exception ex)
             {

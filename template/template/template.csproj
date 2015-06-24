@@ -54,6 +54,7 @@
     <Content Include="Admin\addCourse.aspx" />
     <Content Include="Admin\addExam.aspx" />
     <Content Include="Admin\addExamSchedule.aspx" />
+    <Content Include="Admin\addFieldExamResult.aspx" />
     <Content Include="Admin\addPermission.aspx" />
     <Content Include="Admin\addQuestion.aspx" />
     <Content Include="Admin\addRole.aspx" />
@@ -323,6 +324,12 @@
     <Compile Include="Admin\addExamSchedule.aspx.designer.cs">
       <DependentUpon>addExamSchedule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\addFieldExamResult.aspx.cs">
+      <DependentUpon>addFieldExamResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\addFieldExamResult.aspx.designer.cs">
+      <DependentUpon>addFieldExamResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\addPermission.aspx.cs">
       <DependentUpon>addPermission.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -489,6 +496,7 @@
     <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\ExamReservationController.cs" />
     <Compile Include="Controllers\ExamScheduleController.cs" />
+    <Compile Include="Controllers\FieldExamController.cs" />
     <Compile Include="Controllers\GrantedPermissionController.cs" />
     <Compile Include="Controllers\HuntingClubController.cs" />
     <Compile Include="Controllers\MD5Hash.cs" />
@@ -509,12 +517,14 @@
     <Compile Include="DBModel\Country.cs" />
     <Compile Include="DBModel\ExamReservation.cs" />
     <Compile Include="DBModel\ExamSchedule.cs" />
+    <Compile Include="DBModel\FieldExam.cs" />
     <Compile Include="DBModel\GrantPermission.cs" />
     <Compile Include="DBModel\QuestionsPerCourse.cs" />
     <Compile Include="DBService\CountryService.cs" />
     <Compile Include="DBService\ExamInstanceService.cs" />
     <Compile Include="DBService\ExamReservationService.cs" />
     <Compile Include="DBService\ExamScheduleService.cs" />
+    <Compile Include="DBService\FieldExamService.cs" />
     <Compile Include="DBService\GrantedPermissionService.cs" />
     <Compile Include="DBService\PermissionService.cs" />
     <Compile Include="DBService\QuestionsPerCourseService.cs" />
