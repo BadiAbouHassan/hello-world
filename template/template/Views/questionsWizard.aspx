@@ -36,7 +36,7 @@
                             <% System.Collections.Generic.List<template.DBModel.Answer> answers = questionsToView[i].answers; %>
                             <% foreach (template.DBModel.Answer answer in answers){ %>
                             <div class="radio">
-                                <label><input type="radio" name="optradio<%= i+1 %>" /><%= answer.title %></label>
+                                <label><input type="radio" name="optradio<%= i+1 %>[]" /><%= answer.title %></label>
                             </div>
                             <%} %>
                         </div>
@@ -68,7 +68,7 @@
                     // Make sure we entered the name
                     incrementer = <%= j+1%> ;
                     if(index == incrementer ){
-                        if (!$("input[name='optradio<%= j+1 %>']:checked").val()) {
+                        if (!$("input[name='optradio<%= j+1 %>[]']:checked").val()) {
                         alert('Must Select answer');
                         //$('#name').focus();
                         return false;
@@ -101,8 +101,8 @@
             $('#rootwizard .finish').click(function () {
                 alert('Finished!');
                 //$( "#question_wizard_form" ).submit();
-                //document.getElementById("aspnetForm").action="questionWizardResult.aspx"; 
-                //document.getElementById("aspnetForm").submit();
+                document.getElementById("aspnetForm").action="questionWizardResult.aspx"; 
+                document.getElementById("aspnetForm").submit();
                 //window.location.assign("questionWizardResult.aspx")
                 //$('#rootwizard').find("a[href*='tab1']").trigger('click');
             });
