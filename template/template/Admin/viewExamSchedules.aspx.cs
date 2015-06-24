@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using template.DBModel;
 using template.Controllers;
+using template.DBService;
 
 namespace template.Admin
 {
@@ -16,11 +17,15 @@ namespace template.Admin
             {
                 errMsgDiv.Style.Add("display", "none");
                 successMsgDiv.Style.Add("display", "none");
-
+                List<ExamSchedule> examSchedules = new List<ExamSchedule>() ;
+               
                 ExamScheduleController controller = new ExamScheduleController();
 
-                List<ExamSchedule> examSchedules = controller.getExamSchedules();
+               
+               
 
+                    examSchedules = controller.getExamSchedules();
+              
                 if (examSchedules != null)
                 {
                     for (int i = 0; i < examSchedules.Count; i++)

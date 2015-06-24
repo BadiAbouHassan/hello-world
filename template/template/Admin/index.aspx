@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="#" id="appRef" runat="server">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="#" id="clubRef" runat="server">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -73,7 +73,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                
+                <a href="#" id="usrRef" runat="server">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -97,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="#" id="examRef" runat="server">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

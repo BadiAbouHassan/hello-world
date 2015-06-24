@@ -66,6 +66,7 @@
     <Content Include="Admin\header.ascx" />
     <Content Include="Admin\index.aspx" />
     <Content Include="Admin\login.aspx" />
+    <Content Include="Admin\UpcomingExams.aspx" />
     <Content Include="Admin\viewApplicants.aspx" />
     <Content Include="Admin\viewClubs.aspx" />
     <Content Include="Admin\viewCourses.aspx" />
@@ -412,6 +413,13 @@
     </Compile>
     <Compile Include="Admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UpcomingExams.aspx.cs">
+      <DependentUpon>UpcomingExams.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UpcomingExams.aspx.designer.cs">
+      <DependentUpon>UpcomingExams.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\viewApplicants.aspx.cs">
       <DependentUpon>viewApplicants.aspx</DependentUpon>

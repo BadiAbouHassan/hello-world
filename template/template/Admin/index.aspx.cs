@@ -35,6 +35,7 @@ namespace template.Admin
                 if (appList.Count > 0)
                 {
                     applicant_nb.Text = appList.Count.ToString();
+                    appRef.Attributes["href"] = "viewApplicants.aspx?applicants=" + appList;
                 }
 
                 //hunting club this month
@@ -43,6 +44,7 @@ namespace template.Admin
                 if (clubList.Count > 0)
                 {
                     clubs_nb.Text = clubList.Count.ToString();
+                    clubRef.Attributes["href"] = "viewClubs.aspx?clubs=" + clubList;
                 }
 
                 //Users of this club
@@ -51,15 +53,25 @@ namespace template.Admin
                 if (usrList.Count > 0)
                 {
                     users_nb.Text = usrList.Count.ToString();
+                    usrRef.Attributes["href"] = "viewUser.aspx?users=" + usrList;
                 }
 
                 //exams
                 ExamReservationService service = new ExamReservationService();
                 String datenow = DateTime.Today.ToShortDateString();
-                List<ExamReservation> list = service.getAllReservationsOfUserAfterToday(datenow);
+                List<ExamReservation> list;
+                if (UserRole.roleName == "superadmin")
+                {
+                    list = service.getAllReservationsOfUserAfterToday(datenow);
+                }
+                else
+                {
+                    list = service.getAllReservationsOfUserAfterToday(datenow,loggeduser);
+                }
                 if (list.Count > 0)
                 {
                     exams_nb.Text = list.Count.ToString();
+                    examRef.Attributes["href"] = "UpcomingExams.aspx?exams=" + list;
                 }
             }
 

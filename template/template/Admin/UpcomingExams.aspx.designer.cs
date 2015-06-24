@@ -10,78 +10,87 @@
 namespace template.Admin {
     
     
-    public partial class index {
+    public partial class UpcomingExams {
         
         /// <summary>
-        /// applicant_nb control.
+        /// successMsgDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label applicant_nb;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successMsgDiv;
         
         /// <summary>
-        /// appRef control.
+        /// successMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor appRef;
+        protected global::System.Web.UI.WebControls.Label successMsg;
         
         /// <summary>
-        /// clubs_nb control.
+        /// errMsgDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label clubs_nb;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errMsgDiv;
         
         /// <summary>
-        /// clubRef control.
+        /// errMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor clubRef;
+        protected global::System.Web.UI.WebControls.Label errMsg;
         
         /// <summary>
-        /// users_nb control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label users_nb;
+        protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
-        /// usrRef control.
+        /// TableHeaderRow1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor usrRef;
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow1;
         
         /// <summary>
-        /// exams_nb control.
+        /// TableCell1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label exams_nb;
+        protected global::System.Web.UI.WebControls.TableCell TableCell1;
         
         /// <summary>
-        /// examRef control.
+        /// TableCell2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor examRef;
+        protected global::System.Web.UI.WebControls.TableCell TableCell2;
+        
+        /// <summary>
+        /// TableCell3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell3;
     }
 }

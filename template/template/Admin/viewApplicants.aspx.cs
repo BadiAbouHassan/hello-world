@@ -28,14 +28,31 @@ namespace template.Admin
 
                 //chck the role of the user
                 Role UserRole = loggedAdmin.role;
-                if (UserRole.roleName == "superadmin")
-                {
-                    applicants = appService.getApplicants();
 
+                if (Request.QueryString["applicants"] != null)
+                {
+                    if (UserRole.roleName == "superadmin")
+                    {
+                        applicants = (new ApplicantService()).getAllApplicantsNotActivated();
+
+                    }
+                    else
+                    {
+                        applicants = (new ApplicantService()).getAllApplicantsOfClubNotActivated(loggedAdmin);
+                    }
                 }
                 else
                 {
-                    applicants = appService.getAllApplicantsOfAdminClub(loggedAdmin); //only view the applicants of the hunting club of the admin
+                   
+                    if (UserRole.roleName == "superadmin")
+                    {
+                        applicants = appService.getApplicants();
+
+                    }
+                    else
+                    {
+                        applicants = appService.getAllApplicantsOfAdminClub(loggedAdmin); //only view the applicants of the hunting club of the admin
+                    }
                 }
                 if (applicants.Count != 0)
                 {

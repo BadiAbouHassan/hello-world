@@ -40,5 +40,6 @@ namespace template.Controllers
         {
             return (new ApplicantService()).getAllApplicantsOfAdminClub(user);
         }
+ 
     }
 }

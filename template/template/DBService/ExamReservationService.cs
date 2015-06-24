@@ -83,7 +83,7 @@ namespace template.DBService
                                "INNER JOIN ExamSchedule as e ON a.examScheduleID = e.examScheduleID " +
                                "INNER JOIN HuntingClub as c ON e.clubID = c.clubID "+
                                "INNER JOIN UserTable as u ON c.adminUserID = u.userID "+
-                               "where e.scheduledateTime > "+today + ""+ whereCondition ;
+                               "where e.scheduledateTime > '"+today + "'"+ whereCondition ;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())
