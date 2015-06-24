@@ -59,7 +59,7 @@ namespace template.Admin
                 DataSet ds = scheduleService.getSchedulesDataSet();
                 scheduledExam.DataSource = ds;
                 scheduledExam.DataTextField = "examName";
-                scheduledExam.DataValueField = "examID";
+                scheduledExam.DataValueField = "examScheduleID";
                 scheduledExam.DataBind();
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace template.Admin
             {
                 DBModel.ExamReservation reservation = new ExamReservation();
                 reservation.applicantID = int.Parse(applicantID.Value);
-                reservation.examScheduleID = int.Parse(scheduledExam.SelectedValue.ToString());
+                reservation.examScheduleID = int.Parse(scheduledExam.Value.ToString());
                 reservation.registerationID = int.Parse(registerationID.Value.ToString());
 
                 ExamReservationController controller = new ExamReservationController();

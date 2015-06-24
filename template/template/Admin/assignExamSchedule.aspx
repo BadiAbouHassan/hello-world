@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label>Scheduled Exams</label>
-                    <asp:DropDownList ID="scheduledExam" runat="server" class="form-control"></asp:DropDownList>
+                    <select ID="scheduledExam" runat="server" class="form-control"/>
                     <p class="help-block"></p>
                 </div>
                 <asp:Button id="btnSave" class="btn btn-primary" runat="server" type="submit" Text="Save" value="Save" OnClick="btnSave_Click" />
