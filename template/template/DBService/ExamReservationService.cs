@@ -67,6 +67,37 @@ namespace template.DBService
             return req;
         }
 
+        public List<ExamReservation> getAllReservationsOfUserAfterToday(String today,User user = null)
+        {
+            List<ExamReservation> list = new List<ExamReservation>();
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String whereCondition = " ";
+                if (user != null)
+                {
+                    whereCondition = "AND u.userID=" + user.userID;
+                }
+                String query = "Select a.* " +
+                               "FROM ExamReservation as a " +
+                               "INNER JOIN ExamSchedule as e ON a.examScheduleID = e.examScheduleID " +
+                               "INNER JOIN HuntingClub as c ON e.clubID = c.clubID "+
+                               "INNER JOIN UserTable as u ON c.adminUserID = u.userID "+
+                               "where e.scheduledateTime > "+today + ""+ whereCondition ;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    ExamReservation reservation = this.fillExamReservation(reader);
+                    list.Add(reservation);
+                }
+
+            }
+            dbObj.CloseConnection();
+
+            return list;
+        }
+
         private ExamReservation fillExamReservation(SqlDataReader reader)
         {
             ExamReservation reservation = new ExamReservation();

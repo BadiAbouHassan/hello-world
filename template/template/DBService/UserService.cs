@@ -48,7 +48,7 @@ namespace template.DBService
                 {
                     whereCondition = "WHERE userID = "+userId;
                 }
-                String query = "Select * from UserTable inner join Role on userTable.roleID = Role.roleID "+whereCondition;
+                String query = "Select * from UserTable inner join Role on UserTable.roleID = Role.roleID "+whereCondition;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())

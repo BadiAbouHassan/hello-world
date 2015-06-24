@@ -74,7 +74,8 @@ namespace template.Controlers
                 req.verificationDate = "";
                 req.registrationRequestsDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
 
-                if (checkIfUserNameExist(Request.Form["username"]))
+                String validateMsg = validate(Request.Form["username"], Request.Form["cellular"], Request.Form["phone"], Request.Form["email"]);
+                if (validateMsg.Equals(""))
                 {
                     //not exists
                     ApplicantService client_controller = new ApplicantService();
@@ -96,7 +97,7 @@ namespace template.Controlers
                 }
                 else
                 {
-                    string script = "javascript:alert('اسم المستخدم موجود')";
+                    string script = "javascript:alert('"+validateMsg+"')";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "خطأ", script, true);
 
                 }
@@ -112,22 +113,38 @@ namespace template.Controlers
             
         }
 
-        private bool checkIfUserNameExist(string p)
+        private String validate(String username, String phone, String cellular,String email)
         {
+            String msg = "";
             ApplicantService client_controller = new ApplicantService();
             List<Applicant> allApplicants = client_controller.getApplicants();
             if (allApplicants.Count > 0)
             {
                 foreach (Applicant app in allApplicants)
                 {
-                    if (app.username.ToLower().Equals(p.ToLower()))
+                    if (app.username.Equals(username))
                     {
-                        return false;
+                        msg = "اسم المستخدم موجود";
+                    }
+                    if (app.phone.Equals(phone))
+                    {
+                        msg = "رقم الهاتف موجود";
+                    }
+                    if (app.cellular.Equals(cellular))
+                    {
+                        msg = "رقم الخلوي موجود";
+                    }
+                     if (app.email.Equals(email))
+                    {
+                        msg = " البريد الالكتروني موجود";
                     }
                 }
             }
-            return true;
+           
+            return msg;
         }
+
+      
 
         private void sendEmailConfirmation(Applicant addedApplicant)
         {

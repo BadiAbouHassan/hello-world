@@ -18,7 +18,9 @@
                             <i class="fa fa-user fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
+                            <div class="huge">
+                                <asp:Label id="applicant_nb" runat="server" Text="" />
+                            </div>
                             <div>New Applicants!</div>
                         </div>
                     </div>
@@ -40,7 +42,9 @@
                             <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">1</div>
+                            <div class="huge">
+                                <asp:Label id="clubs_nb" runat="server" Text="" />
+                            </div>
                             <div>New Club!</div>
                         </div>
                     </div>
@@ -62,7 +66,9 @@
                             <i class="fa fa-user fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">2</div>
+                            <div class="huge">
+                                <asp:Label id="users_nb" runat="server" Text="" />
+                            </div>
                             <div>New Users!</div>
                         </div>
                     </div>
@@ -84,7 +90,9 @@
                             <i class="fa fa-edit fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
+                            <div class="huge">
+                                <asp:Label id="exams_nb" runat="server" Text="" />
+                            </div>
                             <div>Upcomming Exams!</div>
                         </div>
                     </div>
@@ -143,7 +151,7 @@
                 <div class="panel-body">
                     <div class="list-group">
                         <a href="#" class="list-group-item">
-                            <i class="fa fa-user fa-fw"></i> New Applicant
+                            <i class="fa fa-user fa-fw"></i> New Applicanttt
                             <span class="pull-right text-muted small"><em>4 minutes ago</em>
                             </span>
                         </a>

@@ -319,5 +319,33 @@ namespace template.DBService
             dbObj.CloseConnection();
             return applicantsList;
         }
+
+        public List<Applicant> getAllApplicantsNotActivated()
+        {
+            List<Applicant> applicantsList = new List<Applicant>();
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+
+                String query = "select  Applicant.username as applicantUSername,Applicant.email as applicantEmail, * from HuntingClub inner join UserTable  on HuntingClub.adminUserID = UserTable.userID "
+                            + " inner join RegistrationRequests on HuntingClub.clubID = RegistrationRequests.clubID "
+                            + "inner join Applicant on RegistrationRequests.applicantID = Applicant.applicantID "
+                            + "where  Applicant.userActivation=0 AND accountActivated=1";
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+
+
+                while (reader.Read())
+                {
+                    Applicant app = fillApplicant(reader);
+                    app.username = reader["applicantUSername"].ToString();
+                    app.email = reader["applicantEmail"].ToString();
+                    applicantsList.Add(app);
+                }
+            }
+            dbObj.CloseConnection();
+            return applicantsList;
+        }
     }
 }
