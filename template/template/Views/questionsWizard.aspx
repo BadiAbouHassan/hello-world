@@ -16,7 +16,8 @@
 	        <ul>
                 <% 
                 for(int j=0 ; j<questionsToView.Count ; j++) { %>
-                    <input type="hidden" name="question<%= j+1 %>" value="<%= questionsToView[j].title %>" />
+                    <input type="hidden" name="question<%= j+1 %>" value="<%= questionsToView[j].questionsID %>" />
+                    <input type="hidden" name="question_title<%= j+1 %>" value="<%= questionsToView[j].title %>" />
                     <li><a href="#tab<%= j+1 %>" data-toggle="tab"><%= j+1 %></a></li>
                 <% } %>
 	        </ul>
