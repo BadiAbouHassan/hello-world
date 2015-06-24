@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -89,6 +91,15 @@ namespace template.Admin
                     if (regService.verifyRegisterationRequest(reservation.registerationID))
                     {
                         // Send email to the user to for exam date time confirmation
+
+                        ApplicantController applicantController = new ApplicantController();
+
+                        List<DBModel.Applicant> applicantList = applicantController.getApplicants(int.Parse(applicantID.Value));
+                        if (applicantList.Count > 0)
+                        {
+                            DBModel.Applicant applicant = applicantList[0];
+                            this.sendEmailConfirmation(applicant);
+                        }
                         successMsgDiv.Style.Remove("display");
                         successMsg.Text = "Exam Schedule Saved successfuly!";
                     }
@@ -103,6 +114,34 @@ namespace template.Admin
             {
                 errMsgDiv.Style.Remove("display");
                 errMsg.Text = ex.Message;
+            }
+        }
+
+        private void sendEmailConfirmation(Applicant addedApplicant)
+        {
+
+            using (MailMessage mm = new MailMessage("loopsolutions2015@gmail.com",
+                addedApplicant.email))
+            {
+
+                mm.Subject = " الحساب";
+                string body = "  مرحبا " + addedApplicant.firstname + " , ";
+                body += "<br /><br />الرجاء الضغط على الرابط التالي لتفعيل حسابك";
+                body += "<br /><br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.activationCodeToken + "'>انقر هنا لتفعيل حسابك.</a>";
+                body += "<br /><br />شكرا";
+
+
+
+                mm.Body = body;
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                NetworkCredential NetworkCred = new NetworkCredential("loopsolutions2015@gmail.com", "loops@2015");
+                // smtp.UseDefaultCredentials = false;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;
+                smtp.Send(mm);
             }
         }
     }
