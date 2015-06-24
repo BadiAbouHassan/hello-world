@@ -7,6 +7,8 @@ using template.Controllers;
 using template.DBModel;
 using System.Data.SqlClient;
 using System.Data;
+using System.Globalization;
+using System.Threading;
 
 namespace template.Admin
 {
@@ -14,6 +16,10 @@ namespace template.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // to make the default date display in the system in this format ....
+            CultureInfo ci = CultureInfo.CreateSpecificCulture(CultureInfo.CurrentCulture.Name);
+            ci.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+            Thread.CurrentThread.CurrentCulture = ci; 
             if (!IsPostBack)
             {
                 errMsgDiv.Style.Add("display", "none");
