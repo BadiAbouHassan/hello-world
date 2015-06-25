@@ -34,10 +34,10 @@
                             <div class="form-horizontal">
                                 <div class="form-group">   
                                     <div class="col-md-9">
-                                        <select name="result" runat="server" class="form-control">
-                                            <option dir="rtl"  value="all">الجميع</option>
-                                            <option dir="rtl"  value="passed">ناجح</option>
-                                            <option dir="rtl"  value="failed">راسب</option>
+                                        <select name="result" runat="server" class="form-control" dir="rtl>
+                                            <option dir="rtl" runat="server"  value="all">الجميع</option>
+                                            <option dir="rtl" runat="server" value="passed">ناجح</option>
+                                            <option dir="rtl" runat="server" value="failed">راسب</option>
                                         </select>
                                     </div>
                                     <label for="result" class="col-md-3 control-label" >النتيجة</label>
@@ -46,7 +46,7 @@
                             <div class="form-horizontal">
                                 <div class="form-group">   
                                 <div class="col-md-9">  
-                                 <asp:Button  id="btnSortClick"  class="btn btn-info" value="sort"  runat="server" onclick="btnSort_Click" />
+                                 <asp:Button  id="btnSortClick"  class="btn btn-info" value="sort" Text="Sort"  runat="server" onclick="btnSort_Click" />
                                 </div>
                                </div>
                              </div>

@@ -55,8 +55,11 @@ namespace template.Admin
         public void getAllReportResults()
         {
             resList = resService.getExamReportReservation();
-            List <ApplicantReportClass> list = fillReportResults(resList);
-            filltable(list);
+            if (resList.Count > 0)
+            {
+                List<ApplicantReportClass> list = fillReportResults(resList);
+                filltable(list);
+            }
         }
 
         private List<ApplicantReportClass> fillReportResults(List<ExamReservation>resList)
@@ -142,7 +145,8 @@ namespace template.Admin
                     }
                 }
             }
-            //filltable();
+            
+           
            
         }
 
@@ -170,11 +174,11 @@ namespace template.Admin
                         tRow.Cells.Add(TableCell4);
 
                         //TableCell questionNoCell = new TableCell();
-                        TableCell5.Text = reportList[i].applicant.dateOfBirth;
+                        TableCell5.Text = Age(reportList[i].applicant.dateOfBirth);
                         tRow.Cells.Add(TableCell5);
 
                        // TableCell questionMarkCell = new TableCell();
-                        TableCell6.Text = reportList[i].applicant.nationality;
+                        TableCell6.Text =getNationality(reportList[i].applicant.nationality);
                         tRow.Cells.Add(TableCell6);
 
                        /// TableCell passingMarkCell = new TableCell();
@@ -206,6 +210,8 @@ namespace template.Admin
 
                         totalExp = reportList[i].instanceExamResult;
                          totalField = reportList[i].fieldExamResult;
+
+                         numberCell.Text = totalApplicants.ToString();
                     }
 
                     double avrgeExp = (double)totalExp / totalApplicants;
@@ -214,6 +220,7 @@ namespace template.Admin
                     double fieldAvrg = (double)totalField / totalApplicants;
                     average_experimental.Text = fieldAvrg.ToString();
 
+                    setResultSummaryData();
                 }
             }
             catch (Exception ex)
@@ -271,6 +278,19 @@ namespace template.Admin
             return true;
         }
 
+        public  string Age(String birthdayStr)
+        {
+            DateTime now = DateTime.Today;
+            DateTime birthday = DateTime.Parse(birthdayStr);
+            int age = now.Year - birthday.Year;
+            if (now < birthday.AddYears(age)) age--;
 
+            return age.ToString();
+        }
+
+        public String getNationality(String code)
+        {
+            return (new CountryService()).getCountryByCode(code).countryNameAr;
+        }
     }
 }
