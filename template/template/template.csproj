@@ -517,6 +517,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DBModel\Client.cs" />
     <Compile Include="DBModel\Country.cs" />
+    <Compile Include="DBModel\ExamQuestion.cs" />
     <Compile Include="DBModel\ExamReservation.cs" />
     <Compile Include="DBModel\ExamSchedule.cs" />
     <Compile Include="DBModel\FieldExam.cs" />
@@ -525,6 +526,7 @@
     <Compile Include="DBModel\ApplicantReportClass.cs" />
     <Compile Include="DBService\CountryService.cs" />
     <Compile Include="DBService\ExamInstanceService.cs" />
+    <Compile Include="DBService\ExamQuestionService.cs" />
     <Compile Include="DBService\ExamReservationService.cs" />
     <Compile Include="DBService\ExamScheduleService.cs" />
     <Compile Include="DBService\FieldExamService.cs" />
@@ -538,7 +540,6 @@
     <Compile Include="DBModel\Course.cs" />
     <Compile Include="DBModel\Exam.cs" />
     <Compile Include="DBModel\ExamInstance.cs" />
-    <Compile Include="DBModel\ExamQuestions.cs" />
     <Compile Include="DBModel\GrantedPermission.cs" />
     <Compile Include="DBModel\HuntingClub.cs" />
     <Compile Include="DBModel\Permission.cs" />
@@ -549,7 +550,6 @@
     <Compile Include="DBService\AnswerService.cs" />
     <Compile Include="DBService\ApplicantService.cs" />
     <Compile Include="DBService\CourseService.cs" />
-    <Compile Include="DBService\ExamQuestionsService.cs" />
     <Compile Include="DBService\ExamService.cs" />
     <Compile Include="DBService\HuntingClubService.cs" />
     <Compile Include="DBService\QuestionsBankService.cs" />
