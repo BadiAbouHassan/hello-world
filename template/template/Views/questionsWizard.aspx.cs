@@ -12,7 +12,7 @@ namespace template.Views
     {
         public DBModel.ExamInstance examInstance ; 
         public DBModel.Applicant loggedApplicant;
-        public List<DBModel.ExamQuestions> examQuestionsList;
+        public List<DBModel.ExamQuestion> examQuestionsList;
         public List<Model.Question> questionsToView; 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,8 +23,8 @@ namespace template.Views
                 ci.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
                 Thread.CurrentThread.CurrentCulture = ci; 
                 loggedApplicant = new DBModel.Applicant();
-                examQuestionsList = new List<DBModel.ExamQuestions>();
-                questionsToView = new List<Model.Question>() ; 
+                examQuestionsList = new List<DBModel.ExamQuestion>();
+                questionsToView = new List<Model.Question>();
                 // get the logged applicant 
                  
                 loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
@@ -56,8 +56,38 @@ namespace template.Views
 
             examInstance = examInstanceService.getExamInstanceByApplicantID(loggedApplicant.applicantID);
 
+            if (examInstance.finished != 1)
+            {
+                DBService.ExamQuestionService service = new DBService.ExamQuestionService();
+
+                List<DBModel.ExamQuestion> examQuestionsList = service.getExamQuestions(examInstance.instanceID);
+                List<Model.Question> questionsList = new List<Model.Question>();
+
+                DBService.QuestionsBankService bankService = new DBService.QuestionsBankService();
+                foreach (DBModel.ExamQuestion examQuestion in examQuestionsList)
+                {
+                    Model.Question question = new Model.Question();
+                    DBModel.QuestionsBank bankQuestion = (bankService.getQuestions(examQuestion.questionID))[0];
+                    question.questionsID = bankQuestion.questionsID;
+                    question.title = bankQuestion.title;
+                    question.description = bankQuestion.description;
+                    
+                    DBService.AnswerService answerService = new DBService.AnswerService();
+                    List<DBModel.Answer> answerList = answerService.getAnswers(question.questionsID);
+                    question.answers = answerList;
+
+                    questionsList.Add(question);
+                }
+
+                return questionsList;
+            }
+            else
+            {
+                return null;
+            }
+            /*
             //intialize the list of Exam Question 
-            List<DBModel.ExamQuestions> examQuestionsList = new List<DBModel.ExamQuestions>();
+            List<DBModel.ExamQuestion> examQuestionsList = new List<DBModel.ExamQuestion>();
             List<Model.Question> questionsList = new List<Model.Question>();
             // must get the question by Course of this exam ... 
             DBService.QuestionsPerCourseService questionPerCourseService = new DBService.QuestionsPerCourseService();
@@ -77,7 +107,7 @@ namespace template.Views
                 for (int i = 0; i < questionPerCourse.questionsPerCourseNo; i++)
                 {
                     // filling into the exam quesiton List 
-                    DBModel.ExamQuestions examQuestion = new DBModel.ExamQuestions();
+                    DBModel.ExamQuestion examQuestion = new DBModel.ExamQuestion();
                     examQuestion.examInstanceID = examInstance.instanceID;
                     examQuestion.questionID = shuffledQuestions[i].questionsID;
                     examQuestionsList.Add(examQuestion);
@@ -94,7 +124,7 @@ namespace template.Views
             }
             this.examQuestionsList = examQuestionsList;
             return questionsList;
-            
+            */
         }
    
         /// <summary>

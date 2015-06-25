@@ -10,6 +10,8 @@ namespace template.Admin
 {
     public partial class activateExam : System.Web.UI.Page
     {
+        private List<DBModel.ExamQuestion> questionsList;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -59,10 +61,21 @@ namespace template.Admin
                             DBService.ExamInstanceService examInstanceService = new DBService.ExamInstanceService();
                             examInstance.instanceID = examInstanceService.addExamInstance(examInstance);
 
+                            // Now prepare questions for this exam instance
+                            this.prepareExamInstanceQuestions(examInstance);
+
                             if (examInstance.instanceID != 0)
                             {
-                                successMsg.Style.Remove("display");
-                                successMsg.Text = "Exam Activated successfuly";
+                                if (this.questionsList.Count == exam.numberOfQuestions)
+                                {
+                                    successMsg.Style.Remove("display");
+                                    successMsg.Text = "Exam Activated successfuly";
+                                }
+                                else
+                                {
+                                    errMsgDiv.Style.Remove("display");
+                                    errMsg.Text = "Error number of prepared questions is not equal to Exam defined number of questions!";
+                                }
                             }
                             else
                             {
@@ -83,6 +96,71 @@ namespace template.Admin
                 errMsgDiv.Style.Remove("display");
                 errMsg.Text = ex.Message;
             }
+        }
+
+        private void prepareExamInstanceQuestions(DBModel.ExamInstance examInstance)
+        {
+            this.questionsList = new List<DBModel.ExamQuestion>();
+            // must get the question by Course of this exam ... 
+            DBService.QuestionsPerCourseService questionPerCourseService = new DBService.QuestionsPerCourseService();
+            List<DBModel.QuestionsPerCourse> questionsPerCourseList = questionPerCourseService.getQuestionsByExam(examInstance.examID);
+
+            DBService.ExamQuestionService service = new DBService.ExamQuestionService();
+
+            foreach (DBModel.QuestionsPerCourse questionPerCourse in questionsPerCourseList)
+            {
+                // get course of exam question per course obj 
+                DBService.CourseService courseService = new DBService.CourseService();
+                DBModel.Course course = courseService.getCourseById(questionPerCourse.courseID);
+
+                // go to the question bank and return questoins randomly ... 
+                DBService.QuestionsBankService questionBankService = new DBService.QuestionsBankService();
+                List<DBModel.QuestionsBank> questionBankList = questionBankService.getQuestionsByCourseID(questionPerCourse.courseID);
+
+                if (questionBankList.Count > 0)
+                {
+                    List<DBModel.QuestionsBank> shuffledQuestions = this.ShuffleList(questionBankList);
+                    // looping on the number of question percourse in order to take questions from the shuffled question
+                    // add it to the examquestionlist ... 
+                    if (shuffledQuestions.Count >= questionPerCourse.questionsPerCourseNo)
+                    {
+                        for (int i = 0; i < questionPerCourse.questionsPerCourseNo; i++)
+                        {
+                            // filling into the exam quesiton List 
+                            DBModel.ExamQuestion examQuestion = new DBModel.ExamQuestion();
+                            examQuestion.examInstanceID = examInstance.instanceID;
+                            examQuestion.questionID = shuffledQuestions[i].questionsID;
+
+                            //examQuestionsList.Add(examQuestion);
+                            examQuestion.examQuestionID = service.addExamrQuestion(examQuestion);
+
+                            this.questionsList.Add(examQuestion);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// function to shuffle the list order ... 
+        /// </summary>
+        /// <typeparam name="E"></typeparam>
+        /// <param name="inputList"></param>
+        /// <returns></returns>
+        private List<E> ShuffleList<E>(List<E> inputList)
+        {
+            List<E> randomList = new List<E>();
+
+            Random r = new Random();
+            int randomIndex = 0;
+            while (inputList.Count > 0)
+            {
+                randomIndex = r.Next(0, inputList.Count); //Choose a random object in the list
+                randomList.Add(inputList[randomIndex]); //add it to the new, random list
+                inputList.RemoveAt(randomIndex); //remove to avoid duplicates
+            }
+
+            return randomList; //return the new random list
         }
     }
 }
