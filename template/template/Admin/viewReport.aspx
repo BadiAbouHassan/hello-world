@@ -46,7 +46,7 @@
                             <div class="form-horizontal">
                                 <div class="form-group">   
                                 <div class="col-md-9">  
-                                 <asp:Button  id="btnSortClick"  class="btn btn-info" value="sort" Text="Sort"  runat="server" onclick="btnSort_Click" />
+                                 <asp:Button  id="btnSortClick"  class="btn btn-info" value="sort" Text="ابحث"  runat="server" onclick="btnSort_Click" />
                                 </div>
                                </div>
                              </div>

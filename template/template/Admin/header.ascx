@@ -190,10 +190,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
                                 <li>
-                                    <a href="/Admin/viewReport.aspx">Report 1</a>
-                                </li>
-                                <li>
-                                    <a href="/Admin/report2.aspx">Report 2</a>
+                                    <a href="/Admin/viewReport.aspx">View Report</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

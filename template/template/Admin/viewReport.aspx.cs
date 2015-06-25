@@ -141,109 +141,29 @@ namespace template.Admin
 
             String resultSort = resultSorting.Value.ToString();
 
-
-
-  
-                if (resList.Count > 0)
+             
+            if ((fromDate != "") && (toDate != ""))
+            {
+                if (checkDates(fromDate, toDate))
                 {
-                    if ((fromDate == "") && (toDate == ""))
+                    resList = resService.getExamReportReservation(fromDate,toDate);
+                }
+            }
+            else
+            {
+                resList = resService.getExamReportReservation();
+            }
+            List<ApplicantReportClass> allList = fillReportResults(resList);
+            List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
+            foreach (ApplicantReportClass arc in allList)
+            {
+                if (clubID != 0)
+                {
+                    if (arc.applicantClub.clubID == clubID)
                     {
-                        if (checkDates(fromDate, toDate))
+                        if (resultSort != "all")
                         {
-                            resList = resService.getExamReportReservation(fromDate,toDate);
-                        }
-                    }
-                    else
-                    {
-                        resList = resService.getExamReportReservation();
-                    }
-                    List<ApplicantReportClass> allList = fillReportResults(resList);
-                    List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
-                    foreach (ApplicantReportClass arc in allList)
-                    {
-                        if (clubID != 0)
-                        {
-                            if (arc.applicantClub.clubID == clubID)
-                            {
-                                if (resultSort != "all")
-                                {
-                                    if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
-                                    {
-                                        if (nationalitySort == "")
-                                        {
-                                            sortedList.Add(arc);
-                                        }
-                                        else if (nationalitySort.Equals("lebanese"))
-                                        {
-                                            if (arc.applicant.nationality.Equals("LB"))
-                                            {
-                                                sortedList.Add(arc);
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            if (!arc.applicant.nationality.Equals("LB"))
-                                            {
-                                                sortedList.Add(arc);
-                                            }
-                                        }
-
-                                    }
-                                }
-                                else
-                                {
-                                    if (nationalitySort == "")
-                                    {
-                                        sortedList.Add(arc);
-                                    }
-                                    else if (nationalitySort.Equals("lebanese"))
-                                    {
-                                        if (arc.applicant.nationality.Equals("LB"))
-                                        {
-                                            sortedList.Add(arc);
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        if (!arc.applicant.nationality.Equals("LB"))
-                                        {
-                                            sortedList.Add(arc);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (resultSort != "all")
-                            {
-                                if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
-                                {
-                                    if (nationalitySort == "")
-                                    {
-                                        sortedList.Add(arc);
-                                    }
-                                    else if (nationalitySort.Equals("lebanese"))
-                                    {
-                                        if (arc.applicant.nationality.Equals("LB"))
-                                        {
-                                            sortedList.Add(arc);
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        if (!arc.applicant.nationality.Equals("LB"))
-                                        {
-                                            sortedList.Add(arc);
-                                        }
-                                    }
-
-                                }
-                            }
-                            else
+                            if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
                             {
                                 if (nationalitySort == "")
                                 {
@@ -264,16 +184,92 @@ namespace template.Admin
                                         sortedList.Add(arc);
                                     }
                                 }
+
+                            }
+                        }
+                        else
+                        {
+                            if (nationalitySort == "")
+                            {
+                                sortedList.Add(arc);
+                            }
+                            else if (nationalitySort.Equals("lebanese"))
+                            {
+                                if (arc.applicant.nationality.Equals("LB"))
+                                {
+                                    sortedList.Add(arc);
+                                }
+
+                            }
+                            else
+                            {
+                                if (!arc.applicant.nationality.Equals("LB"))
+                                {
+                                    sortedList.Add(arc);
+                                }
                             }
                         }
                     }
-                    if (sortedList.Count > 0)
+                }
+                else
+                {
+                    if (resultSort != "all")
                     {
-                     
-                        totalApplicants = sortedList.Count;
-                        filltable(sortedList);
+                        if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
+                        {
+                            if (nationalitySort == "")
+                            {
+                                sortedList.Add(arc);
+                            }
+                            else if (nationalitySort.Equals("lebanese"))
+                            {
+                                if (arc.applicant.nationality.Equals("LB"))
+                                {
+                                    sortedList.Add(arc);
+                                }
+
+                            }
+                            else
+                            {
+                                if (!arc.applicant.nationality.Equals("LB"))
+                                {
+                                    sortedList.Add(arc);
+                                }
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        if (nationalitySort == "")
+                        {
+                            sortedList.Add(arc);
+                        }
+                        else if (nationalitySort.Equals("lebanese"))
+                        {
+                            if (arc.applicant.nationality.Equals("LB"))
+                            {
+                                sortedList.Add(arc);
+                            }
+
+                        }
+                        else
+                        {
+                            if (!arc.applicant.nationality.Equals("LB"))
+                            {
+                                sortedList.Add(arc);
+                            }
+                        }
                     }
                 }
+            }
+            if (sortedList.Count > 0)
+            {
+                     
+                totalApplicants = sortedList.Count;
+                filltable(sortedList);
+            }
+                
             
             
         }
