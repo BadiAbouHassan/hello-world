@@ -74,6 +74,7 @@ namespace template.Controlers
                 req.verificationDate = "";
                 req.registrationRequestsDate = System.Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd");
 
+
                 String validateMsg = validate(Request.Form["username"], Request.Form["cellular"], Request.Form["phone"], Request.Form["email"]);
                 if (validateMsg.Equals(""))
                 {

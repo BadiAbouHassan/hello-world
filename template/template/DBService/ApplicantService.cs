@@ -126,20 +126,57 @@ namespace template.DBService
                             req.applicantID = Applicant.applicantID;
                             // generate reference number 
                             String Gen_app_code = "";
-                            if (req.applicantID < 10)
+                            if(req.applicantID != null)
                             {
-                                Gen_app_code = "00" + req.applicantID;
-                            }
-                            else if (req.applicantID > 10 && req.applicantID < 100)
-                            {
-                                Gen_app_code = "0" + req.applicantID;
-                            }
-                            else 
-                            {
-                                Gen_app_code = "" + req.applicantID;
+                                if (req.applicantID < 10)
+                                {
+                                    Gen_app_code = "00000" + req.applicantID;
+                                }
+                                else if (req.applicantID > 10 && req.applicantID < 100)
+                                {
+                                    Gen_app_code = "00000" + req.applicantID;
+                                }
+                                else if (req.applicantID > 100 && req.applicantID < 1000)
+                                {
+                                    Gen_app_code = "0000" + req.applicantID;
+                                }
+                                else if (req.applicantID > 1000 && req.applicantID < 10000)
+                                {
+                                    Gen_app_code = "000" + req.applicantID;
+                                }
+                                else if (req.applicantID > 10000 && req.applicantID < 100000)
+                                {
+                                    Gen_app_code = "00" + req.applicantID;
+                                }
+                                else if (req.applicantID > 100000 && req.applicantID < 1000000)
+                                {
+                                    Gen_app_code = "0" + req.applicantID;
+                                }
+                                else 
+                                {
+                                    Gen_app_code = "" + req.applicantID;
+                                }
                             }
                             String Gen_club_code = "";
-
+                            if (req.clubID != null)
+                            {
+                                if (req.clubID < 10)
+                                {
+                                    Gen_club_code = "00" + req.clubID;
+                                }
+                                else if (req.clubID > 10 && req.clubID < 100)
+                                {
+                                    Gen_club_code = "0" + req.clubID;
+                                }
+                                else
+                                {
+                                    Gen_club_code = "" + req.clubID;
+                                } 
+                            }
+                            if (Gen_club_code != null && Gen_app_code != null)
+                            {
+                                req.referenceNo = "C" + Gen_club_code+ "A" +Gen_app_code;
+                            }
 
                             reader.Close();
                             req = reqService.addRequestByCnx(req, dbObj);
