@@ -116,6 +116,22 @@ namespace template.DBService
             return req;
         }
 
+        public  bool updateExamInstance(ExamInstance examInstance)
+        {
+            SQLClass dbObj = new SQLClass();
+            SqlConnection conn = dbObj.openConnection();
+            // add the insert between transaction and commit in order no to lose data integratiy ... 
+            using (conn)
+            {
+
+                String query = "update  ExamInstance set result = '" +examInstance.result+ "', "
+                                + "finished = '" + examInstance.finished+ "' "
+                                + "where instanceID =" + examInstance.instanceID;
+                dbObj.executeQuery(query);
+            }
+            dbObj.CloseConnection();
+            return true;
+        }
 
 
     }

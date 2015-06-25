@@ -13,6 +13,7 @@ namespace template.DBModel
         public double elapsedTime { get; set; } 
         public double result { get; set; }
         public int active { get; set; }
+        public int finished { get; set; }
         public DateTime activationTime { get; set; }
         public int reservationID { get; set; }
 

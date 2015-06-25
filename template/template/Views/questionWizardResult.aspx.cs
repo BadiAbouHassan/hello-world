@@ -71,6 +71,12 @@ namespace template.Views
             {
                 result_txt = "راسب";
             }
+            // update exam instance ... 
+            DBService.ExamInstanceService examInstanceService = new DBService.ExamInstanceService();
+            DBModel.ExamInstance examInstance = examInstanceService.getExamInstanceByApplicantID(loggedApplicant.applicantID);
+            examInstance.result = result;
+            examInstance.finished = 1;
+            examInstanceService.updateExamInstance(examInstance);
         }
     }
 }
