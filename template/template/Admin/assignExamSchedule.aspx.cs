@@ -141,7 +141,7 @@ namespace template.Admin
                 body += "<br/> : على النحو التالي  ";
                 body += "<br/>"+req.referenceNo;
                 body += " :رقم الطلب";
-                body +="<br /><br/>" + sched.scheduleDateTime;
+                body +="<br />" + sched.scheduleDateTime;
                 body += ": تاريخ الامتحان";
                 body += "<br/>"+club.clubName;
                 body += " :  النادي";

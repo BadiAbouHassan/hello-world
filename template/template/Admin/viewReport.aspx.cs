@@ -72,6 +72,9 @@ namespace template.Admin
                 Applicant app = appService.getApplicantOfID(ex.applicantID);
                 arc.applicant = app;
 
+                RegistrationRequests req = (new RegistrationRequestService()).getRequestByApplicant(app.applicantID);
+                arc.referenceNb = req.referenceNo.ToString();
+
                 ExamSchedule sched = (new ExamScheduleService()).getExamSchedules(0,ex.examScheduleID)[0];
                 arc.examDate = sched.scheduleDateTime.ToShortDateString();
 
@@ -136,6 +139,7 @@ namespace template.Admin
             else
             {
                  clubID = Int32.Parse(Request.Form["club"].ToString());
+                // refrenceNB.Text = (new RegistrationRequestService()).getRequestByClubID(clubID).referenceNo.ToString();
             }
             String nationalitySort = Request.Form["nationality"].ToString();
 
@@ -287,7 +291,7 @@ namespace template.Admin
 
                         // Create a new cell and add it to the row.
                        // TableCell nameCell = new TableCell();
-                        TableCell1.Text = reportList[i].applicant.applicantID.ToString();
+                        TableCell1.Text = reportList[i].referenceNb;
                         tRow.Cells.Add(TableCell1);
 
                         //TableCell descCell = new TableCell();

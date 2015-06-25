@@ -113,6 +113,27 @@ namespace template.DBService
 
             return req;
         }
+
+        public RegistrationRequests getRequestByClubID(int clubID)
+        {
+            RegistrationRequests req = null;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String query = "Select * from RegistrationRequests where clubID =" + clubID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    req = fillRegistrationRequest(reader);
+                }
+
+            }
+            dbObj.CloseConnection();
+
+            return req;
+        }
+
         public RegistrationRequests getRequestByApplicant(int applicantID)
         {
             RegistrationRequests req = null;
