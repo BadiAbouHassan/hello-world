@@ -41,6 +41,9 @@ namespace template.Admin
                 fieldExamService = new FieldExamService();
                 reportList = new List<ApplicantReportClass>();
                 fillClubSelect();
+
+                //initially get all data the sort in case user wnt to
+                getAllReportResults();
             }
             catch (Exception ex)
             {
@@ -49,35 +52,16 @@ namespace template.Admin
             }
         }
 
-        public void fillClubSelect()
+        public void getAllReportResults()
         {
-            DBService.HuntingClubService huntingClubService = new DBService.HuntingClubService();
-            DataSet ds = huntingClubService.getClubsDataSet();
-            clubs = huntingClubService.getClubs();
-
+            resList = resService.getExamReportReservation();
+            List <ApplicantReportClass> list = fillReportResults(resList);
+            filltable(list);
         }
 
-        protected void btnSort_Click(object sender, EventArgs e)
+        private List<ApplicantReportClass> fillReportResults(List<ExamReservation>resList)
         {
-            String fromDate = fromDate_txt.Value.ToString();
-            String toDate = toDate_txt.Value.ToString();
-            int clubID = Int32.Parse(Request.Form["club"].ToString());
-           // String resultSort = Request.Form["result"].ToString();
-            String nationalitySort = Request.Form["nationality"].ToString();
-
-            //get all reservations of exams that are active --> made by applicants
-            if (fromDate != null && toDate != null)
-            {
-                if (checkDates(fromDate, toDate))
-                {
-                    resList = resService.getExamReportReservation(fromDate, toDate);
-                }
-            }
-            else
-            {
-                resList = resService.getExamReportReservation();
-            }
-
+            List<ApplicantReportClass> reportList = new List<ApplicantReportClass>();
             //get applicants list
             foreach (ExamReservation ex in resList)
             {
@@ -105,7 +89,7 @@ namespace template.Admin
                     arc.fieldExamResult = (double)field.result;
                 }
                 reportList.Add(arc);
-
+              
             }
 
             totalApplicants = reportList.Count;
@@ -126,11 +110,43 @@ namespace template.Admin
                     totalFailedResults++;
                 }
             }
-
-            filltable();
+            return reportList;
         }
 
-        private void filltable()
+        public void fillClubSelect()
+        {
+            DBService.HuntingClubService huntingClubService = new DBService.HuntingClubService();
+            DataSet ds = huntingClubService.getClubsDataSet();
+            clubs = huntingClubService.getClubs();
+
+        }
+
+        protected void btnSort_Click(object sender, EventArgs e)
+        {
+            String fromDate = fromDate_txt.Value.ToString();
+            String toDate = toDate_txt.Value.ToString();
+            int clubID = Int32.Parse(Request.Form["club"].ToString());
+            String resultSort = Request.Form["result"].ToString();
+            String nationalitySort = Request.Form["nationality"].ToString();
+
+            //get all reservations of exams that are active --> made by applicants
+            if (fromDate != null && toDate != null && resultSort=="ALL")
+            {
+                if (checkDates(fromDate, toDate))
+                {
+                    resList = resService.getExamReportReservation(fromDate, toDate);
+                    if (resList.Count > 0)
+                    {
+                        filltable(fillReportResults(resList));
+
+                    }
+                }
+            }
+            //filltable();
+           
+        }
+
+        private void filltable(List<ApplicantReportClass> reportList)
         {
            try
            {
@@ -223,6 +239,8 @@ namespace template.Admin
             double notLeba_passed = (totalNotLebanesePassed / totalNotLebanese) * 100;
             notLeb_percentage_txt.Text = notLeba_passed.ToString();
         }
+
+
 
         private bool checkDates(string fromDate, string toDate)
         {

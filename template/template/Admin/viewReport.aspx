@@ -7,7 +7,7 @@
             <h1 class="page-header" dir="rtl">تقارير نتائج الامتحانات والنسب</h1>
         </div>
         <!-- /.col-lg-12 -->
-    </div>
+    </div>s
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -79,7 +79,8 @@
                         <div class="form-horizontal"> 
                            <div class="form-group">
                                 <div class="col-md-9">
-                                        <select name="nationality" class="form-control">
+                                        <select name="nationality" class="form-control" dir="rtl">
+                                            <option dir="rtl"  value=""></option>
                                             <option dir="rtl"  value="lebanese">لبناني</option>
                                             <option dir="rtl"  value="noLebanese">غير لبناني</option>
                                         </select>
