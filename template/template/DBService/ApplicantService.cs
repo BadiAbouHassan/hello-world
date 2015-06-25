@@ -126,7 +126,7 @@ namespace template.DBService
                             req.applicantID = Applicant.applicantID;
                             // generate reference number 
                             String Gen_app_code = "";
-                            if(req.applicantID != null)
+                            if(req.applicantID != 0)
                             {
                                 if (req.applicantID < 10)
                                 {
@@ -158,7 +158,7 @@ namespace template.DBService
                                 }
                             }
                             String Gen_club_code = "";
-                            if (req.clubID != null)
+                            if (req.clubID != 0)
                             {
                                 if (req.clubID < 10)
                                 {
