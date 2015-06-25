@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/layout.Master" AutoEventWireup="true" CodeBehind="questionWizardResult.aspx.cs" Inherits="template.Views.questionWizardResult" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+       <link href="../bootstrap-3.3.2-dist-sandstone/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="../bootstrap-3.3.2-dist-sandstone/js/jquery-latest.js"></script>
+    <script src="../bootstrap-3.3.2-dist-sandstone/js/bootstrap.js"></script>
+    <script src="../bootstrap-3.3.2-dist-sandstone/js/jquery.bootstrap.wizard.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container" style="direction:rtl">
