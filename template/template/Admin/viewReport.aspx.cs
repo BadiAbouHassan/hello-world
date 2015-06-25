@@ -139,93 +139,11 @@ namespace template.Admin
             }
             String nationalitySort = Request.Form["nationality"].ToString();
 
-            String resultSort = Request.Form["resultSorting"].ToString();
+            String resultSort = resultSorting.Value.ToString();
 
 
-            //get all reservations of exams that are active --> made by applicants
-            if ((fromDate != "") && (toDate != "") && (resultSort.Equals("all")) && (nationalitySort.Equals("")) && (clubID == 0))
-            {
-                if (checkDates(fromDate, toDate))
-                {
-                    resList = resService.getExamReportReservation(fromDate, toDate);
-                    if (resList.Count > 0)
-                    {
-                        filltable(fillReportResults(resList));
 
-                    }
-                }
-            }
-        
-            //sorting only on clubs
-            if ((resultSort.Equals("all")) && (nationalitySort.Equals("")) && (clubID != 0))
-            {
-                
-                    resList = resService.getExamReportReservation();
-                    if (resList.Count > 0)
-                    {
-                        List<ApplicantReportClass> allList = fillReportResults(resList);
-                        List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
-                        foreach(ApplicantReportClass arc in allList)
-                        {
-                            if (arc.applicantClub.clubID == clubID)
-                            {
-                                sortedList.Add(arc);
-                                
-                            }
-                        }
-                        if (sortedList.Count > 0)
-                        {
-                            totalApplicants = sortedList.Count;
-                            filltable(sortedList);
-                        }
-                    } 
-               
-
-            }
-
-            //case club and status
-            if (!(resultSort.Equals("ALL")) && (nationalitySort.Equals("")) && (clubID != 0))
-            {
-
-                if (resList.Count > 0)
-                {
-                    if ((fromDate == "") && (toDate == ""))
-                    {
-                        if (checkDates(fromDate, toDate))
-                        {
-                            resList = resService.getExamReportReservation(fromDate, toDate);
-                        }
-                    }
-                    else
-                    {
-                        resList = resService.getExamReportReservation();
-                    }
-                    List<ApplicantReportClass> allList = fillReportResults(resList);
-                    List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
-                    foreach (ApplicantReportClass arc in allList)
-                    {
-                        if (arc.applicantClub.clubID == clubID)
-                        {
-                            if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
-                            {
-                                sortedList.Add(arc);
-                            }
-
-                        }
-                    }
-                    if (sortedList.Count > 0)
-                    {
-                        totalApplicants = sortedList.Count;
-                        filltable(sortedList);
-                    }
-                }
-            }
-
-            //case club and status and nationality
-            if (!(resultSort.Equals("all")) && (nationalitySort.Equals("")) && (clubID != 0))
-            {
-
-                
+  
                 if (resList.Count > 0)
                 {
                     if ((fromDate == "") && (toDate == ""))
@@ -243,16 +161,99 @@ namespace template.Admin
                     List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
                     foreach (ApplicantReportClass arc in allList)
                     {
-                        if (arc.applicantClub.clubID == clubID)
+                        if (clubID != 0)
                         {
-                            if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
+                            if (arc.applicantClub.clubID == clubID)
                             {
-                                if (nationalitySort.Equals("lebanese"))
+                                if (resultSort != "all")
+                                {
+                                    if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
+                                    {
+                                        if (nationalitySort == "")
+                                        {
+                                            sortedList.Add(arc);
+                                        }
+                                        else if (nationalitySort.Equals("lebanese"))
+                                        {
+                                            if (arc.applicant.nationality.Equals("LB"))
+                                            {
+                                                sortedList.Add(arc);
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if (!arc.applicant.nationality.Equals("LB"))
+                                            {
+                                                sortedList.Add(arc);
+                                            }
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    if (nationalitySort == "")
+                                    {
+                                        sortedList.Add(arc);
+                                    }
+                                    else if (nationalitySort.Equals("lebanese"))
+                                    {
+                                        if (arc.applicant.nationality.Equals("LB"))
+                                        {
+                                            sortedList.Add(arc);
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        if (!arc.applicant.nationality.Equals("LB"))
+                                        {
+                                            sortedList.Add(arc);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (resultSort != "all")
+                            {
+                                if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
+                                {
+                                    if (nationalitySort == "")
+                                    {
+                                        sortedList.Add(arc);
+                                    }
+                                    else if (nationalitySort.Equals("lebanese"))
+                                    {
+                                        if (arc.applicant.nationality.Equals("LB"))
+                                        {
+                                            sortedList.Add(arc);
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        if (!arc.applicant.nationality.Equals("LB"))
+                                        {
+                                            sortedList.Add(arc);
+                                        }
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                if (nationalitySort == "")
+                                {
+                                    sortedList.Add(arc);
+                                }
+                                else if (nationalitySort.Equals("lebanese"))
                                 {
                                     if (arc.applicant.nationality.Equals("LB"))
                                     {
                                         sortedList.Add(arc);
-
                                     }
 
                                 }
@@ -263,7 +264,6 @@ namespace template.Admin
                                         sortedList.Add(arc);
                                     }
                                 }
-
                             }
                         }
                     }
@@ -274,11 +274,7 @@ namespace template.Admin
                         filltable(sortedList);
                     }
                 }
-            }else if (resultSort !="" )
-            {
-               getAllReportResults();
-                
-            }
+            
             
         }
 
@@ -393,9 +389,17 @@ namespace template.Admin
             double failed = (totalFailedResults / totalApplicants) * 100;
             failed_percentage_txt.Text = failed.ToString();
 
+            if (totalLebanse == 0)
+            {
+                totalLebanse = 1;
+            }
             double lebanese_passed = (totalLebanesePassed / totalLebanse) * 100;
             lebanese_percentage_txt.Text = lebanese_passed.ToString();
 
+            if (totalNotLebanese == 0)
+            {
+                totalNotLebanese = 1;
+            }
             double notLeba_passed = (totalNotLebanesePassed / totalNotLebanese) * 100;
             notLeb_percentage_txt.Text = notLeba_passed.ToString();
         }
