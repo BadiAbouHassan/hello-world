@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using template.DBModel;
+using template.DBService;
 
 namespace template.Views
 {
@@ -10,6 +12,7 @@ namespace template.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             
         }
     }
