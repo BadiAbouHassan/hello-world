@@ -139,7 +139,7 @@ namespace template.Admin
             }
             String nationalitySort = Request.Form["nationality"].ToString();
 
-            String resultSort = resultSorting.Value.ToString();
+            String resultSort = result_Sorting.Value.ToString();
 
              
             if ((fromDate != "") && (toDate != ""))

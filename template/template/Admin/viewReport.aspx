@@ -34,7 +34,7 @@
                             <div class="form-horizontal">
                                 <div class="form-group">   
                                     <div class="col-md-9">
-                                        <select id="resultSorting" runat="server" class="form-control" dir="rtl">
+                                        <select id="result_Sorting" runat="server" class="form-control" dir="rtl">
                                             <option dir="rtl"  value="all">الجميع</option>
                                             <option dir="rtl"  value="passed">ناجح</option>
                                             <option dir="rtl"  value="failed">راسب</option>
