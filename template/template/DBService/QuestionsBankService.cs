@@ -34,7 +34,7 @@ namespace template.DBService
                 String whereCondition = "";
                 if (questionID != 0)
                 {
-                    whereCondition = " WHERE ID = " + questionID;
+                    whereCondition = " WHERE questionID = " + questionID;
                 }
                 String query = "SELECT * FROM QuestionsBank " + whereCondition;
 

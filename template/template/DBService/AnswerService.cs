@@ -50,6 +50,31 @@ namespace template.DBService
 
             return result;
         }
+        public Answer getAnswerByID(int answerID)
+        {
+            Answer result = null;
+
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection connection = dbObj.openConnection())
+            {
+                String whereCondition = "";
+                if (answerID != 0)
+                {
+                    whereCondition = " WHERE answerID = " + answerID;
+                }
+                String query = "SELECT * FROM Answer " + whereCondition;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+
+                if (reader.Read())
+                {
+                    result =fillAnswer(reader);
+                }
+            }
+            dbObj.CloseConnection();
+
+            return result;
+        }
 
         public DBModel.Answer fillAnswer(SqlDataReader reader)
         {

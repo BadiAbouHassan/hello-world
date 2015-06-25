@@ -1,0 +1,5 @@
+C:\Users\user\Documents\GitHub\hello-world\template\template\bin\template.dll
+C:\Users\user\Documents\GitHub\hello-world\template\template\bin\template.pdb
+C:\Users\user\Documents\GitHub\hello-world\template\template\obj\Debug\template.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\hello-world\template\template\obj\Debug\template.dll
+C:\Users\user\Documents\GitHub\hello-world\template\template\obj\Debug\template.pdb

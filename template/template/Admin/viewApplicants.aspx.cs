@@ -130,17 +130,20 @@ namespace template.Admin
                         phoneCell.Text = applicants[i].phone;
                         tRow.Cells.Add(phoneCell);
 
-                        TableCell assignCell = new TableCell();
-                        assignCell.Text = "<a href='/Admin/assignExamSchedule.aspx?applicantID=" + applicants[i].applicantID + "'>Assign Exam Schedule</a>";
-                        tRow.Cells.Add(assignCell);
-
-                        TableCell activateExamCell = new TableCell();
-                        activateExamCell.Text = "<a href='/Admin/activateExam.aspx?applicantID=" + applicants[i].applicantID + "'>Activate Exam</a>";
-                        tRow.Cells.Add(activateExamCell);
-
-                        TableCell editCell = new TableCell();
-                        editCell.Text = "<a href='/Admin/editApplicant.aspx?applicantID=" + applicants[i].applicantID + "'>Edit</a>";
-                        tRow.Cells.Add(editCell);
+                        TableCell actionsCell = new TableCell();
+                        actionsCell.Text = "<div class='dropdown'>" +
+                          "<button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>" +
+                          "  Actions" +
+                          "  <span class='caret'></span>" +
+                          "</button>" +
+                          "<ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>" +
+                          "  <li><a href='/Admin/assignExamSchedule.aspx?applicantID=" + applicants[i].applicantID + "'>Assign Exam Schedule</a></li>" +
+                          "  <li><a href='/Admin/activateExam.aspx?applicantID=" + applicants[i].applicantID + "'>Activate Exam</a></li>" +
+                          "  <li><a href='/Admin/addFieldExamResult.aspx?applicantID=" + applicants[i].applicantID + "'>Field Exam Result</a></li>" +
+                          "  <li><a href='/Admin/editApplicant.aspx?applicantID=" + applicants[i].applicantID + "'>Edit</a></li>" +
+                          "</ul>" +
+                        "</div>";
+                        tRow.Cells.Add(actionsCell);
 
                         TableCell deleteCell = new TableCell();
                         Button btn = new Button();
