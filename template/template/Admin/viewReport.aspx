@@ -7,7 +7,7 @@
             <h1 class="page-header" dir="rtl">تقارير نتائج الامتحانات والنسب</h1>
         </div>
         <!-- /.col-lg-12 -->
-    </div>s
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
