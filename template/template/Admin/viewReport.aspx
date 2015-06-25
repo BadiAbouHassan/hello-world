@@ -26,7 +26,7 @@
                             <div class="form-horizontal">
                                 <div class="form-group">                                  
                                   <div class="col-md-9">
-                                      <input type="text" runat="server" dir="rtl" required="required" id="toDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
+                                      <input type="text" runat="server" dir="rtl"  id="toDate_txt" class="form-control toDate_txt"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
                                    </div>
                                       <label for="toDate" class="col-md-3 control-label" > الى تاريخ</label>
                                 </div>
@@ -34,10 +34,10 @@
                             <div class="form-horizontal">
                                 <div class="form-group">   
                                     <div class="col-md-9">
-                                        <select name="result" runat="server" class="form-control" dir="rtl>
-                                            <option dir="rtl" runat="server"  value="all">الجميع</option>
-                                            <option dir="rtl" runat="server" value="passed">ناجح</option>
-                                            <option dir="rtl" runat="server" value="failed">راسب</option>
+                                        <select id="resultSorting" name="resultSorting" runat="server" class="form-control" dir="rtl">
+                                            <option dir="rtl"  value="all">الجميع</option>
+                                            <option dir="rtl"  value="passed">ناجح</option>
+                                            <option dir="rtl"  value="failed">راسب</option>
                                         </select>
                                     </div>
                                     <label for="result" class="col-md-3 control-label" >النتيجة</label>
@@ -56,7 +56,7 @@
                             <div class="form-horizontal">   
                                 <div class="form-group">
                                         <div class="col-md-9">
-                                          <input type="text" dir="rtl" runat="server" required="required" id="fromDate_txt" class="form-control datepicker"  name="date_of_birth" placeholder="yyyy-MM-dd"/>
+                                          <input type="text" dir="rtl" runat="server" id="fromDate_txt" class="form-control "  name="date_of_birth" placeholder="yyyy-MM-dd"/>
                                        </div>
                                        <label  class="col-md-3 control-label" > من تاريخ</label>
                                    </div>
@@ -66,6 +66,7 @@
                                <div class="form-group">
                                     <div class="col-md-9 ">
                                         <select class="form-control" id="club" name="club">
+                                            <option value=""></option>
                                             <%
                                             foreach( template.DBModel.HuntingClub club in clubs )
                                                 { %>

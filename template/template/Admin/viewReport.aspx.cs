@@ -128,12 +128,22 @@ namespace template.Admin
         {
             String fromDate = fromDate_txt.Value.ToString();
             String toDate = toDate_txt.Value.ToString();
-            int clubID = Int32.Parse(Request.Form["club"].ToString());
-            String resultSort = Request.Form["result"].ToString();
+            int clubID;
+            if (Request.Form["club"].ToString() == "")
+            {
+                clubID = 0;
+            }
+            else
+            {
+                 clubID = Int32.Parse(Request.Form["club"].ToString());
+            }
             String nationalitySort = Request.Form["nationality"].ToString();
 
+            String resultSort = Request.Form["resultSorting"].ToString();
+
+
             //get all reservations of exams that are active --> made by applicants
-            if (fromDate != null && toDate != null && resultSort=="ALL")
+            if ((fromDate != "") && (toDate != "") && (resultSort.Equals("all")) && (nationalitySort.Equals("")) && (clubID == 0))
             {
                 if (checkDates(fromDate, toDate))
                 {
@@ -145,9 +155,131 @@ namespace template.Admin
                     }
                 }
             }
+        
+            //sorting only on clubs
+            if ((resultSort.Equals("all")) && (nationalitySort.Equals("")) && (clubID != 0))
+            {
+                
+                    resList = resService.getExamReportReservation();
+                    if (resList.Count > 0)
+                    {
+                        List<ApplicantReportClass> allList = fillReportResults(resList);
+                        List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
+                        foreach(ApplicantReportClass arc in allList)
+                        {
+                            if (arc.applicantClub.clubID == clubID)
+                            {
+                                sortedList.Add(arc);
+                                
+                            }
+                        }
+                        if (sortedList.Count > 0)
+                        {
+                            totalApplicants = sortedList.Count;
+                            filltable(sortedList);
+                        }
+                    } 
+               
+
+            }
+
+            //case club and status
+            if (!(resultSort.Equals("ALL")) && (nationalitySort.Equals("")) && (clubID != 0))
+            {
+
+                if (resList.Count > 0)
+                {
+                    if ((fromDate == "") && (toDate == ""))
+                    {
+                        if (checkDates(fromDate, toDate))
+                        {
+                            resList = resService.getExamReportReservation(fromDate, toDate);
+                        }
+                    }
+                    else
+                    {
+                        resList = resService.getExamReportReservation();
+                    }
+                    List<ApplicantReportClass> allList = fillReportResults(resList);
+                    List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
+                    foreach (ApplicantReportClass arc in allList)
+                    {
+                        if (arc.applicantClub.clubID == clubID)
+                        {
+                            if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
+                            {
+                                sortedList.Add(arc);
+                            }
+
+                        }
+                    }
+                    if (sortedList.Count > 0)
+                    {
+                        totalApplicants = sortedList.Count;
+                        filltable(sortedList);
+                    }
+                }
+            }
+
+            //case club and status and nationality
+            if (!(resultSort.Equals("all")) && (nationalitySort.Equals("")) && (clubID != 0))
+            {
+
+                
+                if (resList.Count > 0)
+                {
+                    if ((fromDate == "") && (toDate == ""))
+                    {
+                        if (checkDates(fromDate, toDate))
+                        {
+                            resList = resService.getExamReportReservation(fromDate,toDate);
+                        }
+                    }
+                    else
+                    {
+                        resList = resService.getExamReportReservation();
+                    }
+                    List<ApplicantReportClass> allList = fillReportResults(resList);
+                    List<ApplicantReportClass> sortedList = new List<ApplicantReportClass>();
+                    foreach (ApplicantReportClass arc in allList)
+                    {
+                        if (arc.applicantClub.clubID == clubID)
+                        {
+                            if (arc.resultStatus.ToLower().Equals(resultSort.ToLower()))
+                            {
+                                if (nationalitySort.Equals("lebanese"))
+                                {
+                                    if (arc.applicant.nationality.Equals("LB"))
+                                    {
+                                        sortedList.Add(arc);
+
+                                    }
+
+                                }
+                                else
+                                {
+                                    if (!arc.applicant.nationality.Equals("LB"))
+                                    {
+                                        sortedList.Add(arc);
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    if (sortedList.Count > 0)
+                    {
+                     
+                        totalApplicants = sortedList.Count;
+                        filltable(sortedList);
+                    }
+                }
+            }else if (resultSort !="" )
+            {
+               getAllReportResults();
+                
+            }
             
-           
-           
         }
 
         private void filltable(List<ApplicantReportClass> reportList)
@@ -212,6 +344,7 @@ namespace template.Admin
                          totalField = reportList[i].fieldExamResult;
 
                          numberCell.Text = totalApplicants.ToString();
+                        
                     }
 
                     double avrgeExp = (double)totalExp / totalApplicants;
@@ -220,6 +353,25 @@ namespace template.Admin
                     double fieldAvrg = (double)totalField / totalApplicants;
                     average_experimental.Text = fieldAvrg.ToString();
 
+                    foreach (ApplicantReportClass arc in reportList)
+                    {
+                        if (arc.applicant.nationality.Equals("LB"))
+                        {
+                            totalLebanse++;
+                            if (arc.resultStatus.Equals("PASSED"))
+                            {
+                                totalLebanesePassed++;
+                            }
+                        }
+                        else
+                        {
+                            totalNotLebanese++;
+                            if (arc.resultStatus.Equals("PASSED"))
+                            {
+                                totalNotLebanesePassed++;
+                            }
+                        }
+                    }
                     setResultSummaryData();
                 }
             }
@@ -232,6 +384,7 @@ namespace template.Admin
          
         public void setResultSummaryData()
         {
+
             //get average passed people
             double passed = (totalPassedResults / totalApplicants) * 100;
             passed_percentage_txt.Text = passed.ToString();
