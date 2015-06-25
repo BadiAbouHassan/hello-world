@@ -126,20 +126,25 @@ namespace template.Admin
 
         private void sendEmailConfirmation(Applicant addedApplicant,HuntingClub club, ExamSchedule sched, RegistrationRequests req)
     {
-            using (MailMessage mm = new MailMessage("loopsolutions2015@gmail.com",
+         using (MailMessage mm = new MailMessage("loopsolutions2015@gmail.com",
                 addedApplicant.email))
             {
 
 
-                mm.Subject = "تحديد  موعد امتحان الصيد ";
-                string body = "  مرحبا " + addedApplicant.firstname + " , ";
-                body += "<br /><br/>"+" لقد تم تعيين امتحان الصيد الخاص بك الذي تم التقديم اليه في التاريخ";
-                body += req.registrationRequestsDate;
+                String subject =  "تحديد  موعد امتحان الصيد ";
+                subject +=req.referenceNo;
+                mm.Subject =subject;
+                string body = "  مرحبا  " + addedApplicant.firstname + " , ";
+                body += "<br /><br/>";
+                body += " "+req.registrationRequestsDate +" ";
+                body += " لقد تم تعيين امتحان الصيد الخاص بك الذي تم التقديم اليه في التاريخ";
                 body += "<br/> : على النحو التالي  ";
-                body += "<br /><br/>  : تاريخ الامتحان";
-                body +=sched.scheduleDateTime;
-                body += "<br/> :  النادي";
-                body += club.clubName;
+                body += "<br/>"+req.referenceNo;
+                body += " :رقم الطلب";
+                body +="<br /><br/>" + sched.scheduleDateTime;
+                body += ": تاريخ الامتحان";
+                body += "<br/>"+club.clubName;
+                body += " :  النادي";
                 body += "<br /><br /> يرجى أن تكون في الوقت المحدد";
                 body += "<br /> حظا موفقا";
                 body += "<br /><br />شكرا";
