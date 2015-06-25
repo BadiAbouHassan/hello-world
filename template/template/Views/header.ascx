@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="header.ascx.cs" Inherits="template.Views.header1" %>
-<nav class="navbar navbar-default" style="margin-bottom:0px;" >
+<nav class="navbar navbar-default" style="margin-bottom:0px;border-radius:0px;" >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header navbar-right" style="margin:0px 10px 10px 10px">

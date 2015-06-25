@@ -17,10 +17,17 @@ namespace template.Views
         public string result_txt = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
-            no_questions = int.Parse(Request.Form["no_questions"].ToString());
-            this.checkQuesitons(); 
-   
+            try
+            {
+                loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
+                no_questions = int.Parse(Request.Form["no_questions"].ToString());
+                this.checkQuesitons();
+            }
+            catch (Exception exc)
+            {
+                String redirect_Location = "../Login.aspx";
+                Response.Redirect("Views/errorHandler.aspx?exceptoin_msg=" + exc.Message + "&redirect_locaiton=" + redirect_Location);
+            }
         }
 
         public void checkQuesitons() 
