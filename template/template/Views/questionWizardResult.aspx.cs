@@ -8,12 +8,16 @@ namespace template.Views
 {
     public partial class questionWizardResult : System.Web.UI.Page
     {
+        public DBModel.Applicant loggedApplicant;
+        public DBModel.Exam exam = new DBModel.Exam(); 
         public int no_questions = 0 ;
         public int no_correct_answer = 0;
         public int no_worong_answer = 0;
+        public double result = 0;
+        public string result_txt = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            loggedApplicant = (DBModel.Applicant)Session["logged_applicant"];
             no_questions = int.Parse(Request.Form["no_questions"].ToString());
             this.checkQuesitons(); 
    
@@ -21,6 +25,8 @@ namespace template.Views
 
         public void checkQuesitons() 
         {
+            DBService.ExamService examService = new DBService.ExamService();
+            exam = examService.getExamByID(int.Parse(Request.Form["examID"].ToString()));
             DBService.QuestionsBankService questionBankService = new DBService.QuestionsBankService();
             DBService.AnswerService answerService = new DBService.AnswerService(); 
             for (int i = 0; i < no_questions; i++)
@@ -56,6 +62,15 @@ namespace template.Views
                 }
             }
             no_worong_answer = no_questions - no_correct_answer;
+            result = no_correct_answer * exam.questionMark;
+            if (result >= exam.passingMark)
+            {
+                result_txt = "ناجح";
+            }
+            else
+            {
+                result_txt = "راسب";
+            }
         }
     }
 }

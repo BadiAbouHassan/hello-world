@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server"> 
     <input type="hidden" name="no_questions" id="no_questions" value="<%= questionsToView.Count %>" />
-    
+    <input type="hidden" name="examID" id="examID" value="<%= examInstance.examID %>" />
   <div class="container" style="max-width:800px;margin-top: 50px;direction: rtl" id="rootwizard">
 	<div class="navbar hidden" >
 	  <div class="navbar-inner">

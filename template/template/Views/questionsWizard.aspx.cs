@@ -10,6 +10,7 @@ namespace template.Views
 {
     public partial class questionsWizard : System.Web.UI.Page
     {
+        public DBModel.ExamInstance examInstance ; 
         public DBModel.Applicant loggedApplicant;
         public List<DBModel.ExamQuestions> examQuestionsList;
         public List<Model.Question> questionsToView; 
@@ -53,7 +54,7 @@ namespace template.Views
             // get the registration request and check if it has been approbed by admin or not ... 
             DBService.ExamInstanceService examInstanceService = new DBService.ExamInstanceService();
 
-            DBModel.ExamInstance examInstance = examInstanceService.getExamInstanceByApplicantID(loggedApplicant.applicantID);
+            examInstance = examInstanceService.getExamInstanceByApplicantID(loggedApplicant.applicantID);
 
             //intialize the list of Exam Question 
             List<DBModel.ExamQuestions> examQuestionsList = new List<DBModel.ExamQuestions>();

@@ -6,8 +6,8 @@
         <!-- Introduction Row -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Result Page
-                    <small>Your Answers</small>
+                <h1 class="page-header">النتيجة
+                    <small>اجاباتك</small>
                 </h1>
                 <div class="container">
                     <!-- /.row -->
@@ -24,8 +24,8 @@
                     <div class="table-responsive">
                         <asp:Table ID="Table1" runat="server" BorderColor="#DADDE1" CellPadding="5" CellSpacing="5" CssClass="table table-bordered table-striped">
                             <asp:TableHeaderRow ID="TableHeaderRow1" runat="server">
-                                <asp:TableCell ID="TableCell1" runat="server"><b>Question</b></asp:TableCell>
-                                <asp:TableCell ID="TableCell2" runat="server"><b>Your Answer</b></asp:TableCell>
+                                <asp:TableCell ID="TableCell1" runat="server"><b>الاسئلة</b></asp:TableCell>
+                                <asp:TableCell ID="TableCell2" runat="server"><b>اجوبتك</b></asp:TableCell>
                             </asp:TableHeaderRow>
                         </asp:Table>
                     </div>
@@ -35,11 +35,19 @@
         <!-- /.col-lg-12 -->
     </div>
                     <div class="form-group col-xs-12 col-md-12" >
-                        <label class="col-xs-6 col-md-6" >
-                            Correct answers are : <%= no_correct_answer %>
+                        <label class="col-xs-4 col-md-4" >
+                            الاجابات الصحيحة : <%= no_correct_answer %>
                         </label>
-                        <label class="col-xs-6 col-md-6" >
-                            Wrong answers are : <%= no_worong_answer %>
+                        <label class="col-xs-4 col-md-4" >
+                           الاجابات الخاطئة : <%= no_worong_answer %>
+                        </label>
+                        <label class="col-xs-4 col-md-4" >
+                            العلامة : <%= result %>
+                        </label>
+                    </div>
+                    <div class="form-group col-xs-12 col-md-12" >
+                        <label class="col-xs-12 col-md-12" >
+                            النتيجة : <%= result_txt %>
                         </label>
                     </div>
                 </div>
