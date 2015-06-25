@@ -124,6 +124,23 @@ namespace template.DBService
                             Applicant.applicantID = Int32.Parse(reader["applicantID"].ToString());
                             RegistrationRequestService reqService = new RegistrationRequestService();
                             req.applicantID = Applicant.applicantID;
+                            // generate reference number 
+                            String Gen_app_code = "";
+                            if (req.applicantID < 10)
+                            {
+                                Gen_app_code = "00" + req.applicantID;
+                            }
+                            else if (req.applicantID > 10 && req.applicantID < 100)
+                            {
+                                Gen_app_code = "0" + req.applicantID;
+                            }
+                            else 
+                            {
+                                Gen_app_code = "" + req.applicantID;
+                            }
+                            String Gen_club_code = "";
+
+
                             reader.Close();
                             req = reqService.addRequestByCnx(req, dbObj);
                         }
