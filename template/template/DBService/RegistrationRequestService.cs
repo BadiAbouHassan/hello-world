@@ -100,7 +100,7 @@ namespace template.DBService
             SQLClass dbObj = new SQLClass();
             using (SqlConnection cn = dbObj.openConnection())
             {
-                String query = "Select * from RegistrationRequests where referenceID =" + referenceID;
+                String query = "Select * from RegistrationRequests where registerationID =" + referenceID;
 
                 SqlDataReader reader = dbObj.selectQuery(query);
                 while (reader.Read())

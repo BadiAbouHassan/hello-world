@@ -327,6 +327,7 @@
     </Compile>
     <Compile Include="Admin\addFieldExamResult.aspx.cs">
       <DependentUpon>addFieldExamResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\addFieldExamResult.aspx.designer.cs">
       <DependentUpon>addFieldExamResult.aspx</DependentUpon>
@@ -521,6 +522,7 @@
     <Compile Include="DBModel\FieldExam.cs" />
     <Compile Include="DBModel\GrantPermission.cs" />
     <Compile Include="DBModel\QuestionsPerCourse.cs" />
+    <Compile Include="DBModel\ApplicantReportClass.cs" />
     <Compile Include="DBService\CountryService.cs" />
     <Compile Include="DBService\ExamInstanceService.cs" />
     <Compile Include="DBService\ExamReservationService.cs" />

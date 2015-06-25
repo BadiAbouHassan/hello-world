@@ -109,5 +109,41 @@ namespace template.DBService
 
             return reservation;
         }
+
+
+        public List<ExamReservation> getExamReportReservation(String fromDate=null, String tillDate=null, User adminuser=null)
+        {
+            List<ExamReservation> list = new List<ExamReservation>();
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+                String whereCondition = "";
+                if (fromDate != null && tillDate !=null)
+                {
+                    whereCondition = "AND ExamSchedule.scheduledateTime BETWEEN " + fromDate + " AND " + tillDate;
+                }
+
+                //if (adminuser != null)
+                //{
+                //    whereCondition = ((whereCondition.Length == 0) ? " WHERE " : " AND ") + " c.applicantID = " + applicantID;
+                //}
+
+                String query = "select * from ExamReservation "
+                                + "INNER JOIN ExamSchedule ON ExamReservation.examScheduleID = ExamSchedule.examScheduleID "
+                                + "INNER JOIN ExamInstance ON ExamSchedule.examID = ExamInstance.examID "
+                                + "where ExamInstance.finished = 1 "
+                                + whereCondition;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    ExamReservation reservation = this.fillExamReservation(reader);
+                    list.Add(reservation);
+                }
+
+            }
+            dbObj.CloseConnection();
+            return list;
+        }
     }
 }

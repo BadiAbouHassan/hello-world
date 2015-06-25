@@ -60,6 +60,28 @@ namespace template.DBService
             dbObj.CloseConnection();
             return result;
         }
+
+        public List<User> getClubUsers(int userId = 0)
+        {
+            List<User> result = new List<User>();
+            int ID = (new HuntingClubService()).getClubs(userId)[0].clubID;
+            SQLClass dbObj = new SQLClass();
+            using (SqlConnection cn = dbObj.openConnection())
+            {
+
+
+                String query = "Select * from HuntingClub INNER JOIN UserTable ON HuntingClub.adminUserID = UserTable.userID inner join Role on UserTable.roleID = Role.roleID  where  HuntingClub.clubID=" + ID;
+
+                SqlDataReader reader = dbObj.selectQuery(query);
+                while (reader.Read())
+                {
+                    User user = fillUser(reader);
+                    result.Add(user);
+                }
+            }
+            dbObj.CloseConnection();
+            return result;
+        }
         /// <summary>
         ///  this function select user of given paswod and username --> for login aurhentication
         /// </summary>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using template.DBModel;
+using template.DBService;
 
 namespace template.Admin
 {
@@ -19,13 +20,26 @@ namespace template.Admin
         int totalNotLebanesePassed=0;
         int totalLebanse = 0;
         int totalNotLebanese = 0;
-        
-       
+        ApplicantService appService;
+        ExamReservationService resService;
+        ExamInstanceService examInstanceService;
+        FieldExamService fieldExamService;
+        List<ExamReservation> resList;
+        List<Applicant> appList;
+        List<FieldExam> fieldList;
+        List<RegistrationRequests> reqList;
+        List<ApplicantReportClass> reportList;
 
+        double totalExp, totalField;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                examInstanceService = new ExamInstanceService();
+                resService = new ExamReservationService();
+                appService = new ApplicantService();
+                fieldExamService = new FieldExamService();
+                reportList = new List<ApplicantReportClass>();
                 fillClubSelect();
             }
             catch (Exception ex)
@@ -48,15 +62,149 @@ namespace template.Admin
             String fromDate = fromDate_txt.Value.ToString();
             String toDate = toDate_txt.Value.ToString();
             int clubID = Int32.Parse(Request.Form["club"].ToString());
-            String resultSort = Request.Form["club"].ToString();
+           // String resultSort = Request.Form["result"].ToString();
             String nationalitySort = Request.Form["nationality"].ToString();
 
-            if (checkDates(fromDate, toDate))
+            //get all reservations of exams that are active --> made by applicants
+            if (fromDate != null && toDate != null)
             {
-                           
+                if (checkDates(fromDate, toDate))
+                {
+                    resList = resService.getExamReportReservation(fromDate, toDate);
+                }
+            }
+            else
+            {
+                resList = resService.getExamReportReservation();
             }
 
+            //get applicants list
+            foreach (ExamReservation ex in resList)
+            {
+                ApplicantReportClass arc = new ApplicantReportClass();
+                Applicant app = appService.getApplicantOfID(ex.applicantID);
+                arc.applicant = app;
 
+                ExamSchedule sched = (new ExamScheduleService()).getExamSchedules(0,ex.examScheduleID)[0];
+                arc.examDate = sched.scheduleDateTime.ToShortDateString();
+
+                HuntingClub club = (new HuntingClubService()).getClubofID(sched.clubID);
+                arc.applicantClub = club;
+
+                ExamInstance inst = examInstanceService.getExamInstanceByApplicantID(app.applicantID);
+                arc.instanceExamResult = inst.result;
+                int examID = inst.examID;
+
+                Exam exm = (new ExamService()).getExamByID(examID);
+                arc.applicantExam = exm;
+
+                List<FieldExam> fieldList = fieldExamService.getFieldExamResult(inst.instanceID);
+                if (fieldList.Count > 0)
+                {
+                    FieldExam field = fieldList[0];
+                    arc.fieldExamResult = (double)field.result;
+                }
+                reportList.Add(arc);
+
+            }
+
+            totalApplicants = reportList.Count;
+            //get the total marks of two exams for each applicant
+            foreach (ApplicantReportClass arc in reportList)
+            {
+                arc.totalMarks = arc.fieldExamResult + arc.instanceExamResult;
+                //get the result status according  the passing mark fo the exam for exam applicant
+
+                if (arc.applicantExam.passingMark >= arc.totalMarks)
+                {
+                    arc.resultStatus = "PASSED";
+                    totalPassedResults++;
+                }
+                else
+                {
+                    arc.resultStatus = "FAILED";
+                    totalFailedResults++;
+                }
+            }
+
+            filltable();
+        }
+
+        private void filltable()
+        {
+           try
+           {
+                if (reportList != null)
+                {
+                    for (int i = 0; i < reportList.Count; i++)
+                    {
+                        TableRow tRow = new TableRow();
+                        Table1.Rows.Add(tRow);
+
+                        // Create a new cell and add it to the row.
+                       // TableCell nameCell = new TableCell();
+                        TableCell1.Text = reportList[i].applicant.applicantID.ToString();
+                        tRow.Cells.Add(TableCell1);
+
+                        //TableCell descCell = new TableCell();
+                        TableCell2.Text = reportList[i].applicant.firstname + " " + reportList[i].applicant.middlename +" "+ reportList[i].applicant.lastname;
+                        tRow.Cells.Add(TableCell2);
+
+                        TableCell4.Text = reportList[i].applicant.gender;
+                        tRow.Cells.Add(TableCell4);
+
+                        //TableCell questionNoCell = new TableCell();
+                        TableCell5.Text = reportList[i].applicant.dateOfBirth;
+                        tRow.Cells.Add(TableCell5);
+
+                       // TableCell questionMarkCell = new TableCell();
+                        TableCell6.Text = reportList[i].applicant.nationality;
+                        tRow.Cells.Add(TableCell6);
+
+                       /// TableCell passingMarkCell = new TableCell();
+                        TableCell7.Text = reportList[i].applicantClub.clubName;
+                        tRow.Cells.Add(TableCell7);
+
+                        TableCell8.Text = reportList[i].applicant.placeOfBirth;
+                        tRow.Cells.Add(TableCell8);
+                        
+                       // TableCell dateCell = new TableCell();
+                        TableDateCell.Text = reportList[i].examDate;
+                        tRow.Cells.Add(TableDateCell);
+
+                       // TableCell intanceCell = new TableCell();
+                        TableCell10.Text = reportList[i].instanceExamResult.ToString();
+                        tRow.Cells.Add(TableCell10);
+
+                       // TableCell fieldCell = new TableCell();
+                        TableCell11.Text = reportList[i].fieldExamResult.ToString();
+                        tRow.Cells.Add(TableCell11);
+
+                        //TableCell markCell = new TableCell();
+                        TableCell12.Text = reportList[i].totalMarks.ToString();
+                        tRow.Cells.Add(TableCell12);
+
+                       // TableCell statusCell = new TableCell();
+                        TableCell13.Text = reportList[i].resultStatus.ToString();
+                        tRow.Cells.Add(TableCell13);
+
+                        totalExp = reportList[i].instanceExamResult;
+                         totalField = reportList[i].fieldExamResult;
+                    }
+
+                    double avrgeExp = (double)totalExp / totalApplicants;
+                    average_theory.Text = avrgeExp.ToString();
+
+                    double fieldAvrg = (double)totalField / totalApplicants;
+                    average_experimental.Text = fieldAvrg.ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                errMsgDiv.Style.Remove("display");
+                errMsg.Text = ex.Message;
+            }
         }
          
         public void setResultSummaryData()

@@ -49,7 +49,7 @@ namespace template.Admin
 
                 //Users of this club
                 UserService usrService = new UserService();
-                List<DBModel.User> usrList = usrService.getUsers();
+                List<DBModel.User> usrList = usrService.getClubUsers(loggeduser.userID);
                 if (usrList.Count > 0)
                 {
                     users_nb.Text = usrList.Count.ToString();

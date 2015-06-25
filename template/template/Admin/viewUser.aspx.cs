@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using template.Controllers;
 using template.DBModel;
+using template.DBService;
 namespace template.Admin.User
 {
     public partial class viewUser : System.Web.UI.Page
@@ -17,8 +18,21 @@ namespace template.Admin.User
                 successMsgDiv.Style.Add("display", "none");
 
                 UserController controller = new UserController();
+                //get the logged user
+                DBModel.User loggedAdmin = (DBModel.User)Session["logged_user"];
 
-                List<DBModel.User> users = controller.getUsers();
+                //chck the role of the user
+                Role UserRole = loggedAdmin.role;
+                List<DBModel.User> users;
+                if (Request.QueryString["users"] == null)
+                {
+
+                    users = controller.getUsers();
+                }
+                else
+                {
+                    users = (new UserService()).getClubUsers(loggedAdmin.userID);
+                }
 
                 if (users != null)
                 {
