@@ -27,14 +27,14 @@
             <li><a href="../Login.aspx">تسجيل الدخول</a></li>
         <%} %>
       </ul>
-        <ul class="nav navbar-nav navbar-right" style="font-size: 25px;">
+<%--        <ul class="nav navbar-nav navbar-right" style="font-size: 25px;">
            <%  if (Session["logged_applicant"] != null)
             {
                 template.DBModel.Applicant app=(template.DBModel.Applicant)Session["logged_applicant"];%>
-                <li><a href="#"><%=(new template.DBService.RegistrationRequestService()).getRequestByApplicant(app.applicantID).referenceNo.ToString();%> : الرقم الطلب الخاص بك هو</a></li>
+                <li><a href="#"><%=(new template.DBService.RegistrationRequestService()).getRequestByApplicant(app.applicantID).referenceNo.ToString(); %> الرقم الطلب الخاص بك هو</a></li>
 
             <% }%>
-        </ul>
+        </ul>--%>
       <ul class="nav navbar-nav navbar-left" style="font-size: 25px;">
           <% if(Session["logged_applicant"] != null){ %>
           <% template.DBModel.Applicant client = (template.DBModel.Applicant)Session["logged_applicant"]; %>

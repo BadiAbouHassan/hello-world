@@ -86,7 +86,7 @@ namespace template.Controlers
                         Response.Redirect("../Login.aspx", false);
 
                         // label1.Text = "Succcessfully added";
-                        sendEmailConfirmation(addedApplicant);
+                        sendEmailConfirmation(addedApplicant,req);
                         string script = "window.onload = function(){ alert('";
                         script += "الرجاء اضغط على الرابط في  البريد الاكتروني لتفعيل الحساب";
                         script += "');";
@@ -147,19 +147,21 @@ namespace template.Controlers
 
       
 
-        private void sendEmailConfirmation(Applicant addedApplicant)
+        private void sendEmailConfirmation(Applicant addedApplicant,RegistrationRequests req)
         {
             
             using (MailMessage mm = new MailMessage("loopsolutions2015@gmail.com",
                 addedApplicant.email))
             {
 
-                mm.Subject = "تفعيل الحساب";
+                String subject = " تفعيل الحساب ";
+                subject += req.referenceNo;
+                mm.Subject = subject;
                 string body = "  مرحبا " + addedApplicant.firstname + " , ";
-                body += "<br /><br />الرجاء الضغط على الرابط التالي لتفعيل حسابك";
+                body += "<br /><br />" + req.referenceNo;
+                body += " الرجاء الضغط على الرابط التالي لتفعيل حسابك";
                 body += "<br /><br /><a href = 'http://localhost:50867/Login.aspx?ActivationCode=" + addedApplicant.activationCodeToken + "'>انقر هنا لتفعيل حسابك.</a>";
                 body += "<br /><br />شكرا";
-
 
 
                 mm.Body = body;
